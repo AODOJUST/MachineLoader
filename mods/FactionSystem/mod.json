@@ -1,0 +1,17 @@
+{
+    "id":  "machine.faction",
+    "name":  "Faction System",
+    "version":  "1.9.0",
+    "author":  "Machine",
+    "description":  "Faction system: 3 factions, KD scoreboard (Alt), control panel (Tab), AI per faction from home base, friendly map markers, radar cannot lock friendlies.",
+    "type":  "code",
+    "code":  {
+                 "assemblies":  [
+                                    "code/FactionSystem.dll"
+                                ],
+                 "mainClass":  "Machine.Faction.Main"
+             },
+    "loadAfter":  [
+                      "machine.aam"
+                  ]
+}
