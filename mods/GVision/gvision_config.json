@@ -1,0 +1,16 @@
+{
+  "startG": 9.0,
+  "blackoutG": 21.0,
+  "edgeFullT": 0.38,
+  "blackoutStartT": 0.62,
+  "clearRadiusMax": 0.68,
+  "clearRadiusMin": 0.12,
+  "attackSeconds": 0.35,
+  "releaseSeconds": 1.30,
+  "sortingOrder": 28000,
+  "pauseFadeOut": true,
+  "debugLog": false,
+  "testSweep": false,
+  "captureScreenshots": false,
+  "captureDir": ""
+}

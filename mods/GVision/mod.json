@@ -1,0 +1,17 @@
+{
+    "id":  "machine.gvision",
+    "name":  "G Vision",
+    "version":  "1.3.0",
+    "author":  "Machine",
+    "description":  "G-load vision effect: peripheral darkening / tunnel vision above 9G, gradual blackout toward 21G, slow recovery. Reads the G value computed by the G Meter mod.",
+    "type":  "code",
+    "code":  {
+                 "assemblies":  [
+                                    "code/GVision.dll"
+                                ],
+                 "mainClass":  "GVisionMod.Main"
+             },
+    "loadAfter":  [
+                      "machine.gmeter"
+                  ]
+}
