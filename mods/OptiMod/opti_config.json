@@ -1,0 +1,6 @@
+{
+  "cpuThrottle": true,
+  "mainMenuOpt": true,
+  "checkInterval": 2.0,
+  "profiler": true
+}
