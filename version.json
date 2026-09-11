@@ -1,5 +1,5 @@
 {
   "version": "2.2.0",
   "core": "https://raw.githubusercontent.com/AODOJUST/MachineLoader/main/Machine.Core.dll",
-  "notes": "v2.2.0: 联网更新系统 + 一键安装/卸载/更新程序 + Online 窗口纵向布局"
+  "notes": "v2.2.0: Online auto-update + one-click install/uninstall/update + Online menu vertical layout"
 }
