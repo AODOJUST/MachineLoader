@@ -1,0 +1,14 @@
+{
+    "id":  "machine.zoom",
+    "name":  "Zoom Mod",
+    "version":  "1.1.0",
+    "author":  "Machine",
+    "description":  "Press C to zoom the view for spotting targets. Key/factor in mods/ZoomMod/zoom_config.json.",
+    "type":  "code",
+    "code":  {
+                 "assemblies":  [
+                                    "code/ZoomMod.dll"
+                                ],
+                 "mainClass":  "ZoomMod.Main"
+             }
+}
