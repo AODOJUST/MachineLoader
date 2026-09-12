@@ -186,14 +186,15 @@ def main():
     if os.path.exists(mods_tpl):
         copy_tree(mods_tpl, os.path.join(game_dir, "mods"), overwrite=False)
 
-    # 4) 把更新器复制到 Machine/
-    upd_script = os.path.join(DIST, "machine_update.bat")
-    if os.path.exists(upd_script):
-        try:
-            import shutil
-            shutil.copy2(upd_script, os.path.join(game_dir, "Machine", "machine_update.bat"))
-        except Exception as e:
-            say("更新器复制失败: %s" % e)
+    # 4) 把更新器三件套复制到 Machine/（自包含，玩家无需额外文件）
+    for fname in ["machine_update.bat", "machine_update.py", "MachineInstaller.exe", "Mono.Cecil.dll"]:
+        src = os.path.join(DIST, fname)
+        if os.path.exists(src):
+            try:
+                import shutil
+                shutil.copy2(src, os.path.join(game_dir, "Machine", fname))
+            except Exception as e:
+                say("更新器 %s 复制失败: %s" % (fname, e))
 
     say("=" * 52)
     say("安装完成！现在可以启动游戏。")
