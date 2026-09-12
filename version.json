@@ -1,5 +1,5 @@
-{
-  "version": "2.2.0",
-  "core": "https://raw.githubusercontent.com/AODOJUST/MachineLoader/main/Machine.Core.dll",
-  "notes": "v2.2.0: Online auto-update + one-click install/uninstall/update + Online menu vertical layout"
+﻿{
+    "version":  "2.2.1",
+    "core":  "https://raw.githubusercontent.com/AODOJUST/MachineLoader/main/Machine.Core.dll",
+    "notes":  "v2.2.0: Online auto-update + one-click install/uninstall/update + Online menu vertical layout"
 }
