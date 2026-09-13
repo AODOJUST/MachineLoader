@@ -1,121 +1,200 @@
-# Machine Loader — Aviassembly Mod Loader
+# Machine Mod Loader
 
-Machine 是 Steam 游戏 Aviassembly 的 Mod 加载器（类似 Minecraft 的 Forge / Fabric）。
-安装后主菜单会出现 **Mods** 按钮管理 Mod，游戏目录下自动创建 `mods/` 文件夹。
+> Aviassembly 游戏的 Mod 加载器，类似 Minecraft 的 Forge/Fabric。
 
-## 功能特性
-- 主菜单 Mod 管理窗口（游戏风格 UI）
-- Mod 化架构：`mods/<Mod>/mod.json` + `code/<Mod>.dll`
-- **多人联机**（Online）：网络房间 / 局域网房间，官方服务器由 Radmin LAN 支持，房间号 7 位数字字母
-- 游客模式：输入昵称（锁定）后方可联机，昵称仅限中英文/数字
-- 记忆系统：`Machine/profile.json` 持久化玩家信息与设置（键位、布局）
-- **联网检查更新**：启动时检查本仓库 `version.json`，主菜单弹窗提示，下载后运行更新器即可（无需重装）
-- 一键安装 / 卸载 / 更新程序（傻瓜式，自动定位游戏目录）
+[![Version](https://img.shields.io/badge/version-2.3.0-blue.svg)]()
+[![Game](https://img.shields.io/badge/game-Aviassembly-green.svg)]()
+[![License](https://img.shields.io/badge/license-MIT-yellow.svg)]()
 
-## 安装
-1. 下载本仓库 `dist/` 发布包
-2. 双击 **install_machine.bat**，自动扫盘定位 Aviassembly 游戏目录并安装
-3. 若游戏无法启动或异常：运行 **uninstall_machine.bat** 一键恢复纯净版，确认正常后再重装
+[English](docs/en/README.md) | [中文](docs/zh/README.md) | [日本語](docs/ja/README.md) | [한국어](docs/ko/README.md) | [Русский](docs/ru/README.md) | [Deutsch](docs/de/README.md) | [Français](docs/fr/README.md) | [Nederlands](docs/nl/README.md)
 
-> 安装前请确认**游戏已完全退出**、并**关闭杀毒软件对游戏目录的实时拦截**（否则注入会被拦截）。
-> 若游戏装在 `C:\Program Files` 下，请右键 bat 选择「以管理员身份运行」。
+## 简介
 
-## 更新
-- 游戏启动时自动检查仓库版本（`Machine/update.json` 配置仓库 / 分支 / 通道）
-- 有新版本 → 主菜单弹窗 → 点下载（存入 `Machine/update/`）
-- 退出游戏后运行 `Machine/machine_update.bat` 应用更新，**无需重新安装**
+Machine 是为 Aviassembly 游戏开发的 Mod 加载器，为玩家和开发者提供：
 
-### 更新是经过校验的
-从 v2.4.0 起，更新链路带完整性与来源校验：
+- **Mod 管理**：主菜单 Mod 按钮，启用/禁用 Mod，依赖与冲突检测
+- **内容扩展**：添加新货物、部件、贴图、音效、飞机模型
+- **玩法扩展**：新游戏机制、物理效果、联机模式、AI 阵营
+- **开发者 API**：事件总线、生命周期、UI 注入、配置系统、对象池
+- **性能保障**：异常隔离、帧预算、内存泄漏检测、性能分析器
+- **联机支持**：局域网/网络房间、玩家同步、Mod 版本校验
 
-1. 下载完成后比对 **SHA-256**
-2. 用**编译进客户端的 RSA-3072 公钥**验证 **PKCS#1 v1.5 / SHA-256 签名**
-3. 只有两项都通过，DLL 才会被写入 `Managed/`；否则直接拒绝并留下日志
-4. 写入前自动**备份**旧 DLL，采用**临时文件 + 原子替换**，写入后**复核哈希**，失败自动**回滚**
+## 快速开始
 
-也就是说：即使仓库或 `update.json` 被篡改，客户端也不会安装非官方签名的 DLL。
-细节与剩余风险见 [SECURITY.md](SECURITY.md)。
+### 玩家：安装 Machine
 
-## 日志与排错
-| 文件 | 内容 |
-| --- | --- |
-| `Machine/logs/Machine.log` | 游戏内加载器日志 |
-| `Machine/logs/machine_update.log` | 安装 / 卸载 / 更新脚本日志 |
-| `Machine/logs/installer.log` | 注入与更新执行器的日志 |
-| `Machine/backup/` | 更新前的 `Machine.Core.dll` 备份（保留最近 5 份） |
+1. 下载最新发布包 `MachineLoader-vX.X.X.zip`
+2. 运行 `MachineInstaller.exe`
+3. 安装程序会自动扫描 Aviassembly 游戏目录
+4. 确认安装路径后点击安装
+5. 启动游戏，主菜单左下角显示 `Machine vX.X.X` 即安装成功
 
-脚本退出码语义：`0` 成功 · `1` 参数/环境 · `2` 哈希不符 · `3` 签名被拒 ·
-`4` 安装器失败 · `5` 已回滚 · `6` 用户取消 · `7` 游戏在运行 · `8` 权限不足。
+> 安装前建议备份游戏存档。如遇问题，运行游戏目录下的 `UninstallMachine.exe` 可完全移除。
 
-## 前置要求
-- Windows + Python 3.6 或更高版本（安装时勾选 *Add python.exe to PATH*）
-- 启动脚本会自动寻找 Python：优先 `py -3`，其次 `python` / `python3`
+### 玩家：安装 Mod
 
-## 内置 Mod 列表
-| Mod | 功能 |
-| --- | --- |
-| BattleCore | 战斗部核心（信息集散） |
-| BattleHold | 战斗部面板（油量/油门/导弹信息） |
-| FlightTrails | 飞行航迹（虚线、速度颜色） |
-| VoiceAlerts | 语音告警（多语言） |
-| Radar | 雷达（探测/锁定/火控） |
-| MachineAAM | 空空导弹系统 |
-| GMeter | G 值计算与告警 |
-| GVision | 空战辅助瞄准 HUD |
-| KillFeed | 事件播报（击落/坠毁） |
-| FactionSystem | 阵营系统（三阵营/计分板） |
-| OptiMod | CPU 性能优化 |
-| ZoomMod | 放大镜 |
-| MachineShop | Mod Cargo 装货窗 |
+1. 将 Mod 文件夹放入 `Aviassembly/Machine/mods/` 目录
+2. 启动游戏，主菜单点击 `Mods` 按钮
+3. 在 Mod 管理器中启用/禁用 Mod
+4. 缺失前置 Mod 时会有明确提示
 
-## 配置说明
-`Machine/update.json`
+### 开发者：创建第一个 Mod
 
+```bash
+# 使用模板生成器（Windows PowerShell）
+.\newmod.ps1 MyFirstMod
+
+# 或手动参考 examples/ 目录下的示例
+```
+
+详细开发指南请阅读 [Mod 开发指南](docs/zh/mod-development.md)。
+
+## 目录结构
+
+```
+Aviassembly/                    # 游戏根目录
+├── Aviassembly.exe             # 游戏主程序
+├── Aviassembly_Data/
+│   └── Managed/
+│       ├── Assembly-CSharp.dll      # 游戏代码（已注入 Machine）
+│       ├── Assembly-CSharp.dll.machinebak  # 原版备份
+│       ├── Machine.Core.dll         # Machine 核心
+│       └── Mono.Cecil.dll          # 依赖库
+├── Machine/                   # Machine 数据目录
+│   ├── mods/                  # Mod 目录（每个 Mod 一个子文件夹）
+│   │   ├── machine.radar/     # 示例：雷达 Mod
+│   │   │   ├── mod.json       # Mod 清单
+│   │   │   ├── config.json    # Mod 配置
+│   │   │   └── code/          # 编译后的 DLL
+│   ├── config.json            # Machine 全局配置
+│   ├── update.json            # 更新配置
+│   ├── profile.json           # 玩家资料
+│   ├── installed.json         # 安装记录
+│   ├── saves/                 # Mod 版存档
+│   ├── logs/                  # 日志目录
+│   │   ├── Machine.log        # 当前日志
+│   │   ├── Machine.log.1      # 轮转日志
+│   │   └── crash_report_*.txt # 崩溃报告
+│   └── update/                # 更新缓存
+├── MachineInstaller.exe       # 安装程序
+├── UninstallMachine.exe       # 卸载程序
+└── steam_appid.txt            # Steam App ID（防止 Steam 劫持）
+```
+
+## 内置 Mod
+
+Machine 自带以下官方 Mod：
+
+| Mod ID | 名称 | 说明 |
+|--------|------|------|
+| `machine.battlecore` | 战斗部 | 信息集散前置，汇总输出其他 Mod 信息 |
+| `machine.battlehold` | 战斗仓库 | 战斗物资管理，质量重算 |
+| `machine.faction` | 阵营系统 | 三大阵营 AI，KD 计分板 |
+| `machine.flighttrails` | 航迹 | 地图航迹显示，速度配色 |
+| `machine.gmeter` | G 计算 | 过载计算，过载语音警告 |
+| `machine.gvision` | 辅助显示器 | 战斗辅助 HUD |
+| `machine.killfeed` | 事件播报 | 战况事件记录与播报 |
+| `machine.aam` | 空空导弹 | 导弹+机炮系统 |
+| `machine.shop` | 独立装货 | Machine 独立装货界面 |
+| `machine.opti` | 性能优化 | CPU 优化 Mod |
+| `machine.radar` | 雷达 | 多级雷达+火控锁定 |
+| `machine.voice` | 语音警报 | 中系/英文双语语音警报 |
+| `machine.zoom` | 放大镜 | 画面放大功能 |
+
+## 核心特性
+
+### 加载器核心
+
+- **事件总线**：12 种事件类型，订阅/发布/隔离机制
+- **Mod 生命周期**：OnLoad → OnEnable → OnUpdate/OnFixedUpdate → OnDisable → OnUnload
+- **依赖管理**：必需依赖、可选依赖、版本范围、循环依赖检测
+- **冲突检测**：冲突 Mod 自动禁用，不崩溃
+- **加载顺序**：拓扑排序，支持 loadBefore/loadAfter
+
+### 性能与稳定性
+
+- **异常隔离**：单个 Mod 异常不影响其他 Mod
+- **自动禁用**：连续异常超过 10 次自动禁用该 Mod
+- **帧预算**：每个 Mod 每帧最多 2ms，超过报警
+- **性能分析器**：记录每个 Mod 的初始化时间、每帧耗时、峰值
+- **内存泄漏检测**：定期检查事件订阅、对象池、托管内存
+- **日志轮转**：5MB 切分，保留 5 个，崩溃报告自动生成
+
+### 联机功能
+
+- **局域网房间**：IP:端口 直连
+- **网络房间**：房间号加入，大厅浏览
+- **Mod 校验**：自动检测游戏版本和 Mod 列表一致性
+- **玩家同步**：飞机位置、模型、状态实时同步
+- **玩家系统**：UID/RID/OID 权限分级，加密用户名单
+
+## 常见问题
+
+### Q: 安装后游戏无法启动？
+A: 运行 `UninstallMachine.exe` 卸载后重新安装。确保游戏目录路径正确，没有中文或特殊字符。
+
+### Q: Mod 不生效？
+A: 检查 `Machine/logs/Machine.log`，查看 Mod 加载是否有错误。常见原因：
+- 缺失前置 Mod（日志会明确提示）
+- Mod 版本与加载器版本不兼容
+- mod.json 格式错误
+
+### Q: 如何启用 DEBUG 日志？
+A: 编辑 `Machine/config.json`，将 `logLevel` 改为 `"DEBUG"`：
 ```json
 {
-  "repo": "AODOJUST/MachineLoader",
-  "branch": "main",
-  "channel": "stable",
-  "enabled": true,
-  "requireSignature": true
+  "disabled": [],
+  "logLevel": "DEBUG"
 }
 ```
 
-- `repo` 留空 = 关闭更新检查；`channel` 只接受 `stable` / `beta`
-- `requireSignature` 建议保持 `true`。改成 `false` 会允许未签名更新，
-  等于放弃"防篡改"，只在本地自测时使用
-- 下载地址只允许 `https` + GitHub 相关域名（`raw.githubusercontent.com` 等）
+### Q: 游戏卡顿怎么办？
+A: 
+1. 在游戏内输入 `/machine diag` 查看性能报告
+2. 检查哪个 Mod 每帧耗时过高
+3. 禁用不必要的 Mod
+4. 确保 `machine.opti` 性能优化 Mod 已启用
 
-`Machine/net.json`
+### Q: 纯净版和 Mod 版如何切换？
+A: 主菜单点击 `Play` 后：
+- `Load` - 加载纯净版存档（不加载 Mod）
+- `Mod Saves` - 加载/创建 Mod 版存档（加载 Mod）
 
-```json
-{ "server": "", "port": 26460, "playerName": "Pilot" }
+### Q: 如何报告 Bug？
+A: 
+1. 复现问题
+2. 找到 `Machine/logs/` 目录下的最新日志和崩溃报告
+3. 在 GitHub Issues 中提交，附上日志和复现步骤
+
+## 开发者资源
+
+- [Mod 开发指南（中文）](docs/zh/mod-development.md)
+- [Mod Development Guide (English)](docs/en/mod-development.md)
+- [API 参考](docs/api/)
+- [示例 Mod](examples/)
+- [模板生成器](newmod.ps1)
+- [更新日志](CHANGELOG.md)
+
+## 构建
+
+```bash
+# 编译核心
+powershell -ExecutionPolicy Bypass -File build-core.ps1
+
+# 编译所有 Mod
+powershell -ExecutionPolicy Bypass -File build-mods.ps1
+
+# 构建发布包
+python build_release.py --version 2.3.0
+
+# 运行测试
+pytest tests/ -v
 ```
 
-字段全部经过校验：`server` 必须是合法 IPv4 / 主机名（空 = 未配置）、
-`port` 必须在 1..65535、`playerName` 限 1-16 位中英文/数字/下划线。
+## 贡献
 
-## 版本
-- Loader: **v2.4.1**
-- 支持游戏: Aviassembly (Steam)
+欢迎贡献代码、文档、翻译或示例 Mod。请阅读 [贡献指南](docs/zh/contributing.md)。
 
-### v2.4.1 变更（导弹地形避障）
-- 新增：空对空导弹（MachineAAM）内置射线地形避障 —— 3×3 探针扇形（命中面法线投影 → 斜坡抬升 / 崖壁侧绕）+ 前方山脊剖面 + 离地高度兜底 + 撞地兜底引爆，并与比例导引按威胁度融合；导弹不再一头撞进山体导致目标丢失
-- 新增：避障参数在 `mods/MachineAAM/aam_config.json` 的 `avoid*` 字段逐项可调（视距、撞地余量、规避强度、规避时的过载与油门系数等）
-- 修复：低空平飞发射时把"没飞够安全高度"误判成"会撞上"，导致导弹被一路顶到高空、等它掉回来目标已飞远（改为下沉率门控 + 高度外推判撞 + 视距不小于一个转弯半径）
-- 同步：全部 13 个 Mod 重新构建
+## 许可证
 
-### v2.4.0 变更（健壮性与安全性）
-- 更新包强制 **SHA-256 + RSA 签名** 校验（游戏内下载器与应用器各校验一次）
-- 修复：更新器只复制了 `.bat`，缺失 `.py` 与安装器，导致"退出游戏后应用更新"根本跑不通
-- 修复：更新器找不到 `MachineInstaller.exe` 时的兜底路径算错（等于没有兜底）
-- 修复：脚本不检查子进程返回码，失败也打印"完成"
-- 修复：卸载会递归删除 `mods/`，直接毁掉玩家自己的 Mod（现改为保留 + 退出码语义化）
-- 新增：备份 / 原子替换 / 写入后复核 / 失败自动回滚（安装器与应用器双层）
-- 新增：全链路日志（`machine_update.log` / `installer.log`）
-- 新增：`net.json` / `update.json` / `profile.json` 的 schema 校验
-- 新增：游戏进程检测、文件占用检测、权限检测与明确提示
-- 修复：`Machine/README.txt` 写入 BOM 且含开发机绝对路径
-
-## 许可
-仅供个人学习使用，禁止商用。
+MIT License
