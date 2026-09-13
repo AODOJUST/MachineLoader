@@ -1,5 +1,11 @@
-﻿{
-    "version":  "2.2.1",
-    "core":  "https://raw.githubusercontent.com/AODOJUST/MachineLoader/main/Machine.Core.dll",
-    "notes":  "v2.2.0: Online auto-update + one-click install/uninstall/update + Online menu vertical layout"
+{
+  "version": "2.4.1",
+  "channel": "stable",
+  "minVersion": "",
+  "core": "https://raw.githubusercontent.com/AODOJUST/MachineLoader/main/Machine.Core.dll",
+  "sha256": "0800accf1c9e7df6f90a5c0eaa94a450eafdc8a2c98dd17963350a632b00ca7f",
+  "sig": "WHSbMavgphsTQ/8VOx2LjylXNPg6Eyqp5aP9f7VugsgJKyy+FBKcCkuCSpuUwc8tj7Q0CsyiXmAERiNyRIk2Cd+/985XeCQLBL6YWRmNfjQ8u+tMXVMWr5zmgvudQYzySfFMpar2d9BVdhe4A1WDwY2wzR43kHMnkjJ7s0a7j1yoTgS0MSosaPuHFtHqHQFNOB5whr8Q7czoSqvYz+R5uQTlITEtSY0EorEbaNiclp4kqYGnztvPKso1MUpuv+3JzCliz1kWRDCXi+vsRpWzCwPvmibphcdRtIAG6oySN7GcAYpBjpJSxpiH21eeXbz9TZFt/lKW1w0hrIKkYFIwawtF2MlxDy/JRS9S3cz49RgE9EdndSJhl58Ox3h6zlnWTMz3jtJ794adf1JC1B4MrFHPeegAyAeAn+mUd2YN7xssK7Te7GbKCCns/WXQVmcIbj7I/AQCD0Hl+fmRFKev53XcmSzE8BdozILLR1BJHqRdPHYtmRm9YvY11IukeVFh",
+  "notes": "v2.4.1: AAM missile gains raycast terrain/obstacle avoidance (3x3 probe fan + ridge profile + AGL floor + impact fallback) so it no longer flies into mountains; all 13 mods rebuilt and synced (AAM 2.8.0).",
+  "signedAt": "2026-09-13 15:29:26",
+  "signerFingerprint": "93c4ab8598865fc82e6b0e1bcdf9ad5cf11f767d45db1286c14eee9bad70065a"
 }

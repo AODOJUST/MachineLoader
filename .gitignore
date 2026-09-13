@@ -1,0 +1,33 @@
+# Backup files
+*.bak_*
+*.github_backup
+*.bak
+
+# Runtime / user data
+Machine/profile.json
+Machine/config.json
+Machine/installed.json
+Machine/installed.json.bak
+Machine/lang_config.txt
+Machine/room_players_*.json
+Machine/logs/
+Machine/backup/
+
+# Mod runtime state
+mods/*/state.json
+mods/*/*_state.json
+mods/*/config.json.bak*
+
+# Dev / test artifacts
+mods/MachineAAM/_prev/
+mods/MachineAAM/aam_test_*.png
+mods/MachineAAM/*.planedesign
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.pyc
