@@ -1,9 +1,9 @@
 {
     "id":  "machine.opti",
     "name":  "OptiMod",
-    "version":  "1.4.0",
+    "version":  "2.1.0",
     "author":  "Machine",
-    "description":  "Performance optimizer: auto-applies mild render quality tuning (shadows/AA/LOD) after entering a game scene to reduce lag in heavy AI combat.",
+    "description":  "CPU-side optimizer + attribution. v2.1 adds a RenderTexture-camera ablation probe (measures how many ms each extra camera pass costs per frame), removes its own periodic scan hitches, and adds zero-visual-cost CPU cuts (skinned updateWhenOffscreen, autoSyncTransforms, optional instancing). Touches no visual quality setting unless explicitly enabled.",
     "type":  "code",
     "code":  {
                  "assemblies":  [
