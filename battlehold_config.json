@@ -1,0 +1,16 @@
+{
+  "demoCargo": true,
+  "autoTest": false,
+  "captureScreenshots": false,
+  "testKeybindRow": false,
+  "showPanel": true,
+  "injectKeybindRow": true,
+  "panelVisible": true,
+  "persistState": true,
+  "panelAnchor": "bottom-right",
+  "panelX": -1260,
+  "panelY": 531,
+  "toggleKey": "<Keyboard>/1",
+  "shotDir": "",
+  "language": "zh"
+}
