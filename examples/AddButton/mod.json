@@ -1,0 +1,22 @@
+{
+  "id": "example.addbutton",
+  "name": "Add Button Example",
+  "version": "1.0.0",
+  "author": "Machine Team",
+  "description": "示例：在主菜单添加自定义按钮，点击后打开简单窗口。",
+  "type": "code",
+  "apiVersion": "1.0",
+  "loaderVersion": ">=2.0.0",
+  "dependencies": [],
+  "entry": "Example.AddButton.AddButtonMod",
+  "code": {
+    "assemblies": ["code/AddButton.dll"],
+    "mainClass": "Example.AddButton.AddButtonMod"
+  },
+  "content": {
+    "cargo": [],
+    "parts": [],
+    "decals": [],
+    "textures": []
+  }
+}
