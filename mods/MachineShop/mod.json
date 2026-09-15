@@ -1,9 +1,9 @@
-{
+﻿{
   "id": "machine.shop",
   "name": "MachineShop",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Machine",
-  "description": "Machine自己的装货界面，用于装载mod物品（雷达、导弹等）。白色圆角风格，类别抽屉，滚轮滑动，战斗仓库信息显示。",
+  "description": "Machine鑷繁鐨勮璐х晫闈紝鐢ㄤ簬瑁呰浇mod鐗╁搧锛堥浄杈俱€佸寮圭瓑锛夈€傜櫧鑹插渾瑙掗鏍硷紝绫诲埆鎶藉眽锛屾粴杞粦鍔紝鎴樻枟浠撳簱淇℃伅鏄剧ず銆?,
   "type": "code",
   "code": {
     "assemblies": [
@@ -12,3 +12,4 @@
     "mainClass": "MachineShopMod.Main"
   }
 }
+
