@@ -1,7 +1,7 @@
-{
+﻿{
     "id":  "machine.battlecore",
     "name":  "BattleCore",
-    "version":  "2.4.0",
+    "version": "2.5.0",
     "author":  "Machine",
     "description":  "Combat Core: info hub aggregating and outputting data reported by other mods. Prerequisite for dependent mods.",
     "type":  "code",
@@ -12,3 +12,4 @@
                  "mainClass":  "Machine.BattleCore.Main"
              }
 }
+
