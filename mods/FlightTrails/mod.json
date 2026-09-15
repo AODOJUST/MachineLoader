@@ -1,7 +1,7 @@
-{
+﻿{
     "id":  "machine.flighttrails",
     "name":  "Flight Trails",
-    "version":  "2.5.0",
+    "version": "2.6.0",
     "author":  "Machine",
     "description":  "Dashed flight trails on the map: speed-colored (blue=slow red=fast), hover to turn solid with direction arrow, clear button on map. Config: trails_config.json",
     "type":  "code",
@@ -12,3 +12,4 @@
                  "mainClass":  "FlightTrailsMod.Main"
              }
 }
+
