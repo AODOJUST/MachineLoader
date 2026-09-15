@@ -1,7 +1,7 @@
-{
+﻿{
   "id": "machine.radar",
   "name": "Radar System",
-  "version": "3.3.1",
+  "version": "3.4.0",
   "author": "Machine",
   "description": "Radar System: combat cargo part (Radar Mk1, weight 0.1, size 15) locked to Combat Hold (BattleHold). Scans and locks targets, shares data via BattleCore.",
   "type": "code",
