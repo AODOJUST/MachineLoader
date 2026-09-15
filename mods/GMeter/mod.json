@@ -1,7 +1,7 @@
-{
+﻿{
     "id":  "machine.gmeter",
     "name":  "G Meter",
-    "version":  "1.7.0",
+    "version": "1.8.0",
     "author":  "Machine",
     "description":  "Shows G value on screen when G\u003e5, OVER G voice warning when G\u003e9. Works with Voice Alert System. Depends on BattleCore.",
     "type":  "code",
@@ -15,3 +15,4 @@
                       "machine.battlecore"
                   ]
 }
+
