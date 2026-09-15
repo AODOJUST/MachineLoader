@@ -1,7 +1,7 @@
-{
+﻿{
   "id": "machine.killfeed",
   "name": "KillFeed",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Machine",
   "description": "Combat kill feed: shows battle events at the top of the screen (e.g. F-22 (Snow-1, Snow) shot down J-20 (Desert-2, Desert), or plane crashed). Events slide in at the top, push older events down, stay 5 seconds, then fade out. Up to 8 events at once; oldest disappears first when exceeded.",
   "type": "code",
