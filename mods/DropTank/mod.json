@@ -1,0 +1,18 @@
+﻿{
+  "id": "machine.droptank",
+  "name": "Drop Tank",
+  "version": "1.0.0",
+  "author": "Machine",
+  "description": "Drop Tank: an external fuel tank sold as cargo at every airport (weight 3, size 80). Each tank you carry adds 10 fuel to the plane and tops it off.",
+  "type": "code",
+  "code": {
+    "assemblies": [
+      "code/DropTank.dll"
+    ],
+    "mainClass": "Machine.DropTank.Main"
+  },
+  "loadAfter": [
+    "machine.battlehold"
+  ]
+}
+
