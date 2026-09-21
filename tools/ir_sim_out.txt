@@ -1,0 +1,74 @@
+csc  = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+aam  = True (166400 bytes)
+-- sim built OK
+---- sim output ----
+IR SIM - real Machine.AAM.IrMath from compiled DLL
+expected = throttle(0~100) x 1.2 + speed(m/s) x 0.1, clamp 0~200
+heatK=0.55 coolRate=26 coolRef=60 dt=1/60
+
+== 1) 期望值公式 ==
+  thr  0 spd    0 -> 0.0
+  thr 60 spd  250 -> 97.0   (72 + 25 = 97)
+  thr100 spd  800 -> 200.0   (120 + 80 = 200 = 上限)
+  thr100 spd 1200 -> 200.0   (溢出，应夹到 200)
+  [PASS] idle = 0  0.0
+  [PASS] cruise = 97  97.0
+  [PASS] full = 200 (max)  200.0
+  [PASS] over-range clamped  200.0
+
+== 2) 升温：期望 150，从 0 开始（差值越大变化越快）==
+   t=1s  actual=63.5  rate=47.82/s
+   t=2s  actual=100.1  rate=27.59/s
+   t=3s  actual=121.2  rate=15.92/s
+   t=4s  actual=133.4  rate=9.18/s
+   t=5s  actual=140.4  rate=5.30/s
+   t=6s  actual=144.5  rate=3.06/s
+   t=7s  actual=146.8  rate=1.76/s
+   t=8s  actual=148.2  rate=1.02/s
+   t=9s  actual=148.9  rate=0.59/s
+   t=10s  actual=149.4  rate=0.34/s
+   63% 用时=1.8s   95% 用时=5.5s   20s 后=150.000
+  [PASS] 升温最终吸附到期望值  150.000
+  [PASS] 升温 63% 在 3s 内（推油门升温快）  1.8s
+  [PASS] 升温速率随差值变小而变慢（差值越大越快）
+  [PASS] gap=150 的步进 > gap=20 的步进  1.3687 > 0.1825
+
+== 3) 降温：期望 20，从 150 开始（不瞬间掉，先快后慢）==
+   t=2.0s  actual=98.0  rate=26.00/s
+   t=4.0s  actual=49.7  rate=18.39/s
+   t=6.0s  actual=27.9  rate=5.43/s
+   t=8.0s  actual=22.0  rate=1.39/s
+   t=10.0s  actual=20.5  rate=0.35/s
+   t=12.0s  actual=20.1  rate=0.09/s
+   t=14.0s  actual=20.0  rate=0.00/s
+   t=16.0s  actual=20.0  rate=0.00/s
+   t=18.0s  actual=20.0  rate=0.00/s
+   t=20.0s  actual=20.0  rate=0.00/s
+   t=22.0s  actual=20.0  rate=0.00/s
+   t=24.0s  actual=20.0  rate=0.00/s
+   t=26.0s  actual=20.0  rate=0.00/s
+   t=28.0s  actual=20.0  rate=0.00/s
+   t=30.0s  actual=20.0  rate=0.00/s
+   掉到 10% 用时 = 5.3s
+  [PASS] 0.1s 内没有瞬间掉下来（掉幅 < 5）  2.60
+  [PASS] 降温速率单调不增（先快后慢 = cos 趋势）
+  [PASS] 最终收敛到期望值 20  20.00
+  [PASS] 降温比升温慢（收油门拖沓）  5.3s > 3s
+
+== 4) 热诱弹红外时序（峰值 210 / 保持 4s / 12s 归零）==
+   age=0.0s -> IR 210.0
+   age=2.0s -> IR 210.0
+   age=3.9s -> IR 210.0
+   age=4.0s -> IR 210.0
+   age=6.0s -> IR 179.2
+   age=8.0s -> IR 105.0
+   age=10.0s -> IR 30.8
+   age=11.9s -> IR 0.1
+   age=12.0s -> IR 0.0
+  [PASS] t=0 峰值 210
+  [PASS] t=4 仍是峰值（4s 后才开始衰减）
+  [PASS] t=8 大约半衰
+  [PASS] t=12 归零
+  [PASS] 4~12s 单调衰减
+RESULT: OK
+exit=0

@@ -1,0 +1,206 @@
+﻿===== TYPE Singleton`1 =====
+  FIELD System.Boolean m_ShuttingDown static
+  FIELD System.Object m_Lock static
+  FIELD T m_Instance static
+  PROP T Instance {get;}
+  METHOD get_Instance() : T pub static
+  METHOD Awake() : Void
+  METHOD InitSingleton() : Void pub static
+  METHOD OnApplicationQuit() : Void
+  METHOD .ctor() : Void pub
+  METHOD .cctor() : Void static
+===== TYPE GameManager =====
+  FIELD Fader fader pub
+  FIELD GraphicsSettings graphicsSettings pub
+  FIELD System.String currentSaveFile pub
+  FIELD UnityEngine.Vector3 planePosistion pub
+  FIELD UnityEngine.Quaternion planeRotatation pub
+  FIELD System.Action flyModeLoaded static
+  FIELD System.Action buildModeLoaded static
+  FIELD GameMode gameMode pub static
+  FIELD System.Boolean firstMenuOpen pub static
+  FIELD System.Boolean inMenu pub
+  FIELD System.Boolean menuIntroPlayed pub
+  FIELD System.Boolean modalsOpen pub
+  FIELD System.Boolean autoSteer pub
+  FIELD System.Boolean autoSave pub
+  FIELD System.Boolean raceEnabled pub
+  FIELD System.Int32 unlockRaces pub
+  FIELD GameModeData gameModeData pub
+  FIELD GameMode savedGameMode pub
+  FIELD System.Boolean <Loading>k__BackingField
+  FIELD System.Boolean startup
+  PROP System.Boolean Loading {get;}
+  METHOD add_flyModeLoaded(Action value) : Void pub static [CompilerGeneratedAttribute]
+  METHOD remove_flyModeLoaded(Action value) : Void pub static [CompilerGeneratedAttribute]
+  METHOD add_buildModeLoaded(Action value) : Void pub static [CompilerGeneratedAttribute]
+  METHOD remove_buildModeLoaded(Action value) : Void pub static [CompilerGeneratedAttribute]
+  METHOD get_Loading() : Boolean pub [CompilerGeneratedAttribute]
+  METHOD set_Loading(Boolean value) : Void [CompilerGeneratedAttribute]
+  METHOD Awake() : Void
+  METHOD Start() : Void
+  METHOD Update() : Void
+  METHOD StartMenu() : Void pub
+  METHOD StartGame() : Void pub
+  METHOD StartFlyMode(Boolean resetPlane,Boolean resetCargo) : Void pub
+  METHOD StartBuildMode(Boolean force) : Void pub
+  METHOD LoadMenu() : IEnumerator [IteratorStateMachineAttribute]
+  METHOD StartNewGame() : IEnumerator [IteratorStateMachineAttribute]
+  METHOD LoadFlyMode(Boolean resetPlane) : IEnumerator [IteratorStateMachineAttribute]
+  METHOD LoadBuildMode() : IEnumerator [IteratorStateMachineAttribute]
+  METHOD OnSceneLoaded(Scene scene,LoadSceneMode mode) : Void
+  METHOD InitialFadeOut() : IEnumerator [IteratorStateMachineAttribute]
+  METHOD GetPlaneSpawnPoint() : Vector3 pub static
+  METHOD GetPlaneSpawnRotation() : Quaternion pub static
+  METHOD Save(GameDataWriter writer) : Void pub
+  METHOD Load(GameDataReader reader) : Void pub
+  METHOD .ctor() : Void pub
+===== TYPE CargoInventory =====
+  FIELD AudioDef glassBreaking pub
+  FIELD AudioDef addItem pub
+  FIELD System.Single <MaxVolume>k__BackingField
+  FIELD System.Single <CurrentVolume>k__BackingField
+  FIELD System.Single breakageCooldown pub
+  FIELD System.Collections.Generic.Dictionary`2<CargoType,System.Int32> currentCargo
+  FIELD PlaneContainer planeContainer
+  FIELD System.Single expirationTimer
+  FIELD System.Single currentExpirationDuration
+  FIELD UnityEngine.Vector3 prevVelocity
+  FIELD System.Single lastBreakTime
+  FIELD System.Single minFragileBreakTreshhold pub
+  FIELD System.Single maxFragileBreakTreshhold pub
+  FIELD System.Action`1<CargoType> ExpirableCargoCleared
+  FIELD System.Action`2<CargoType,System.Int32> FragileCargoCleared
+  PROP System.Single MaxVolume {get;}
+  PROP System.Single CurrentVolume {get;}
+  METHOD get_MaxVolume() : Single pub [CompilerGeneratedAttribute]
+  METHOD set_MaxVolume(Single value) : Void [CompilerGeneratedAttribute]
+  METHOD get_CurrentVolume() : Single pub [CompilerGeneratedAttribute]
+  METHOD set_CurrentVolume(Single value) : Void [CompilerGeneratedAttribute]
+  METHOD add_ExpirableCargoCleared(Action`1 value) : Void pub [CompilerGeneratedAttribute]
+  METHOD remove_ExpirableCargoCleared(Action`1 value) : Void pub [CompilerGeneratedAttribute]
+  METHOD add_FragileCargoCleared(Action`2 value) : Void pub [CompilerGeneratedAttribute]
+  METHOD remove_FragileCargoCleared(Action`2 value) : Void pub [CompilerGeneratedAttribute]
+  METHOD Start() : Void
+  METHOD Update() : Void
+  METHOD FixedUpdate() : Void
+  METHOD RecalculateCargo() : Void pub
+  METHOD ApplyCargo() : Void pub
+  METHOD EnoughSpace(CargoType cargoType) : Boolean pub
+  METHOD AddCargo(CargoType cargoType) : Void pub
+  METHOD RemoveCargo(CargoType cargoType,Int32 amount) : Void pub
+  METHOD GetCargoCount(CargoType cargoType) : Int32 pub
+  METHOD GetExpirationProgress() : Single pub
+  METHOD GetExpirationIcon() : Texture pub
+  METHOD ContainsExpirableCargo() : Boolean pub
+  METHOD ContainsFragileCargo() : Boolean pub
+  METHOD GetCargoMass() : Single pub
+  METHOD ClearInventory() : Void pub
+  METHOD ClearExpirableCargo() : Void pub
+  METHOD ClearFragileCargo(Single breakPercentage) : Void pub
+  METHOD ClearAll() : Void pub
+  METHOD GetCurrentCargo() : Dictionary`2 pub
+  METHOD Save(GameDataWriter writer) : Void pub
+  METHOD Load(GameDataReader reader) : Void pub
+  METHOD .ctor() : Void pub
+===== TYPE CargoInventorySlot =====
+  FIELD UnityEngine.UI.RawImage icon pub
+  FIELD TMPro.TMP_Text text pub
+  FIELD System.Int32 amount
+  METHOD Init(Texture icon,Single value) : Void pub
+  METHOD Update() : Void pub
+  METHOD .ctor() : Void pub
+===== TYPE CargoInventoryUI =====
+  FIELD System.Single RequiredDistanceFromAirport pub static
+  FIELD System.Single RequiredVelocity pub static
+  FIELD FlyingUIController flyingUIController pub
+  FIELD CargoInventory cargoInventory pub
+  FIELD TMPro.TMP_Text cargoTypeText pub
+  FIELD AirportInspector airportInspector pub
+  FIELD QuestAdditionUI questAdditionUI pub
+  FIELD TMPro.TMP_Text cargoVolumeText pub
+  FIELD AirportMoneyIndicator airportMoneyIndicator pub
+  FIELD UnityEngine.GameObject takeButtonHighlighter pub
+  FIELD System.Single takeButtonhighlighterFlickerSpeed pub
+  FIELD UnityEngine.GameObject airportInventoryWindow pub
+  FIELD UnityEngine.GameObject cargoInventoryWindow pub
+  FIELD UnityEngine.UI.Image cargoVolumeBar pub
+  FIELD UnityEngine.UI.RawImage airportCargoIcon pub
+  FIELD UnityEngine.GameObject expirationTimer pub
+  FIELD UnityEngine.UI.RawImage expirationIcon pub
+  FIELD UnityEngine.UI.Image expirationBar pub
+  FIELD TMPro.TMP_Text airportCargoWeightText pub
+  FIELD TMPro.TMP_Text airportCargoSpaceText pub
+  FIELD TMPro.TMP_Text planeWeight pub
+  FIELD CargoInventorySlot[] slots pub
+  FIELD CargoOfferingUI[] cargoOfferings pub
+  FIELD System.Boolean airportUI
+  METHOD Start() : Void
+  METHOD Update() : Void
+  METHOD ClearInventory() : Void pub
+  METHOD Refuel() : Void pub
+  METHOD OpenAirportInventory(Boolean airport) : Void pub
+  METHOD .ctor() : Void pub
+===== TYPE ResearchTree =====
+  FIELD System.Collections.Generic.List`1<ResearchTreeItem> items pub
+  METHOD Contains(GameObject prefab) : Boolean pub
+  METHOD .ctor() : Void pub
+===== TYPE ResearchTreeItem =====
+  FIELD UnityEngine.GameObject Prefab pub
+  FIELD System.Int32 Cost1 pub
+  FIELD System.Int32 Cost2 pub
+  FIELD System.Collections.Generic.List`1<ResearchTreeItem> children pub
+  FIELD UnityEngine.Rect window pub
+  METHOD GetChildConnectionRect() : Rect pub
+  METHOD GetParentConnectionRect() : Rect pub
+  METHOD .ctor() : Void pub
+===== TYPE ResearchTreeLayoutBuilder =====
+  FIELD ResearchTree researchTree pub
+  FIELD UnityEngine.GameObject nodePrefab pub
+  FIELD UnityEngine.GameObject linePrefab pub
+  FIELD System.Single nodeSize pub
+  FIELD System.Single spacing pub
+  FIELD System.Single lineThickness pub
+  FIELD System.Collections.Generic.List`1<UnityEngine.GameObject> nodes
+  FIELD System.Collections.Generic.Dictionary`2<ResearchTreeItem,ResearchButton> buttons
+  METHOD Start() : Void
+  METHOD BuildLayout() : Void pub
+  METHOD GetParents(ResearchTreeItem item) : List`1
+  METHOD ConnectNodes(ResearchTreeItem item1,ResearchTreeItem item2) : RawImage
+  METHOD GetNodePosition(Vector2 graphPosition) : Vector3
+  METHOD GetSize() : Vector2
+  METHOD .ctor() : Void pub
+===== TYPE PartButton =====
+  FIELD PartPlacer placer
+  FIELD UnityEngine.GameObject prefab
+  FIELD BuildingPart part
+  FIELD PartUIData data
+  FIELD CustomButton buttonComponent
+  FIELD TooltipTrigger tooltipTrigger
+  FIELD UnityEngine.GameObject unlockedTooltip pub
+  FIELD UnityEngine.GameObject lockedTooltip pub
+  FIELD UnityEngine.UI.RawImage icon pub
+  FIELD UnityEngine.UI.Image background pub
+  FIELD UnityEngine.GameObject lockObject pub
+  FIELD UnityEngine.Color normalColor pub
+  FIELD UnityEngine.Color hoverColor pub
+  FIELD System.Single price
+  FIELD UnityEngine.Texture iconTexture
+  FIELD System.Boolean initialized
+  FIELD System.Boolean buttonDisabled
+  METHOD Init(PartPlacer partPlacer,GameObject prefab,IconGenerator iconGenerator) : Void pub
+  METHOD OnEnable() : Void
+  METHOD Update() : Void
+  METHOD Click() : Void pub
+  METHOD SplitCamelCase(String input) : String pub
+  METHOD OnPointerEnter(PointerEventData eventData) : Void pub
+  METHOD OnPointerExit(PointerEventData eventData) : Void pub
+  METHOD .ctor() : Void pub
+===== TYPE PartBar =====
+  FIELD UnityEngine.GameObject[] prefabs pub
+  FIELD UnityEngine.GameObject[] fullVersionPrefabs pub
+  FIELD UnityEngine.GameObject buttonPrefab pub
+  FIELD PartPlacer placer pub
+  METHOD Awake() : Void
+  METHOD SpawnButtons(GameObject[] prefabs) : Void
+  METHOD .ctor() : Void pub

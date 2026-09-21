@@ -1,0 +1,11 @@
+now = 22:25:54 deadline=480s tag=ui2 save=AutoSave 0
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\_points_test.flag
+log start offset = 1060252
+started pid = 18636
+t=30s newLog=35613 done=False
+t=40s newLog=43194 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\faction_run_log_ui2.txt length=43194
+game alive before stop = True
+game stopped

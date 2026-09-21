@@ -1,0 +1,10 @@
+src = D:\豆包的下载\Machine_Dev\bin\mods\MachineAAM.dll (192512 bytes, 13:46:56)
+src md5 = 354e049dba03ffdca1706d9bbd505578
+OK   192512  354e049dba03  D:\豆包的下载\Aviassembly_DEV\mods\MachineAAM\code\MachineAAM.dll
+OK   192512  354e049dba03  D:\豆包的下载\Aviassembly_DEV\mods\MachineAAM\MachineAAM.dll
+OK   192512  354e049dba03  D:\steam\steamapps\common\Aviassembly\mods\MachineAAM\code\MachineAAM.dll
+OK   192512  354e049dba03  D:\steam\steamapps\common\Aviassembly\mods\MachineAAM\MachineAAM.dll
+OK   192512  354e049dba03  D:\豆包的下载\Machine_Dev\dist\mods\MachineAAM\code\MachineAAM.dll
+OK   192512  354e049dba03  D:\豆包的下载\Machine_Dev\dist_upload\mods\MachineAAM\code\MachineAAM.dll
+OK   192512  354e049dba03  D:\豆包的下载\MachineLoader_work\mods\MachineAAM\code\MachineAAM.dll
+OK   192512  354e049dba03  D:\豆包的下载\MachineLoader_github\MachineLoader-main\mods\MachineAAM\code\MachineAAM.dll

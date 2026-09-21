@@ -1,0 +1,19 @@
+{
+  "startG": 9.0,
+  "blackoutG": 25.0,
+  "softG": 15.0,
+  "softMaxAlpha": 0.68,
+  "blackoutStartG": 18.5,
+  "clearRadiusMax": 0.60,
+  "clearRadiusMin": 0.12,
+  "featherLow": 0.42,
+  "featherHigh": 0.62,
+  "attackSeconds": 0.35,
+  "releaseSeconds": 1.30,
+  "sortingOrder": 28000,
+  "pauseFadeOut": true,
+  "debugLog": false,
+  "testSweep": false,
+  "captureScreenshots": false,
+  "captureDir": ""
+}

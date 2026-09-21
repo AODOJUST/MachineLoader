@@ -1,0 +1,11 @@
+now = 22:57:59 deadline=480s tag=kdwin save=AutoSave 0
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\_points_test.flag
+log start offset = 1706472
+started pid = 18784
+t=31s newLog=35472 done=False
+t=41s newLog=43042 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\faction_run_log_kdwin.txt length=43042
+game alive before stop = True
+game stopped

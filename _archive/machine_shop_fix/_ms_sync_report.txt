@@ -1,0 +1,4 @@
+src size=46080 md5=66A5C31FDA59D5191C364BC1550EFCCA
+OK   D:\豆包的下载\MachineLoader_work\mods\MachineShop\code\MachineShop.dll md5=66A5C31F match=True
+OK   D:\豆包的下载\MachineLoader_github\MachineLoader-main\mods\MachineShop\code\MachineShop.dll md5=66A5C31F match=True
+OK   D:\steam\steamapps\common\Aviassembly\mods\MachineShop\code\MachineShop.dll md5=66A5C31F match=True

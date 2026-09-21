@@ -1,0 +1,9 @@
+now = 10:39:31 deadline=300s tag=noai1
+pre-existing instance cleared
+log start offset = 8186556
+started pid = 40220
+t=30s newLog=21148 done=False
+game exited early, code=0
+selftestDone=False
+log slice written -> D:\豆包的下载\Machine_Dev\aam_run_log_noai1.txt length=23119
+game alive before stop = False

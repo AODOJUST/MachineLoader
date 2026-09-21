@@ -1,0 +1,421 @@
+2026-09-14 22:58:00.014 [INFO ] Logger ready -> D:\豆包的下载\Aviassembly_DEV\Machine\logs\Machine.log (level: INFO)
+2026-09-14 22:58:00.026 [INFO ] ==== Machine v1.0.0 boot ====
+2026-09-14 22:58:00.026 [INFO ] Game dir : D:\豆包的下载\Aviassembly_DEV
+2026-09-14 22:58:00.026 [INFO ] Unity ver : 6000.0.69f1
+2026-09-14 22:58:00.052 [INFO ] MachineLang: Chinese font loaded from C:\Windows\Fonts\msyh.ttc
+2026-09-14 22:58:00.056 [INFO ] MachineLang: loaded 14 translations from D:/豆包的下载/Aviassembly_DEV/Aviassembly_Data\..\Machine\lang\en.json
+2026-09-14 22:58:00.056 [INFO ] MachineLang: language set to en
+2026-09-14 22:58:00.056 [INFO ] MachineLang initialized, lang=en
+2026-09-14 22:58:00.062 [INFO ] net.json: server='' port=26460 remoteModel=clone
+2026-09-14 22:58:00.062 [INFO ] Machine.Net ready (player=Pilot)
+2026-09-14 22:58:00.075 [WARN ] UserRegistry save failed: Specified key is not a valid size for this algorithm.
+2026-09-14 22:58:00.075 [INFO ] Machine runtime created (name=locked)
+2026-09-14 22:58:00.097 [INFO ] mod [machine.battlecore] manifest ok: BattleCore v2.4.0 content=0
+2026-09-14 22:58:00.097 [INFO ] mod [machine.battlehold] manifest ok: BattleHold v2.3.0 content=0
+2026-09-14 22:58:00.098 [INFO ] mod [machine.faction] manifest ok: Faction System v1.9.0 content=0
+2026-09-14 22:58:00.098 [INFO ] mod [machine.flighttrails] manifest ok: Flight Trails v2.5.0 content=0
+2026-09-14 22:58:00.098 [INFO ] mod [machine.gmeter] manifest ok: G Meter v1.7.0 content=0
+2026-09-14 22:58:00.098 [INFO ] mod [machine.gvision] manifest ok: G Vision v1.3.0 content=0
+2026-09-14 22:58:00.098 [INFO ] mod [machine.killfeed] manifest ok: KillFeed v1.1.0 content=0
+2026-09-14 22:58:00.098 [INFO ] mod [machine.aam] manifest ok: Air-to-Air Missile v2.8.0 content=0
+2026-09-14 22:58:00.098 [INFO ] mod [machine.shop] manifest ok: MachineShop v1.0.0 content=0
+2026-09-14 22:58:00.098 [INFO ] mod [machine.opti] manifest ok: OptiMod v2.1.0 content=0
+2026-09-14 22:58:00.098 [INFO ] mod [machine.radar] manifest ok: Radar System v3.3.1 content=0
+2026-09-14 22:58:00.100 [INFO ] mod [machine.voicealerts] manifest ok: Voice Alert System v2.13.0 content=0
+2026-09-14 22:58:00.100 [INFO ] mod [machine.zoom] manifest ok: Zoom Mod v1.1.0 content=0
+2026-09-14 22:58:00.105 [INFO ] ===== MOD DEPENDENCY GRAPH =====
+2026-09-14 22:58:00.105 [INFO ] Total mods: 13 (enabled: 13, disabled: 0)
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.battlecore] v2.4.0 - BattleCore [ENABLED]
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.battlehold] v2.3.0 - BattleHold [ENABLED]
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.faction] v1.9.0 - Faction System [ENABLED]
+2026-09-14 22:58:00.105 [INFO ]     └── loadAfter: machine.aam
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.flighttrails] v2.5.0 - Flight Trails [ENABLED]
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.gmeter] v1.7.0 - G Meter [ENABLED]
+2026-09-14 22:58:00.105 [INFO ]     └── loadAfter: machine.battlecore
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.gvision] v1.3.0 - G Vision [ENABLED]
+2026-09-14 22:58:00.105 [INFO ]     └── loadAfter: machine.gmeter
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.killfeed] v1.1.0 - KillFeed [ENABLED]
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.aam] v2.8.0 - Air-to-Air Missile [ENABLED]
+2026-09-14 22:58:00.105 [INFO ]     └── loadAfter: machine.battlecore, machine.battlehold
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.shop] v1.0.0 - MachineShop [ENABLED]
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.opti] v2.1.0 - OptiMod [ENABLED]
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.radar] v3.3.1 - Radar System [ENABLED]
+2026-09-14 22:58:00.105 [INFO ]     └── loadAfter: machine.battlecore, machine.battlehold
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.voicealerts] v2.13.0 - Voice Alert System [ENABLED]
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ]   [machine.zoom] v1.1.0 - Zoom Mod [ENABLED]
+2026-09-14 22:58:00.105 [INFO ] 
+2026-09-14 22:58:00.105 [INFO ] ===== END DEPENDENCY GRAPH =====
+2026-09-14 22:58:00.106 [INFO ] mod [machine.battlecore] BattleCore v2.4.0 enabled=True
+2026-09-14 22:58:00.207 [INFO ] [mod] BattleCore loading...
+2026-09-14 22:58:00.229 [INFO ] [mod] BattleCore: UI built
+2026-09-14 22:58:00.229 [INFO ] [mod] BattleCore: ready (info hub active)
+2026-09-14 22:58:00.229 [INFO ] code mod loaded: Machine.BattleCore.Main
+2026-09-14 22:58:00.232 [INFO ] mod [machine.battlehold] BattleHold v2.3.0 enabled=True
+2026-09-14 22:58:00.322 [INFO ] [mod] BattleHold loading...
+2026-09-14 22:58:00.323 [INFO ] [mod] BattleHold: config loaded (demoCargo=True, autoTest=False, toggleKey=<Keyboard>/1)
+2026-09-14 22:58:00.325 [INFO ] [mod] BattleHold: combat cargo marked [Ammo Crate]
+2026-09-14 22:58:00.374 [INFO ] [mod] BattleHold: UI built (anchor=bottom-right pos=-1250,355 visible=True)
+2026-09-14 22:58:00.374 [INFO ] [mod] BattleHold: ready (shared-capacity combat hold active; toggleKey=<Keyboard>/1, panel=shown, anchor=bottom-right)
+2026-09-14 22:58:00.374 [INFO ] code mod loaded: Machine.BattleHold.Main
+2026-09-14 22:58:00.374 [INFO ] mod [machine.flighttrails] Flight Trails v2.5.0 enabled=True
+2026-09-14 22:58:00.505 [INFO ] [mod] FlightTrails loading...
+2026-09-14 22:58:00.506 [INFO ] [mod] FlightTrails: config loaded (maxSpeed=793 keep=2)
+2026-09-14 22:58:00.506 [INFO ] code mod loaded: FlightTrailsMod.Main
+2026-09-14 22:58:00.506 [INFO ] mod [machine.gmeter] G Meter v1.7.0 enabled=True
+2026-09-14 22:58:00.552 [INFO ] update check: up to date (v2.4.1)
+2026-09-14 22:58:00.632 [INFO ] [mod] GMeter loading...
+2026-09-14 22:58:00.633 [INFO ] [mod] GMeter: config loaded
+2026-09-14 22:58:00.634 [INFO ] [mod] GMeter: AudioListener count=0 (no fallback created)
+2026-09-14 22:58:00.634 [INFO ] [mod] GMeter: UI built
+2026-09-14 22:58:00.634 [INFO ] [mod] GMeter: BattleCore available=True
+2026-09-14 22:58:00.635 [INFO ] code mod loaded: GMeterMod.Main
+2026-09-14 22:58:00.635 [INFO ] mod [machine.gvision] G Vision v1.3.0 enabled=True
+2026-09-14 22:58:00.789 [INFO ] [mod] GVision loading...
+2026-09-14 22:58:00.789 [INFO ] [mod] GVision: config loaded startG=9 blackoutG=25 softG=15 softMaxAlpha=0.68 feather=0.42/0.62 testSweep=False
+2026-09-14 22:58:00.793 [INFO ] [mod] GVision: overlay built (sortingOrder=28000)
+2026-09-14 22:58:00.793 [INFO ] code mod loaded: GVisionMod.Main
+2026-09-14 22:58:00.793 [INFO ] mod [machine.killfeed] KillFeed v1.1.0 enabled=True
+2026-09-14 22:58:00.895 [INFO ] [mod] KillFeed loading...
+2026-09-14 22:58:00.896 [INFO ] [mod] KillFeed ready
+2026-09-14 22:58:00.896 [INFO ] code mod loaded: KillFeed.Main
+2026-09-14 22:58:00.896 [INFO ] mod [machine.aam] Air-to-Air Missile v2.8.0 enabled=True
+2026-09-14 22:58:02.028 [INFO ] [mod] MachineAAM loading...
+2026-09-14 22:58:02.030 [INFO ] [mod] AAM: config loaded
+2026-09-14 22:58:02.033 [INFO ] [AAM] icon loaded from file missile.png (384x384)
+2026-09-14 22:58:02.033 [INFO ] [mod] AAM: cargo created [PL-15] weight=4 space=45
+2026-09-14 22:58:02.033 [INFO ] [mod] AAM: cargo created [PL-10] weight=2 space=40
+2026-09-14 22:58:02.033 [INFO ] [mod] AAM: cargo created [PL-17] weight=6 space=100
+2026-09-14 22:58:02.033 [INFO ] [mod] AAM: cargo created [R-77] weight=4 space=45
+2026-09-14 22:58:02.033 [INFO ] [mod] AAM: cargo created [AIM-9X Sidewinder] weight=2 space=40
+2026-09-14 22:58:02.033 [INFO ] [mod] AAM: cargo created [MSDM] weight=1 space=35
+2026-09-14 22:58:02.033 [INFO ] [mod] AAM: cargo created [R-37] weight=6 space=110
+2026-09-14 22:58:02.033 [INFO ] [mod] AAM: cargo created [AIM-424] weight=5 space=80
+2026-09-14 22:58:02.033 [INFO ] [mod] AAM: cargo created [Gun] weight=0.025 space=1
+2026-09-14 22:58:02.033 [INFO ] [mod] AAM: BattleHold available=True
+2026-09-14 22:58:02.034 [INFO ] [mod] BattleHold: combat cargo marked [Flare]
+2026-09-14 22:58:02.034 [INFO ] [mod] AAM: flare cargo ready (design=decoy flare.planedesign)
+2026-09-14 22:58:02.034 [INFO ] [mod] AAM: BattleCore available=True
+2026-09-14 22:58:02.034 [INFO ] [mod] BattleHold: combat cargo marked [PL-15]
+2026-09-14 22:58:02.034 [INFO ] [mod] BattleHold: combat cargo marked [PL-10]
+2026-09-14 22:58:02.034 [INFO ] [mod] BattleHold: combat cargo marked [PL-17]
+2026-09-14 22:58:02.034 [INFO ] [mod] BattleHold: combat cargo marked [R-77]
+2026-09-14 22:58:02.034 [INFO ] [mod] BattleHold: combat cargo marked [AIM-9X Sidewinder]
+2026-09-14 22:58:02.034 [INFO ] [mod] BattleHold: combat cargo marked [MSDM]
+2026-09-14 22:58:02.034 [INFO ] [mod] BattleHold: combat cargo marked [R-37]
+2026-09-14 22:58:02.034 [INFO ] [mod] BattleHold: combat cargo marked [AIM-424]
+2026-09-14 22:58:02.034 [INFO ] [mod] BattleHold: combat cargo marked [Gun]
+2026-09-14 22:58:02.034 [INFO ] [mod] AAM: all missile types marked as combat cargo (9)
+2026-09-14 22:58:02.035 [INFO ] [AAM] PartExploder fields: planeContainer:PlaneContainer parts:List`1 explosionSound:AudioDef explosionParticlePrefab:GameObject debris:List`1 
+2026-09-14 22:58:02.035 [INFO ] [AAM] PartExploder explode methods: ExplodePlane ExplodePart 
+2026-09-14 22:58:02.035 [INFO ] [AAM] Explosion types: PartExploder 
+2026-09-14 22:58:02.043 [INFO ] [mod] AAM: launch sfx loaded len=3.27s
+2026-09-14 22:58:02.049 [INFO ] [mod] MachineAAM ready | cargo=PL-15 weight=10 space=60 combat=True design=PL-15.planedesign
+2026-09-14 22:58:02.049 [INFO ] [mod] AAM: AI personas available = VIPER,FALCON,BRAWLER,OVERWATCH,LOWRIDER,SENTINEL,GHOST,RAIDER,SCREAMER | enabled = (all)
+2026-09-14 22:58:02.051 [INFO ] [AAM] smoke material: none in scene yet (menu?) - using generated puff for now
+2026-09-14 22:58:02.051 [INFO ] code mod loaded: Machine.AAM.Main
+2026-09-14 22:58:02.051 [INFO ] mod [machine.shop] MachineShop v1.0.0 enabled=True
+2026-09-14 22:58:02.428 [INFO ] [mod] MachineShop loading...
+2026-09-14 22:58:02.430 [INFO ] [mod] MachineShop: loaded 20 shop items
+2026-09-14 22:58:02.430 [INFO ] [mod] MachineShop: initialized (autoTest=False, shots=False)
+2026-09-14 22:58:02.430 [INFO ] code mod loaded: MachineShopMod.Main
+2026-09-14 22:58:02.430 [INFO ] mod [machine.opti] OptiMod v2.1.0 enabled=True
+2026-09-14 22:58:02.902 [INFO ] [mod] OptiMod loading...
+2026-09-14 22:58:02.903 [INFO ] [mod] OptiMod: config loaded from D:\豆包的下载\Aviassembly_DEV\mods\OptiMod\opti_config.json
+2026-09-14 22:58:02.904 [INFO ] [mod] OptiMod v2.1.0 init (CPU-only; quality/render features untouched)
+2026-09-14 22:58:02.906 [INFO ] [mod] OptiMod: settings BEFORE targetFps=-1 vSync=1 fixedDt=0.02 maxDt=0.3333 maxParticleDt=0.03 solverIterations=6 solverVelocityIterations=1 sleepThreshold=0.005 particleRaycastBudget=4096 asyncUploadTimeSlice=2 asyncUploadBufferSize=16 maxQueuedFrames=2 gcMode=Enabled gcSliceNs=3000000 bgLoading=BelowNormal autoSyncTransforms=False shadowDistance=1500 lodBias=2
+2026-09-14 22:58:02.909 [INFO ] [mod] OptiMod: applied -> vSync=0 targetFps=-1 maxDeltaTime=0.1 maxParticleDeltaTime=0.03 solverIterations=4 particleRaycastBudget=512 asyncUploadTimeSlice=2 asyncUploadBufferSize=16 autoSyncTransforms=false gcSliceNs=1500000 gcMode=Manual
+2026-09-14 22:58:02.909 [INFO ] [mod] OptiMod: settings AFTER  targetFps=-1 vSync=0 fixedDt=0.02 maxDt=0.1 maxParticleDt=0.03 solverIterations=4 solverVelocityIterations=1 sleepThreshold=0.005 particleRaycastBudget=512 asyncUploadTimeSlice=2 asyncUploadBufferSize=16 maxQueuedFrames=2 gcMode=Manual gcSliceNs=1500000 bgLoading=BelowNormal autoSyncTransforms=False shadowDistance=1500 lodBias=2
+2026-09-14 22:58:02.909 [INFO ] [mod] OptiMod: stack traces off for Log/Warning (Error/Exception kept)
+2026-09-14 22:58:02.909 [INFO ] [mod] OptiMod: sys cores=32 freq=2419MHz gpu=NVIDIA GeForce RTX 5070 Laptop GPU vram=11970MB quality=5 screen=1600x1024
+2026-09-14 22:58:02.909 [INFO ] [mod] OptiMod: diag camProbe=True probeSec=0.6 meshVisible=False | opt skinOffscreen=True instancing=False autoSyncTransforms=false phaseProbe=False
+2026-09-14 22:58:02.910 [INFO ] [mod] OptiMod: sweep updateWhenOffscreen=false fixed=0 total=0 scene=Fader
+2026-09-14 22:58:02.910 [INFO ] code mod loaded: OptiMod.Main
+2026-09-14 22:58:02.910 [INFO ] mod [machine.radar] Radar System v3.3.1 enabled=True
+2026-09-14 22:58:03.416 [INFO ] [mod] Radar loading...
+2026-09-14 22:58:03.419 [INFO ] [mod] Radar: icon loaded from file radar.png (384x384)
+2026-09-14 22:58:03.419 [INFO ] [mod] Radar: cargo created Radar Mk1 w=0.1 size=15
+2026-09-14 22:58:03.420 [INFO ] [mod] Radar: icon loaded from file aesa.png (384x384)
+2026-09-14 22:58:03.420 [INFO ] [mod] Radar: cargo created Radar Mk2 w=0.1 size=15
+2026-09-14 22:58:03.422 [INFO ] [mod] Radar: icon loaded from file aesa.png (384x384)
+2026-09-14 22:58:03.422 [INFO ] [mod] Radar: cargo created Radar Mk3 w=0.1 size=18
+2026-09-14 22:58:03.423 [INFO ] [mod] Radar: icon loaded from file aesa.png (384x384)
+2026-09-14 22:58:03.423 [INFO ] [mod] Radar: cargo created Radar Mk4 w=0.1 size=18
+2026-09-14 22:58:03.425 [INFO ] [mod] Radar: icon loaded from file aesa.png (384x384)
+2026-09-14 22:58:03.425 [INFO ] [mod] Radar: cargo created Radar Mk5 w=0.1 size=10
+2026-09-14 22:58:03.426 [INFO ] [mod] Radar: icon loaded from file aesa.png (384x384)
+2026-09-14 22:58:03.426 [INFO ] [mod] Radar: cargo created AESA Mk1 w=2 size=15
+2026-09-14 22:58:03.426 [INFO ] [mod] Radar: icon loaded from file aesa.png (384x384)
+2026-09-14 22:58:03.426 [INFO ] [mod] Radar: cargo created AESA Mk2 w=2 size=10
+2026-09-14 22:58:03.429 [INFO ] [mod] Radar: icon loaded from file aesa.png (384x384)
+2026-09-14 22:58:03.429 [INFO ] [mod] Radar: cargo created AESA Mk3 w=2 size=8
+2026-09-14 22:58:03.430 [INFO ] [mod] Radar: icon loaded from file aesa.png (384x384)
+2026-09-14 22:58:03.430 [INFO ] [mod] Radar: cargo created AESA Mk4 w=2 size=8
+2026-09-14 22:58:03.432 [INFO ] [mod] Radar: icon loaded from file aesa.png (384x384)
+2026-09-14 22:58:03.432 [INFO ] [mod] Radar: cargo created AESA Mk5 w=2 size=200
+2026-09-14 22:58:03.432 [INFO ] [mod] Radar: BattleCore available=True
+2026-09-14 22:58:03.432 [INFO ] [mod] Radar: BattleHold available=True
+2026-09-14 22:58:03.432 [INFO ] [mod] BattleHold: combat cargo marked [Radar Mk1]
+2026-09-14 22:58:03.432 [INFO ] [mod] BattleHold: combat cargo marked [Radar Mk2]
+2026-09-14 22:58:03.432 [INFO ] [mod] BattleHold: combat cargo marked [Radar Mk3]
+2026-09-14 22:58:03.432 [INFO ] [mod] BattleHold: combat cargo marked [Radar Mk4]
+2026-09-14 22:58:03.432 [INFO ] [mod] BattleHold: combat cargo marked [Radar Mk5]
+2026-09-14 22:58:03.432 [INFO ] [mod] BattleHold: combat cargo marked [AESA Mk1]
+2026-09-14 22:58:03.432 [INFO ] [mod] BattleHold: combat cargo marked [AESA Mk2]
+2026-09-14 22:58:03.432 [INFO ] [mod] BattleHold: combat cargo marked [AESA Mk3]
+2026-09-14 22:58:03.432 [INFO ] [mod] BattleHold: combat cargo marked [AESA Mk4]
+2026-09-14 22:58:03.432 [INFO ] [mod] BattleHold: combat cargo marked [AESA Mk5]
+2026-09-14 22:58:03.432 [INFO ] [mod] Radar: all tiers marked as combat cargo (BattleHold)
+2026-09-14 22:58:03.433 [INFO ] [mod] Radar: ready (tiers=Mk1/Mk2, scene-reset registered, force-cargo button disabled)
+2026-09-14 22:58:03.433 [INFO ] code mod loaded: Machine.Radar.Main
+2026-09-14 22:58:03.433 [INFO ] mod [machine.voicealerts] Voice Alert System v2.13.0 enabled=True
+2026-09-14 22:58:03.683 [INFO ] [mod] VoiceAlerts loading...
+2026-09-14 22:58:03.685 [INFO ] [mod] VoiceAlerts: config loaded
+2026-09-14 22:58:03.685 [INFO ] [mod] VoiceAlerts: AudioListener count=0 (no fallback created)
+2026-09-14 22:58:03.686 [INFO ] code mod loaded: VoiceAlertsMod.Main
+2026-09-14 22:58:03.686 [INFO ] mod [machine.zoom] Zoom Mod v1.1.0 enabled=True
+2026-09-14 22:58:03.770 [INFO ] [mod] ZoomMod loading...
+2026-09-14 22:58:03.771 [INFO ] [mod] ZoomMod: config loaded
+2026-09-14 22:58:03.771 [INFO ] [mod] ZoomMod: ready (key=c factor=3x)
+2026-09-14 22:58:03.771 [INFO ] code mod loaded: ZoomMod.Main
+2026-09-14 22:58:03.771 [INFO ] mod [machine.faction] Faction System v1.9.0 enabled=True
+2026-09-14 22:58:04.184 [INFO ] [mod] FactionSystem loading...
+2026-09-14 22:58:04.187 [INFO ] [mod] Faction: ContinentManager not found (will retry silently)
+2026-09-14 22:58:04.187 [INFO ] [mod] FactionSystem ready | factions=0 player=?
+2026-09-14 22:58:04.187 [INFO ] code mod loaded: Machine.Faction.Main
+2026-09-14 22:58:04.187 [INFO ] Mod scan finished, loaded 13 mod(s)
+2026-09-14 22:58:04.188 [INFO ] Client mods for online: machine.battlecore,machine.battlehold,machine.flighttrails,machine.gmeter,machine.gvision,machine.killfeed,machine.aam,machine.shop,machine.opti,machine.radar,machine.voicealerts,machine.zoom,machine.faction
+2026-09-14 22:58:04.193 [INFO ] [mod] BattleHold: CargoInventory resolved=True (field=True, volProp=True, addCargo=True, removeCargo=True)
+2026-09-14 22:58:04.315 [INFO ] [mod] AAM: gun sfx loaded len=0.57s pool=6
+2026-09-14 22:58:04.326 [INFO ] [mod] BattleCore: hidden (not in game)
+2026-09-14 22:58:04.329 [INFO ] [mod] GVision: prof upd=0.6ms gui=0.0ms rebuild=0.0ms x0 /10s
+2026-09-14 22:58:04.338 [INFO ] [mod] MachineShop: shop button created at top-right, canvas sortingOrder=9999, active=true
+2026-09-14 22:58:04.341 [INFO ] [mod] OptiMod: HITCH 1431ms @22:58:04.341 | frameTiming=unavailable(non-dev build)
+2026-09-14 22:58:04.345 [INFO ] [mod] Radar: prof upd=3.45ms late=0.00ms gui=0.00ms frames=1
+2026-09-14 22:58:04.346 [INFO ] [mod] ZoomMod: captured base FOV 60
+2026-09-14 22:58:04.346 [INFO ] [mod] Faction/selftest: armed save='AutoSave 0'
+2026-09-14 22:58:04.348 [INFO ] [mod] Faction/selftest: start (pointsMode=True)
+2026-09-14 22:58:04.351 [INFO ] [mod] GMeter: OVER G audio loaded len=2.0s
+2026-09-14 22:58:04.355 [INFO ] [mod] VoiceAlerts: audio loaded stall len=2.0s
+2026-09-14 22:58:04.358 [INFO ] [mod] VoiceAlerts: audio loaded overspeed len=2.0s
+2026-09-14 22:58:04.361 [INFO ] [mod] VoiceAlerts: audio loaded sinkrate len=1.9s
+2026-09-14 22:58:04.362 [INFO ] [mod] VoiceAlerts: audio loaded pullup len=1.4s
+2026-09-14 22:58:04.365 [INFO ] [mod] VoiceAlerts: audio loaded bingo len=1.8s
+2026-09-14 22:58:04.367 [INFO ] [mod] VoiceAlerts: audio loaded fuellow len=1.8s
+2026-09-14 22:58:04.368 [INFO ] [mod] VoiceAlerts: audio loaded pitch len=0.5s
+2026-09-14 22:58:04.369 [INFO ] [mod] VoiceAlerts: audio loaded angle len=1.4s
+2026-09-14 22:58:04.372 [INFO ] [mod] VoiceAlerts: audio loaded overg len=1.8s
+2026-09-14 22:58:04.372 [INFO ] [mod] VoiceAlerts: missing audio overg14
+2026-09-14 22:58:04.373 [INFO ] [mod] VoiceAlerts: audio loaded roll len=0.9s
+2026-09-14 22:58:04.375 [INFO ] [mod] VoiceAlerts: audio loaded lock len=1.9s
+2026-09-14 22:58:04.378 [INFO ] [mod] VoiceAlerts: audio loaded fox1 len=2.5s
+2026-09-14 22:58:04.380 [INFO ] [mod] VoiceAlerts: audio loaded missile len=1.1s
+2026-09-14 22:58:04.382 [INFO ] [mod] VoiceAlerts: audio loaded bandit len=1.6s
+2026-09-14 22:58:04.383 [INFO ] [mod] VoiceAlerts: audio loaded rwr_low len=3.6s
+2026-09-14 22:58:04.384 [INFO ] [mod] VoiceAlerts: audio loaded rwr_mid len=3.0s
+2026-09-14 22:58:04.384 [INFO ] [mod] VoiceAlerts: audio loaded rwr_high len=3.0s
+2026-09-14 22:58:04.387 [INFO ] [mod] VoiceAlerts: audio loaded fuel45 len=2.0s
+2026-09-14 22:58:04.389 [INFO ] [mod] VoiceAlerts: audio loaded fuel35 len=2.0s
+2026-09-14 22:58:04.394 [INFO ] [mod] VoiceAlerts: audio loaded engine_failure len=2.6s
+2026-09-14 22:58:04.394 [INFO ] [mod] VoiceAlerts: zh audio loaded stall <- 最小速度
+2026-09-14 22:58:04.395 [INFO ] [mod] VoiceAlerts: zh audio loaded overspeed <- 过载超限
+2026-09-14 22:58:04.396 [INFO ] [mod] VoiceAlerts: zh audio loaded sinkrate <- 高度
+2026-09-14 22:58:04.397 [INFO ] [mod] VoiceAlerts: zh audio loaded pullup <- 拉起
+2026-09-14 22:58:04.399 [INFO ] [mod] VoiceAlerts: zh audio loaded bingo <- 剩余油量
+2026-09-14 22:58:04.400 [INFO ] [mod] VoiceAlerts: zh audio loaded fuellow <- 燃油告警
+2026-09-14 22:58:04.402 [INFO ] [mod] VoiceAlerts: zh audio loaded pitch <- 迎角过大
+2026-09-14 22:58:04.402 [INFO ] [mod] VoiceAlerts: zh audio loaded angle <- 最大迎角
+2026-09-14 22:58:04.403 [INFO ] [mod] VoiceAlerts: zh audio loaded overg <- 注意过载
+2026-09-14 22:58:04.451 [INFO ] [mod] VoiceAlerts: zh audio loaded overg14 <- 最大过载三次
+2026-09-14 22:58:04.453 [INFO ] [mod] VoiceAlerts: zh audio loaded roll <- 姿态仪失效
+2026-09-14 22:58:04.454 [INFO ] [mod] VoiceAlerts: zh audio loaded lock <- 锁定
+2026-09-14 22:58:04.455 [INFO ] [mod] VoiceAlerts: zh audio loaded fox1 <- 发射
+2026-09-14 22:58:04.456 [INFO ] [mod] VoiceAlerts: zh audio loaded missile <- 敌导弹
+2026-09-14 22:58:04.456 [INFO ] [mod] VoiceAlerts: zh audio loaded bandit <- 敌机
+2026-09-14 22:58:04.459 [INFO ] [mod] VoiceAlerts: zh audio loaded fuel45 <- 燃油检测
+2026-09-14 22:58:04.460 [INFO ] [mod] VoiceAlerts: zh audio loaded fuel35 <- 注意油量
+2026-09-14 22:58:04.464 [INFO ] [mod] VoiceAlerts: ru audio loaded stall
+2026-09-14 22:58:04.466 [INFO ] [mod] VoiceAlerts: ru audio loaded overspeed
+2026-09-14 22:58:04.469 [INFO ] [mod] VoiceAlerts: ru audio loaded sinkrate
+2026-09-14 22:58:04.472 [INFO ] [mod] VoiceAlerts: ru audio loaded pullup
+2026-09-14 22:58:04.475 [INFO ] [mod] VoiceAlerts: ru audio loaded bingo
+2026-09-14 22:58:04.479 [INFO ] [mod] VoiceAlerts: ru audio loaded fuellow
+2026-09-14 22:58:04.483 [INFO ] [mod] VoiceAlerts: ru audio loaded overg
+2026-09-14 22:58:04.485 [INFO ] [mod] VoiceAlerts: ru audio loaded lock
+2026-09-14 22:58:04.489 [INFO ] [mod] VoiceAlerts: ru audio loaded fox1
+2026-09-14 22:58:04.492 [INFO ] [mod] VoiceAlerts: ru audio loaded missile
+2026-09-14 22:58:04.496 [INFO ] [mod] VoiceAlerts: ru audio loaded fuel45
+2026-09-14 22:58:04.500 [INFO ] [mod] VoiceAlerts: ru audio loaded fuel35
+2026-09-14 22:58:04.503 [INFO ] [mod] VoiceAlerts: ru audio loaded engine_failure
+2026-09-14 22:58:04.504 [INFO ] [mod] VoiceAlerts: language=en
+2026-09-14 22:58:04.621 [INFO ] [mod] Radar: OnSceneLoaded resetting ForceCargoButton, old btn=False, created=False
+2026-09-14 22:58:04.621 [INFO ] [mod] Radar: shop state reset on scene load (Persistent)
+2026-09-14 22:58:04.622 [INFO ] [mod] Radar: airports inject deferred (AirportManager not ready)
+2026-09-14 22:58:04.812 [INFO ] [mod] OptiMod: HITCH 469ms @22:58:04.812
+2026-09-14 22:58:04.923 [INFO ] [mod] Radar: OnSceneLoaded resetting ForceCargoButton, old btn=False, created=False
+2026-09-14 22:58:04.923 [INFO ] [mod] Radar: shop state reset on scene load (Menu)
+2026-09-14 22:58:04.925 [INFO ] [mod] Radar: airports inject deferred (AirportManager not ready)
+2026-09-14 22:58:04.965 [INFO ] [mod] OptiMod: HITCH 154ms @22:58:04.965
+2026-09-14 22:58:05.178 [INFO ] [mod] OptiMod: HITCH 212ms @22:58:05.178
+2026-09-14 22:58:05.308 [INFO ] [mod] OptiMod: HITCH 130ms @22:58:05.308
+2026-09-14 22:58:05.431 [INFO ] [mod] OptiMod: HITCH 123ms @22:58:05.431
+2026-09-14 22:58:06.075 [INFO ] MenuInjector: Quit moved to bottom (was index 3)
+2026-09-14 22:58:06.087 [INFO ] Machine loader version label + logo button shown (v2.4.1)
+2026-09-14 22:58:06.112 [INFO ] ModSaves btn interactable=True listeners=0
+2026-09-14 22:58:06.112 [INFO ] Mod Saves button injected into Play Menu
+2026-09-14 22:58:06.112 [INFO ] Mods button injected into main menu
+2026-09-14 22:58:06.929 [INFO ] [mod] OptiMod: rep t=7s scene=Fader*+Persistent+Menu fps=10.5 avg=95.6ms max=1431ms n=42 hitch=7(>90ms) gc=42 dHeap=+0.0MB mono=23.8MB alloc=664.1MB res=822.1MB cpu=234% obj[cnt0 rig=0 ps= particle= mesh= audio= cam=6/6]
+2026-09-14 22:58:06.941 [INFO ] [mod] OptiMod: renderers total=40311
+2026-09-14 22:58:06.941 [INFO ] [mod] OptiMod: cam[0] 'Camera' en=True depth=-1 px=1024x1024 rt=1024x1024 maskBits=11 culls=40311/40311 clear=SolidColor fov=30 far=1000 hdr=True msaa=True occl=True pos=(0.0,-1000.0,-6.0) scene=Persistent isMain=False
+2026-09-14 22:58:06.941 [INFO ] [mod] OptiMod: cam[1] 'Fallback Camera' en=True depth=-100 px=1600x1024 rt=- maskBits=1 culls=0/40311 clear=SolidColor fov=60 far=1000 hdr=True msaa=True occl=True pos=(754.0,420.5,0.0) scene=Fader isMain=False
+2026-09-14 22:58:06.941 [INFO ] [mod] OptiMod: cam[2] 'Main Camera' en=True depth=-1 px=1600x1024 rt=- maskBits=32 culls=40311/40311 clear=Skybox fov=60 far=1000 hdr=True msaa=True occl=True pos=(0.0,1.0,-10.0) scene=Fader isMain=True
+2026-09-14 22:58:06.941 [INFO ] [mod] OptiMod: cam[3] 'Main Camera' en=True depth=-1 px=1600x1024 rt=- maskBits=32 culls=40311/40311 clear=Skybox fov=60 far=3377 hdr=True msaa=True occl=True pos=(-157.2,308.9,214.5) scene=Menu isMain=False
+2026-09-14 22:58:06.941 [INFO ] [mod] OptiMod: cam[4] 'Camera' en=True depth=-1 px=50x50 rt=50x50 maskBits=11 culls=40311/40311 clear=SolidColor fov=30 far=1000 hdr=True msaa=True occl=True pos=(1000.0,-427.0,-6.0) scene=Persistent isMain=False
+2026-09-14 22:58:06.941 [INFO ] [mod] OptiMod: cam[5] 'Camera' en=True depth=0 px=1920x1080 rt=1920x1080 maskBits=1 culls=2/40311 clear=SolidColor fov=60 far=1000 hdr=True msaa=True occl=True pos=(-157.2,308.9,214.5) scene=Menu isMain=False
+2026-09-14 22:58:06.989 [INFO ] [mod] BattleHold: delayed language sync -> en
+2026-09-14 22:58:07.970 [INFO ] [mod] OptiMod: drift fixed vSync 1 -> 0
+2026-09-14 22:58:10.263 [INFO ] ModSaves canvas=Canvas order=32767
+2026-09-14 22:58:10.269 [INFO ] ModSaves: window shown, slots=7
+2026-09-14 22:58:10.884 [INFO ] ModSaves: loading save '260901'
+2026-09-14 22:58:10.888 [INFO ] ModSaves: load invoked
+2026-09-14 22:58:10.958 [INFO ] [mod] OptiMod: rep t=11s scene=Fader*+Persistent+Menu fps=24.3 avg=41.1ms max=70ms n=98 hitch=0(>90ms) gc=98 dHeap=+1.2MB mono=25.0MB alloc=703.9MB res=878.9MB cpu=222% obj[cnt1 rig=0 ps=0 particle=0 mesh= audio= cam=6/6]
+2026-09-14 22:58:12.389 [INFO ] [mod] Radar: OnSceneLoaded resetting ForceCargoButton, old btn=False, created=False
+2026-09-14 22:58:12.389 [INFO ] [mod] Radar: shop state reset on scene load (Game)
+2026-09-14 22:58:12.389 [INFO ] [mod] Radar: airports scanned=0 cargo=0~0 injected=0 changed=True in 0ms sample=-
+2026-09-14 22:58:12.389 [INFO ] [mod] Radar: airports injected immediately on scene load
+2026-09-14 22:58:18.056 [INFO ] cargo registered: Ammo Crate (price=260, weight=3)
+2026-09-14 22:58:18.066 [INFO ] [mod] OptiMod: HITCH 5751ms @22:58:18.066
+2026-09-14 22:58:18.068 [INFO ] [mod] OptiMod: rep t=18s scene=Fader*+Persistent+Game fps=5.1 avg=197.4ms max=5751ms n=36 hitch=1(>90ms) gc=35 dHeap=+645.5MB mono=670.4MB alloc=756.2MB res=961.9MB cpu=125% obj[cnt2 rig=0 ps=0 particle=0 mesh=172 audio= cam=5/4]
+2026-09-14 22:58:18.071 [INFO ] [mod] OptiMod: renderers total=172
+2026-09-14 22:58:18.071 [INFO ] [mod] OptiMod: cam[0] 'Camera' en=True depth=-1 px=1024x1024 rt=1024x1024 maskBits=11 culls=172/172 clear=SolidColor fov=30 far=1000 hdr=True msaa=True occl=True pos=(0.0,-1000.0,-6.0) scene=Persistent isMain=False
+2026-09-14 22:58:18.071 [INFO ] [mod] OptiMod: cam[1] 'Fallback Camera' en=True depth=-100 px=1600x1024 rt=- maskBits=1 culls=0/172 clear=SolidColor fov=60 far=1000 hdr=True msaa=True occl=True pos=(754.0,420.5,0.0) scene=Fader isMain=False
+2026-09-14 22:58:18.071 [INFO ] [mod] OptiMod: cam[2] 'Main Camera' en=True depth=-1 px=1600x1024 rt=- maskBits=32 culls=172/172 clear=Skybox fov=60 far=1000 hdr=True msaa=True occl=True pos=(0.0,1.0,-10.0) scene=Fader isMain=True
+2026-09-14 22:58:18.071 [INFO ] [mod] OptiMod: cam[3] 'Camera' en=True depth=-1 px=50x50 rt=50x50 maskBits=11 culls=172/172 clear=SolidColor fov=30 far=1000 hdr=True msaa=True occl=True pos=(1000.0,-427.0,-6.0) scene=Persistent isMain=False
+2026-09-14 22:58:18.071 [INFO ] [mod] OptiMod: cam[4] 'Drag Calculation Camera' en=False depth=-10 px=1024x1024 rt=1024x1024 maskBits=1 culls=112/172 clear=SolidColor fov=60 far=17 hdr=True msaa=True occl=True pos=(0.0,-0.3,9.9) scene=Game isMain=False
+2026-09-14 22:58:18.089 [INFO ] [mod] BattleHold: restore skip unknown cargo 'Flare'
+2026-09-14 22:58:18.135 [INFO ] scene entered | viaModSaves=True PureMode=False scene=Fader
+2026-09-14 22:58:18.141 [INFO ] [mod] GVision: found G Meter provider GMeterMod.GMeterSystem
+2026-09-14 22:58:18.144 [INFO ] [mod] GVision: prof upd=48.8ms gui=0.2ms rebuild=2.0ms x1 /10s
+2026-09-14 22:58:18.196 [WARN ] [Memory] Managed memory is high: 671MB (possible memory leak)
+2026-09-14 22:58:18.196 [INFO ] [mod] AAM: player plane resolved (id=26290)
+2026-09-14 22:58:18.266 [INFO ] [mod] Radar: OnSceneLoaded resetting ForceCargoButton, old btn=False, created=False
+2026-09-14 22:58:18.266 [INFO ] [mod] Radar: shop state reset on scene load (Flying)
+2026-09-14 22:58:18.266 [INFO ] [mod] Radar: airports scanned=30 cargo=10~13 injected=30 changed=True in 0ms sample=Base[Radar Mk1,Radar Mk2,Radar Mk3,Radar Mk4,Radar Mk5,AESA Mk1,AESA Mk2,AESA Mk3,AESA Mk4,AESA Mk5,]
+2026-09-14 22:58:18.266 [INFO ] [mod] Radar: airports injected immediately on scene load
+2026-09-14 22:58:19.153 [INFO ] [mod] OptiMod: HITCH 931ms @22:58:19.153
+2026-09-14 22:58:19.352 [INFO ] [mod] AAM: MSL = RMB x2    GUN = LMB x2 + HOLD    SWITCH = R/WHEEL    FLARE = X
+2026-09-14 22:58:19.355 [INFO ] [mod] AAM: giveOnStart flare 16 -> ok=True now=16
+2026-09-14 22:58:19.360 [INFO ] [mod] OptiMod: HITCH 204ms @22:58:19.360
+2026-09-14 22:58:19.535 [INFO ] ChatBox created (single-player)
+2026-09-14 22:58:19.539 [INFO ] [mod] BattleHold: mass=11 combatW=13 normalCargo=1
+2026-09-14 22:58:19.541 [INFO ] [mod] BattleHold: decomp rb=10.61 massField=8.93 fuel=63.00 fuelW=0.40 fuelTerm=1.68 combatW=12.8 normalW=0.0 partsAct=95/95 partsW=121.14 foreign=0 single=Y ciPlane=Y
+2026-09-14 22:58:19.556 [INFO ] [mod] FlightTrails: airports=30 baseKnown=True base=(6000.00, 0.00, 11000.00)
+2026-09-14 22:58:19.685 [INFO ] [mod] OptiMod: HITCH 123ms @22:58:19.685
+2026-09-14 22:58:19.730 [INFO ] [mod] AAM: missile cargo (9 types) added to 30 airports
+2026-09-14 22:58:19.794 [INFO ] [mod] Radar: shop slots need extend 3 -> 22
+2026-09-14 22:58:19.795 [INFO ] [mod] Radar: airport shop slots extended 3 -> 7 (+4) baseX=186 tmplX=186 partial(分帧补齐中)
+2026-09-14 22:58:19.906 [INFO ] [mod] Radar: shop slots need extend 7 -> 22
+2026-09-14 22:58:19.911 [INFO ] [mod] Radar: airport shop slots extended 7 -> 11 (+4) baseX=186 tmplX=186 partial(分帧补齐中)
+2026-09-14 22:58:20.019 [INFO ] [mod] VoiceAlerts: structural limit (min Wing.maxSpeed)=3300 m/s
+2026-09-14 22:58:20.102 [INFO ] [mod] Radar: shop slots need extend 11 -> 22
+2026-09-14 22:58:20.108 [INFO ] [mod] Radar: airport shop slots extended 11 -> 15 (+4) baseX=186 tmplX=186 partial(分帧补齐中)
+2026-09-14 22:58:20.253 [INFO ] [mod] Radar: shop slots need extend 15 -> 22
+2026-09-14 22:58:20.254 [INFO ] [mod] Radar: airport shop slots extended 15 -> 19 (+4) baseX=186 tmplX=186 partial(分帧补齐中)
+2026-09-14 22:58:20.394 [INFO ] [mod] Radar: shop slots need extend 19 -> 22
+2026-09-14 22:58:20.395 [INFO ] [mod] Radar: airport shop slots extended 19 -> 22 (+3) baseX=186 tmplX=186 done
+2026-09-14 22:58:21.623 [INFO ] [mod] KillFeed diag: live=True entries=0 pure=False inflight=True
+2026-09-14 22:58:22.092 [INFO ] [mod] OptiMod: rep t=22s scene=Fader*+Persistent+Game+Flying fps=18.4 avg=54.4ms max=931ms n=74 hitch=3(>90ms) gc=58 dHeap=-425.8MB mono=244.7MB alloc=1196.8MB res=1599.0MB cpu=293% obj[cnt3 rig=0 ps=0 particle=0 mesh=172 audio=55 cam=6/5]
+2026-09-14 22:58:22.094 [INFO ] [mod] OptiMod: renderers total=6207
+2026-09-14 22:58:22.094 [INFO ] [mod] OptiMod: cam[0] 'Camera' en=True depth=-1 px=1024x1024 rt=1024x1024 maskBits=11 culls=6207/6207 clear=SolidColor fov=30 far=1000 hdr=True msaa=True occl=True pos=(0.0,-1000.0,-13.5) scene=Persistent isMain=False
+2026-09-14 22:58:22.094 [INFO ] [mod] OptiMod: cam[1] 'Fallback Camera' en=True depth=-100 px=1600x1024 rt=- maskBits=1 culls=0/6207 clear=SolidColor fov=60 far=1000 hdr=True msaa=True occl=True pos=(754.0,420.5,0.0) scene=Fader isMain=False
+2026-09-14 22:58:22.094 [INFO ] [mod] OptiMod: cam[2] 'Main Camera' en=True depth=-1 px=1600x1024 rt=- maskBits=32 culls=6207/6207 clear=Skybox fov=60 far=1000 hdr=True msaa=True occl=True pos=(0.0,1.0,-10.0) scene=Fader isMain=True
+2026-09-14 22:58:22.094 [INFO ] [mod] OptiMod: cam[3] 'Camera' en=True depth=-1 px=50x50 rt=50x50 maskBits=11 culls=6207/6207 clear=SolidColor fov=30 far=1000 hdr=True msaa=True occl=True pos=(1000.0,-427.0,-6.0) scene=Persistent isMain=False
+2026-09-14 22:58:22.094 [INFO ] [mod] OptiMod: cam[4] 'Drag Calculation Camera' en=False depth=-10 px=1024x1024 rt=1024x1024 maskBits=1 culls=112/6207 clear=SolidColor fov=60 far=17 hdr=True msaa=True occl=True pos=(0.0,-0.3,9.9) scene=Game isMain=False
+2026-09-14 22:58:22.094 [INFO ] [mod] OptiMod: cam[5] 'Main Camera' en=True depth=-1 px=1600x1024 rt=- maskBits=32 culls=6207/6207 clear=Skybox fov=65 far=3377 hdr=True msaa=True occl=True pos=(0.0,5.4,-230.5) scene=Flying isMain=False
+2026-09-14 22:58:22.659 [INFO ] [mod] Faction: Spawn home=(0, 0, 5250)
+2026-09-14 22:58:22.659 [INFO ] [mod] Faction: Desert home=(2000, 0, 15000)
+2026-09-14 22:58:22.659 [INFO ] [mod] Faction: Snow home=(-10000, 0, 9000)
+2026-09-14 22:58:22.659 [INFO ] [mod] FactionSystem ready (deferred) | factions=3
+2026-09-14 22:58:23.794 [INFO ] [mod] Faction/selftest: factions=3 first=Spawn player=0
+2026-09-14 22:58:23.794 [INFO ] [mod] Faction/selftest: flightReady=True
+2026-09-14 22:58:24.335 [INFO ] [mod] Radar: prof upd=203.46ms late=0.32ms gui=0.66ms frames=315
+2026-09-14 22:58:26.108 [INFO ] [mod] OptiMod: rep t=26s scene=Fader*+Persistent+Game+Flying fps=29.1 avg=34.3ms max=62ms n=117 hitch=0(>90ms) gc=84 dHeap=+0.1MB mono=244.8MB alloc=1212.4MB res=1599.0MB cpu=216% obj[cnt0 rig=2 ps=0 particle=0 mesh=172 audio=55 cam=6/5]
+2026-09-14 22:58:26.108 [INFO ] [mod] OptiMod: camProbe START 'Camera' rt=1024x1024 maskBits=11 base=34.3ms scene=Fader*+Persistent+Game+Flying
+2026-09-14 22:58:26.324 [INFO ] [mod] Faction/selftest: preShot1 pure=False inflight=True scoreOpen=True
+2026-09-14 22:58:26.326 [INFO ] [mod] Faction/selftest: shot -> D:\豆包的下载\Aviassembly_DEV\Machine\logs\faction_shots\01_points_bar_full.png
+2026-09-14 22:58:26.721 [INFO ] [mod] OptiMod: camAb 'Camera' base=34.3ms probe=34.0ms n=18 -> cost=+0.3ms/frame [cheap]
+2026-09-14 22:58:27.832 [INFO ] [mod] Faction/selftest: shot -> D:\豆包的下载\Aviassembly_DEV\Machine\logs\faction_shots\02_points_bar_plain.png
+2026-09-14 22:58:27.832 [INFO ] [mod] Faction/selftest: AiCount[Desert]=1 (waiting for spawn)
+2026-09-14 22:58:28.155 [INFO ] [mod] GVision: prof upd=1.1ms gui=0.5ms rebuild=0.0ms x0 /10s
+2026-09-14 22:58:28.669 [INFO ] [mod] AAM: BuildingPart fields: partName:String snapPoints:Transform[] collisionPoint:Transform framing:ItemFraming price:Single ignoreSnappingOnTangentPlane:Boolean tryOrientUpwards:Boolean tryMatchParentRotation:Boolean lockRotation:Boolean forwardOrientation:Vector3 symetrical:Boolean flipSymmetry:Boolean radius:Single basePart:Boolean isBasePart:Boolean hasBeenPlaced:Boolean <parent>k__BackingField:BuildingPart children:List`1 decals:List`1 baseRotation:Quaternion rotationOffset:Quaternion paintableRenderers:PaintableRenderer[] currentColor:Color 
+2026-09-14 22:58:28.671 [INFO ] [mod] AAM: BuildingPart color/paint/mat methods: SetColor ResetColor GetCurrentColor 
+2026-09-14 22:58:28.675 [INFO ] [mod] AAM: material cache primed in 4ms names=9 fallback=True
+2026-09-14 22:58:28.730 [INFO ] [mod] AAM: design model built from C-12(PLUS).planedesign parts=66 mats=66 miss=0 prime=5ms total=60ms
+2026-09-14 22:58:28.745 [INFO ] [mod] AAM: AI tuning copied | container=14 controller=14 srcMass=11 srcParts=95
+2026-09-14 22:58:28.766 [INFO ] [mod] AAM: AI init reverted player cargo re-apply 0.853 phys (ActivateFlyMode/ApplyCargo side effect)
+2026-09-14 22:58:28.766 [INFO ] [mod] AAM: AI engine diag n=8 thrust=40.00 handicap=0.00 engThrSpeed=1.75 maxPower=1.00 speedKeys=0 afterburner=False | ctrl.throttleSpeed=1.00 liftMul=1
+2026-09-14 22:58:28.768 [INFO ] [mod] AAM: AI aircraft spawned [Desert-1] children=66 hostile=True mass=11 engines=8 wings=10 planeParts=22 want=(1822, 5, 15340) got=(1822, 5, 15340) rbv=45
+2026-09-14 22:58:28.768 [INFO ] [mod] Faction: spawned Desert-1 -> Desert (hostile=True)
+2026-09-14 22:58:28.769 [INFO ] [mod] Faction/points: +aircraft Desert-1 faction=Desert worth=75658 (gamePrice=75658)
+2026-09-14 22:58:28.824 [INFO ] [mod] OptiMod: HITCH 164ms @22:58:28.824
+2026-09-14 22:58:30.114 [INFO ] [mod] OptiMod: rep t=30s scene=Fader*+Persistent+Game+Flying fps=27.4 avg=36.5ms max=164ms n=93 hitch=1(>90ms) gc=91 dHeap=+0.4MB mono=245.1MB alloc=1214.8MB res=1615.0MB cpu=180% obj[cnt1 rig=2 ps=7 particle=0 mesh=172 audio=55 cam=6/5]
+2026-09-14 22:58:30.114 [INFO ] [mod] OptiMod: camProbe START 'Camera' rt=50x50 maskBits=11 base=36.5ms scene=Fader*+Persistent+Game+Flying
+2026-09-14 22:58:30.732 [INFO ] [mod] OptiMod: camAb 'Camera' base=36.5ms probe=36.3ms n=17 -> cost=+0.2ms/frame [cheap]
+2026-09-14 22:58:30.902 [INFO ] [mod] Faction/selftest: aircraft=Desert-1 worth=75658 origGetPlanePrice=75658
+2026-09-14 22:58:30.902 [INFO ] [mod] Faction/selftest: registered=2 | Player(Spawn w=59010 pc=ok) | Desert-1(Desert w=75657 pc=ok)
+2026-09-14 22:58:30.902 [INFO ] [mod] Faction/selftest: reporting via part transform 'HugeCockpit(Clone)' (root='AI_Desert-1')
+2026-09-14 22:58:30.902 [INFO ] [mod] Faction/selftest: bridge type=Machine.AAM.MissileController
+2026-09-14 22:58:30.903 [INFO ] [mod] Faction/selftest: bridge method=Void ReportFactionAircraftLost(UnityEngine.Transform, System.String)
+2026-09-14 22:58:30.904 [INFO ] [mod] Faction/points: LOST Desert-1 [selftest] Desert -75658 => 724343 (killer=-)
+2026-09-14 22:58:30.904 [INFO ] [mod] Faction/selftest: AAM bridge invoked OK
+2026-09-14 22:58:31.421 [INFO ] [mod] Faction/selftest: bridge=True worth=75658 points 800000 -> 724343 bookedExact=True
+2026-09-14 22:58:31.700 [INFO ] [mod] KillFeed diag: live=True entries=0 pure=False inflight=True
+2026-09-14 22:58:32.643 [INFO ] [mod] Faction/selftest: shot -> D:\豆包的下载\Aviassembly_DEV\Machine\logs\faction_shots\03_points_after_loss.png
+2026-09-14 22:58:33.858 [INFO ] [mod] BattleHold: decomp[JUMP] rb=0.00 massField=0.00 fuel=1.00 fuelW=0.40 fuelTerm=0.03 combatW=12.8 normalW=0.0 partsAct=0/95 partsW=0.00 foreign=0 single=Y ciPlane=Y
+2026-09-14 22:58:33.935 [INFO ] [mod] Faction/points: LOST Player [destroyed] Spawn -59011 => 740989 (killer=-)
+2026-09-14 22:58:34.137 [INFO ] [mod] OptiMod: rep t=34s scene=Fader*+Persistent+Game+Flying fps=26.5 avg=37.8ms max=51ms n=90 hitch=0(>90ms) gc=86 dHeap=+0.3MB mono=245.5MB alloc=1214.9MB res=1615.0MB cpu=185% obj[cnt2 rig=2 ps=7 particle=0 mesh=6152 audio=55 cam=6/5]
+2026-09-14 22:58:34.326 [INFO ] [mod] BattleHold: resync via vanilla AddCargo 'Flare' x0/16 (manifest=16 gameHad=0)
+2026-09-14 22:58:34.623 [INFO ] [mod] BattleHold: mass=0 combatW=13 normalCargo=1
+2026-09-14 22:58:34.623 [INFO ] [mod] BattleHold: decomp rb=0.00 massField=0.00 fuel=1.00 fuelW=0.40 fuelTerm=0.03 combatW=12.8 normalW=0.0 partsAct=0/95 partsW=0.00 foreign=0 single=Y ciPlane=Y
+2026-09-14 22:58:35.356 [INFO ] [mod] Faction/selftest: crashPoll(player) worth=59011 points 800000 -> 740989 ok=True
+2026-09-14 22:58:35.357 [INFO ] [mod] Faction/points: LOST TESTACFT [selftest-eliminate] Desert -1000 => -950 (killer=-)
+2026-09-14 22:58:35.357 [INFO ] [mod] Faction/points: Desert DEFEATED (-950)
+2026-09-14 22:58:35.357 [INFO ] [mod] Faction/selftest: eliminate Desert eliminatedFlag=True
+2026-09-14 22:58:35.357 [INFO ] [mod] Faction/points: LOST TESTACFT [selftest-final] Snow -801000 => -1000 (killer=-)
+2026-09-14 22:58:35.357 [INFO ] [mod] Faction/points: Snow DEFEATED (-1000)
+2026-09-14 22:58:35.357 [INFO ] [mod] Faction/points: ROUND OVER -> winner=Spawn | all factions reset to 800000 | next round = 2
+2026-09-14 22:58:35.357 [INFO ] [mod] Faction/selftest: round 1->2 ended=True allReset=True winner=Spawn
+2026-09-14 22:58:36.566 [INFO ] [mod] Faction/selftest: shot -> D:\豆包的下载\Aviassembly_DEV\Machine\logs\faction_shots\04_round_over.png
+2026-09-14 22:58:36.827 [INFO ] [mod] Radar: OnSceneLoaded resetting ForceCargoButton, old btn=False, created=False
+2026-09-14 22:58:36.827 [INFO ] [mod] Radar: shop state reset on scene load (Flying)
+2026-09-14 22:58:36.827 [INFO ] [mod] Radar: airports scanned=30 cargo=19~22 injected=0 changed=True in 0ms sample=Base[Radar Mk1,Radar Mk2,Radar Mk3,Radar Mk4,Radar Mk5,AESA Mk1,AESA Mk2,AESA Mk3,AESA Mk4,AESA Mk5,PL-15,PL-10,PL-17,R-77,AIM-9X Sidewinder,MSDM,R-37,AIM-424,Gun,]
+2026-09-14 22:58:36.827 [INFO ] [mod] Radar: airports injected immediately on scene load
+2026-09-14 22:58:37.782 [INFO ] [mod] Radar: shop slots need extend 3 -> 22
+2026-09-14 22:58:37.783 [INFO ] [mod] Radar: airport shop slots extended 3 -> 7 (+4) baseX=186 tmplX=0 partial(分帧补齐中)
+2026-09-14 22:58:37.903 [INFO ] [mod] Radar: shop slots need extend 7 -> 22
+2026-09-14 22:58:37.904 [INFO ] [mod] Radar: airport shop slots extended 7 -> 11 (+4) baseX=186 tmplX=186 partial(分帧补齐中)
+2026-09-14 22:58:38.061 [INFO ] [mod] Radar: shop slots need extend 11 -> 22
+2026-09-14 22:58:38.062 [INFO ] [mod] Radar: airport shop slots extended 11 -> 15 (+4) baseX=186 tmplX=186 partial(分帧补齐中)
+2026-09-14 22:58:38.133 [INFO ] [mod] OptiMod: rep t=38s scene=Fader*+Persistent+Game+Flying fps=25.7 avg=38.9ms max=88ms n=103 hitch=0(>90ms) gc=82 dHeap=+7.8MB mono=253.2MB alloc=1214.2MB res=1615.0MB cpu=311% obj[cnt3 rig=2 ps=7 particle=0 mesh=6152 audio=55 cam=6/5]
+2026-09-14 22:58:38.164 [INFO ] [mod] GVision: prof upd=1.1ms gui=0.5ms rebuild=0.0ms x0 /10s
+2026-09-14 22:58:38.199 [INFO ] [mod] Radar: shop slots need extend 15 -> 22
+2026-09-14 22:58:38.201 [INFO ] [mod] Radar: airport shop slots extended 15 -> 19 (+4) baseX=186 tmplX=186 partial(分帧补齐中)
+2026-09-14 22:58:38.359 [INFO ] [mod] Radar: shop slots need extend 19 -> 22
+2026-09-14 22:58:38.360 [INFO ] [mod] Radar: airport shop slots extended 19 -> 22 (+3) baseX=186 tmplX=186 done
+2026-09-14 22:58:39.097 [INFO ] [mod] Faction/selftest: preShot2 pure=False inflight=True scoreOpen=True
+2026-09-14 22:58:39.097 [INFO ] [mod] Faction/selftest: shot -> D:\豆包的下载\Aviassembly_DEV\Machine\logs\faction_shots\05_scoreboard_colors.png
+2026-09-14 22:58:39.374 [INFO ] [mod] BattleHold: resync via vanilla AddCargo 'Flare' x16/16 (manifest=16 gameHad=0)
+2026-09-14 22:58:39.374 [INFO ] [mod] BattleHold: decomp[JUMP] rb=10.61 massField=8.93 fuel=63.00 fuelW=0.40 fuelTerm=1.68 combatW=12.8 normalW=0.0 partsAct=95/95 partsW=121.14 foreign=0 single=Y ciPlane=Y
+2026-09-14 22:58:39.626 [INFO ] [mod] Faction/selftest: worthOk=True lossBooked=True crashPollOk=True verdict=PASS FACTION_POINTS_SELFTEST_DONE

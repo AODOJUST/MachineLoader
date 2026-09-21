@@ -1,0 +1,22 @@
+csc  = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+core = D:\豆包的下载\Machine_Dev\bin\Machine.Core.dll exists=True
+core built = 2026-09-14 15:47:25  236544 bytes
+-- sim built OK
+dotnet = C:\Program Files\dotnet\dotnet.exe
+---- sim output ----
+== Machine.Core Net protocol sim ==
+core assembly = D:\豆包的下载\Machine_Dev\tools\netsim\Machine.Core.dll
+PASS  host created room
+PASS  host got a player id
+PASS  guest joined room
+PASS  PEERS broadcast reaches guest (control group)
+PASS  PEERS carries both players (control group)
+PASS  CHAT keeps embedded pipes (control group)
+PASS  STATE payload survives the relay intact
+PASS  STATE payload still has >= 11 fields (NetSync.OnState guard)
+PASS  STATE is attributed to the sender pid
+PASS  sender does not receive its own STATE (server skips sender)
+PASS  STATE works guest -> host too
+PASS  repeated STATE stays intact
+---- 12 passed, 0 failed ----
+exit=0

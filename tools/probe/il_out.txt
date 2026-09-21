@@ -1,0 +1,252 @@
+﻿== Start ==
+    IL_0000: ldarg.0
+    IL_0001: call Singleton`1.get_Instance()
+    IL_0006: stfld CargoInventoryUI.cargoInventory
+    IL_000B: ret
+== Update ==
+    IL_0000: ldarg.0
+    IL_0001: ldfld CargoInventoryUI.planeWeight
+    IL_0006: call Singleton`1.get_Instance()
+    IL_000B: callvirt PlaneContainer.GetMass()
+    IL_0010: ldc.r4
+    IL_0011: nop
+    IL_0012: nop
+    IL_0013: cpobj tok176C5A41
+    IL_0018: call Math.Round()
+    IL_001D: stloc.s v5
+    IL_001F: ldloca.s v5
+    IL_0021: call Double.ToString()
+    IL_0026: callvirt TMP_Text.set_text()
+    IL_002B: ldarg.0
+    IL_002C: ldfld CargoInventoryUI.cargoVolumeBar
+    IL_0031: ldarg.0
+    IL_0032: ldfld CargoInventoryUI.cargoInventory
+    IL_0037: callvirt CargoInventory.get_CurrentVolume()
+    IL_003C: ldarg.0
+    IL_003D: ldfld CargoInventoryUI.cargoInventory
+    IL_0042: callvirt CargoInventory.get_MaxVolume()
+    IL_0047: call Mathf.RoundToInt()
+    IL_004C: conv.r4
+    IL_004D: div
+    IL_004E: callvirt Image.set_fillAmount()
+    IL_0053: ldarg.0
+    IL_0054: ldfld CargoInventoryUI.cargoVolumeText
+    IL_0059: ldarg.0
+    IL_005A: ldfld CargoInventoryUI.cargoInventory
+    IL_005F: callvirt CargoInventory.get_CurrentVolume()
+    IL_0064: conv.i4
+    IL_0065: stloc.s v6
+    IL_0067: ldloca.s v6
+    IL_0069: call Int32.ToString()
+    IL_006E: ldstr tok70000FE1
+    IL_0073: ldarg.0
+    IL_0074: ldfld CargoInventoryUI.cargoInventory
+    IL_0079: callvirt CargoInventory.get_MaxVolume()
+    IL_007E: call Mathf.RoundToInt()
+    IL_0083: stloc.s v6
+    IL_0085: ldloca.s v6
+    IL_0087: call Int32.ToString()
+    IL_008C: call String.Concat()
+    IL_0091: callvirt TMP_Text.set_text()
+    IL_0096: ldc.i4.0
+    IL_0097: stloc.0
+    IL_0098: ldarg.0
+    IL_0099: ldfld CargoInventoryUI.cargoInventory
+    IL_009E: callvirt CargoInventory.GetCurrentCargo()
+    IL_00A3: callvirt Dictionary`2.GetEnumerator()
+    IL_00A8: stloc.s v7
+    IL_00AA: br.s ->IL_0105
+    IL_00AC: ldloca.s v7
+    IL_00AE: call Enumerator.get_Current()
+    IL_00B3: stloc.s v8
+    IL_00B5: ldarg.0
+    IL_00B6: ldfld CargoInventoryUI.cargoInventory
+    IL_00BB: ldloca.s v8
+    IL_00BD: call KeyValuePair`2.get_Key()
+    IL_00C2: callvirt CargoInventory.GetCargoCount()
+    IL_00C7: conv.r4
+    IL_00C8: stloc.s v9
+    IL_00CA: ldloc.s v9
+    IL_00CC: ldc.r4
+    IL_00CD: nop
+    IL_00CE: nop
+    IL_00CF: nop
+    IL_00D0: nop
+    IL_00D1: beq.s ->IL_0105
+    IL_00D3: ldarg.0
+    IL_00D4: ldfld CargoInventoryUI.slots
+    IL_00D9: ldloc.0
+    IL_00DA: ldelem.ref
+    IL_00DB: callvirt Component.get_gameObject()
+    IL_00E0: ldc.i4.1
+    IL_00E1: callvirt GameObject.SetActive()
+    IL_00E6: ldarg.0
+    IL_00E7: ldfld CargoInventoryUI.slots
+    IL_00EC: ldloc.0
+    IL_00ED: ldelem.ref
+    IL_00EE: ldloca.s v8
+    IL_00F0: call KeyValuePair`2.get_Key()
+    IL_00F5: ldfld CargoType.icon
+    IL_00FA: ldloc.s v9
+    IL_00FC: callvirt CargoInventorySlot.Init()
+    IL_0101: ldloc.0
+    IL_0102: ldc.i4.1
+    IL_0103: add
+    IL_0104: stloc.0
+    IL_0105: ldloca.s v7
+    IL_0107: call Enumerator.MoveNext()
+    IL_010C: brtrue.s ->IL_00AC
+    IL_010E: leave.s ->IL_011E
+    IL_0110: ldloca.s v7
+    IL_0112:  ->IL_1B00016B
+    IL_0118: callvirt IDisposable.Dispose()
+    IL_011D: endfinally
+    IL_011E: ldloc.0
+    IL_011F: stloc.s v10
+    IL_0121: br.s ->IL_013D
+    IL_0123: ldarg.0
+    IL_0124: ldfld CargoInventoryUI.slots
+    IL_0129: ldloc.s v10
+    IL_012B: ldelem.ref
+    IL_012C: callvirt Component.get_gameObject()
+    IL_0131: ldc.i4.0
+    IL_0132: callvirt GameObject.SetActive()
+    IL_0137: ldloc.s v10
+    IL_0139: ldc.i4.1
+    IL_013A: add
+    IL_013B: stloc.s v10
+    IL_013D: ldloc.s v10
+    IL_013F: ldarg.0
+    IL_0140: ldfld CargoInventoryUI.slots
+    IL_0145: ldlen
+    IL_0146: conv.i4
+    IL_0147: blt.s ->IL_0123
+    IL_0149: ldc.i4.0
+    IL_014A: stloc.1
+    IL_014B: call Singleton`1.get_Instance()
+    IL_0150: callvirt Component.GetComponent()
+    IL_0155: stloc.2
+    IL_0156: ldc.i4.0
+    IL_0157: stloc.3
+    IL_0158: ldloc.2
+    IL_0159: ldnull
+    IL_015A: call Object.op_Inequality()
+    IL_015F: brfalse ->IL_0211
+    IL_0164: call Singleton`1.get_Instance()
+    IL_0169: ldloc.2
+    IL_016A: callvirt Component.get_transform()
+    IL_016F: callvirt Transform.get_position()
+    IL_0174: callvirt AirportManager.GetClosestAirport()
+    IL_0179: stloc.s v11
+    IL_017B: call Singleton`1.get_Instance()
+    IL_0180: callvirt PlaneContainer.IsAtAirport()
+    IL_0185: stloc.1
+    IL_0186: ldarg.0
+    IL_0187: ldfld CargoInventoryUI.airportInspector
+    IL_018C: ldloc.1
+    IL_018D: ldarg.0
+    IL_018E: ldfld CargoInventoryUI.flyingUIController
+    IL_0193: callvirt FlyingUIController.get_lockUI()
+    IL_0198: callvirt AirportInspector.SetEnabled()
+    IL_019D: ldarg.0
+    IL_019E: ldfld CargoInventoryUI.airportInspector
+    IL_01A3: ldloc.s v11
+    IL_01A5: callvirt AirportInspector.SetAirport()
+    IL_01AA: ldc.i4.0
+    IL_01AB: stloc.s v12
+    IL_01AD: br.s ->IL_0205
+    IL_01AF: ldloc.s v11
+    IL_01B1: ldfld Airport.cargoType
+    IL_01B6: brfalse.s ->IL_01C7
+    IL_01B8: ldloc.s v11
+    IL_01BA: ldfld Airport.cargoType
+    IL_01BF: ldlen
+    IL_01C0: conv.i4
+    IL_01C1: ldloc.s v12
+    IL_01C3:  ->IL_71602F4
+    IL_01C9: and
+    IL_01CA: stloc.s v13
+    IL_01CC: ldarg.0
+    IL_01CD: ldfld CargoInventoryUI.cargoOfferings
+    IL_01D2: ldloc.s v12
+    IL_01D4: ldelem.ref
+    IL_01D5: callvirt Component.get_gameObject()
+    IL_01DA: ldloc.s v13
+    IL_01DC: callvirt GameObject.SetActive()
+    IL_01E1: ldloc.s v13
+    IL_01E3: brfalse.s ->IL_01FF
+    IL_01E5: ldarg.0
+    IL_01E6: ldfld CargoInventoryUI.cargoOfferings
+    IL_01EB: ldloc.s v12
+    IL_01ED: ldelem.ref
+    IL_01EE: ldloc.s v11
+    IL_01F0: ldfld Airport.cargoType
+    IL_01F5: ldloc.s v12
+    IL_01F7: ldelem.ref
+    IL_01F8: callvirt CargoOfferingUI.SetCargoType()
+    IL_01FD: ldc.i4.1
+    IL_01FE: stloc.3
+    IL_01FF: ldloc.s v12
+    IL_0201: ldc.i4.1
+    IL_0202: add
+    IL_0203: stloc.s v12
+    IL_0205: ldloc.s v12
+    IL_0207: ldarg.0
+    IL_0208: ldfld CargoInventoryUI.cargoOfferings
+    IL_020D: ldlen
+    IL_020E: conv.i4
+    IL_020F: blt.s ->IL_01AF
+    IL_0211: ldarg.0
+    IL_0212: ldfld CargoInventoryUI.airportInventoryWindow
+    IL_0217: callvirt GameObject.get_gameObject()
+    IL_021C: ldloc.3
+    IL_021D: callvirt GameObject.SetActive()
+    IL_0222: ldarg.0
+    IL_0223: ldfld CargoInventoryUI.airportMoneyIndicator
+    IL_0228: ldloc.1
+    IL_0229: brtrue.s ->IL_023D
+    IL_022B: ldarg.0
+    IL_022C: ldfld CargoInventoryUI.cargoVolumeBar
+    IL_0231: callvirt Component.get_gameObject()
+    IL_0236: callvirt GameObject.get_activeInHierarchy()
+    IL_023B: brfalse.s ->IL_024D
+    IL_023D: ldarg.0
+    IL_023E: ldfld CargoInventoryUI.questAdditionUI
+    IL_0243: callvirt QuestAdditionUI.IsOpen()
+    IL_0248: ldc.i4.0
+    IL_0249:  ->IL_216037A
+    IL_024F: ldfld CargoInventoryUI.flyingUIController
+    IL_0254: callvirt FlyingUIController.get_lockUI()
+    IL_0259: callvirt AirportMoneyIndicator.SetEnable()
+    IL_025E: ldarg.0
+    IL_025F: ldfld CargoInventoryUI.cargoInventory
+    IL_0264: callvirt CargoInventory.ContainsExpirableCargo()
+    IL_0269: brfalse.s ->IL_027F
+    IL_026B: call Singleton`1.get_Instance()
+    IL_0270: ldfld GameManager.gameModeData
+    IL_0275: ldfld GameModeData.currentDifficulty
+    IL_027A: ldc.i4.0
+    IL_027B:  ->IL_131603AC
+    IL_0281: ldarg.2
+    IL_0282: ldarg.0
+    IL_0283: ldfld CargoInventoryUI.expirationTimer
+    IL_0288: ldloc.s v4
+    IL_028A: callvirt GameObject.SetActive()
+    IL_028F: ldarg.0
+    IL_0290: ldfld CargoInventoryUI.expirationBar
+    IL_0295: ldarg.0
+    IL_0296: ldfld CargoInventoryUI.cargoInventory
+    IL_029B: callvirt CargoInventory.GetExpirationProgress()
+    IL_02A0: callvirt Image.set_fillAmount()
+    IL_02A5: ldarg.0
+    IL_02A6: ldfld CargoInventoryUI.expirationIcon
+    IL_02AB: ldarg.0
+    IL_02AC: ldfld CargoInventoryUI.cargoInventory
+    IL_02B1: callvirt CargoInventory.GetExpirationIcon()
+    IL_02B6: callvirt RawImage.set_texture()
+    IL_02BB: ret
+== OpenAirportInventory ==
+    IL_0000: ldarg.0
+    IL_0001: ldarg.1
+    IL_0002: stfld CargoInventoryUI.airportUI
+    IL_0007: ret

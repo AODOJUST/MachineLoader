@@ -1,0 +1,6 @@
+game running = False  (steam install is skipped while it runs)
+src = D:\豆包的下载\Aviassembly_DEV\mods\DropTank
+dll = 23552 bytes  md5=f346e8cf7c2c1cba57cb535f75297a42
+OK   23552  f346e8cf7c2c  D:\豆包的下载\MachineLoader_work\mods\DropTank
+OK   23552  f346e8cf7c2c  D:\豆包的下载\MachineLoader_github\MachineLoader-main\mods\DropTank
+OK   23552  f346e8cf7c2c  D:\steam\steamapps\common\Aviassembly\mods\DropTank

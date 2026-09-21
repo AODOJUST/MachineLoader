@@ -1,0 +1,96 @@
+﻿===== TYPE AirportData =====
+  [attr] UnityEngine.CreateAssetMenuAttribute
+  FIELD UnityEngine.GameObject airportPrefab pub
+  FIELD System.String airportName pub
+  FIELD System.Boolean lockedCargo pub
+  FIELD System.Boolean refuelAvailable pub
+  FIELD CargoType[] cargoTypes pub
+  FIELD System.Boolean baseAirport pub
+  FIELD System.Boolean initialSpawnAirport pub
+  FIELD System.Boolean rotationOverride pub
+  FIELD System.Single rotation pub
+  FIELD UnityEngine.Vector2 footprint pub
+  FIELD UnityEngine.Vector2 treeSpawningFootprint pub
+  FIELD System.Single blendingDistance pub
+  FIELD System.Boolean offshoreAirport pub
+  FIELD UnityEngine.Rect editorWindow pub
+  FIELD System.Collections.Generic.List`1<QuestData> quests pub
+  FIELD System.Collections.Generic.List`1<QuestData> baseQuests pub
+  FIELD System.String landingMessage pub
+  METHOD GetAirportWorldPosition() : Vector3 pub
+  METHOD .ctor() : Void pub
+===== TYPE AirportManager =====
+  FIELD CargoType[] allCargoTypes pub
+  FIELD AirportSpawner airportSpawner pub
+  FIELD UnityEngine.GameObject airportHighlighterPrefab pub
+  FIELD System.Collections.Generic.List`1<Airport> airports pub
+  FIELD System.Collections.Generic.List`1<Quest> hoveredQuests pub
+  FIELD UnityEngine.Vector3 <CurrentBaseAirport>k__BackingField
+  FIELD UnityEngine.Vector3 <LastAirport>k__BackingField
+  FIELD System.Single <FuelAtLand>k__BackingField
+  FIELD System.Single <ElecticityAtLand>k__BackingField
+  FIELD System.Boolean airportHover pub static
+  FIELD ContinentManager continentManager
+  PROP UnityEngine.Vector3 CurrentBaseAirport {get;}
+  PROP UnityEngine.Vector3 LastAirport {get;}
+  PROP System.Single FuelAtLand {get;}
+  PROP System.Single ElecticityAtLand {get;}
+  METHOD get_CurrentBaseAirport() : Vector3 pub [CompilerGeneratedAttribute]
+  METHOD set_CurrentBaseAirport(Vector3 value) : Void [CompilerGeneratedAttribute]
+  METHOD get_LastAirport() : Vector3 pub [CompilerGeneratedAttribute]
+  METHOD set_LastAirport(Vector3 value) : Void [CompilerGeneratedAttribute]
+  METHOD get_FuelAtLand() : Single pub [CompilerGeneratedAttribute]
+  METHOD set_FuelAtLand(Single value) : Void [CompilerGeneratedAttribute]
+  METHOD get_ElecticityAtLand() : Single pub [CompilerGeneratedAttribute]
+  METHOD set_ElecticityAtLand(Single value) : Void [CompilerGeneratedAttribute]
+  METHOD Init() : Void pub
+  METHOD GetAirportRotation(Airport airport) : Quaternion pub
+  METHOD InitFlatObjects() : Void pub
+  METHOD SetInitialAirport() : Void pub
+  METHOD CargoTypeToIndex(CargoType type) : Int32 pub
+  METHOD CargoTypeFromName(String name) : CargoType pub
+  METHOD AddAirport(Airport airport) : Void pub
+  METHOD GetClosestAirport(Vector3 position) : Airport pub
+  METHOD GetAirport(AirportData airportData) : Airport pub
+  METHOD GetClosestCargoType(Vector3 position) : CargoType[] pub
+  METHOD GetClosestAirport(Vector3 position,CargoType cargoType) : Airport pub
+  METHOD GetCargoAirport(CargoType cargoType) : Airport pub
+  METHOD ResetAtLastAirport() : Void pub
+  METHOD GetUnfinishedMissionCount() : Int32 pub
+  METHOD Update() : Void
+  METHOD GetHomeBase() : Airport pub
+  METHOD Save(GameDataWriter writer) : Void pub
+  METHOD Load(GameDataReader reader) : Void pub
+  METHOD FindAirport(String id) : Airport
+  METHOD .ctor() : Void pub
+===== TYPE DeliveryQuestData =====
+  FIELD CargoType cargoType pub
+  FIELD System.Int32 amount pub
+  FIELD System.Single rewardOffset pub
+  METHOD CreateQuest(Airport airport) : Quest pub
+  METHOD AutoGenerateContent(Quest quest,Airport airport) : Void
+  METHOD StringIsEmpty(String value) : Boolean
+  METHOD .ctor() : Void pub
+===== TYPE ContainerQuestData =====
+  FIELD QuestData[] subQuests pub
+  METHOD CreateQuest(Airport airport) : Quest pub
+  METHOD .ctor() : Void pub
+===== TYPE SaveFileHeader =====
+  FIELD System.Single playtime pub
+  FIELD System.Single timeAtGameStart pub
+  FIELD System.Int32 version pub
+  METHOD Save(GameDataWriter writer) : Void pub
+  METHOD Load(GameDataReader reader) : Void pub
+  METHOD .ctor() : Void pub
+===== TYPE AutoSave =====
+  FIELD System.Single intervalInMinutes pub
+  FIELD System.Single currentTime
+  FIELD System.String autoSaveFileName
+  METHOD Start() : Void
+  METHOD Update() : Void
+  METHOD CreateSave() : Void pub
+  METHOD SetAutoSaveName() : Void pub
+  METHOD AutoSaveFileCount() : Int32 pub
+  METHOD Save(GameDataWriter writer) : Void pub
+  METHOD Load(GameDataReader reader) : Void pub
+  METHOD .ctor() : Void pub

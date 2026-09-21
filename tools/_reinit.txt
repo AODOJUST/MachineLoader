@@ -1,0 +1,112 @@
+FIELD System.Single helicopter
+FIELD System.Single yawDrag
+FIELD System.Single rollDrag
+FIELD System.Single pitchDrag
+FIELD System.Single verticalLiniarDrag
+FIELD System.Single angleDragMultiplier
+FIELD System.Single liftSymmetry
+FIELD System.Single thrustSymmetry
+FIELD System.Single gravityForce
+FIELD System.Single planeGravityMultiplier
+FIELD System.Single helicopterGravityMultiplier
+FIELD System.Single liftMultiplier
+FIELD UnityEngine.LayerMask groundedCheckLayerMask
+FIELD System.Single maxCGShift
+FIELD System.Single fuelWeight
+FIELD UnityEngine.Rigidbody rb
+FIELD PlaneController controller
+FIELD PartExploder exploder
+FIELD System.Single mass
+FIELD System.Single drag
+FIELD UnityEngine.Vector3 cachedLocalForward
+FIELD System.Collections.Generic.List`1<PlanePart> planeParts
+FIELD System.Single <cargoVolume>k__BackingField
+FIELD System.Single fuel
+FIELD System.Single fuelCapacity
+FIELD System.Single refrenceFuelCapacity
+FIELD System.Single electricity
+FIELD System.Single electricityStorageCapacity
+FIELD System.Single refrenceElectricityStorageCapacity
+FIELD UnityEngine.Vector3 spawnPoint
+FIELD System.Single airbreakDrag
+FIELD System.Boolean <FlightModeInitialized>k__BackingField
+FIELD System.Boolean <hasRetractableGear>k__BackingField
+FIELD System.Boolean <hasBalloons>k__BackingField
+FIELD System.Single previousVelocity
+FIELD System.Boolean <IsAccelerating>k__BackingField
+FIELD Engine[] engines
+FIELD System.Single currentLift
+PROP System.Single GravityMultiplier
+PROP System.Single RealGravity
+PROP UnityEngine.Vector3 Forward
+PROP System.Single cargoVolume
+PROP System.Boolean FlightModeInitialized
+PROP System.Boolean hasRetractableGear
+PROP System.Boolean hasBalloons
+PROP System.Boolean IsAccelerating
+== METHOD System.Void PlaneContainer::ReInitializePlane()
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0006 ldc.r4 0
+  000B callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+  0010 ldarg.0 
+  0011 call !!0[] UnityEngine.Component::GetComponentsInChildren<PlanePart>()
+  0016 stloc.0 
+  0017 ldc.i4.0 
+  0018 stloc.1 
+  0019 br.s IL_004e: ldloc.1
+  001B ldloc.0 
+  001C ldloc.1 
+  001D ldelem.ref 
+  001E callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0023 callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  0028 brfalse.s IL_004a: ldloc.1
+  002A ldarg.0 
+  002B ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0030 dup 
+  0031 callvirt System.Single UnityEngine.Rigidbody::get_mass()
+  0036 ldloc.0 
+  0037 ldloc.1 
+  0038 ldelem.ref 
+  0039 ldfld System.Single PlanePart::weight
+  003E ldc.r4 15
+  0043 div 
+  0044 add 
+  0045 callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+  004A ldloc.1 
+  004B ldc.i4.1 
+  004C add 
+  004D stloc.1 
+  004E ldloc.1 
+  004F ldloc.0 
+  0050 ldlen 
+  0051 conv.i4 
+  0052 blt.s IL_001b: ldloc.0
+  0054 ldarg.0 
+  0055 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  005A dup 
+  005B callvirt System.Single UnityEngine.Rigidbody::get_mass()
+  0060 call T Singleton`1<CargoInventory>::get_Instance()
+  0065 callvirt System.Single CargoInventory::GetCargoMass()
+  006A ldc.r4 15
+  006F div 
+  0070 add 
+  0071 callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+  0076 ldarg.0 
+  0077 ldarg.0 
+  0078 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  007D callvirt System.Single UnityEngine.Rigidbody::get_mass()
+  0082 stfld System.Single PlaneContainer::mass
+  0087 ldarg.0 
+  0088 ldarg.0 
+  0089 call System.Single PlaneContainer::GetCargoVolume()
+  008E call System.Void PlaneContainer::set_cargoVolume(System.Single)
+  0093 call T Singleton`1<CargoInventory>::get_Instance()
+  0098 callvirt System.Void CargoInventory::RecalculateCargo()
+  009D ldarg.0 
+  009E ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  00A3 ldarg.0 
+  00A4 ldc.i4.0 
+  00A5 call UnityEngine.Vector3 PlaneContainer::CalculateCenterOfMass(System.Boolean)
+  00AA callvirt System.Void UnityEngine.Rigidbody::set_centerOfMass(UnityEngine.Vector3)
+  00AF ret 

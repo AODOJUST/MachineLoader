@@ -1,0 +1,22 @@
+{
+  "id": "example.helloworld",
+  "name": "Hello World Example",
+  "version": "1.0.0",
+  "author": "Machine Team",
+  "description": "最小示例：展示 Machine Mod 的基本结构和日志输出。",
+  "type": "code",
+  "apiVersion": "1.0",
+  "loaderVersion": ">=2.0.0",
+  "dependencies": [],
+  "entry": "Example.HelloWorld.HelloWorldMod",
+  "code": {
+    "assemblies": ["code/HelloWorld.dll"],
+    "mainClass": "Example.HelloWorld.HelloWorldMod"
+  },
+  "content": {
+    "cargo": [],
+    "parts": [],
+    "decals": [],
+    "textures": []
+  }
+}

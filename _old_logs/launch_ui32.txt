@@ -1,0 +1,11 @@
+now = 22:27:34 deadline=480s tag=ui3 save=AutoSave 0
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\_points_test.flag
+log start offset = 1103756
+started pid = 20576
+t=34s newLog=36519 done=False
+t=44s newLog=42856 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\faction_run_log_ui3.txt length=42856
+game alive before stop = True
+game stopped

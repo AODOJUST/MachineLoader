@@ -1,0 +1,62 @@
+﻿===== TYPE MenuModalManager =====
+  FIELD UnityEngine.CanvasGroup title pub
+  FIELD UnityEngine.CanvasGroup background pub
+  FIELD System.Single targetTitleAlpha
+  FIELD System.Single titleAlphaVelocity
+  FIELD MenuDialog menuDialog
+  FIELD UnityEngine.GameObject currentOpenModal
+  METHOD Start() : Void
+  METHOD OpenMenu(GameObject menu) : Void pub
+  METHOD CloseMenu(GameObject menu) : Void pub
+  METHOD OpenModal(GameObject modal) : Void pub
+  METHOD CloseModal(GameObject modal) : Void pub
+  METHOD OpenSettings() : Void pub
+  METHOD Update() : Void
+  METHOD .ctor() : Void pub
+===== TYPE MenuDialog =====
+  FIELD UnityEngine.GameObject menuDialog pub
+  FIELD UnityEngine.GameObject quitDialog pub
+  FIELD UnityEngine.GameObject saveDialog pub
+  FIELD UnityEngine.GameObject settingsPanel pub
+  FIELD UnityEngine.UI.Button saveButton pub
+  FIELD UnityEngine.UI.Button saveAsButton pub
+  FIELD UnityEngine.GameObject saveButtonHider pub
+  FIELD UnityEngine.GameObject saveAsButtonHider pub
+  FIELD TMPro.TMP_InputField inputField pub
+  FIELD UnityEngine.UI.RawImage dialogBackground pub
+  FIELD TMPro.TMP_Text saveButtonText pub
+  FIELD GameManager gameManager
+  FIELD System.Single currentAlpha
+  FIELD System.Single alphaVelocity
+  FIELD System.Single MaxAlpha static
+  METHOD Start() : Void
+  METHOD CloseMenuDialog() : Void pub
+  METHOD SaveCurrentFile() : Void pub
+  METHOD EnableSaveDialog(Boolean enabled) : Void pub
+  METHOD EnableSettingsPanel() : Void pub
+  METHOD EnableQuitDialog(Boolean enabled) : Void pub
+  METHOD Save() : Void pub
+  METHOD Update() : Void
+  METHOD .ctor() : Void pub
+===== TYPE CustomButton =====
+  FIELD System.Boolean hover pub
+  FIELD System.Boolean interactable pub
+  FIELD CustomButton/ButtonClickedEvent onClick
+  METHOD Update() : Void
+  METHOD Click() : Void
+  METHOD OnPointerEnter(PointerEventData data) : Void pub
+  METHOD OnPointerExit(PointerEventData data) : Void pub
+  METHOD OnDisable() : Void
+  METHOD .ctor() : Void pub
+===== TYPE OrangeHoverButton =====
+  [attr] UnityEngine.RequireComponent
+  FIELD UnityEngine.Color orangeHoverColor
+  FIELD UnityEngine.Color whiteColor
+  FIELD UnityEngine.Color blackColor
+  FIELD UnityEngine.UI.Button button
+  FIELD UnityEngine.UI.Graphic[] childGraphics
+  METHOD Start() : Void
+  METHOD OnDisable() : Void
+  METHOD OnPointerEnter(PointerEventData eventData) : Void pub
+  METHOD OnPointerExit(PointerEventData eventData) : Void pub
+  METHOD .ctor() : Void pub

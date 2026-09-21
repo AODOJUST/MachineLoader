@@ -1,0 +1,4 @@
+BattleHold.dll  62976 bytes  13:48:46
+MachineAAM.dll  133120 bytes  13:48:49
+MachineShop.dll  43520 bytes  13:49:38
+config autoTest=false: True

@@ -1,0 +1,511 @@
+================================================================================================
+发布件全量陈旧度扫描   基准 = Aviassembly_DEV/mods   生成 2026-09-15 15:46:46
+================================================================================================
+
+### BattleCore  —— 有 2 个文件在部分副本中陈旧
+  code/BattleCore.dll
+      源         15360  09-15 00:10  52adfc5fd9890ac1
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE      15360  09-13 15:21  
+      steam         STALE      15360  09-14 18:45  
+  mod.json
+      源           502  09-15 14:11  bd883e2396c93066
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        498  09-11 10:58  
+      steam         OK
+
+
+### BattleHold  —— 有 4 个文件在部分副本中陈旧
+  battlehold_config.json
+      源           337  09-15 13:18  aecaec7bd35f5653
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        337  09-13 15:04  
+      steam         OK
+  battlehold_state.json
+      源           118  09-15 14:21  c27a87d3b011422e
+      dist          MISSING -  
+      dist_upload   MISSING -  
+      Loader_github MISSING -  
+      Loader_work   MISSING -  
+      steam         STALE        227  09-15 00:20  
+  code/BattleHold.dll
+      源         69120  09-15 00:10  53aedc1162a284b1
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE      63488  09-13 15:21  
+      steam         STALE      64512  09-14 18:45  
+  mod.json
+      源           677  09-15 14:11  d148552ebaea35d1
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        672  09-11 17:43  
+      steam         OK
+
+
+### DropTank  —— 有 1 个文件在部分副本中陈旧
+  mod.json
+      源           448  09-15 14:11  73e18c9adcdc38cb
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        443  09-15 12:34  
+      steam         OK
+
+
+### FactionSystem  —— 有 1 个文件在部分副本中陈旧
+  mod.json
+      源           513  09-15 14:11  2853e10172a91a42
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        508  09-15 11:55  
+      steam         OK
+
+
+### FlightTrails  —— 有 2 个文件在部分副本中陈旧
+  code/FlightTrails.dll
+      源         20480  09-15 00:10  db0dbe6de5b7a538
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE      20480  09-13 15:21  
+      steam         STALE      20480  09-14 18:45  
+  mod.json
+      源           554  09-15 14:11  3073e25fbff29f02
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        550  09-11 10:58  
+      steam         OK
+
+
+### GMeter  —— 有 2 个文件在部分副本中陈旧
+  code/GMeter.dll
+      源         13824  09-15 00:10  1db103557d434640
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE      13824  09-13 15:21  
+      steam         STALE      13824  09-14 18:45  
+  mod.json
+      源           587  09-15 14:11  25df2209deb18a5d
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        583  09-11 10:58  
+      steam         OK
+
+
+### GVision  —— 有 2 个文件在部分副本中陈旧
+  code/GVision.dll
+      源         18944  09-15 00:10  9483e5802c98da91
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE      18944  09-13 15:21  
+      steam         STALE      18944  09-14 18:45  
+  mod.json
+      源           618  09-15 14:11  d5b0b91a1345d619
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        614  09-11 10:58  
+      steam         OK
+
+
+### KillFeed  —— 有 2 个文件在部分副本中陈旧
+  code/KillFeed.dll
+      源         15872  09-15 00:11  9315143fde919270
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE       8704  09-13 15:21  
+      steam         STALE       8704  09-14 18:45  
+  mod.json
+      源           545  09-15 14:11  00eb11d4fcdbd0b3
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        540  09-11 21:17  
+      steam         OK
+
+
+### MachineAAM  —— 有 13 个文件在部分副本中陈旧
+  AIM-424.planedesign
+      源          4264  09-13 21:50  c3c81ac4b6c6b88f
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  AIM-9.planedesign
+      源          2494  09-12 14:44  394a6e0e4ef84e92
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  Bullet.planedesign
+      源           174  09-12 14:44  165991e65626a913
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  F-22.planedesign
+      源         11131  09-10 20:34  f10a4855316fd5a7
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  MSDM.planedesign
+      源          1929  09-12 14:44  52863023f72e4f20
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  PL-15.planedesign
+      源          2809  09-10 19:55  bf5bb84e6a35a622
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  R-37.planedesign
+      源          4264  09-13 21:44  5374d9dea4568a68
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  R-77.planedesign
+      源          3382  09-12 14:44  55b9eea51963de43
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  aam_config.json
+      源          2923  09-15 00:15  c60c361c8bebc459
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE       1762  09-15 00:03  
+      steam         OK
+  code/MachineAAM.dll
+      源        192512  09-15 14:09  7962ec979f22e47a
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE     192512  09-15 13:46  
+      steam         OK
+  decoy flare.planedesign
+      源           174  09-12 14:29  8340eab0b81415ac
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  icons/missile.png
+      源         25525  09-14 11:13  a7be9abc5f60458b
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  mod.json
+      源           911  09-15 14:11  6715c26c3980899d
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        909  09-15 00:26  
+      steam         OK
+
+
+### MachineShop  —— 有 1 个文件在部分副本中陈旧
+  mod.json
+      源           484  09-15 14:11  104251d22f7c2729
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        405  09-12 22:17  
+      steam         OK
+
+
+### OptiMod  —— 有 2 个文件在部分副本中陈旧
+  code/OptiMod.dll
+      源         45056  09-15 00:11  c8fe218e0eb59804
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE      45056  09-13 15:21  
+      steam         STALE      45056  09-14 18:45  
+  mod.json
+      源           765  09-15 14:11  910f110fed3551d0
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        761  09-13 11:15  
+      steam         OK
+
+
+### Radar  —— 有 4 个文件在部分副本中陈旧
+  code/Radar.dll
+      源         65024  09-15 11:15  de987350e3a78b8e
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE      58880  09-13 15:21  
+      steam         STALE      63488  09-14 22:23  
+  icons/aesa.png
+      源         59927  09-14 11:13  bb3f93755f8b9e4d
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  icons/radar.png
+      源         33876  09-14 11:13  157da72d6eaada0a
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  mod.json
+      源           490  09-15 14:11  b6177acdb87ff6bb
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        485  09-11 20:44  
+      steam         OK
+
+
+### VoiceAlerts  —— 有 28 个文件在部分副本中陈旧
+  audio/bandit.wav
+      源        281132  09-14 11:06  7a064ffc3e69c217
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/bingo.wav
+      源        308780  09-14 11:06  8d69b2dcd9d9b548
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE     165860  09-11 18:53  
+      steam         OK
+  audio/engine_failure.wav
+      源        465452  09-14 11:07  b7ce00ce577ba3cb
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/fox1.wav
+      源        442412  09-14 11:10  ee7d66a09ee19871
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE     240078  09-11 14:38  
+      steam         OK
+  audio/fuel35.wav
+      源        359468  09-14 11:06  c488d7b58df51aea
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE     230244  09-11 18:53  
+      steam         OK
+  audio/fuel45.wav
+      源        359468  09-14 11:06  c488d7b58df51aea
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE     230244  09-11 18:53  
+      steam         OK
+  audio/fuellow.wav
+      源        308780  09-14 11:07  e75aa5a3aaabbd2b
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE     230244  09-11 18:53  
+      steam         OK
+  audio/lock.wav
+      源        331820  09-14 11:09  3cf5caf216997c9b
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE     108878  09-11 14:38  
+      steam         OK
+  audio/missile.wav
+      源        198188  09-14 11:10  54830bc2fa1bfe88
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE      80078  09-11 14:18  
+      steam         OK
+  audio/overg.wav
+      源        308780  09-14 11:10  d81e145463501481
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/overspeed.wav
+      源        359468  09-14 11:06  1baf4d1b80bbbaec
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE     176078  09-11 14:38  
+      steam         OK
+  audio/pullup.wav
+      源        253484  09-14 11:10  62a979c831126793
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE      91772  09-11 18:53  
+      steam         OK
+  audio/ru/bingo.wav
+      源        368684  09-14 13:54  cdcc93e71be8d10d
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/engine_failure.wav
+      源        428588  09-14 13:53  6e345ec6334b4a29
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/fox1.wav
+      源        368684  09-14 13:55  ce922f0d6d968f4d
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/fuel35.wav
+      源        488492  09-14 13:54  6bb947e87414b7a2
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/fuel45.wav
+      源        488492  09-14 13:54  6bb947e87414b7a2
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/fuellow.wav
+      源        543788  09-14 13:51  abd188036bad1736
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/lock.wav
+      源        368684  09-14 13:50  606866ae2417a168
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/missile.wav
+      源        456236  09-14 13:55  d1b9db1f68ab0bd2
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/overg.wav
+      源        456236  09-14 13:52  b091316276c8f365
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/overspeed.wav
+      源        428588  09-14 13:51  96c6fc8006012281
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/pullup.wav
+      源        428588  09-14 13:52  ffa4f36ea34bc71d
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/sinkrate.wav
+      源        317996  09-14 13:54  3ea08f7b1ae434af
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/ru/stall.wav
+      源        428588  09-14 13:51  96c6fc8006012281
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   MISSING -  
+      steam         OK
+  audio/sinkrate.wav
+      源        331820  09-14 11:05  83587751f5b718e2
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE     402234  09-11 18:53  
+      steam         OK
+  audio/stall.wav
+      源        359468  09-14 11:06  1baf4d1b80bbbaec
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE     176078  09-11 14:38  
+      steam         OK
+  mod.json
+      源           517  09-15 14:11  fc5eaf12863d10e2
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        512  09-11 20:44  
+      steam         OK
+
+
+### ZoomMod  —— 有 2 个文件在部分副本中陈旧
+  code/ZoomMod.dll
+      源          6144  09-15 00:11  d7f4e76e7db76525
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE       6144  09-13 15:21  
+      steam         STALE       6144  09-14 18:45  
+  mod.json
+      源           461  09-15 14:11  3b360510451ef7ee
+      dist          OK
+      dist_upload   OK
+      Loader_github OK
+      Loader_work   STALE        457  09-11 10:58  
+      steam         OK
+
+
+================================================================================================
+汇总：陈旧文件 66 个，涉及 mod：BattleCore, BattleHold, DropTank, FactionSystem, FlightTrails, GMeter, GVision, KillFeed, MachineAAM, MachineShop, OptiMod, Radar, VoiceAlerts, ZoomMod
+================================================================================================

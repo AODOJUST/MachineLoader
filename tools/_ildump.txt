@@ -1,0 +1,1115 @@
+cecil exists: True  game exists: True
+cecil loaded: Mono.Cecil
+game module: Assembly-CSharp.dll
+
+==== TYPE CargoInventory ====
+  FIELD AudioDef glassBreaking
+  FIELD AudioDef addItem
+  FIELD Single <MaxVolume>k__BackingField
+  FIELD Single <CurrentVolume>k__BackingField
+  FIELD Single breakageCooldown
+  FIELD Dictionary`2 currentCargo
+  FIELD PlaneContainer planeContainer
+  FIELD Single expirationTimer
+  FIELD Single currentExpirationDuration
+  FIELD Vector3 prevVelocity
+  FIELD Single lastBreakTime
+  FIELD Single minFragileBreakTreshhold
+  FIELD Single maxFragileBreakTreshhold
+  FIELD Action`1 ExpirableCargoCleared
+  FIELD Action`2 FragileCargoCleared
+
+  METHOD Single get_MaxVolume()
+    0000 ldarg.0 
+    0001 ldfld System.Single CargoInventory::<MaxVolume>k__BackingField
+    0006 ret 
+
+  METHOD Void set_MaxVolume(Single value)
+    0000 ldarg.0 
+    0001 ldarg.1 
+    0002 stfld System.Single CargoInventory::<MaxVolume>k__BackingField
+    0007 ret 
+
+  METHOD Single get_CurrentVolume()
+    0000 ldarg.0 
+    0001 ldfld System.Single CargoInventory::<CurrentVolume>k__BackingField
+    0006 ret 
+
+  METHOD Void set_CurrentVolume(Single value)
+    0000 ldarg.0 
+    0001 ldarg.1 
+    0002 stfld System.Single CargoInventory::<CurrentVolume>k__BackingField
+    0007 ret 
+
+  METHOD Void add_ExpirableCargoCleared(Action`1 value)
+    0000 ldarg.0 
+    0001 ldfld System.Action`1<CargoType> CargoInventory::ExpirableCargoCleared
+    0006 stloc.0 
+    0007 ldloc.0 
+    0008 stloc.1 
+    0009 ldloc.1 
+    000A ldarg.1 
+    000B call System.Delegate System.Delegate::Combine(System.Delegate,System.Delegate)
+    0010 castclass System.Action`1<CargoType>
+    0015 stloc.2 
+    0016 ldarg.0 
+    0017 ldflda System.Action`1<CargoType> CargoInventory::ExpirableCargoCleared
+    001C ldloc.2 
+    001D ldloc.1 
+    001E call !!0 System.Threading.Interlocked::CompareExchange<System.Action`1<CargoType>>(!!0&,!!0,!!0)
+    0023 stloc.0 
+    0024 ldloc.0 
+    0025 ldloc.1 
+    0026 bne.un.s IL_0007: ldloc.0
+    0028 ret 
+
+  METHOD Void remove_ExpirableCargoCleared(Action`1 value)
+    0000 ldarg.0 
+    0001 ldfld System.Action`1<CargoType> CargoInventory::ExpirableCargoCleared
+    0006 stloc.0 
+    0007 ldloc.0 
+    0008 stloc.1 
+    0009 ldloc.1 
+    000A ldarg.1 
+    000B call System.Delegate System.Delegate::Remove(System.Delegate,System.Delegate)
+    0010 castclass System.Action`1<CargoType>
+    0015 stloc.2 
+    0016 ldarg.0 
+    0017 ldflda System.Action`1<CargoType> CargoInventory::ExpirableCargoCleared
+    001C ldloc.2 
+    001D ldloc.1 
+    001E call !!0 System.Threading.Interlocked::CompareExchange<System.Action`1<CargoType>>(!!0&,!!0,!!0)
+    0023 stloc.0 
+    0024 ldloc.0 
+    0025 ldloc.1 
+    0026 bne.un.s IL_0007: ldloc.0
+    0028 ret 
+
+  METHOD Void add_FragileCargoCleared(Action`2 value)
+    0000 ldarg.0 
+    0001 ldfld System.Action`2<CargoType,System.Int32> CargoInventory::FragileCargoCleared
+    0006 stloc.0 
+    0007 ldloc.0 
+    0008 stloc.1 
+    0009 ldloc.1 
+    000A ldarg.1 
+    000B call System.Delegate System.Delegate::Combine(System.Delegate,System.Delegate)
+    0010 castclass System.Action`2<CargoType,System.Int32>
+    0015 stloc.2 
+    0016 ldarg.0 
+    0017 ldflda System.Action`2<CargoType,System.Int32> CargoInventory::FragileCargoCleared
+    001C ldloc.2 
+    001D ldloc.1 
+    001E call !!0 System.Threading.Interlocked::CompareExchange<System.Action`2<CargoType,System.Int32>>(!!0&,!!0,!!0)
+    0023 stloc.0 
+    0024 ldloc.0 
+    0025 ldloc.1 
+    0026 bne.un.s IL_0007: ldloc.0
+    0028 ret 
+
+  METHOD Void remove_FragileCargoCleared(Action`2 value)
+    0000 ldarg.0 
+    0001 ldfld System.Action`2<CargoType,System.Int32> CargoInventory::FragileCargoCleared
+    0006 stloc.0 
+    0007 ldloc.0 
+    0008 stloc.1 
+    0009 ldloc.1 
+    000A ldarg.1 
+    000B call System.Delegate System.Delegate::Remove(System.Delegate,System.Delegate)
+    0010 castclass System.Action`2<CargoType,System.Int32>
+    0015 stloc.2 
+    0016 ldarg.0 
+    0017 ldflda System.Action`2<CargoType,System.Int32> CargoInventory::FragileCargoCleared
+    001C ldloc.2 
+    001D ldloc.1 
+    001E call !!0 System.Threading.Interlocked::CompareExchange<System.Action`2<CargoType,System.Int32>>(!!0&,!!0,!!0)
+    0023 stloc.0 
+    0024 ldloc.0 
+    0025 ldloc.1 
+    0026 bne.un.s IL_0007: ldloc.0
+    0028 ret 
+
+  METHOD Void Start()
+    0000 ldarg.0 
+    0001 call T Singleton`1<PlaneContainer>::get_Instance()
+    0006 stfld PlaneContainer CargoInventory::planeContainer
+    000B ret 
+
+  METHOD Void Update()
+    0000 ldarg.0 
+    0001 ldarg.0 
+    0002 ldfld PlaneContainer CargoInventory::planeContainer
+    0007 callvirt System.Single PlaneContainer::GetCargoVolume()
+    000C call System.Void CargoInventory::set_MaxVolume(System.Single)
+    0011 ldarg.0 
+    0012 ldarg.0 
+    0013 ldfld System.Single CargoInventory::expirationTimer
+    0018 call System.Single UnityEngine.Time::get_deltaTime()
+    001D sub 
+    001E stfld System.Single CargoInventory::expirationTimer
+    0023 ldarg.0 
+    0024 call System.Boolean CargoInventory::ContainsExpirableCargo()
+    0029 brfalse.s IL_003e: ldarg.0
+    002B ldarg.0 
+    002C ldfld System.Single CargoInventory::expirationTimer
+    0031 ldc.r4 0
+    0036 bgt.un.s IL_003e: ldarg.0
+    0038 ldarg.0 
+    0039 call System.Void CargoInventory::ClearExpirableCargo()
+    003E ldarg.0 
+    003F ldarg.0 
+    0040 ldfld System.Single CargoInventory::expirationTimer
+    0045 ldc.r4 0
+    004A call System.Single UnityEngine.Mathf::Max(System.Single,System.Single)
+    004F stfld System.Single CargoInventory::expirationTimer
+    0054 ret 
+
+  METHOD Void FixedUpdate()
+    0000 ldarg.0 
+    0001 ldfld PlaneContainer CargoInventory::planeContainer
+    0006 callvirt UnityEngine.Vector3 PlaneContainer::GetVelocity()
+    000B ldarg.0 
+    000C ldfld UnityEngine.Vector3 CargoInventory::prevVelocity
+    0011 call System.Single UnityEngine.Vector3::Distance(UnityEngine.Vector3,UnityEngine.Vector3)
+    0016 stloc.0 
+    0017 ldarg.0 
+    0018 ldfld System.Single CargoInventory::minFragileBreakTreshhold
+    001D ldarg.0 
+    001E ldfld System.Single CargoInventory::maxFragileBreakTreshhold
+    0023 ldloc.0 
+    0024 call System.Single UnityEngine.Mathf::InverseLerp(System.Single,System.Single,System.Single)
+    0029 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+    002E stloc.1 
+    002F ldarg.0 
+    0030 ldloc.1 
+    0031 call System.Void CargoInventory::ClearFragileCargo(System.Single)
+    0036 ldarg.0 
+    0037 ldarg.0 
+    0038 ldfld PlaneContainer CargoInventory::planeContainer
+    003D callvirt UnityEngine.Vector3 PlaneContainer::GetVelocity()
+    0042 stfld UnityEngine.Vector3 CargoInventory::prevVelocity
+    0047 ret 
+
+  METHOD Void RecalculateCargo()
+    0000 ldarg.0 
+    0001 ldfld PlaneContainer CargoInventory::planeContainer
+    0006 callvirt System.Single PlaneContainer::GetCargoVolume()
+    000B ldarg.0 
+    000C call System.Single CargoInventory::get_CurrentVolume()
+    0011 sub 
+    0012 stloc.0 
+    0013 ldarg.0 
+    0014 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0019 callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+    001E ldc.i4.1 
+    001F sub 
+    0020 stloc.1 
+    0021 br.s IL_0085: ldloc.1
+    0023 ldarg.0 
+    0024 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0029 ldloc.1 
+    002A call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+    002F stloc.2 
+    0030 ldloca.s V_2
+    0032 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    0037 stloc.3 
+    0038 ldloca.s V_2
+    003A call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    003F stloc.s V_4
+    0041 ldloc.0 
+    0042 ldc.r4 0
+    0047 blt.un.s IL_004a: ldloc.0
+    0049 ret 
+    004A ldloc.0 
+    004B conv.r4 
+    004C call System.Single UnityEngine.Mathf::Abs(System.Single)
+    0051 ldloc.3 
+    0052 ldfld System.Int32 CargoType::cargoSpace
+    0057 conv.r4 
+    0058 div 
+    0059 call System.Int32 UnityEngine.Mathf::CeilToInt(System.Single)
+    005E stloc.s V_5
+    0060 ldloc.s V_4
+    0062 ldloc.s V_5
+    0064 call System.Int32 UnityEngine.Mathf::Min(System.Int32,System.Int32)
+    0069 stloc.s V_5
+    006B ldloc.0 
+    006C ldloc.s V_5
+    006E ldloc.3 
+    006F ldfld System.Int32 CargoType::cargoSpace
+    0074 mul 
+    0075 conv.r4 
+    0076 add 
+    0077 stloc.0 
+    0078 ldarg.0 
+    0079 ldloc.3 
+    007A ldloc.s V_5
+    007C call System.Void CargoInventory::RemoveCargo(CargoType,System.Int32)
+    0081 ldloc.1 
+    0082 ldc.i4.1 
+    0083 sub 
+    0084 stloc.1 
+    0085 ldloc.1 
+    0086 ldc.i4.0 
+    0087 bge.s IL_0023: ldarg.0
+    0089 ret 
+
+  METHOD Void ApplyCargo()
+    0000 ldc.i4.0 
+    0001 stloc.0 
+    0002 br.s IL_0039: ldloc.0
+    0004 ldarg.0 
+    0005 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    000A ldloc.0 
+    000B call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+    0010 stloc.1 
+    0011 ldloca.s V_1
+    0013 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    0018 stloc.2 
+    0019 ldloca.s V_1
+    001B call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    0020 stloc.3 
+    0021 ldarg.0 
+    0022 ldfld PlaneContainer CargoInventory::planeContainer
+    0027 ldloc.2 
+    0028 ldfld System.Single CargoType::weight
+    002D ldloc.3 
+    002E conv.r4 
+    002F mul 
+    0030 callvirt System.Void PlaneContainer::ChangeMass(System.Single)
+    0035 ldloc.0 
+    0036 ldc.i4.1 
+    0037 add 
+    0038 stloc.0 
+    0039 ldloc.0 
+    003A ldarg.0 
+    003B ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0040 callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+    0045 blt.s IL_0004: ldarg.0
+    0047 ret 
+
+  METHOD Boolean EnoughSpace(CargoType cargoType)
+    0000 ldarg.0 
+    0001 call System.Single CargoInventory::get_CurrentVolume()
+    0006 ldarg.1 
+    0007 ldfld System.Int32 CargoType::cargoSpace
+    000C conv.r4 
+    000D add 
+    000E ldarg.0 
+    000F call System.Single CargoInventory::get_MaxVolume()
+    0014 call System.Int32 UnityEngine.Mathf::RoundToInt(System.Single)
+    0019 conv.r4 
+    001A ble.un.s IL_001e: ldc.i4.1
+    001C ldc.i4.0 
+    001D ret 
+    001E ldc.i4.1 
+    001F ret 
+
+  METHOD Void AddCargo(CargoType cargoType)
+    0000 call T Singleton`1<AirportManager>::get_Instance()
+    0005 ldarg.0 
+    0006 ldfld PlaneContainer CargoInventory::planeContainer
+    000B callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+    0010 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+    0015 callvirt Airport AirportManager::GetClosestAirport(UnityEngine.Vector3)
+    001A callvirt System.Boolean Airport::CargoUnlocked()
+    001F brtrue.s IL_0022: ldarg.0
+    0021 ret 
+    0022 ldarg.0 
+    0023 call System.Single CargoInventory::get_CurrentVolume()
+    0028 ldarg.1 
+    0029 ldfld System.Int32 CargoType::cargoSpace
+    002E conv.r4 
+    002F add 
+    0030 ldarg.0 
+    0031 call System.Single CargoInventory::get_MaxVolume()
+    0036 call System.Int32 UnityEngine.Mathf::RoundToInt(System.Single)
+    003B conv.r4 
+    003C ble.un.s IL_003f: ldarg.0
+    003E ret 
+    003F ldarg.0 
+    0040 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0045 ldarg.1 
+    0046 callvirt System.Boolean System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::ContainsKey(!0)
+    004B brtrue.s IL_005a: ldarg.0
+    004D ldarg.0 
+    004E ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0053 ldarg.1 
+    0054 ldc.i4.0 
+    0055 callvirt System.Void System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::Add(!0,!1)
+    005A ldarg.0 
+    005B ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0060 ldarg.1 
+    0061 stloc.0 
+    0062 dup 
+    0063 ldloc.0 
+    0064 callvirt !1 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Item(!0)
+    0069 stloc.1 
+    006A ldloc.0 
+    006B ldloc.1 
+    006C ldc.i4.1 
+    006D add 
+    006E callvirt System.Void System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::set_Item(!0,!1)
+    0073 ldarg.0 
+    0074 ldarg.0 
+    0075 call System.Single CargoInventory::get_CurrentVolume()
+    007A ldarg.1 
+    007B ldfld System.Int32 CargoType::cargoSpace
+    0080 conv.r4 
+    0081 add 
+    0082 call System.Void CargoInventory::set_CurrentVolume(System.Single)
+    0087 ldarg.0 
+    0088 ldfld PlaneContainer CargoInventory::planeContainer
+    008D ldarg.1 
+    008E ldfld System.Single CargoType::weight
+    0093 callvirt System.Void PlaneContainer::ChangeMass(System.Single)
+    0098 ldarg.1 
+    0099 ldfld System.Boolean CargoType::expires
+    009E brfalse.s IL_00c9: call T Singleton`1<AudioManager>::get_Instance()
+    00A0 call T Singleton`1<GameManager>::get_Instance()
+    00A5 ldfld GameModeData GameManager::gameModeData
+    00AA ldfld Difficulty GameModeData::currentDifficulty
+    00AF brfalse.s IL_00c9: call T Singleton`1<AudioManager>::get_Instance()
+    00B1 ldarg.0 
+    00B2 ldarg.1 
+    00B3 ldfld System.Single CargoType::expirationTime
+    00B8 stfld System.Single CargoInventory::expirationTimer
+    00BD ldarg.0 
+    00BE ldarg.1 
+    00BF ldfld System.Single CargoType::expirationTime
+    00C4 stfld System.Single CargoInventory::currentExpirationDuration
+    00C9 call T Singleton`1<AudioManager>::get_Instance()
+    00CE ldarg.0 
+    00CF ldfld AudioDef CargoInventory::addItem
+    00D4 callvirt System.Void AudioManager::PlaySound(AudioDef)
+    00D9 ret 
+
+  METHOD Void RemoveCargo(CargoType cargoType, Int32 amount)
+    0000 ldarg.0 
+    0001 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0006 ldarg.1 
+    0007 callvirt System.Boolean System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::ContainsKey(!0)
+    000C brfalse.s IL_001d: ret
+    000E ldarg.0 
+    000F ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0014 ldarg.1 
+    0015 callvirt !1 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Item(!0)
+    001A ldarg.2 
+    001B bge.s IL_001e: ldarg.0
+    001D ret 
+    001E ldarg.0 
+    001F ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0024 stloc.0 
+    0025 ldarg.1 
+    0026 stloc.1 
+    0027 ldloc.0 
+    0028 ldloc.1 
+    0029 ldloc.0 
+    002A ldloc.1 
+    002B callvirt !1 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Item(!0)
+    0030 ldarg.2 
+    0031 sub 
+    0032 callvirt System.Void System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::set_Item(!0,!1)
+    0037 ldarg.0 
+    0038 ldarg.0 
+    0039 call System.Single CargoInventory::get_CurrentVolume()
+    003E ldarg.1 
+    003F ldfld System.Int32 CargoType::cargoSpace
+    0044 ldarg.2 
+    0045 mul 
+    0046 conv.r4 
+    0047 sub 
+    0048 call System.Void CargoInventory::set_CurrentVolume(System.Single)
+    004D ldarg.0 
+    004E ldfld PlaneContainer CargoInventory::planeContainer
+    0053 ldarg.1 
+    0054 ldfld System.Single CargoType::weight
+    0059 ldarg.2 
+    005A conv.r4 
+    005B mul 
+    005C neg 
+    005D callvirt System.Void PlaneContainer::ChangeMass(System.Single)
+    0062 ret 
+
+  METHOD Int32 GetCargoCount(CargoType cargoType)
+    0000 ldarg.1 
+    0001 ldnull 
+    0002 call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+    0007 brfalse.s IL_000b: ldarg.0
+    0009 ldc.i4.0 
+    000A ret 
+    000B ldarg.0 
+    000C ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0011 ldarg.1 
+    0012 callvirt System.Boolean System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::ContainsKey(!0)
+    0017 brtrue.s IL_001b: ldarg.0
+    0019 ldc.i4.0 
+    001A ret 
+    001B ldarg.0 
+    001C ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0021 ldarg.1 
+    0022 callvirt !1 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Item(!0)
+    0027 ret 
+
+  METHOD Single GetExpirationProgress()
+    0000 ldarg.0 
+    0001 ldfld System.Single CargoInventory::currentExpirationDuration
+    0006 ldc.r4 0
+    000B bne.un.s IL_0013: ldarg.0
+    000D ldc.r4 0
+    0012 ret 
+    0013 ldarg.0 
+    0014 ldfld System.Single CargoInventory::expirationTimer
+    0019 ldarg.0 
+    001A ldfld System.Single CargoInventory::currentExpirationDuration
+    001F div 
+    0020 ret 
+
+  METHOD Texture GetExpirationIcon()
+    0000 ldarg.0 
+    0001 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0006 callvirt System.Collections.Generic.Dictionary`2/Enumerator<!0,!1> System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::GetEnumerator()
+    000B stloc.0 
+    000C br.s IL_003d: ldloca.s V_0
+    000E ldloca.s V_0
+    0010 call System.Collections.Generic.KeyValuePair`2<!0,!1> System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>::get_Current()
+    0015 stloc.1 
+    0016 ldloca.s V_1
+    0018 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    001D ldfld System.Boolean CargoType::expires
+    0022 brfalse.s IL_003d: ldloca.s V_0
+    0024 ldloca.s V_1
+    0026 call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    002B ldc.i4.0 
+    002C ble.s IL_003d: ldloca.s V_0
+    002E ldloca.s V_1
+    0030 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    0035 ldfld UnityEngine.Texture2D CargoType::icon
+    003A stloc.2 
+    003B leave.s IL_0058: ldloc.2
+    003D ldloca.s V_0
+    003F call System.Boolean System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>::MoveNext()
+    0044 brtrue.s IL_000e: ldloca.s V_0
+    0046 leave.s IL_0056: ldnull
+    0048 ldloca.s V_0
+    004A constrained. System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>
+    0050 callvirt System.Void System.IDisposable::Dispose()
+    0055 endfinally 
+    0056 ldnull 
+    0057 ret 
+    0058 ldloc.2 
+    0059 ret 
+
+  METHOD Boolean ContainsExpirableCargo()
+    0000 ldarg.0 
+    0001 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0006 callvirt System.Collections.Generic.Dictionary`2/Enumerator<!0,!1> System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::GetEnumerator()
+    000B stloc.0 
+    000C br.s IL_0032: ldloca.s V_0
+    000E ldloca.s V_0
+    0010 call System.Collections.Generic.KeyValuePair`2<!0,!1> System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>::get_Current()
+    0015 stloc.1 
+    0016 ldloca.s V_1
+    0018 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    001D ldfld System.Boolean CargoType::expires
+    0022 brfalse.s IL_0032: ldloca.s V_0
+    0024 ldloca.s V_1
+    0026 call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    002B ldc.i4.0 
+    002C ble.s IL_0032: ldloca.s V_0
+    002E ldc.i4.1 
+    002F stloc.2 
+    0030 leave.s IL_004d: ldloc.2
+    0032 ldloca.s V_0
+    0034 call System.Boolean System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>::MoveNext()
+    0039 brtrue.s IL_000e: ldloca.s V_0
+    003B leave.s IL_004b: ldc.i4.0
+    003D ldloca.s V_0
+    003F constrained. System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>
+    0045 callvirt System.Void System.IDisposable::Dispose()
+    004A endfinally 
+    004B ldc.i4.0 
+    004C ret 
+    004D ldloc.2 
+    004E ret 
+
+  METHOD Boolean ContainsFragileCargo()
+    0000 ldarg.0 
+    0001 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0006 callvirt System.Collections.Generic.Dictionary`2/Enumerator<!0,!1> System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::GetEnumerator()
+    000B stloc.0 
+    000C br.s IL_0032: ldloca.s V_0
+    000E ldloca.s V_0
+    0010 call System.Collections.Generic.KeyValuePair`2<!0,!1> System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>::get_Current()
+    0015 stloc.1 
+    0016 ldloca.s V_1
+    0018 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    001D ldfld System.Boolean CargoType::fragile
+    0022 brfalse.s IL_0032: ldloca.s V_0
+    0024 ldloca.s V_1
+    0026 call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    002B ldc.i4.0 
+    002C ble.s IL_0032: ldloca.s V_0
+    002E ldc.i4.1 
+    002F stloc.2 
+    0030 leave.s IL_004d: ldloc.2
+    0032 ldloca.s V_0
+    0034 call System.Boolean System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>::MoveNext()
+    0039 brtrue.s IL_000e: ldloca.s V_0
+    003B leave.s IL_004b: ldc.i4.0
+    003D ldloca.s V_0
+    003F constrained. System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>
+    0045 callvirt System.Void System.IDisposable::Dispose()
+    004A endfinally 
+    004B ldc.i4.0 
+    004C ret 
+    004D ldloc.2 
+    004E ret 
+
+  METHOD Single GetCargoMass()
+    0000 ldc.r4 0
+    0005 stloc.0 
+    0006 ldarg.0 
+    0007 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    000C callvirt System.Collections.Generic.Dictionary`2/Enumerator<!0,!1> System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::GetEnumerator()
+    0011 stloc.1 
+    0012 br.s IL_0034: ldloca.s V_1
+    0014 ldloca.s V_1
+    0016 call System.Collections.Generic.KeyValuePair`2<!0,!1> System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>::get_Current()
+    001B stloc.2 
+    001C ldloc.0 
+    001D ldloca.s V_2
+    001F call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    0024 ldfld System.Single CargoType::weight
+    0029 ldloca.s V_2
+    002B call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    0030 conv.r4 
+    0031 mul 
+    0032 add 
+    0033 stloc.0 
+    0034 ldloca.s V_1
+    0036 call System.Boolean System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>::MoveNext()
+    003B brtrue.s IL_0014: ldloca.s V_1
+    003D leave.s IL_004d: ldloc.0
+    003F ldloca.s V_1
+    0041 constrained. System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>
+    0047 callvirt System.Void System.IDisposable::Dispose()
+    004C endfinally 
+    004D ldloc.0 
+    004E ret 
+
+  METHOD Void ClearInventory()
+    0000 ldarg.0 
+    0001 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0006 callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+    000B ldc.i4.1 
+    000C sub 
+    000D stloc.0 
+    000E br.s IL_0046: ldloc.0
+    0010 ldarg.0 
+    0011 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0016 ldloc.0 
+    0017 call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+    001C stloc.1 
+    001D ldloca.s V_1
+    001F call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    0024 stloc.2 
+    0025 ldloca.s V_1
+    0027 call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    002C stloc.3 
+    002D ldarg.0 
+    002E ldloc.2 
+    002F ldloc.3 
+    0030 call System.Void CargoInventory::RemoveCargo(CargoType,System.Int32)
+    0035 ldarg.0 
+    0036 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    003B ldloc.2 
+    003C callvirt System.Boolean System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::Remove(!0)
+    0041 pop 
+    0042 ldloc.0 
+    0043 ldc.i4.1 
+    0044 sub 
+    0045 stloc.0 
+    0046 ldloc.0 
+    0047 ldc.i4.0 
+    0048 bge.s IL_0010: ldarg.0
+    004A ldarg.0 
+    004B ldc.r4 0
+    0050 call System.Void CargoInventory::set_CurrentVolume(System.Single)
+    0055 ldarg.0 
+    0056 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    005B callvirt System.Void System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::Clear()
+    0060 ret 
+
+  METHOD Void ClearExpirableCargo()
+    0000 call T Singleton`1<GameManager>::get_Instance()
+    0005 ldfld GameModeData GameManager::gameModeData
+    000A ldfld Difficulty GameModeData::currentDifficulty
+    000F brtrue.s IL_0012: ldnull
+    0011 ret 
+    0012 ldnull 
+    0013 stloc.0 
+    0014 ldarg.0 
+    0015 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    001A callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+    001F ldc.i4.1 
+    0020 sub 
+    0021 stloc.1 
+    0022 br.s IL_006b: ldloc.1
+    0024 ldarg.0 
+    0025 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    002A ldloc.1 
+    002B call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+    0030 stloc.2 
+    0031 ldloca.s V_2
+    0033 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    0038 stloc.3 
+    0039 ldloca.s V_2
+    003B call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    0040 stloc.s V_4
+    0042 ldloc.3 
+    0043 ldfld System.Boolean CargoType::expires
+    0048 brfalse.s IL_0067: ldloc.1
+    004A ldloc.s V_4
+    004C ldc.i4.0 
+    004D ble.s IL_0051: ldarg.0
+    004F ldloc.3 
+    0050 stloc.0 
+    0051 ldarg.0 
+    0052 ldloc.3 
+    0053 ldloc.s V_4
+    0055 call System.Void CargoInventory::RemoveCargo(CargoType,System.Int32)
+    005A ldarg.0 
+    005B ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0060 ldloc.3 
+    0061 callvirt System.Boolean System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::Remove(!0)
+    0066 pop 
+    0067 ldloc.1 
+    0068 ldc.i4.1 
+    0069 sub 
+    006A stloc.1 
+    006B ldloc.1 
+    006C ldc.i4.0 
+    006D bge.s IL_0024: ldarg.0
+    006F ldloc.0 
+    0070 ldnull 
+    0071 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+    0076 brfalse.s IL_008c: ret
+    0078 ldarg.0 
+    0079 ldfld System.Action`1<CargoType> CargoInventory::ExpirableCargoCleared
+    007E brfalse.s IL_008c: ret
+    0080 ldarg.0 
+    0081 ldfld System.Action`1<CargoType> CargoInventory::ExpirableCargoCleared
+    0086 ldloc.0 
+    0087 callvirt System.Void System.Action`1<CargoType>::Invoke(!0)
+    008C ret 
+
+  METHOD Void ClearFragileCargo(Single breakPercentage)
+    0000 call T Singleton`1<GameManager>::get_Instance()
+    0005 ldfld GameModeData GameManager::gameModeData
+    000A ldfld Difficulty GameModeData::currentDifficulty
+    000F brtrue.s IL_0012: call System.Single UnityEngine.Time::get_time()
+    0011 ret 
+    0012 call System.Single UnityEngine.Time::get_time()
+    0017 ldarg.0 
+    0018 ldfld System.Single CargoInventory::lastBreakTime
+    001D sub 
+    001E ldarg.0 
+    001F ldfld System.Single CargoInventory::breakageCooldown
+    0024 bge.un.s IL_002d: ldnull
+    0026 ldc.r4 0
+    002B starg.s breakPercentage
+    002D ldnull 
+    002E stloc.0 
+    002F ldc.i4.0 
+    0030 stloc.1 
+    0031 ldarg.0 
+    0032 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0037 callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+    003C ldc.i4.1 
+    003D sub 
+    003E stloc.s V_4
+    0040 br.s IL_0079: ldloc.s V_4
+    0042 ldarg.0 
+    0043 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0048 ldloc.s V_4
+    004A call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+    004F stloc.s V_5
+    0051 ldloca.s V_5
+    0053 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    0058 ldfld System.Boolean CargoType::fragile
+    005D brfalse.s IL_0073: ldloc.s V_4
+    005F ldloca.s V_5
+    0061 call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    0066 ldc.i4.0 
+    0067 ble.s IL_0073: ldloc.s V_4
+    0069 ldloc.1 
+    006A ldloca.s V_5
+    006C call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    0071 add 
+    0072 stloc.1 
+    0073 ldloc.s V_4
+    0075 ldc.i4.1 
+    0076 sub 
+    0077 stloc.s V_4
+    0079 ldloc.s V_4
+    007B ldc.i4.0 
+    007C bge.s IL_0042: ldarg.0
+    007E ldarg.1 
+    007F ldloc.1 
+    0080 conv.r4 
+    0081 mul 
+    0082 call System.Int32 UnityEngine.Mathf::RoundToInt(System.Single)
+    0087 stloc.2 
+    0088 ldloc.2 
+    0089 stloc.3 
+    008A ldloc.2 
+    008B ldc.i4.0 
+    008C ble.s IL_0099: ldarg.0
+    008E ldarg.0 
+    008F call System.Single UnityEngine.Time::get_time()
+    0094 stfld System.Single CargoInventory::lastBreakTime
+    0099 ldarg.0 
+    009A ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    009F callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+    00A4 ldc.i4.1 
+    00A5 sub 
+    00A6 stloc.s V_6
+    00A8 br.s IL_010a: ldloc.s V_6
+    00AA ldarg.0 
+    00AB ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    00B0 ldloc.s V_6
+    00B2 call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+    00B7 stloc.s V_7
+    00B9 ldloca.s V_7
+    00BB call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    00C0 stloc.s V_8
+    00C2 ldloca.s V_7
+    00C4 call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    00C9 stloc.s V_9
+    00CB ldloc.s V_8
+    00CD ldfld System.Boolean CargoType::fragile
+    00D2 brfalse.s IL_0104: ldloc.s V_6
+    00D4 ldloc.s V_9
+    00D6 ldc.i4.0 
+    00D7 ble.s IL_0104: ldloc.s V_6
+    00D9 ldloc.s V_9
+    00DB ldloc.3 
+    00DC call System.Int32 UnityEngine.Mathf::Min(System.Int32,System.Int32)
+    00E1 stloc.s V_10
+    00E3 ldarg.0 
+    00E4 ldloc.s V_8
+    00E6 ldloc.s V_10
+    00E8 call System.Void CargoInventory::RemoveCargo(CargoType,System.Int32)
+    00ED ldloc.s V_10
+    00EF ldloc.s V_9
+    00F1 bne.un.s IL_0101: ldloc.s V_8
+    00F3 ldarg.0 
+    00F4 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    00F9 ldloc.s V_8
+    00FB callvirt System.Boolean System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::Remove(!0)
+    0100 pop 
+    0101 ldloc.s V_8
+    0103 stloc.0 
+    0104 ldloc.s V_6
+    0106 ldc.i4.1 
+    0107 sub 
+    0108 stloc.s V_6
+    010A ldloc.s V_6
+    010C ldc.i4.0 
+    010D bge.s IL_00aa: ldarg.0
+    010F ldloc.0 
+    0110 ldnull 
+    0111 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+    0116 brfalse.s IL_0139: ret
+    0118 ldloc.2 
+    0119 ldc.i4.0 
+    011A ble.s IL_0139: ret
+    011C call T Singleton`1<AudioManager>::get_Instance()
+    0121 ldarg.0 
+    0122 ldfld AudioDef CargoInventory::glassBreaking
+    0127 callvirt System.Void AudioManager::PlaySound(AudioDef)
+    012C ldarg.0 
+    012D ldfld System.Action`2<CargoType,System.Int32> CargoInventory::FragileCargoCleared
+    0132 ldloc.0 
+    0133 ldloc.2 
+    0134 callvirt System.Void System.Action`2<CargoType,System.Int32>::Invoke(!0,!1)
+    0139 ret 
+
+  METHOD Void ClearAll()
+    0000 ldarg.0 
+    0001 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0006 callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+    000B ldc.i4.1 
+    000C sub 
+    000D stloc.0 
+    000E br.s IL_0046: ldloc.0
+    0010 ldarg.0 
+    0011 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0016 ldloc.0 
+    0017 call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+    001C stloc.1 
+    001D ldloca.s V_1
+    001F call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    0024 stloc.2 
+    0025 ldloca.s V_1
+    0027 call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    002C stloc.3 
+    002D ldarg.0 
+    002E ldloc.2 
+    002F ldloc.3 
+    0030 call System.Void CargoInventory::RemoveCargo(CargoType,System.Int32)
+    0035 ldarg.0 
+    0036 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    003B ldloc.2 
+    003C callvirt System.Boolean System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::Remove(!0)
+    0041 pop 
+    0042 ldloc.0 
+    0043 ldc.i4.1 
+    0044 sub 
+    0045 stloc.0 
+    0046 ldloc.0 
+    0047 ldc.i4.0 
+    0048 bge.s IL_0010: ldarg.0
+    004A ret 
+
+  METHOD Dictionary`2 GetCurrentCargo()
+    0000 ldarg.0 
+    0001 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0006 newobj System.Void System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::.ctor(System.Collections.Generic.IDictionary`2<!0,!1>)
+    000B ret 
+
+  METHOD Void Save(GameDataWriter writer)
+    0000 ldarg.1 
+    0001 ldarg.0 
+    0002 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0007 callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+    000C callvirt System.Void GameDataWriter::Write(System.Int32)
+    0011 ldarg.1 
+    0012 ldarg.0 
+    0013 call System.Single CargoInventory::get_CurrentVolume()
+    0018 callvirt System.Void GameDataWriter::Write(System.Single)
+    001D ldc.i4.0 
+    001E stloc.0 
+    001F br.s IL_005a: ldloc.0
+    0021 ldarg.0 
+    0022 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0027 ldloc.0 
+    0028 call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+    002D stloc.1 
+    002E ldloca.s V_1
+    0030 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+    0035 stloc.2 
+    0036 ldloca.s V_1
+    0038 call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+    003D stloc.3 
+    003E ldarg.1 
+    003F call T Singleton`1<AirportManager>::get_Instance()
+    0044 ldloc.2 
+    0045 callvirt System.Int32 AirportManager::CargoTypeToIndex(CargoType)
+    004A callvirt System.Void GameDataWriter::Write(System.Int32)
+    004F ldarg.1 
+    0050 ldloc.3 
+    0051 callvirt System.Void GameDataWriter::Write(System.Int32)
+    0056 ldloc.0 
+    0057 ldc.i4.1 
+    0058 add 
+    0059 stloc.0 
+    005A ldloc.0 
+    005B ldarg.0 
+    005C ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    0061 callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+    0066 blt.s IL_0021: ldarg.0
+    0068 ret 
+
+  METHOD Void Load(GameDataReader reader)
+    0000 ldarg.1 
+    0001 callvirt System.Int32 GameDataReader::ReadInt()
+    0006 stloc.0 
+    0007 ldarg.0 
+    0008 ldarg.1 
+    0009 callvirt System.Single GameDataReader::ReadFloat()
+    000E call System.Void CargoInventory::set_CurrentVolume(System.Single)
+    0013 ldc.i4.0 
+    0014 stloc.1 
+    0015 br.s IL_0049: ldloc.1
+    0017 ldarg.1 
+    0018 callvirt System.Int32 GameDataReader::ReadInt()
+    001D stloc.2 
+    001E ldarg.1 
+    001F callvirt System.Int32 GameDataReader::ReadInt()
+    0024 stloc.3 
+    0025 ldloc.2 
+    0026 ldc.i4.m1 
+    0027 beq.s IL_0045: ldloc.1
+    0029 call T Singleton`1<AirportManager>::get_Instance()
+    002E ldfld CargoType[] AirportManager::allCargoTypes
+    0033 ldloc.2 
+    0034 ldelem.ref 
+    0035 stloc.s V_4
+    0037 ldarg.0 
+    0038 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    003D ldloc.s V_4
+    003F ldloc.3 
+    0040 callvirt System.Void System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::Add(!0,!1)
+    0045 ldloc.1 
+    0046 ldc.i4.1 
+    0047 add 
+    0048 stloc.1 
+    0049 ldloc.1 
+    004A ldloc.0 
+    004B blt.s IL_0017: ldarg.1
+    004D ret 
+
+  METHOD Void .ctor()
+    0000 ldarg.0 
+    0001 newobj System.Void System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::.ctor()
+    0006 stfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+    000B ldarg.0 
+    000C call System.Void Singleton`1<CargoInventory>::.ctor()
+    0011 ret 
+
+==== TYPE PlaneContainer ====
+  FIELD Single helicopter
+  FIELD Single yawDrag
+  FIELD Single rollDrag
+  FIELD Single pitchDrag
+  FIELD Single verticalLiniarDrag
+  FIELD Single angleDragMultiplier
+  FIELD Single liftSymmetry
+  FIELD Single thrustSymmetry
+  FIELD Single gravityForce
+  FIELD Single planeGravityMultiplier
+  FIELD Single helicopterGravityMultiplier
+  FIELD Single liftMultiplier
+  FIELD LayerMask groundedCheckLayerMask
+  FIELD Single maxCGShift
+  FIELD Single fuelWeight
+  FIELD Rigidbody rb
+  FIELD PlaneController controller
+  FIELD PartExploder exploder
+  FIELD Single mass
+  FIELD Single drag
+  FIELD Vector3 cachedLocalForward
+  FIELD List`1 planeParts
+  FIELD Single <cargoVolume>k__BackingField
+  FIELD Single fuel
+  FIELD Single fuelCapacity
+  FIELD Single refrenceFuelCapacity
+  FIELD Single electricity
+  FIELD Single electricityStorageCapacity
+  FIELD Single refrenceElectricityStorageCapacity
+  FIELD Vector3 spawnPoint
+  FIELD Single airbreakDrag
+  FIELD Boolean <FlightModeInitialized>k__BackingField
+  FIELD Boolean <hasRetractableGear>k__BackingField
+  FIELD Boolean <hasBalloons>k__BackingField
+  FIELD Single previousVelocity
+  FIELD Boolean <IsAccelerating>k__BackingField
+  FIELD Engine[] engines
+  FIELD Single currentLift
+
+  METHOD Void Refuel()
+    0000 ldarg.0 
+    0001 ldarg.0 
+    0002 ldfld System.Single PlaneContainer::fuelCapacity
+    0007 stfld System.Single PlaneContainer::fuel
+    000C ldarg.0 
+    000D ldarg.0 
+    000E ldfld System.Single PlaneContainer::electricityStorageCapacity
+    0013 stfld System.Single PlaneContainer::electricity
+    0018 ret 
+
+  METHOD Vector3 CalculateCenterOfMass(Boolean worldPosition)
+    0000 call UnityEngine.Vector3 UnityEngine.Vector3::get_zero()
+    0005 stloc.0 
+    0006 ldc.r4 0
+    000B stloc.1 
+    000C ldarg.0 
+    000D ldc.i4.1 
+    000E call !!0[] UnityEngine.Component::GetComponentsInChildren<PlanePart>(System.Boolean)
+    0013 stloc.2 
+    0014 ldc.i4.0 
+    0015 stloc.s V_5
+    0017 br.s IL_004f: ldloc.s V_5
+    0019 ldloc.0 
+    001A ldarg.0 
+    001B ldloc.2 
+    001C ldloc.s V_5
+    001E ldelem.ref 
+    001F callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+    0024 call UnityEngine.Vector3 PlaneContainer::GetPartPosition(UnityEngine.GameObject)
+    0029 ldloc.2 
+    002A ldloc.s V_5
+    002C ldelem.ref 
+    002D ldfld System.Single PlanePart::weight
+    0032 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+    0037 call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+    003C stloc.0 
+    003D ldloc.1 
+    003E ldloc.2 
+    003F ldloc.s V_5
+    0041 ldelem.ref 
+    0042 ldfld System.Single PlanePart::weight
+    0047 add 
+    0048 stloc.1 
+    0049 ldloc.s V_5
+    004B ldc.i4.1 
+    004C add 
+    004D stloc.s V_5
+    004F ldloc.s V_5
+    0051 ldloc.2 
+    0052 ldlen 
+    0053 conv.i4 
+    0054 blt.s IL_0019: ldloc.0
+    0056 ldloc.0 
+    0057 ldloc.1 
+    0058 call UnityEngine.Vector3 UnityEngine.Vector3::op_Division(UnityEngine.Vector3,System.Single)
+    005D stloc.3 
+    005E ldarg.0 
+    005F call UnityEngine.Transform UnityEngine.Component::get_transform()
+    0064 ldloc.3 
+    0065 callvirt UnityEngine.Vector3 UnityEngine.Transform::InverseTransformPoint(UnityEngine.Vector3)
+    006A stloc.s V_4
+    006C ldarg.1 
+    006D brfalse.s IL_007d: ldloc.s V_4
+    006F ldarg.0 
+    0070 call UnityEngine.Transform UnityEngine.Component::get_transform()
+    0075 ldloc.s V_4
+    0077 callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformPoint(UnityEngine.Vector3)
+    007C ret 
+    007D ldloc.s V_4
+    007F ret 
+
+  METHOD Void ChangeMass(Single deltaMass)
+    0000 ldarg.0 
+    0001 ldarg.0 
+    0002 ldfld System.Single PlaneContainer::mass
+    0007 ldarg.1 
+    0008 ldc.r4 15
+    000D div 
+    000E add 
+    000F stfld System.Single PlaneContainer::mass
+    0014 ldarg.0 
+    0015 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+    001A dup 
+    001B callvirt System.Single UnityEngine.Rigidbody::get_mass()
+    0020 ldarg.1 
+    0021 ldc.r4 15
+    0026 div 
+    0027 add 
+    0028 callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+    002D ret 
+
+  METHOD Single GetMass()
+    0000 ldarg.0 
+    0001 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+    0006 ldnull 
+    0007 call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+    000C brfalse.s IL_0014: ldarg.0
+    000E ldc.r4 0
+    0013 ret 
+    0014 ldarg.0 
+    0015 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+    001A callvirt System.Single UnityEngine.Rigidbody::get_mass()
+    001F ret 

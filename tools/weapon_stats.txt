@@ -1,0 +1,19 @@
+=== Aviassembly 武器交战日志分析 (DEV Machine.log) ===
+
+-- 带武器名的发射距离 (玩家/自测发射) --
+  R-37                   n=187 min=376 med=5653 mean=5568 max=10583
+
+-- 无武器名的 AI 发射距离 (默认 aiMissile=R-37) --
+  n=63 min=1086 med=6615 mean=5692 max=6750
+
+-- 总体 MISSILE HIT 表现 (日志不带武器名, 不能逐武器归因) --
+  命中距离 n=117 min=2 med=20 mean=19 max=44
+  命中用时 n=117 min=4 med=82 mean=83 max=249
+  命中速度 n=117 min=126 med=690 mean=635 max=721
+  命中时触发过避障: 29 / 117 (25%)
+
+-- 雷达锁定距离 (FactionSystem 雷达能力, 非武器) --
+  n=107 min=1086 med=7797 mean=7526 max=15967
+
+注: 逐武器命中率无法从本日志归因 (MISSILE HIT 无武器名)；
+    BR 主值来自武器固有参数(速度×寿命=有效射程)+速度档, 日志用于校准/验证。

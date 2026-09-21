@@ -1,0 +1,15 @@
+ReflectionTypeLoadException, loaded 375/378
+== types with Explosion/Particle/Crash/Boom/Effect in name ==
+EngineParticle
+PlaneParticleTypes
+ParticleSpawner
+PlaneParticle
+WheelParticle
+PlacementParticle
+PriceFeedbackManager+PersistentParticleInfo
+== methods Explode/Explosion (first 30) ==
+PartExploder :: ExplodePlane
+PartExploder :: ExplodePart
+PlaneController :: get_Exploded
+PlaneController :: set_Exploded
+PlaneController :: ExplodePlane

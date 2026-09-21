@@ -1,0 +1,11 @@
+now = 23:00:10 deadline=480s tag=ship save=AutoSave 0
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\_points_test.flag
+log start offset = 1749834
+started pid = 13116
+t=33s newLog=39549 done=False
+t=38s newLog=42408 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\faction_run_log_ship.txt length=42408
+game alive before stop = True
+game stopped

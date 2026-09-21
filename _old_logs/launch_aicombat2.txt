@@ -1,0 +1,10 @@
+now = 00:13:32 deadline=300s tag=aicombat
+pre-existing instance cleared
+log start offset = 2488725
+started pid = 39356
+t=30s newLog=42432 done=False
+t=50s newLog=52866 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\aam_run_log_aicombat.txt length=52866
+game alive before stop = True
+game stopped

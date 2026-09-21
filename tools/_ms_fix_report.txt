@@ -1,0 +1,2 @@
+game closed at 14:25:35
+BUILD FAILED: bin\mods\MachineShop.dll missing

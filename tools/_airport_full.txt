@@ -1,0 +1,208 @@
+===== TYPE Airport =====
+  FIELD System.String id pub
+  FIELD CargoType[] cargoType pub
+  FIELD UnityEngine.Vector3 <position>k__BackingField
+  FIELD UnityEngine.Vector3 <spawnPoint>k__BackingField
+  FIELD UnityEngine.Vector3 <spawnDirection>k__BackingField
+  FIELD System.Boolean IsBaseAirport pub
+  FIELD Quest currentQuest pub
+  FIELD System.Collections.Generic.List`1<Quest> allQuests pub
+  FIELD AirportData data pub
+  FIELD System.Boolean cargoLocked pub
+  FIELD System.String airportName pub
+  FIELD UnityEngine.Texture collisionMap pub
+  FIELD System.Boolean questBlocked pub
+  FIELD System.Boolean questInitialized pub
+  FIELD AirportManager manager
+  FIELD System.Boolean hospitalMessagePlayed
+  FIELD System.String landingMessage pub
+  FIELD FlatnessRectangle flatnessObject pub
+  FIELD FlatnessRectangle treeSpawningFootprint pub
+  PROP UnityEngine.Vector3 position {get;}
+  PROP UnityEngine.Vector3 spawnPoint {get;}
+  PROP UnityEngine.Vector3 spawnDirection {get;}
+  METHOD get_position() : Vector3 pub [CompilerGeneratedAttribute]
+  METHOD set_position(Vector3 value) : Void [CompilerGeneratedAttribute]
+  METHOD get_spawnPoint() : Vector3 pub [CompilerGeneratedAttribute]
+  METHOD set_spawnPoint(Vector3 value) : Void [CompilerGeneratedAttribute]
+  METHOD get_spawnDirection() : Vector3 pub [CompilerGeneratedAttribute]
+  METHOD set_spawnDirection(Vector3 value) : Void [CompilerGeneratedAttribute]
+  METHOD Init(Vector3 position) : Void pub
+  METHOD CargoUnlocked() : Boolean pub
+  METHOD SetAirportData(AirportData airportData,ContinentData continent) : Void pub
+  METHOD PlaneLandedAtAirport() : Void pub
+  METHOD TextDisplayCallback(Boolean completed) : Void
+  METHOD ContainsCargoType(CargoType cargoType) : Boolean pub
+  METHOD GetPrice(CargoType cargoType) : Single pub
+  METHOD Save(GameDataWriter writer,Int64 writerPosition) : Void pub
+  METHOD GetQuestSize(Quest quest) : Int64 pub
+  METHOD Load(GameDataReader reader) : Void pub
+  METHOD GetQuest(String id) : Quest
+  METHOD .ctor() : Void pub
+===== TYPE AirportData =====
+  [attr] UnityEngine.CreateAssetMenuAttribute
+  FIELD UnityEngine.GameObject airportPrefab pub
+  FIELD System.String airportName pub
+  FIELD System.Boolean lockedCargo pub
+  FIELD System.Boolean refuelAvailable pub
+  FIELD CargoType[] cargoTypes pub
+  FIELD System.Boolean baseAirport pub
+  FIELD System.Boolean initialSpawnAirport pub
+  FIELD System.Boolean rotationOverride pub
+  FIELD System.Single rotation pub
+  FIELD UnityEngine.Vector2 footprint pub
+  FIELD UnityEngine.Vector2 treeSpawningFootprint pub
+  FIELD System.Single blendingDistance pub
+  FIELD System.Boolean offshoreAirport pub
+  FIELD UnityEngine.Rect editorWindow pub
+  FIELD System.Collections.Generic.List`1<QuestData> quests pub
+  FIELD System.Collections.Generic.List`1<QuestData> baseQuests pub
+  FIELD System.String landingMessage pub
+  METHOD GetAirportWorldPosition() : Vector3 pub
+  METHOD .ctor() : Void pub
+===== TYPE AirportHighlighter =====
+  [attr] UnityEngine.RequireComponent
+  FIELD TMPro.TMP_Text headerText pub
+  FIELD TMPro.TMP_Text distanceText pub
+  FIELD UnityEngine.Vector3 airportPostition pub
+  FIELD UnityEngine.UI.RawImage icon pub
+  FIELD UnityEngine.Texture defaultIcon pub
+  FIELD UnityEngine.Texture helicopterIcon pub
+  FIELD UnityEngine.CanvasGroup canvasGroup
+  METHOD Awake() : Void
+  METHOD Start() : Void
+  METHOD SetAlpha(Single alpha) : Void pub
+  METHOD Update() : Void
+  METHOD .ctor() : Void pub
+===== TYPE AirportInspector =====
+  FIELD UnityEngine.Transform compass pub
+  FIELD UnityEngine.GameObject cargobutton pub
+  FIELD UnityEngine.GameObject editPlaneButton pub
+  FIELD UnityEngine.GameObject ratingButton pub
+  FIELD UnityEngine.UI.Button refuelButton pub
+  FIELD AirportInspector/InspectorButtonData[] allButtons
+  FIELD UnityEngine.UI.RawImage airportIconImage pub
+  FIELD UnityEngine.Texture airportIcon pub
+  FIELD UnityEngine.Texture baseIcon pub
+  FIELD UnityEngine.CanvasGroup refuelButtonCanvasGroup pub
+  FIELD TooltipTrigger refuelTooltip pub
+  FIELD UnityEngine.GameObject newQuestAddedHighlighter pub
+  FIELD UnityEngine.GameObject researchButton pub
+  FIELD UnityEngine.GameObject buttonPrompt pub
+  FIELD TMPro.TMP_Text title pub
+  FIELD UnityEngine.RectTransform airportNameBackground pub
+  FIELD UnityEngine.GameObject cargoHider pub
+  FIELD UnityEngine.AnimationCurve animCurve pub
+  FIELD UnityEngine.AnimationCurve fadeOutCurve pub
+  FIELD System.Single animSpeed pub
+  FIELD UnityEngine.Transform highlighter pub
+  FIELD System.Boolean buttonsEnabled
+  FIELD System.Boolean UILocked
+  METHOD Start() : Void
+  METHOD Update() : Void
+  METHOD SetEnabled(Boolean enabled,Boolean lockUI) : Void pub
+  METHOD SetAirport(Airport airport) : Void pub
+  METHOD EditPlane() : Void pub
+  METHOD .ctor() : Void pub
+===== TYPE AirportManager =====
+  FIELD CargoType[] allCargoTypes pub
+  FIELD AirportSpawner airportSpawner pub
+  FIELD UnityEngine.GameObject airportHighlighterPrefab pub
+  FIELD System.Collections.Generic.List`1<Airport> airports pub
+  FIELD System.Collections.Generic.List`1<Quest> hoveredQuests pub
+  FIELD UnityEngine.Vector3 <CurrentBaseAirport>k__BackingField
+  FIELD UnityEngine.Vector3 <LastAirport>k__BackingField
+  FIELD System.Single <FuelAtLand>k__BackingField
+  FIELD System.Single <ElecticityAtLand>k__BackingField
+  FIELD System.Boolean airportHover pub static
+  FIELD ContinentManager continentManager
+  PROP UnityEngine.Vector3 CurrentBaseAirport {get;}
+  PROP UnityEngine.Vector3 LastAirport {get;}
+  PROP System.Single FuelAtLand {get;}
+  PROP System.Single ElecticityAtLand {get;}
+  METHOD get_CurrentBaseAirport() : Vector3 pub [CompilerGeneratedAttribute]
+  METHOD set_CurrentBaseAirport(Vector3 value) : Void [CompilerGeneratedAttribute]
+  METHOD get_LastAirport() : Vector3 pub [CompilerGeneratedAttribute]
+  METHOD set_LastAirport(Vector3 value) : Void [CompilerGeneratedAttribute]
+  METHOD get_FuelAtLand() : Single pub [CompilerGeneratedAttribute]
+  METHOD set_FuelAtLand(Single value) : Void [CompilerGeneratedAttribute]
+  METHOD get_ElecticityAtLand() : Single pub [CompilerGeneratedAttribute]
+  METHOD set_ElecticityAtLand(Single value) : Void [CompilerGeneratedAttribute]
+  METHOD Init() : Void pub
+  METHOD GetAirportRotation(Airport airport) : Quaternion pub
+  METHOD InitFlatObjects() : Void pub
+  METHOD SetInitialAirport() : Void pub
+  METHOD CargoTypeToIndex(CargoType type) : Int32 pub
+  METHOD CargoTypeFromName(String name) : CargoType pub
+  METHOD AddAirport(Airport airport) : Void pub
+  METHOD GetClosestAirport(Vector3 position) : Airport pub
+  METHOD GetAirport(AirportData airportData) : Airport pub
+  METHOD GetClosestCargoType(Vector3 position) : CargoType[] pub
+  METHOD GetClosestAirport(Vector3 position,CargoType cargoType) : Airport pub
+  METHOD GetCargoAirport(CargoType cargoType) : Airport pub
+  METHOD ResetAtLastAirport() : Void pub
+  METHOD GetUnfinishedMissionCount() : Int32 pub
+  METHOD Update() : Void
+  METHOD GetHomeBase() : Airport pub
+  METHOD Save(GameDataWriter writer) : Void pub
+  METHOD Load(GameDataReader reader) : Void pub
+  METHOD FindAirport(String id) : Airport
+  METHOD .ctor() : Void pub
+===== TYPE AirportMapIcon =====
+  FIELD Airport airport pub
+  FIELD MapInspector panel pub
+  FIELD UnityEngine.RectTransform outline pub
+  FIELD UnityEngine.UI.RawImage icon pub
+  FIELD UnityEngine.UI.RawImage highlighter pub
+  FIELD System.Single highlighterBlinkSpeed pub
+  FIELD UnityEngine.Texture defaultIcon pub
+  FIELD UnityEngine.Texture heliIcon pub
+  FIELD UnityEngine.Texture baseIcon pub
+  FIELD UnityEngine.GameObject completedCheckmark pub
+  FIELD AirportTooltipData tooltipData pub static
+  FIELD UnityEngine.UI.Button button
+  FIELD System.Boolean hover
+  METHOD Awake() : Void
+  METHOD Update() : Void pub
+  METHOD OnPointerEnter(PointerEventData data) : Void pub
+  METHOD OnPointerExit(PointerEventData data) : Void pub
+  METHOD Select() : Void pub
+  METHOD .ctor() : Void pub
+  METHOD .cctor() : Void static
+===== TYPE AirportMoneyIndicator =====
+  FIELD TMPro.TMP_Text moneyIndicator pub
+  FIELD TMPro.TMP_Text scrapIndicator pub
+  FIELD TMPro.TMP_Text advancedScrapIndicator pub
+  FIELD UnityEngine.RectTransform moneyBackground pub
+  FIELD UnityEngine.CanvasGroup canvasGroup
+  FIELD System.Single alphaVelocity
+  FIELD System.Single targetAlpha
+  METHOD Start() : Void
+  METHOD Update() : Void
+  METHOD SetEnable(Boolean value,Boolean lockUI) : Void pub
+  METHOD .ctor() : Void pub
+===== TYPE AirportSpawner =====
+  FIELD System.Collections.Generic.List`1<UnityEngine.Vector3> airportPositions pub
+  FIELD AirportData defaultData pub
+  FIELD WorldAsset[] allWorldAssets pub
+  FIELD ContinentManager continentManager
+  FIELD System.Boolean initialized
+  METHOD Awake() : Void
+  METHOD Start() : Void
+  METHOD Init() : Void
+  METHOD InitAirportPositions() : Void
+  METHOD Load(GameDataReader reader) : Void pub
+  METHOD ChunkContainsAirport(Vector3 position) : Boolean pub
+  METHOD .ctor() : Void pub
+===== TYPE AirportSpawnPoint =====
+  FIELD UnityEngine.Transform spawnPoint pub
+  METHOD .ctor() : Void pub
+===== TYPE AirportTooltip =====
+  FIELD UnityEngine.GameObject prefab pub
+  FIELD System.Collections.Generic.List`1<CargoTooltipElement> elements
+  METHOD Start() : Void
+  METHOD Update() : Void
+  METHOD .ctor() : Void pub
+===== TYPE AirportTooltipData =====
+  FIELD System.Single[] prices pub
+  METHOD .ctor() : Void pub

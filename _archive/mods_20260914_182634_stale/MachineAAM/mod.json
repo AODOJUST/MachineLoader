@@ -1,0 +1,18 @@
+﻿{
+  "id": "machine.aam",
+  "name": "Air-to-Air Missile",
+  "version": "2.8.0",
+  "author": "Machine",
+  "description": "Experimental air-to-air missile (PL-15). The missile is a real flyable pseudo-aircraft rebuilt from its .planedesign file (game part prefabs + procedural fuselage), not a static model. Combat cargo: weight 10, cargo space 60, stored in the Combat Hold (BattleHold) with a large-font counter on the HUD. Launched with a hotkey and flown to the target by an in-house proportional-navigation AI autopilot with raycast terrain/obstacle avoidance (probe fan + ridge profile + AGL floor, so it no longer flies into mountains). AI entities never trigger voice alerts. Depends on BattleHold.",
+  "type": "code",
+  "code": {
+    "assemblies": [
+      "code/MachineAAM.dll"
+    ],
+    "mainClass": "Machine.AAM.Main"
+  },
+  "loadAfter": [
+    "machine.battlecore",
+    "machine.battlehold"
+  ]
+}

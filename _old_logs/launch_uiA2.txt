@@ -1,0 +1,11 @@
+now = 22:41:33 deadline=480s tag=uiA save=AutoSave 0
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\_points_test.flag
+log start offset = 1405613
+started pid = 12220
+t=30s newLog=38211 done=False
+t=45s newLog=43768 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\faction_run_log_uiA.txt length=43768
+game alive before stop = True
+game stopped

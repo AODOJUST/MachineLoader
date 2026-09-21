@@ -1,0 +1,72 @@
+csc   = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+core  = True  aam=True (189952 bytes)
+args = [/nologo] [/target:exe] [/out:D:\豆包的下载\Machine_Dev\tools\avoidsim\avoid_sim.exe] [/r:D:\豆包的下载\Machine_Dev\tools\avoidsim\UnityEngine.CoreModule.dll] [/r:D:\豆包的下载\Machine_Dev\tools\avoidsim\MachineAAM.dll] [/r:D:\豆包的下载\Machine_Dev\tools\avoidsim\netstandard.dll] [D:\豆包的下载\Machine_Dev\tools\avoid_sim.cs]
+work = [D:\豆包的下载\Machine_Dev\tools\avoidsim] tools=[D:\豆包的下载\Machine_Dev\tools] root=[D:\豆包的下载\Machine_Dev\]
+-- sim built OK
+---- sim output ----
+AAM terrain-avoidance offline sim
+(TerrainAvoid / PnGuidance 来自编译好的 MachineAAM.dll)
+
+      t=1.0 z=0 alt=600 vy=0 agl=600 threat=0.00 dir=-
+      t=1.5 z=502 alt=600 vy=3 agl=600 threat=0.08 dir=(0,1,0)
+      t=2.1 z=1055 alt=620 vy=125 agl=609 threat=1.00 dir=(0,1,0)
+      t=2.6 z=1606 alt=745 vy=313 agl=651 threat=0.63 dir=(0,1,0)
+      t=3.1 z=2121 alt=910 vy=305 agl=529 threat=0.42 dir=(0,1,0)
+      t=3.6 z=2594 alt=1067 vy=303 agl=208 threat=0.46 dir=(0,1,0)
+      t=4.1 z=3023 alt=1214 vy=268 agl=3 threat=0.67 dir=-
+      t=4.7 z=3416 alt=1310 vy=118 agl=119 threat=0.11 dir=-
+      t=5.2 z=3791 alt=1341 vy=8 agl=466 threat=0.00 dir=-
+      t=5.7 z=4152 alt=1322 vy=-75 agl=827 threat=0.00 dir=-
+      t=6.2 z=4503 alt=1266 vy=-136 agl=1045 threat=0.00 dir=-
+      t=6.7 z=4845 alt=1182 vy=-180 agl=1103 threat=0.00 dir=-
+      t=7.3 z=5182 alt=1080 vy=-210 agl=1058 threat=0.00 dir=-
+      t=7.8 z=5516 alt=966 vy=-227 agl=961 threat=0.00 dir=-
+      t=8.3 z=5835 alt=850 vy=-237 agl=849 threat=0.00 dir=-
+      t=8.8 z=6154 alt=730 vy=-240 agl=730 threat=0.00 dir=-
+      t=9.3 z=6474 alt=610 vy=-241 agl=610 threat=0.01 dir=(0,1,0)
+== 山脊拦截 1250m（弹/靶 600m） ==
+   避障关: TERRAIN  minRange=4149m minAgl=-1m t=3.1s impactAlt=600m
+   避障开: HIT      minRange=14m minAgl=1m t=9.3s avoidEvents=33 maxThreat=1.00 maxAlt=1341m rays=1721
+   结论: PASS（避障前撞山 -> 避障后不撞）
+
+== 山脊后低空目标 900m 山（靶 300m） ==
+   避障关: TERRAIN  minRange=3913m minAgl=-1m t=2.9s impactAlt=462m
+   避障开: HIT      minRange=20m minAgl=1m t=8.1s avoidEvents=32 maxThreat=0.86 maxAlt=953m rays=1439
+   结论: PASS（避障前撞山 -> 避障后不撞）
+
+== 侧偏山体（目标在右侧） ==
+   避障关: TERRAIN  minRange=3599m minAgl=-1m t=3.5s impactAlt=700m
+   避障开: HIT      minRange=16m minAgl=5m t=7.8s avoidEvents=25 maxThreat=0.78 maxAlt=1033m rays=1184
+   结论: PASS（避障前撞山 -> 避障后不撞）
+
+== 控制组：平坦地形（必须命中） ==
+   避障关: HIT      minRange=10m minAgl=-1m t=7.1s
+   避障开: HIT      minRange=10m minAgl=600m t=7.1s avoidEvents=0 maxThreat=0.00 maxAlt=600m rays=906
+   结论: PASS（无山可撞，两者都不撞）
+
+== 控制组：起伏地形低空追瞄 ==
+   避障关: HIT      minRange=12m minAgl=-1m t=5.6s
+   避障开: HIT      minRange=22m minAgl=186m t=5.6s avoidEvents=4 maxThreat=0.42 maxAlt=260m rays=823
+   结论: PASS（无山可撞，两者都不撞）
+
+== 回归：离地 20m 平飞发射（不许被顶上天） ==
+   避障关: HIT      minRange=4m minAgl=-1m t=3.0s
+   避障开: HIT      minRange=16m minAgl=20m t=3.0s avoidEvents=1 maxThreat=0.28 maxAlt=160m rays=298
+   结论: PASS（无山可撞，两者都不撞）
+
+   顶高检查: 最高 160m <= 600m，通过
+
+== 贴地目标尾追（靶 60m，弹 900m 平飞起步）==
+   纯导引  : HIT      minRange=22m maxThreat=0.00 avoidEvents=0 maxAlt=900m
+   旧行为  : TIMEOUT  minRange=165m maxThreat=0.50 avoidEvents=25 maxAlt=2649m
+   目标优先: TERRAIN  minRange=26m maxThreat=0.18 avoidEvents=0 maxAlt=900m
+   最近接近距离: 旧 165m -> 目标优先 26m（引信 25m）
+   建议: PASS（避障不再顶开，已接近到引信附近）
+
+== 山脊后贴地目标（目标优先必须仍然翻山）==
+   旧行为  : TIMEOUT  minRange=147m maxThreat=0.82 avoidEvents=51 minAgl=2m
+   目标优先: TIMEOUT  minRange=2144m maxThreat=1.00 avoidEvents=21 minAgl=557m
+   结论: PASS（没有因为目标优先而撞山）
+
+done
+exit=0

@@ -1,0 +1,101 @@
+root    = D:\豆包的下载\Machine_Dev
+managed = D:\豆包的下载\Aviassembly_DEV\Aviassembly_Data\Managed
+csc     = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+== build FlightTrails.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\FlightTrails.dll
+-- FlightTrails OK
+== build VoiceAlerts.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\VoiceAlerts.dll
+-- VoiceAlerts OK
+== build BattleCore.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\BattleCore.dll
+src\Mods\BattleCore.cs(94,22): warning CS0414: �ֶΡ�Machine.BattleCore.BattleCoreSystem._dragging���Ѹ�ֵ��������ֵ��δʹ�ù�
+-- BattleCore OK
+== build BattleHold.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\BattleHold.dll
+src\Mods\BattleHold.cs(418,27): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\BattleHold.cs(710,56): warning CS0252: ��������������ñȽϣ���Ҫ��ȡֵ�Ƚϣ��뽫��ߵ�ֵǿ��ת��Ϊ���͡�PlaneContainer��
+-- BattleHold OK
+== build GMeter.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\GMeter.dll
+src\Mods\GMeter.cs(36,23): warning CS0414: �ֶΡ�GMeterMod.GMeterSystem._gravity���Ѹ�ֵ��������ֵ��δʹ�ù�
+-- GMeter OK
+== build GVision.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\GVision.dll
+-- GVision OK
+== build Radar.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\Radar.dll
+src\Mods\Radar.cs(192,30): warning CS0618: ��UnityEngine.Object.FindObjectOfType<T>()���ѹ�ʱ:��Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType��
+src\Mods\Radar.cs(245,35): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\Radar.cs(566,31): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\Radar.cs(1444,27): warning CS0618: ��UnityEngine.Object.FindObjectsOfType(System.Type, bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\Radar.cs(1571,27): warning CS0618: ��UnityEngine.Object.FindObjectsOfType(System.Type, bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\Radar.cs(518,29): warning CS0649: ��δ���ֶΡ�Machine.Radar.RadarSystem.ShopDiag����ֵ���ֶν�һֱ������Ĭ��ֵ false
+src\Mods\Radar.cs(1282,23): warning CS0169: �Ӳ�ʹ���ֶΡ�Machine.Radar.RadarSystem._rwrLastLow��
+src\Mods\Radar.cs(1282,36): warning CS0169: �Ӳ�ʹ���ֶΡ�Machine.Radar.RadarSystem._rwrLastMid��
+src\Mods\Radar.cs(1282,49): warning CS0169: �Ӳ�ʹ���ֶΡ�Machine.Radar.RadarSystem._rwrLastHigh��
+-- Radar OK
+== build MachineAAM.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\MachineAAM.dll
+src\Mods\MachineAAM.cs(7260,27): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>()���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\MachineAAM.cs(7784,33): warning CS0618: ��UnityEngine.Object.FindObjectOfType<T>()���ѹ�ʱ:��Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType��
+src\Mods\MachineAAM.cs(8513,31): warning CS0219: ������lockedTr���Ѹ�ֵ������ֵ��δʹ�ù�
+src\Mods\MachineAAM.cs(9406,34): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\MachineAAM.cs(9761,35): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\MachineAAM.cs(4425,22): warning CS0414: �ֶΡ�Machine.AAM.AiAircraft._everAirborne���Ѹ�ֵ��������ֵ��δʹ�ù�
+src\Mods\MachineAAM.cs(6046,24): warning CS0414: �ֶΡ�Machine.AAM.AamSystem.cfgFireKey���Ѹ�ֵ��������ֵ��δʹ�ù�
+src\Mods\MachineAAM.cs(6193,23): warning CS0169: �Ӳ�ʹ���ֶΡ�Machine.AAM.AamSystem._aiTimer��
+src\Mods\MachineAAM.cs(6194,21): warning CS0169: �Ӳ�ʹ���ֶΡ�Machine.AAM.AamSystem._aiSeq��
+src\Mods\MachineAAM.cs(6195,22): warning CS0169: �Ӳ�ʹ���ֶΡ�Machine.AAM.AamSystem._aiSeeded��
+src\Mods\MachineAAM.cs(6222,23): warning CS0414: �ֶΡ�Machine.AAM.AamSystem._lastRmbDown���Ѹ�ֵ��������ֵ��δʹ�ù�
+-- MachineAAM OK
+== build FactionSystem.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\FactionSystem.dll
+src\Mods\FactionSystem.cs(221,25): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\FactionSystem.cs(1005,29): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\FactionSystem.cs(1451,29): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\FactionSystem.cs(2313,35): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\FactionSystem.cs(2375,35): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\FactionSystem.cs(2540,25): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\FactionSystem.cs(3285,29): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+-- FactionSystem OK
+== build OptiMod.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\OptiMod.dll
+src\Mods\OptiMod.cs(91,22): warning CS0414: �ֶΡ�OptiMod.OptiSystem._killRootsTried���Ѹ�ֵ��������ֵ��δʹ�ù�
+-- OptiMod OK
+== build ZoomMod.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\ZoomMod.dll
+-- ZoomMod OK
+== build KillFeed.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\KillFeed.dll
+-- KillFeed OK
+== build MachineShop.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\MachineShop.dll
+src\Mods\MachineShop.cs(207,29): warning CS0219: ������mk���Ѹ�ֵ������ֵ��δʹ�ù�
+src\Mods\MachineShop.cs(365,35): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+src\Mods\MachineShop.cs(1073,36): warning CS0618: ��UnityEngine.Object.FindObjectOfType(System.Type)���ѹ�ʱ:��Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType��
+src\Mods\MachineShop.cs(1252,45): warning CS0618: ��UnityEngine.Object.FindObjectOfType(System.Type)���ѹ�ʱ:��Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType��
+src\Mods\MachineShop.cs(1288,51): warning CS0618: ��UnityEngine.Object.FindObjectOfType(System.Type)���ѹ�ʱ:��Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType��
+src\Mods\MachineShop.cs(44,22): warning CS0169: �Ӳ�ʹ���ֶΡ�MachineShopMod.MachineShopSystem._initialized��
+-- MachineShop OK
+== build DropTank.dll ==
+argc=29 out=/out:D:\豆包的下载\Machine_Dev\bin\mods\DropTank.dll
+src\Mods\DropTank.cs(630,35): warning CS0618: ��UnityEngine.Object.FindObjectsOfType<T>(bool)���ѹ�ʱ:��Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.��
+-- DropTank OK
+== BUILD OK ==
+BattleCore.dll 15360
+BattleHold.dll 69120
+CombatBay.dll 7680
+DropTank.dll 23552
+FactionSystem.dll 88064
+FlightTrails.dll 20480
+GMeter.dll 13824
+GVision.dll 18944
+KillFeed.dll 16384
+MachineAAM.dll 203264
+MachineAAM_check.dll 187904
+MachineShop.dll 46080
+OptiMod.dll 45056
+Radar.dll 65024
+VoiceAlerts.dll 24576
+ZoomMod.dll 6144

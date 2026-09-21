@@ -1,0 +1,13 @@
+== D:\豆包的下载\MachineLoader_work\mods\MachineShop exists=True
+   machineshop_config.json
+   mod.json
+   code\MachineShop.dll
+== D:\豆包的下载\MachineLoader_github\MachineLoader-main\mods\MachineShop exists=True
+   machineshop_config.json
+   mod.json
+   code\MachineShop.dll
+== D:\steam\steamapps\common\Aviassembly\mods\MachineShop exists=True
+   MachineShop.dll
+   machineshop_config.json
+   mod.json
+   code\MachineShop.dll

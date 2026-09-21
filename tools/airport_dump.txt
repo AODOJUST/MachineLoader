@@ -1,0 +1,3 @@
+scan dir: D:\steam\steamapps\common\Aviassembly\Aviassembly_Data
+files: 21
+TOTAL AirportData = 0

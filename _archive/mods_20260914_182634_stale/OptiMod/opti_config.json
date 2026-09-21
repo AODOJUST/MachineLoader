@@ -1,0 +1,53 @@
+{
+  "profiler": true,
+  "reportInterval": 4.0,
+  "hitchMs": 90,
+  "hitchLog": true,
+  "countObjects": true,
+  "meshVisible": false,
+  "camDetail": true,
+  "dumpRenderers": false,
+  "killRootRenderers": [],
+  "killComponents": [],
+  "phaseProbe": false,
+  "menuFixedDelta": 0.04,
+  "disableCameras": [],
+
+  "camProbe": true,
+  "probeScreenCameras": false,
+  "probeSec": 0.6,
+  "probeMaxBaseMs": 60,
+
+  "vSync": 0,
+  "targetFrameRate": 0,
+  "maxDeltaTime": 0.1,
+  "maxParticleDeltaTime": 0.03,
+
+  "fixedDeltaTime": -1,
+  "solverIterations": 4,
+  "solverVelocityIterations": -1,
+  "sleepThreshold": -1,
+  "particleRaycastBudget": 512,
+  "asyncUploadTimeSlice": 2,
+  "asyncUploadBufferSize": 16,
+  "maxQueuedFrames": -1,
+
+  "gcControl": true,
+  "gcSliceMs": 1.5,
+  "gcCeilingMB": 1400,
+  "stackTraceNone": true,
+  "dedupCameras": true,
+  "killDupMainCam": false,
+  "backgroundLoadingPriority": -1,
+  "enforceInterval": 5.0,
+  "warmupShaders": false,
+
+  "skinOffscreen": true,
+  "instancing": false,
+  "autoSyncTransforms": 0,
+  "sweepInterval": 60.0,
+
+  "shadowDistance": -1,
+  "lodBias": -1,
+  "pixelLightCount": -1
+}

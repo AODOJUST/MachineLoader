@@ -1,0 +1,49 @@
+now = 12:39:19 deadline=105s tag=flare4
+pre-existing instance cleared
+log start offset = 16521338
+started pid = 15240
+t=30s newLog=49922 done=False
+t=61s newLog=67501 done=False
+t=66s newLog=69920 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\aam_run_log_flare4.txt length=69920
+newshot aam_test_1.png 12:39:36 1513405 bytes
+newshot aam_test_1_chase.png 12:39:36 109170 bytes
+newshot aam_test_1_trail.png 12:39:36 179101 bytes
+newshot aam_test_10.png 12:39:48 1477386 bytes
+newshot aam_test_10_chase.png 12:39:48 43242 bytes
+newshot aam_test_10_trail.png 12:39:48 35863 bytes
+newshot aam_test_11.png 12:39:51 1516471 bytes
+newshot aam_test_11_chase.png 12:39:51 61840 bytes
+newshot aam_test_11_trail.png 12:39:51 50790 bytes
+newshot aam_test_12.png 12:39:54 1513096 bytes
+newshot aam_test_12_chase.png 12:39:54 25403 bytes
+newshot aam_test_12_trail.png 12:39:54 25221 bytes
+newshot aam_test_13.png 12:39:57 1514595 bytes
+newshot aam_test_14.png 12:40:01 1516203 bytes
+newshot aam_test_2.png 12:39:37 1518942 bytes
+newshot aam_test_2_chase.png 12:39:37 238656 bytes
+newshot aam_test_2_trail.png 12:39:37 248590 bytes
+newshot aam_test_3.png 12:39:38 1521552 bytes
+newshot aam_test_3_chase.png 12:39:38 255664 bytes
+newshot aam_test_3_trail.png 12:39:38 255335 bytes
+newshot aam_test_4.png 12:39:39 1519407 bytes
+newshot aam_test_4_chase.png 12:39:38 250594 bytes
+newshot aam_test_4_trail.png 12:39:38 246754 bytes
+newshot aam_test_5.png 12:39:39 1516082 bytes
+newshot aam_test_5_chase.png 12:39:39 207428 bytes
+newshot aam_test_5_trail.png 12:39:39 215938 bytes
+newshot aam_test_6.png 12:39:40 1522494 bytes
+newshot aam_test_6_chase.png 12:39:40 190667 bytes
+newshot aam_test_6_trail.png 12:39:40 189894 bytes
+newshot aam_test_7.png 12:39:41 1520635 bytes
+newshot aam_test_7_chase.png 12:39:41 188396 bytes
+newshot aam_test_7_trail.png 12:39:41 186957 bytes
+newshot aam_test_8.png 12:39:41 1514319 bytes
+newshot aam_test_8_chase.png 12:39:41 164492 bytes
+newshot aam_test_8_trail.png 12:39:41 169534 bytes
+newshot aam_test_9.png 12:39:45 1513141 bytes
+newshot aam_test_9_chase.png 12:39:44 46363 bytes
+newshot aam_test_9_trail.png 12:39:44 34901 bytes
+game alive before stop = True
+game stopped

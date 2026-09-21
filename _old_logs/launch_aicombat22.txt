@@ -1,0 +1,2 @@
+now = 00:17:55 deadline=300s tag=aicombat2
+ABORT: Aviassembly still running (pid 25044) after 240s

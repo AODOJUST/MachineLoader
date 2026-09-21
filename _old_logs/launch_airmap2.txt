@@ -1,0 +1,11 @@
+now = 00:37:18 deadline=480s tag=airmap save=AutoSave 0
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\_points_test.flag
+log start offset = 2596542
+started pid = 27884
+t=38s newLog=33944 done=False
+t=58s newLog=49072 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\faction_run_log_airmap.txt length=49072
+game alive before stop = True
+game stopped

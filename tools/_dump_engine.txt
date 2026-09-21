@@ -1,0 +1,855 @@
+FIELD System.Single AfterburnerTreshhold
+FIELD System.Single thrust
+FIELD System.Boolean helicopterRotor
+FIELD UnityEngine.AnimationCurve maxSpeed
+FIELD System.Single electricityGeneration
+FIELD System.Boolean electricEngine
+FIELD System.Single throttleSpeed
+FIELD UnityEngine.InputSystem.InputAction throttleInputOverride
+FIELD PlaneController controller
+FIELD System.Single fuelConsumption
+FIELD PropellerVisual visual
+FIELD EngineSound sound
+FIELD System.Boolean useAfterburner
+FIELD System.Single afterburnerThrust
+FIELD System.Single afterburnerFuelConsumption
+FIELD System.Single <currentThrottle>k__BackingField
+FIELD System.Single autoHoverTargetThrottle
+FIELD System.Single maxPower
+FIELD System.Single thrustHandicap
+FIELD System.Boolean invertDirection
+FIELD System.Single currentPropellerSpeed
+FIELD System.Single propellerSpeedVelocity
+FIELD EngineParticle particle
+FIELD GameManager gameManager
+PROP System.Single currentThrottle
+== METHOD System.Single Engine::get_currentThrottle()
+  0000 ldarg.0 
+  0001 ldfld System.Single Engine::<currentThrottle>k__BackingField
+  0006 ret 
+== METHOD System.Void Engine::set_currentThrottle(System.Single)
+  0000 ldarg.0 
+  0001 ldarg.1 
+  0002 stfld System.Single Engine::<currentThrottle>k__BackingField
+  0007 ret 
+== METHOD System.Void Engine::Awake()
+  0000 ldarg.0 
+  0001 ldarg.0 
+  0002 call !!0 UnityEngine.Component::GetComponent<PropellerVisual>()
+  0007 stfld PropellerVisual Engine::visual
+  000C ldarg.0 
+  000D ldarg.0 
+  000E call !!0 UnityEngine.Component::GetComponent<EngineSound>()
+  0013 stfld EngineSound Engine::sound
+  0018 ldarg.0 
+  0019 ldarg.0 
+  001A call !!0 UnityEngine.Component::GetComponent<EngineParticle>()
+  001F stfld EngineParticle Engine::particle
+  0024 ldarg.0 
+  0025 call T Singleton`1<PlaneContainer>::get_Instance()
+  002A callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  002F callvirt !!0 UnityEngine.GameObject::GetComponent<PlaneController>()
+  0034 stfld PlaneController Engine::controller
+  0039 ldarg.0 
+  003A ldc.r4 1
+  003F stfld System.Single Engine::maxPower
+  0044 ldarg.0 
+  0045 ldstr ThrottleInput
+  004A ldc.i4.0 
+  004B ldnull 
+  004C ldnull 
+  004D ldnull 
+  004E ldnull 
+  004F newobj System.Void UnityEngine.InputSystem.InputAction::.ctor(System.String,UnityEngine.InputSystem.InputActionType,System.String,System.String,System.String,System.String)
+  0054 stfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  0059 ldarg.0 
+  005A ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  005F ldstr Axis
+  0064 ldnull 
+  0065 ldnull 
+  0066 call UnityEngine.InputSystem.InputActionSetupExtensions/CompositeSyntax UnityEngine.InputSystem.InputActionSetupExtensions::AddCompositeBinding(UnityEngine.InputSystem.InputAction,System.String,System.String,System.String)
+  006B stloc.0 
+  006C ldloca.s V_0
+  006E ldstr Negative
+  0073 call T Singleton`1<InputManager>::get_Instance()
+  0078 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  007D callvirt UnityEngine.InputSystem.InputActionAsset UnityEngine.InputSystem.PlayerInput::get_actions()
+  0082 ldstr Throttle
+  0087 callvirt UnityEngine.InputSystem.InputAction UnityEngine.InputSystem.InputActionAsset::get_Item(System.String)
+  008C callvirt UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding> UnityEngine.InputSystem.InputAction::get_bindings()
+  0091 stloc.1 
+  0092 ldloca.s V_1
+  0094 ldc.i4.1 
+  0095 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  009A stloc.2 
+  009B ldloca.s V_2
+  009D call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  00A2 ldnull 
+  00A3 ldnull 
+  00A4 call UnityEngine.InputSystem.InputActionSetupExtensions/CompositeSyntax UnityEngine.InputSystem.InputActionSetupExtensions/CompositeSyntax::With(System.String,System.String,System.String,System.String)
+  00A9 stloc.0 
+  00AA ldloca.s V_0
+  00AC ldstr Positive
+  00B1 call T Singleton`1<InputManager>::get_Instance()
+  00B6 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  00BB callvirt UnityEngine.InputSystem.InputActionAsset UnityEngine.InputSystem.PlayerInput::get_actions()
+  00C0 ldstr Throttle
+  00C5 callvirt UnityEngine.InputSystem.InputAction UnityEngine.InputSystem.InputActionAsset::get_Item(System.String)
+  00CA callvirt UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding> UnityEngine.InputSystem.InputAction::get_bindings()
+  00CF stloc.1 
+  00D0 ldloca.s V_1
+  00D2 ldc.i4.2 
+  00D3 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  00D8 stloc.2 
+  00D9 ldloca.s V_2
+  00DB call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  00E0 ldnull 
+  00E1 ldnull 
+  00E2 call UnityEngine.InputSystem.InputActionSetupExtensions/CompositeSyntax UnityEngine.InputSystem.InputActionSetupExtensions/CompositeSyntax::With(System.String,System.String,System.String,System.String)
+  00E7 pop 
+  00E8 ldarg.0 
+  00E9 ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  00EE ldstr Axis
+  00F3 ldnull 
+  00F4 ldnull 
+  00F5 call UnityEngine.InputSystem.InputActionSetupExtensions/CompositeSyntax UnityEngine.InputSystem.InputActionSetupExtensions::AddCompositeBinding(UnityEngine.InputSystem.InputAction,System.String,System.String,System.String)
+  00FA stloc.0 
+  00FB ldloca.s V_0
+  00FD ldstr Negative
+  0102 call T Singleton`1<InputManager>::get_Instance()
+  0107 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  010C callvirt UnityEngine.InputSystem.InputActionAsset UnityEngine.InputSystem.PlayerInput::get_actions()
+  0111 ldstr Throttle
+  0116 callvirt UnityEngine.InputSystem.InputAction UnityEngine.InputSystem.InputActionAsset::get_Item(System.String)
+  011B callvirt UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding> UnityEngine.InputSystem.InputAction::get_bindings()
+  0120 stloc.1 
+  0121 ldloca.s V_1
+  0123 ldc.i4.4 
+  0124 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0129 stloc.2 
+  012A ldloca.s V_2
+  012C call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  0131 ldnull 
+  0132 ldnull 
+  0133 call UnityEngine.InputSystem.InputActionSetupExtensions/CompositeSyntax UnityEngine.InputSystem.InputActionSetupExtensions/CompositeSyntax::With(System.String,System.String,System.String,System.String)
+  0138 stloc.0 
+  0139 ldloca.s V_0
+  013B ldstr Positive
+  0140 call T Singleton`1<InputManager>::get_Instance()
+  0145 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  014A callvirt UnityEngine.InputSystem.InputActionAsset UnityEngine.InputSystem.PlayerInput::get_actions()
+  014F ldstr Throttle
+  0154 callvirt UnityEngine.InputSystem.InputAction UnityEngine.InputSystem.InputActionAsset::get_Item(System.String)
+  0159 callvirt UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding> UnityEngine.InputSystem.InputAction::get_bindings()
+  015E stloc.1 
+  015F ldloca.s V_1
+  0161 ldc.i4.5 
+  0162 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0167 stloc.2 
+  0168 ldloca.s V_2
+  016A call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  016F ldnull 
+  0170 ldnull 
+  0171 call UnityEngine.InputSystem.InputActionSetupExtensions/CompositeSyntax UnityEngine.InputSystem.InputActionSetupExtensions/CompositeSyntax::With(System.String,System.String,System.String,System.String)
+  0176 pop 
+  0177 ldarg.0 
+  0178 ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  017D callvirt System.Void UnityEngine.InputSystem.InputAction::Enable()
+  0182 ldarg.0 
+  0183 call T Singleton`1<GameManager>::get_Instance()
+  0188 stfld GameManager Engine::gameManager
+  018D ret 
+== METHOD System.Void Engine::OnDestroy()
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  0006 callvirt System.Void UnityEngine.InputSystem.InputAction::Dispose()
+  000B ret 
+== METHOD System.Void Engine::Activate()
+  0000 ldarg.0 
+  0001 ldc.r4 0
+  0006 call System.Void Engine::set_currentThrottle(System.Single)
+  000B ldarg.0 
+  000C ldfld EngineParticle Engine::particle
+  0011 ldnull 
+  0012 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  0017 brfalse.s IL_0024: ret
+  0019 ldarg.0 
+  001A ldfld EngineParticle Engine::particle
+  001F callvirt System.Void EngineParticle::Activate()
+  0024 ret 
+== METHOD System.Void Engine::Deactivate()
+  0000 ldarg.0 
+  0001 ldc.r4 0
+  0006 call System.Void Engine::set_currentThrottle(System.Single)
+  000B ldarg.0 
+  000C ldc.r4 0
+  0011 stfld System.Single Engine::currentPropellerSpeed
+  0016 ldarg.0 
+  0017 ldc.r4 0
+  001C stfld System.Single Engine::propellerSpeedVelocity
+  0021 ldarg.0 
+  0022 ldfld EngineSound Engine::sound
+  0027 ldnull 
+  0028 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  002D brfalse.s IL_003f: ldarg.0
+  002F ldarg.0 
+  0030 ldfld EngineSound Engine::sound
+  0035 ldc.r4 0
+  003A callvirt System.Void EngineSound::UpdateEngineSound(System.Single)
+  003F ldarg.0 
+  0040 ldfld EngineParticle Engine::particle
+  0045 ldnull 
+  0046 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  004B brfalse.s IL_0058: ldarg.0
+  004D ldarg.0 
+  004E ldfld EngineParticle Engine::particle
+  0053 callvirt System.Void EngineParticle::Deactivate()
+  0058 ldarg.0 
+  0059 ldfld PropellerVisual Engine::visual
+  005E ldnull 
+  005F call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  0064 brfalse.s IL_0071: ret
+  0066 ldarg.0 
+  0067 ldfld PropellerVisual Engine::visual
+  006C callvirt System.Void PropellerVisual::ResetPropeller()
+  0071 ret 
+== METHOD System.Void Engine::UpdatePart(PlaneContainer)
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  0006 callvirt !!0 UnityEngine.InputSystem.InputAction::ReadValue<System.Single>()
+  000B stloc.0 
+  000C ldarg.0 
+  000D ldarg.0 
+  000E call System.Single Engine::get_currentThrottle()
+  0013 ldloc.0 
+  0014 call System.Single UnityEngine.Time::get_deltaTime()
+  0019 mul 
+  001A ldarg.0 
+  001B ldfld PlaneController Engine::controller
+  0020 ldfld System.Single PlaneController::throttleSpeed
+  0025 mul 
+  0026 add 
+  0027 call System.Void Engine::set_currentThrottle(System.Single)
+  002C ldarg.0 
+  002D call System.Single Engine::get_currentThrottle()
+  0032 ldc.r4 0
+  0037 bgt.un.s IL_0056: ldarg.0
+  0039 ldarg.0 
+  003A ldarg.0 
+  003B call System.Single Engine::get_currentThrottle()
+  0040 ldloc.0 
+  0041 call System.Single UnityEngine.Time::get_deltaTime()
+  0046 ldc.r4 10
+  004B mul 
+  004C call System.Single UnityEngine.Mathf::MoveTowards(System.Single,System.Single,System.Single)
+  0051 call System.Void Engine::set_currentThrottle(System.Single)
+  0056 ldarg.0 
+  0057 ldarg.0 
+  0058 call System.Single Engine::get_currentThrottle()
+  005D ldarg.1 
+  005E callvirt System.Boolean PlaneContainer::IsGrounded()
+  0063 brtrue.s IL_0074: ldc.r4 -0.75
+  0065 ldarg.0 
+  0066 ldfld System.Boolean Engine::helicopterRotor
+  006B brtrue.s IL_0074: ldc.r4 -0.75
+  006D ldc.r4 0
+  0072 br.s IL_0079: ldc.r4 1
+  0074 ldc.r4 -0.75
+  0079 ldc.r4 1
+  007E call System.Single UnityEngine.Mathf::Clamp(System.Single,System.Single,System.Single)
+  0083 call System.Void Engine::set_currentThrottle(System.Single)
+  0088 ldarg.0 
+  0089 ldfld System.Boolean Engine::electricEngine
+  008E brtrue.s IL_0098: ldarg.1
+  0090 ldarg.1 
+  0091 ldfld System.Single PlaneContainer::fuel
+  0096 br.s IL_009e: ldc.r4 0
+  0098 ldarg.1 
+  0099 ldfld System.Single PlaneContainer::electricity
+  009E ldc.r4 0
+  00A3 bgt.un.s IL_00e2: ldarg.0
+  00A5 ldarg.0 
+  00A6 ldfld EngineSound Engine::sound
+  00AB ldnull 
+  00AC call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  00B1 brfalse.s IL_00c3: ldarg.0
+  00B3 ldarg.0 
+  00B4 ldfld EngineSound Engine::sound
+  00B9 ldc.r4 0
+  00BE callvirt System.Void EngineSound::UpdateEngineSound(System.Single)
+  00C3 ldarg.0 
+  00C4 ldfld EngineParticle Engine::particle
+  00C9 ldnull 
+  00CA call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  00CF brfalse.s IL_00e1: ret
+  00D1 ldarg.0 
+  00D2 ldfld EngineParticle Engine::particle
+  00D7 ldc.r4 0
+  00DC callvirt System.Void EngineParticle::SetThrottle(System.Single)
+  00E1 ret 
+  00E2 ldarg.0 
+  00E3 ldfld System.Single Engine::thrust
+  00E8 stloc.1 
+  00E9 ldarg.0 
+  00EA ldfld System.Single Engine::fuelConsumption
+  00EF stloc.2 
+  00F0 ldarg.0 
+  00F1 ldfld System.Boolean Engine::useAfterburner
+  00F6 brfalse.s IL_014a: ldarg.1
+  00F8 ldarg.0 
+  00F9 call System.Single Engine::get_currentThrottle()
+  00FE ldc.r4 0.8
+  0103 sub 
+  0104 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  0109 ldc.r4 5
+  010E mul 
+  010F stloc.s V_9
+  0111 ldloc.1 
+  0112 ldarg.0 
+  0113 ldfld System.Single Engine::afterburnerThrust
+  0118 ldloc.s V_9
+  011A call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+  011F stloc.1 
+  0120 ldloc.2 
+  0121 ldarg.0 
+  0122 ldfld System.Single Engine::afterburnerFuelConsumption
+  0127 ldloc.s V_9
+  0129 call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+  012E stloc.2 
+  012F ldarg.0 
+  0130 ldfld EngineParticle Engine::particle
+  0135 ldnull 
+  0136 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  013B brfalse.s IL_014a: ldarg.1
+  013D ldarg.0 
+  013E ldfld EngineParticle Engine::particle
+  0143 ldloc.s V_9
+  0145 callvirt System.Void EngineParticle::SetThrottle(System.Single)
+  014A ldarg.1 
+  014B callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0150 ldarg.1 
+  0151 callvirt UnityEngine.Vector3 PlaneContainer::GetThrustOrigin()
+  0156 callvirt UnityEngine.Vector3 UnityEngine.Transform::InverseTransformPoint(UnityEngine.Vector3)
+  015B stloc.3 
+  015C ldloca.s V_4
+  015E ldloc.3 
+  015F ldfld System.Single UnityEngine.Vector3::x
+  0164 ldarg.0 
+  0165 ldfld UnityEngine.Rigidbody PlanePart::rb
+  016A callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_centerOfMass()
+  016F ldfld System.Single UnityEngine.Vector3::y
+  0174 ldloc.3 
+  0175 ldfld System.Single UnityEngine.Vector3::z
+  017A call System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+  017F ldarg.0 
+  0180 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0185 callvirt UnityEngine.Transform UnityEngine.Transform::get_parent()
+  018A ldloc.s V_4
+  018C callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformPoint(UnityEngine.Vector3)
+  0191 stloc.s V_5
+  0193 ldc.r4 1
+  0198 ldarg.0 
+  0199 ldfld System.Single Engine::thrustHandicap
+  019E sub 
+  019F call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  01A4 stloc.s V_6
+  01A6 ldarg.0 
+  01A7 ldfld UnityEngine.AnimationCurve Engine::maxSpeed
+  01AC callvirt UnityEngine.Keyframe[] UnityEngine.AnimationCurve::get_keys()
+  01B1 ldlen 
+  01B2 conv.i4 
+  01B3 ldc.i4.2 
+  01B4 ble.s IL_01d8: ldarg.0
+  01B6 ldloc.1 
+  01B7 ldarg.0 
+  01B8 ldfld UnityEngine.AnimationCurve Engine::maxSpeed
+  01BD ldarg.0 
+  01BE ldfld UnityEngine.Rigidbody PlanePart::rb
+  01C3 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_linearVelocity()
+  01C8 stloc.s V_10
+  01CA ldloca.s V_10
+  01CC call System.Single UnityEngine.Vector3::get_magnitude()
+  01D1 callvirt System.Single UnityEngine.AnimationCurve::Evaluate(System.Single)
+  01D6 mul 
+  01D7 stloc.1 
+  01D8 ldarg.0 
+  01D9 ldfld UnityEngine.Rigidbody PlanePart::rb
+  01DE ldarg.0 
+  01DF call UnityEngine.Vector3 Engine::GetDirection()
+  01E4 ldarg.0 
+  01E5 call System.Single Engine::get_currentThrottle()
+  01EA call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  01EF ldloc.1 
+  01F0 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  01F5 ldarg.0 
+  01F6 ldfld System.Single Engine::maxPower
+  01FB call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0200 ldloc.s V_6
+  0202 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0207 ldloc.s V_5
+  0209 ldc.i4.0 
+  020A callvirt System.Void UnityEngine.Rigidbody::AddForceAtPosition(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.ForceMode)
+  020F ldarg.0 
+  0210 ldfld GameManager Engine::gameManager
+  0215 ldfld GameModeData GameManager::gameModeData
+  021A ldfld System.Boolean GameModeData::infiniteFuel
+  021F brfalse.s IL_0233: ldc.i4.1
+  0221 ldarg.0 
+  0222 ldfld GameManager Engine::gameManager
+  0227 ldfld GameModeData GameManager::gameModeData
+  022C ldfld System.Boolean GameModeData::creativeMode
+  0231 brtrue.s IL_0236: ldc.i4.0
+  0233 ldc.i4.1 
+  0234 br.s IL_0237: conv.r4
+  0236 ldc.i4.0 
+  0237 conv.r4 
+  0238 stloc.s V_7
+  023A ldarg.0 
+  023B ldfld System.Boolean Engine::electricEngine
+  0240 brtrue.s IL_026e: ldarg.1
+  0242 ldarg.1 
+  0243 dup 
+  0244 ldfld System.Single PlaneContainer::fuel
+  0249 ldarg.0 
+  024A call System.Single Engine::get_currentThrottle()
+  024F call System.Single UnityEngine.Mathf::Abs(System.Single)
+  0254 ldloc.2 
+  0255 mul 
+  0256 ldarg.0 
+  0257 ldfld System.Single Engine::maxPower
+  025C mul 
+  025D call System.Single UnityEngine.Time::get_fixedDeltaTime()
+  0262 mul 
+  0263 ldloc.s V_7
+  0265 mul 
+  0266 sub 
+  0267 stfld System.Single PlaneContainer::fuel
+  026C br.s IL_0298: ldarg.0
+  026E ldarg.1 
+  026F dup 
+  0270 ldfld System.Single PlaneContainer::electricity
+  0275 ldarg.0 
+  0276 call System.Single Engine::get_currentThrottle()
+  027B call System.Single UnityEngine.Mathf::Abs(System.Single)
+  0280 ldloc.2 
+  0281 mul 
+  0282 ldarg.0 
+  0283 ldfld System.Single Engine::maxPower
+  0288 mul 
+  0289 call System.Single UnityEngine.Time::get_fixedDeltaTime()
+  028E mul 
+  028F ldloc.s V_7
+  0291 mul 
+  0292 sub 
+  0293 stfld System.Single PlaneContainer::electricity
+  0298 ldarg.0 
+  0299 ldfld System.Boolean Engine::electricEngine
+  029E brtrue.s IL_02dc: ldloc.s V_5
+  02A0 ldarg.1 
+  02A1 dup 
+  02A2 ldfld System.Single PlaneContainer::electricity
+  02A7 call System.Single UnityEngine.Time::get_fixedDeltaTime()
+  02AC ldarg.0 
+  02AD call System.Single Engine::get_currentThrottle()
+  02B2 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  02B7 mul 
+  02B8 ldarg.0 
+  02B9 ldfld System.Single Engine::electricityGeneration
+  02BE mul 
+  02BF add 
+  02C0 stfld System.Single PlaneContainer::electricity
+  02C5 ldarg.1 
+  02C6 ldarg.1 
+  02C7 ldfld System.Single PlaneContainer::electricity
+  02CC ldarg.1 
+  02CD ldfld System.Single PlaneContainer::electricityStorageCapacity
+  02D2 call System.Single UnityEngine.Mathf::Min(System.Single,System.Single)
+  02D7 stfld System.Single PlaneContainer::electricity
+  02DC ldloc.s V_5
+  02DE ldarg.0 
+  02DF call UnityEngine.Vector3 Engine::GetDirection()
+  02E4 ldarg.0 
+  02E5 call System.Single Engine::get_currentThrottle()
+  02EA call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  02EF ldarg.0 
+  02F0 ldfld System.Single Engine::thrust
+  02F5 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  02FA call UnityEngine.Color UnityEngine.Color::get_black()
+  02FF call System.Void UnityEngine.Debug::DrawRay(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color)
+  0304 ldarg.0 
+  0305 call System.Single Engine::get_currentThrottle()
+  030A stloc.s V_8
+  030C ldarg.0 
+  030D ldarg.0 
+  030E ldfld System.Single Engine::currentPropellerSpeed
+  0313 ldloc.s V_8
+  0315 ldarg.0 
+  0316 ldflda System.Single Engine::propellerSpeedVelocity
+  031B ldc.r4 1
+  0320 call System.Single UnityEngine.Mathf::SmoothDamp(System.Single,System.Single,System.Single&,System.Single)
+  0325 stfld System.Single Engine::currentPropellerSpeed
+  032A ldarg.0 
+  032B ldfld PropellerVisual Engine::visual
+  0330 ldnull 
+  0331 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  0336 brfalse.s IL_0349: ldarg.0
+  0338 ldarg.0 
+  0339 ldfld PropellerVisual Engine::visual
+  033E ldarg.0 
+  033F ldfld System.Single Engine::currentPropellerSpeed
+  0344 callvirt System.Void PropellerVisual::UpdatePropeller(System.Single)
+  0349 ldarg.0 
+  034A ldfld EngineSound Engine::sound
+  034F ldnull 
+  0350 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  0355 brfalse.s IL_0368: ldarg.0
+  0357 ldarg.0 
+  0358 ldfld EngineSound Engine::sound
+  035D ldarg.0 
+  035E ldfld System.Single Engine::currentPropellerSpeed
+  0363 callvirt System.Void EngineSound::UpdateEngineSound(System.Single)
+  0368 ldarg.0 
+  0369 ldfld EngineParticle Engine::particle
+  036E ldnull 
+  036F call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  0374 brfalse.s IL_038f: ret
+  0376 ldarg.0 
+  0377 ldfld System.Boolean Engine::useAfterburner
+  037C brtrue.s IL_038f: ret
+  037E ldarg.0 
+  037F ldfld EngineParticle Engine::particle
+  0384 ldarg.0 
+  0385 call System.Single Engine::get_currentThrottle()
+  038A callvirt System.Void EngineParticle::SetThrottle(System.Single)
+  038F ret 
+== METHOD UnityEngine.Vector3 Engine::GetThrustPercentage()
+  0000 call T Singleton`1<PlaneContainer>::get_Instance()
+  0005 ldfld System.Single PlaneContainer::fuel
+  000A ldc.r4 0
+  000F ble.s IL_0014: ldc.i4.0
+  0011 ldc.i4.1 
+  0012 br.s IL_0015: conv.r4
+  0014 ldc.i4.0 
+  0015 conv.r4 
+  0016 stloc.0 
+  0017 ldarg.0 
+  0018 call UnityEngine.Vector3 Engine::GetDirection()
+  001D ldarg.0 
+  001E call System.Single Engine::get_currentThrottle()
+  0023 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0028 ldloc.0 
+  0029 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  002E ret 
+== METHOD UnityEngine.Vector3 Engine::GetDirection()
+  0000 ldarg.0 
+  0001 ldfld System.Boolean Engine::helicopterRotor
+  0006 brtrue.s IL_0015: ldarg.0
+  0008 ldarg.0 
+  0009 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  000E callvirt UnityEngine.Vector3 UnityEngine.Transform::get_right()
+  0013 br.s IL_0035: ldarg.0
+  0015 ldarg.0 
+  0016 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  001B callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  0020 ldarg.0 
+  0021 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0026 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+  002B ldfld System.Single UnityEngine.Vector3::y
+  0030 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0035 ldarg.0 
+  0036 ldfld System.Boolean Engine::invertDirection
+  003B brtrue.s IL_0040: ldc.i4.m1
+  003D ldc.i4.1 
+  003E br.s IL_0041: stloc.0
+  0040 ldc.i4.m1 
+  0041 stloc.0 
+  0042 ldloc.0 
+  0043 conv.r4 
+  0044 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0049 ret 
+== METHOD System.String Engine::GetControlScemeID()
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  0006 callvirt UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding> UnityEngine.InputSystem.InputAction::get_bindings()
+  000B stloc.0 
+  000C ldloca.s V_0
+  000E ldc.i4.1 
+  000F call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0014 stloc.1 
+  0015 ldloca.s V_1
+  0017 call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  001C ldarg.0 
+  001D ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  0022 callvirt UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding> UnityEngine.InputSystem.InputAction::get_bindings()
+  0027 stloc.0 
+  0028 ldloca.s V_0
+  002A ldc.i4.2 
+  002B call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0030 stloc.1 
+  0031 ldloca.s V_1
+  0033 call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  0038 call System.String System.String::Concat(System.String,System.String)
+  003D ret 
+== METHOD System.String Engine::GetKey1Path()
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  0006 callvirt UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding> UnityEngine.InputSystem.InputAction::get_bindings()
+  000B stloc.0 
+  000C ldloca.s V_0
+  000E ldc.i4.1 
+  000F call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0014 stloc.1 
+  0015 ldloca.s V_1
+  0017 call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  001C ret 
+== METHOD System.String Engine::GetKey2Path()
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  0006 callvirt UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding> UnityEngine.InputSystem.InputAction::get_bindings()
+  000B stloc.0 
+  000C ldloca.s V_0
+  000E ldc.i4.2 
+  000F call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0014 stloc.1 
+  0015 ldloca.s V_1
+  0017 call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  001C ret 
+== METHOD PartStat[] Engine::GetPartStats()
+  0000 ldnull 
+  0001 stloc.0 
+  0002 ldc.i4.2 
+  0003 stloc.1 
+  0004 ldarg.0 
+  0005 ldfld System.Boolean Engine::electricEngine
+  000A brtrue.s IL_0010: ldarg.0
+  000C ldloc.1 
+  000D ldc.i4.1 
+  000E add 
+  000F stloc.1 
+  0010 ldarg.0 
+  0011 ldfld System.Boolean Engine::useAfterburner
+  0016 brfalse.s IL_001c: ldarg.0
+  0018 ldloc.1 
+  0019 ldc.i4.1 
+  001A add 
+  001B stloc.1 
+  001C ldarg.0 
+  001D ldfld UnityEngine.AnimationCurve Engine::maxSpeed
+  0022 callvirt UnityEngine.Keyframe[] UnityEngine.AnimationCurve::get_keys()
+  0027 ldlen 
+  0028 conv.i4 
+  0029 ldc.i4.2 
+  002A ble.s IL_0030: ldloc.1
+  002C ldloc.1 
+  002D ldc.i4.1 
+  002E add 
+  002F stloc.1 
+  0030 ldloc.1 
+  0031 newarr PartStat
+  0036 stloc.0 
+  0037 ldloc.0 
+  0038 ldc.i4.0 
+  0039 ldelema PartStat
+  003E ldstr Thrust
+  0043 stfld System.String PartStat::statName
+  0048 ldloc.0 
+  0049 ldc.i4.0 
+  004A ldelema PartStat
+  004F ldarg.0 
+  0050 ldfld System.Single Engine::thrust
+  0055 call System.Void PartStat::SetValue(System.Single)
+  005A ldarg.0 
+  005B ldfld System.Boolean Engine::electricEngine
+  0060 brtrue.s IL_008d: ldloc.0
+  0062 ldloc.0 
+  0063 ldc.i4.1 
+  0064 ldelema PartStat
+  0069 ldstr Fuel Consumption
+  006E stfld System.String PartStat::statName
+  0073 ldloc.0 
+  0074 ldc.i4.1 
+  0075 ldelema PartStat
+  007A ldarg.0 
+  007B ldfld System.Single Engine::fuelConsumption
+  0080 ldc.r4 100
+  0085 mul 
+  0086 call System.Void PartStat::SetValue(System.Single)
+  008B br.s IL_00b6: ldarg.0
+  008D ldloc.0 
+  008E ldc.i4.1 
+  008F ldelema PartStat
+  0094 ldstr Electricity Consumption
+  0099 stfld System.String PartStat::statName
+  009E ldloc.0 
+  009F ldc.i4.1 
+  00A0 ldelema PartStat
+  00A5 ldarg.0 
+  00A6 ldfld System.Single Engine::fuelConsumption
+  00AB ldc.r4 100
+  00B0 mul 
+  00B1 call System.Void PartStat::SetValue(System.Single)
+  00B6 ldarg.0 
+  00B7 ldfld System.Boolean Engine::electricEngine
+  00BC brtrue.s IL_00e7: ldarg.0
+  00BE ldloc.0 
+  00BF ldc.i4.2 
+  00C0 ldelema PartStat
+  00C5 ldstr Electricity Generation
+  00CA stfld System.String PartStat::statName
+  00CF ldloc.0 
+  00D0 ldc.i4.2 
+  00D1 ldelema PartStat
+  00D6 ldarg.0 
+  00D7 ldfld System.Single Engine::electricityGeneration
+  00DC ldc.r4 100
+  00E1 mul 
+  00E2 call System.Void PartStat::SetValue(System.Single)
+  00E7 ldarg.0 
+  00E8 ldfld System.Boolean Engine::useAfterburner
+  00ED brfalse.s IL_0111: ldarg.0
+  00EF ldloc.0 
+  00F0 ldc.i4.3 
+  00F1 ldelema PartStat
+  00F6 ldstr Afterburner
+  00FB stfld System.String PartStat::statName
+  0100 ldloc.0 
+  0101 ldc.i4.3 
+  0102 ldelema PartStat
+  0107 ldstr Yes
+  010C call System.Void PartStat::SetValue(System.String)
+  0111 ldarg.0 
+  0112 ldfld UnityEngine.AnimationCurve Engine::maxSpeed
+  0117 callvirt UnityEngine.Keyframe[] UnityEngine.AnimationCurve::get_keys()
+  011C ldlen 
+  011D conv.i4 
+  011E ldc.i4.2 
+  011F ble.s IL_016a: ldloc.0
+  0121 ldloc.0 
+  0122 ldloc.1 
+  0123 ldc.i4.1 
+  0124 sub 
+  0125 ldelema PartStat
+  012A ldarg.0 
+  012B ldfld UnityEngine.AnimationCurve Engine::maxSpeed
+  0130 callvirt UnityEngine.Keyframe[] UnityEngine.AnimationCurve::get_keys()
+  0135 ldc.i4.1 
+  0136 ldelema UnityEngine.Keyframe
+  013B call System.Single UnityEngine.Keyframe::get_time()
+  0140 stloc.2 
+  0141 ldloca.s V_2
+  0143 call System.String System.Single::ToString()
+  0148 ldstr  knots
+  014D call System.String System.String::Concat(System.String,System.String)
+  0152 call System.Void PartStat::SetValue(System.String)
+  0157 ldloc.0 
+  0158 ldloc.1 
+  0159 ldc.i4.1 
+  015A sub 
+  015B ldelema PartStat
+  0160 ldstr Optimal speed
+  0165 stfld System.String PartStat::statName
+  016A ldloc.0 
+  016B ret 
+== METHOD System.Void Engine::Save(GameDataWriter)
+  0000 ldarg.1 
+  0001 ldarg.0 
+  0002 ldfld System.Boolean Engine::invertDirection
+  0007 callvirt System.Void GameDataWriter::Write(System.Boolean)
+  000C ldarg.1 
+  000D ldarg.0 
+  000E ldfld System.Single Engine::maxPower
+  0013 callvirt System.Void GameDataWriter::Write(System.Single)
+  0018 ldarg.1 
+  0019 ldarg.0 
+  001A ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  001F callvirt UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding> UnityEngine.InputSystem.InputAction::get_bindings()
+  0024 stloc.0 
+  0025 ldloca.s V_0
+  0027 ldc.i4.1 
+  0028 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  002D stloc.1 
+  002E ldloca.s V_1
+  0030 call System.String UnityEngine.InputSystem.InputBinding::get_overridePath()
+  0035 callvirt System.Void GameDataWriter::Write(System.String)
+  003A ldarg.1 
+  003B ldarg.0 
+  003C ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  0041 callvirt UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding> UnityEngine.InputSystem.InputAction::get_bindings()
+  0046 stloc.0 
+  0047 ldloca.s V_0
+  0049 ldc.i4.2 
+  004A call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  004F stloc.1 
+  0050 ldloca.s V_1
+  0052 call System.String UnityEngine.InputSystem.InputBinding::get_overridePath()
+  0057 callvirt System.Void GameDataWriter::Write(System.String)
+  005C ret 
+== METHOD System.Void Engine::Load(GameDataReader)
+  0000 ldarg.1 
+  0001 ldfld System.Int32 GameDataReader::version
+  0006 ldc.i4.4 
+  0007 ble.s IL_0069: ret
+  0009 ldarg.0 
+  000A ldarg.1 
+  000B callvirt System.Boolean GameDataReader::ReadBool()
+  0010 stfld System.Boolean Engine::invertDirection
+  0015 ldarg.0 
+  0016 ldarg.1 
+  0017 callvirt System.Single GameDataReader::ReadFloat()
+  001C stfld System.Single Engine::maxPower
+  0021 ldarg.1 
+  0022 callvirt System.String GameDataReader::ReadString()
+  0027 stloc.0 
+  0028 ldarg.1 
+  0029 callvirt System.String GameDataReader::ReadString()
+  002E stloc.1 
+  002F ldloc.0 
+  0030 call System.Boolean System.String::IsNullOrEmpty(System.String)
+  0035 brtrue.s IL_004c: ldloc.1
+  0037 ldloc.0 
+  0038 call System.Boolean System.String::IsNullOrWhiteSpace(System.String)
+  003D brtrue.s IL_004c: ldloc.1
+  003F ldarg.0 
+  0040 ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  0045 ldc.i4.1 
+  0046 ldloc.0 
+  0047 call System.Void UnityEngine.InputSystem.InputActionRebindingExtensions::ApplyBindingOverride(UnityEngine.InputSystem.InputAction,System.Int32,System.String)
+  004C ldloc.1 
+  004D call System.Boolean System.String::IsNullOrEmpty(System.String)
+  0052 brtrue.s IL_0069: ret
+  0054 ldloc.1 
+  0055 call System.Boolean System.String::IsNullOrWhiteSpace(System.String)
+  005A brtrue.s IL_0069: ret
+  005C ldarg.0 
+  005D ldfld UnityEngine.InputSystem.InputAction Engine::throttleInputOverride
+  0062 ldc.i4.2 
+  0063 ldloc.1 
+  0064 call System.Void UnityEngine.InputSystem.InputActionRebindingExtensions::ApplyBindingOverride(UnityEngine.InputSystem.InputAction,System.Int32,System.String)
+  0069 ret 
+== METHOD System.Single Engine::GetThrustAtSpeed(System.Single)
+  0000 ldarg.0 
+  0001 ldfld System.Boolean Engine::useAfterburner
+  0006 brfalse.s IL_000f: ldarg.0
+  0008 ldarg.0 
+  0009 ldfld System.Single Engine::afterburnerThrust
+  000E ret 
+  000F ldarg.0 
+  0010 ldfld UnityEngine.AnimationCurve Engine::maxSpeed
+  0015 callvirt UnityEngine.Keyframe[] UnityEngine.AnimationCurve::get_keys()
+  001A ldlen 
+  001B brfalse.s IL_0031: ldarg.0
+  001D ldarg.0 
+  001E ldfld System.Single Engine::thrust
+  0023 ldarg.0 
+  0024 ldfld UnityEngine.AnimationCurve Engine::maxSpeed
+  0029 ldarg.1 
+  002A callvirt System.Single UnityEngine.AnimationCurve::Evaluate(System.Single)
+  002F mul 
+  0030 ret 
+  0031 ldarg.0 
+  0032 ldfld System.Single Engine::thrust
+  0037 ret 
+== METHOD System.Void Engine::.ctor()
+  0000 ldarg.0 
+  0001 call System.Void PlanePart::.ctor()
+  0006 ret 

@@ -1,0 +1,63 @@
+FIELD AudioDef glassBreaking
+FIELD AudioDef addItem
+FIELD System.Single <MaxVolume>k__BackingField
+FIELD System.Single <CurrentVolume>k__BackingField
+FIELD System.Single breakageCooldown
+FIELD System.Collections.Generic.Dictionary`2<CargoType,System.Int32> currentCargo
+FIELD PlaneContainer planeContainer
+FIELD System.Single expirationTimer
+FIELD System.Single currentExpirationDuration
+FIELD UnityEngine.Vector3 prevVelocity
+FIELD System.Single lastBreakTime
+FIELD System.Single minFragileBreakTreshhold
+FIELD System.Single maxFragileBreakTreshhold
+FIELD System.Action`1<CargoType> ExpirableCargoCleared
+FIELD System.Action`2<CargoType,System.Int32> FragileCargoCleared
+PROP System.Single MaxVolume
+PROP System.Single CurrentVolume
+== METHOD System.Void CargoInventory::RemoveCargo(CargoType,System.Int32)
+  0000 ldarg.0 
+  0001 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  0006 ldarg.1 
+  0007 callvirt System.Boolean System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::ContainsKey(!0)
+  000C brfalse.s IL_001d: ret
+  000E ldarg.0 
+  000F ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  0014 ldarg.1 
+  0015 callvirt !1 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Item(!0)
+  001A ldarg.2 
+  001B bge.s IL_001e: ldarg.0
+  001D ret 
+  001E ldarg.0 
+  001F ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  0024 stloc.0 
+  0025 ldarg.1 
+  0026 stloc.1 
+  0027 ldloc.0 
+  0028 ldloc.1 
+  0029 ldloc.0 
+  002A ldloc.1 
+  002B callvirt !1 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Item(!0)
+  0030 ldarg.2 
+  0031 sub 
+  0032 callvirt System.Void System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::set_Item(!0,!1)
+  0037 ldarg.0 
+  0038 ldarg.0 
+  0039 call System.Single CargoInventory::get_CurrentVolume()
+  003E ldarg.1 
+  003F ldfld System.Int32 CargoType::cargoSpace
+  0044 ldarg.2 
+  0045 mul 
+  0046 conv.r4 
+  0047 sub 
+  0048 call System.Void CargoInventory::set_CurrentVolume(System.Single)
+  004D ldarg.0 
+  004E ldfld PlaneContainer CargoInventory::planeContainer
+  0053 ldarg.1 
+  0054 ldfld System.Single CargoType::weight
+  0059 ldarg.2 
+  005A conv.r4 
+  005B mul 
+  005C neg 
+  005D callvirt System.Void PlaneContainer::ChangeMass(System.Single)
+  0062 ret 

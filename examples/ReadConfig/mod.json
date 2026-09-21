@@ -1,0 +1,22 @@
+{
+  "id": "example.readconfig",
+  "name": "Read Config Example",
+  "version": "1.0.0",
+  "author": "Machine Team",
+  "description": "示例：读取和保存 Mod 自定义配置文件。",
+  "type": "code",
+  "apiVersion": "1.0",
+  "loaderVersion": ">=2.0.0",
+  "dependencies": [],
+  "entry": "Example.ReadConfig.ReadConfigMod",
+  "code": {
+    "assemblies": ["code/ReadConfig.dll"],
+    "mainClass": "Example.ReadConfig.ReadConfigMod"
+  },
+  "content": {
+    "cargo": [],
+    "parts": [],
+    "decals": [],
+    "textures": []
+  }
+}

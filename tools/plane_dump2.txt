@@ -1,0 +1,121 @@
+########## PlaneController ##########
+FIELD System.Single controlHandicap
+FIELD System.Single rollControlSurfaceLift
+FIELD System.Single pitchControlSurfaceLift
+FIELD AudioDef explosionSound
+FIELD UnityEngine.GameObject explosionParticlePrefab
+FIELD System.Single maxTriggerVelocity
+FIELD System.Single minTriggerVelocity
+FIELD System.Single airTraction
+FIELD System.Single stablisationForce
+FIELD System.Single helicopterStabilisationForce
+FIELD System.Single landingHelper
+FIELD System.Single rollTurnForce
+FIELD System.Single rollRestoreForce
+FIELD System.Boolean autoSteer
+FIELD System.Boolean newSteering
+FIELD System.Single rollForce
+FIELD System.Single pitchForce
+FIELD System.Single yawForce
+FIELD System.Single throttleSpeed
+FIELD System.Single <currentThrottle>k__BackingField
+FIELD System.Single <currentThrottleRaw>k__BackingField
+FIELD System.Boolean <Exploded>k__BackingField
+FIELD UnityEngine.Rigidbody rb
+FIELD WingVisual leftWingVisual
+FIELD WingVisual rightWingVisual
+FIELD System.Single prefVelocityMagnitude
+FIELD System.Single rudderInputSmooth
+FIELD System.Single rudderInputVelocity
+FIELD System.Single rudderSmoothTime
+FIELD System.Single rudderInput
+FIELD System.Single throttleVelocity
+FIELD PlaneContainer container
+FIELD InputManager inputManager
+FIELD System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>> tailWings
+FIELD System.Collections.Generic.List`1<Wing> mainWings
+FIELD System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual> wingVisuals
+FIELD System.Single prevVelocity
+PROP System.Single currentThrottle
+PROP System.Single currentThrottleRaw
+PROP System.Boolean Exploded
+== METHOD System.Single PlaneController::get_currentThrottle()
+== METHOD System.Void PlaneController::set_currentThrottle(System.Single)
+== METHOD System.Single PlaneController::get_currentThrottleRaw()
+== METHOD System.Void PlaneController::set_currentThrottleRaw(System.Single)
+== METHOD System.Boolean PlaneController::get_Exploded()
+== METHOD System.Void PlaneController::set_Exploded(System.Boolean)
+== METHOD System.Void PlaneController::Awake()
+== METHOD System.Void PlaneController::Start()
+== METHOD System.Void PlaneController::Update()
+== METHOD System.Void PlaneController::UpdateThrottle()
+== METHOD System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+== METHOD System.Void PlaneController::UpdateControlls()
+== METHOD System.Void PlaneController::FixedUpdate()
+== METHOD System.Void PlaneController::ResetController()
+== METHOD System.Void PlaneController::UpdateStabilisationForce()
+== METHOD System.Void PlaneController::PlaneStabilisationForce(System.Single)
+== METHOD System.Void PlaneController::HelicopterStabilisationForce(System.Single)
+== METHOD System.Single PlaneController::GetCurrentRoll()
+== METHOD WingVisual PlaneController::GetWingVisual(UnityEngine.GameObject)
+== METHOD System.Void PlaneController::ApplyMouseSteering(UnityEngine.Vector3,System.Single)
+== METHOD System.Void PlaneController::UpdateWingVisuals()
+== METHOD System.Void PlaneController::UpdateControllSurfaces(UnityEngine.Rigidbody)
+== METHOD System.Void PlaneController::UpdateControllability()
+== METHOD System.Void PlaneController::ExplodePlane()
+== METHOD System.Void PlaneController::OnDrawGizmos()
+== METHOD System.Void PlaneController::.ctor()
+########## PlanePart ##########
+FIELD UnityEngine.Rigidbody rb
+FIELD System.Single weight
+FIELD UnityEngine.GameObject settingsPrefab
+== METHOD System.Void PlanePart::Activate()
+== METHOD System.Void PlanePart::Deactivate()
+== METHOD System.Void PlanePart::Save(GameDataWriter)
+== METHOD System.Void PlanePart::Load(GameDataReader)
+== METHOD PartStat[] PlanePart::GetPartStats()
+== METHOD System.Void PlanePart::UpdatePart(PlaneContainer)
+== METHOD System.Void PlanePart::.ctor()
+########## Engine ##########
+FIELD System.Single AfterburnerTreshhold
+FIELD System.Single thrust
+FIELD System.Boolean helicopterRotor
+FIELD UnityEngine.AnimationCurve maxSpeed
+FIELD System.Single electricityGeneration
+FIELD System.Boolean electricEngine
+FIELD System.Single throttleSpeed
+FIELD UnityEngine.InputSystem.InputAction throttleInputOverride
+FIELD PlaneController controller
+FIELD System.Single fuelConsumption
+FIELD PropellerVisual visual
+FIELD EngineSound sound
+FIELD System.Boolean useAfterburner
+FIELD System.Single afterburnerThrust
+FIELD System.Single afterburnerFuelConsumption
+FIELD System.Single <currentThrottle>k__BackingField
+FIELD System.Single autoHoverTargetThrottle
+FIELD System.Single maxPower
+FIELD System.Single thrustHandicap
+FIELD System.Boolean invertDirection
+FIELD System.Single currentPropellerSpeed
+FIELD System.Single propellerSpeedVelocity
+FIELD EngineParticle particle
+FIELD GameManager gameManager
+PROP System.Single currentThrottle
+== METHOD System.Single Engine::get_currentThrottle()
+== METHOD System.Void Engine::set_currentThrottle(System.Single)
+== METHOD System.Void Engine::Awake()
+== METHOD System.Void Engine::OnDestroy()
+== METHOD System.Void Engine::Activate()
+== METHOD System.Void Engine::Deactivate()
+== METHOD System.Void Engine::UpdatePart(PlaneContainer)
+== METHOD UnityEngine.Vector3 Engine::GetThrustPercentage()
+== METHOD UnityEngine.Vector3 Engine::GetDirection()
+== METHOD System.String Engine::GetControlScemeID()
+== METHOD System.String Engine::GetKey1Path()
+== METHOD System.String Engine::GetKey2Path()
+== METHOD PartStat[] Engine::GetPartStats()
+== METHOD System.Void Engine::Save(GameDataWriter)
+== METHOD System.Void Engine::Load(GameDataReader)
+== METHOD System.Single Engine::GetThrustAtSpeed(System.Single)
+== METHOD System.Void Engine::.ctor()

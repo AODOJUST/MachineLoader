@@ -1,0 +1,6 @@
+  PartExploder::CreateVisual  -> RB.SET_MASS
+  FuelTank::GetPartStats  -> FUELW[ldfld]
+  PlaneContainer::FixedUpdate  -> FUELW[ldfld] RB.SET_MASS
+  PlaneContainer::ActivateFlyMode  -> RB.SET_MASS RB.SET_MASS STFLD mass
+  PlaneContainer::ReInitializePlane  -> RB.SET_MASS RB.SET_MASS RB.SET_MASS STFLD mass
+  PlaneContainer::ChangeMass  -> STFLD mass RB.SET_MASS

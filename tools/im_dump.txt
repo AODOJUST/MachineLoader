@@ -1,0 +1,142 @@
+########## Singleton ##########
+FIELD System.Boolean m_ShuttingDown
+FIELD System.Object m_Lock
+FIELD T m_Instance
+PROP T Instance
+== METHOD T Singleton`1::get_Instance()
+  0000 ldsfld System.Boolean Singleton`1<T>::m_ShuttingDown
+  0005 brfalse.s IL_0011: ldsfld System.Object Singleton`1<T>::m_Lock
+  0007 ldloca.s V_0
+  0009 initobj T
+  000F ldloc.0 
+  0010 ret 
+  0011 ldsfld System.Object Singleton`1<T>::m_Lock
+  0016 stloc.1 
+  0017 ldc.i4.0 
+  0018 stloc.2 
+  0019 ldloc.1 
+  001A ldloca.s V_2
+  001C call System.Void System.Threading.Monitor::Enter(System.Object,System.Boolean&)
+  0021 ldsfld T Singleton`1<T>::m_Instance
+  0026 box T
+  002B ldnull 
+  002C call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+  0031 brfalse.s IL_004c: ldsfld T Singleton`1<T>::m_Instance
+  0033 ldtoken T
+  0038 call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  003D call UnityEngine.Object UnityEngine.Object::FindFirstObjectByType(System.Type)
+  0042 unbox.any T
+  0047 stsfld T Singleton`1<T>::m_Instance
+  004C ldsfld T Singleton`1<T>::m_Instance
+  0051 stloc.0 
+  0052 leave.s IL_005e: ldloc.0
+  0054 ldloc.2 
+  0055 brfalse.s IL_005d: endfinally
+  0057 ldloc.1 
+  0058 call System.Void System.Threading.Monitor::Exit(System.Object)
+  005D endfinally 
+  005E ldloc.0 
+  005F ret 
+== METHOD System.Void Singleton`1::Awake()
+  0000 ldsfld T Singleton`1<T>::m_Instance
+  0005 box T
+  000A ldnull 
+  000B call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+  0010 brfalse.s IL_0022: ret
+  0012 ldarg.0 
+  0013 isinst T
+  0018 unbox.any T
+  001D stsfld T Singleton`1<T>::m_Instance
+  0022 ret 
+== METHOD System.Void Singleton`1::InitSingleton()
+  0000 ldsfld T Singleton`1<T>::m_Instance
+  0005 box T
+  000A ldnull 
+  000B call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+  0010 brfalse.s IL_002b: ret
+  0012 ldtoken T
+  0017 call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  001C call UnityEngine.Object UnityEngine.Object::FindFirstObjectByType(System.Type)
+  0021 unbox.any T
+  0026 stsfld T Singleton`1<T>::m_Instance
+########## InputManager Awake/Start/Update ##########
+== METHOD System.Void InputManager::Awake()
+  0001 call System.Void Singleton`1<InputManager>::Awake()
+  0007 call System.Void InputManager::RefreshDisplayNames()
+  000D call System.Void InputManager::RefreshBindingPaths()
+  0013 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  001F newobj System.Void System.Action`1<UnityEngine.InputSystem.PlayerInput>::.ctor(System.Object,System.IntPtr)
+== METHOD System.Void InputManager::OnControlsChanged(UnityEngine.InputSystem.PlayerInput)
+  0006 ldstr keyboard
+  000B call System.Boolean System.String::op_Equality(System.String,System.String)
+  0014 call System.Void InputManager::set_CurrentControlSceme(ControlScheme)
+  001F ldstr gamepad
+  0024 call System.Boolean System.String::op_Equality(System.String,System.String)
+  002D call System.Void InputManager::set_CurrentControlSceme(ControlScheme)
+== METHOD System.Void InputManager::RefreshDisplayNames()
+  0001 ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::displayStrings
+  000C ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::displayStrings
+  0013 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  001D ldstr Pitch
+  0030 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  003A call System.String UnityEngine.InputSystem.InputBinding::ToDisplayString(UnityEngine.InputSystem.InputBinding/DisplayStringOptions,UnityEngine.InputSystem.InputControl)
+  0045 ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::displayStrings
+  004C ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  0056 ldstr Pitch
+  0069 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0073 call System.String UnityEngine.InputSystem.InputBinding::ToDisplayString(UnityEngine.InputSystem.InputBinding/DisplayStringOptions,UnityEngine.InputSystem.InputControl)
+  007E ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::displayStrings
+  0085 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  008F ldstr Roll
+  00A2 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  00AC call System.String UnityEngine.InputSystem.InputBinding::ToDisplayString(UnityEngine.InputSystem.InputBinding/DisplayStringOptions,UnityEngine.InputSystem.InputControl)
+  00B7 ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::displayStrings
+  00BE ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  00C8 ldstr Roll
+  00DB call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  00E5 call System.String UnityEngine.InputSystem.InputBinding::ToDisplayString(UnityEngine.InputSystem.InputBinding/DisplayStringOptions,UnityEngine.InputSystem.InputControl)
+  00F0 ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::displayStrings
+  00F7 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  0101 ldstr Yaw
+  0114 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  011E call System.String UnityEngine.InputSystem.InputBinding::ToDisplayString(UnityEngine.InputSystem.InputBinding/DisplayStringOptions,UnityEngine.InputSystem.InputControl)
+  0129 ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::displayStrings
+  0130 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  013A ldstr Yaw
+  014D call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0157 call System.String UnityEngine.InputSystem.InputBinding::ToDisplayString(UnityEngine.InputSystem.InputBinding/DisplayStringOptions,UnityEngine.InputSystem.InputControl)
+  0162 ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::displayStrings
+  0169 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  0173 ldstr Throttle
+  0186 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0190 call System.String UnityEngine.InputSystem.InputBinding::ToDisplayString(UnityEngine.InputSystem.InputBinding/DisplayStringOptions,UnityEngine.InputSystem.InputControl)
+  019B ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::displayStrings
+  01A2 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  01AC ldstr Throttle
+  01BF call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  01C9 call System.String UnityEngine.InputSystem.InputBinding::ToDisplayString(UnityEngine.InputSystem.InputBinding/DisplayStringOptions,UnityEngine.InputSystem.InputControl)
+  01D4 ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::displayStrings
+  01DB ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  01E5 ldstr WheelRetraction
+  01F8 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0202 call System.String UnityEngine.InputSystem.InputBinding::ToDisplayString(UnityEngine.InputSystem.InputBinding/DisplayStringOptions,UnityEngine.InputSystem.InputControl)
+== METHOD System.Void InputManager::RefreshBindingPaths()
+  0001 ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::primaryBindingPath
+  000C ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::secondaryBindingPath
+  0017 ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::primaryBindingPath
+  001E ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  0028 ldstr Pitch
+  003B call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  0043 call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  004E ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::primaryBindingPath
+  0055 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  005F ldstr Pitch
+  0072 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  007A call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  0085 ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::primaryBindingPath
+  008C ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput
+  0096 ldstr Roll
+  00A9 call !0 UnityEngine.InputSystem.Utilities.ReadOnlyArray`1<UnityEngine.InputSystem.InputBinding>::get_Item(System.Int32)
+  00B1 call System.String UnityEngine.InputSystem.InputBinding::get_effectivePath()
+  00BC ldfld System.Collections.Generic.Dictionary`2<Keys,System.String> InputManager::primaryBindingPath
+  00C3 ldfld UnityEngine.InputSystem.PlayerInput InputManager::playerInput

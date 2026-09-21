@@ -1,0 +1,10 @@
+FactionSystem deploy report  2026-09-15 14:58:36
+source: D:\豆包的下载\Machine_Dev\bin\mods\FactionSystem.dll  bytes=88064  md5=df1483e4d54047e3bdbe00bb16caf36c
+OK  bytes=88064  md5=df1483e4d54047e3bdbe00bb16caf36c  -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\code\FactionSystem.dll
+OK  bytes=88064  md5=df1483e4d54047e3bdbe00bb16caf36c  -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\FactionSystem.dll
+OK  bytes=88064  md5=df1483e4d54047e3bdbe00bb16caf36c  -> D:\steam\steamapps\common\Aviassembly\mods\FactionSystem\code\FactionSystem.dll
+OK  bytes=88064  md5=df1483e4d54047e3bdbe00bb16caf36c  -> D:\豆包的下载\Machine_Dev\dist\mods\FactionSystem\code\FactionSystem.dll
+OK  bytes=88064  md5=df1483e4d54047e3bdbe00bb16caf36c  -> D:\豆包的下载\Machine_Dev\dist_upload\mods\FactionSystem\code\FactionSystem.dll
+OK  bytes=88064  md5=df1483e4d54047e3bdbe00bb16caf36c  -> D:\豆包的下载\MachineLoader_work\mods\FactionSystem\code\FactionSystem.dll
+OK  bytes=88064  md5=df1483e4d54047e3bdbe00bb16caf36c  -> D:\豆包的下载\MachineLoader_github\MachineLoader-main\mods\FactionSystem\code\FactionSystem.dll
+summary: 7 / 7 targets OK

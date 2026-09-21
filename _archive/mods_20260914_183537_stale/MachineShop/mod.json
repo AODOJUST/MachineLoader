@@ -1,0 +1,14 @@
+{
+  "id": "machine.shop",
+  "name": "MachineShop",
+  "version": "1.0.0",
+  "author": "Machine",
+  "description": "Machine自己的装货界面，用于装载mod物品（雷达、导弹等）。白色圆角风格，类别抽屉，滚轮滑动，战斗仓库信息显示。",
+  "type": "code",
+  "code": {
+    "assemblies": [
+      "code/MachineShop.dll"
+    ],
+    "mainClass": "MachineShopMod.Main"
+  }
+}

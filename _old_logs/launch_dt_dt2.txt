@@ -1,0 +1,10 @@
+now = 12:38:27 deadline=300s tag=dt2 save=AutoSave 1
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\DropTank\_droptank_test.flag (save=AutoSave 1)
+log start offset = 3823358
+started pid = 36760
+t=20s newLog=35518 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\droptank_run_log_dt2.txt length=35518
+game alive before stop = True
+game stopped

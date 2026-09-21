@@ -1,0 +1,17 @@
+{
+    "id":  "machine.opti",
+    "name":  "OptiMod",
+    "version":  "2.1.0",
+    "author":  "Machine",
+    "description":  "CPU-side optimizer + attribution. v2.1 adds a RenderTexture-camera ablation probe (measures how many ms each extra camera pass costs per frame), removes its own periodic scan hitches, and adds zero-visual-cost CPU cuts (skinned updateWhenOffscreen, autoSyncTransforms, optional instancing). Touches no visual quality setting unless explicitly enabled.",
+    "type":  "code",
+    "code":  {
+                 "assemblies":  [
+                                    "code/OptiMod.dll"
+                                ],
+                 "mainClass":  "OptiMod.Main"
+             },
+    "loadAfter":  [
+
+                  ]
+}

@@ -1,0 +1,491 @@
+==== CargoInventory::RecalculateCargo ====
+  0000 ldarg.0 
+  0001 ldfld PlaneContainer CargoInventory::planeContainer
+  0006 callvirt System.Single PlaneContainer::GetCargoVolume()
+  000B ldarg.0 
+  000C call System.Single CargoInventory::get_CurrentVolume()
+  0011 sub 
+  0012 stloc.0 
+  0013 ldarg.0 
+  0014 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  0019 callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+  001E ldc.i4.1 
+  001F sub 
+  0020 stloc.1 
+  0021 br.s IL_0085: ldloc.1
+  0023 ldarg.0 
+  0024 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  0029 ldloc.1 
+  002A call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+  002F stloc.2 
+  0030 ldloca.s V_2
+  0032 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+  0037 stloc.3 
+  0038 ldloca.s V_2
+  003A call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+  003F stloc.s V_4
+  0041 ldloc.0 
+  0042 ldc.r4 0
+  0047 blt.un.s IL_004a: ldloc.0
+  0049 ret 
+  004A ldloc.0 
+  004B conv.r4 
+  004C call System.Single UnityEngine.Mathf::Abs(System.Single)
+  0051 ldloc.3 
+  0052 ldfld System.Int32 CargoType::cargoSpace
+  0057 conv.r4 
+  0058 div 
+  0059 call System.Int32 UnityEngine.Mathf::CeilToInt(System.Single)
+  005E stloc.s V_5
+  0060 ldloc.s V_4
+  0062 ldloc.s V_5
+  0064 call System.Int32 UnityEngine.Mathf::Min(System.Int32,System.Int32)
+  0069 stloc.s V_5
+  006B ldloc.0 
+  006C ldloc.s V_5
+  006E ldloc.3 
+  006F ldfld System.Int32 CargoType::cargoSpace
+  0074 mul 
+  0075 conv.r4 
+  0076 add 
+  0077 stloc.0 
+  0078 ldarg.0 
+  0079 ldloc.3 
+  007A ldloc.s V_5
+  007C call System.Void CargoInventory::RemoveCargo(CargoType,System.Int32)
+  0081 ldloc.1 
+  0082 ldc.i4.1 
+  0083 sub 
+  0084 stloc.1 
+  0085 ldloc.1 
+  0086 ldc.i4.0 
+  0087 bge.s IL_0023: ldarg.0
+  0089 ret 
+
+==== CargoInventory::ApplyCargo ====
+  0000 ldc.i4.0 
+  0001 stloc.0 
+  0002 br.s IL_0039: ldloc.0
+  0004 ldarg.0 
+  0005 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  000A ldloc.0 
+  000B call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+  0010 stloc.1 
+  0011 ldloca.s V_1
+  0013 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+  0018 stloc.2 
+  0019 ldloca.s V_1
+  001B call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+  0020 stloc.3 
+  0021 ldarg.0 
+  0022 ldfld PlaneContainer CargoInventory::planeContainer
+  0027 ldloc.2 
+  0028 ldfld System.Single CargoType::weight
+  002D ldloc.3 
+  002E conv.r4 
+  002F mul 
+  0030 callvirt System.Void PlaneContainer::ChangeMass(System.Single)
+  0035 ldloc.0 
+  0036 ldc.i4.1 
+  0037 add 
+  0038 stloc.0 
+  0039 ldloc.0 
+  003A ldarg.0 
+  003B ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  0040 callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+  0045 blt.s IL_0004: ldarg.0
+  0047 ret 
+
+==== PlaneContainer::ActivateFlyMode ====
+  0000 ldarg.0 
+  0001 ldfld PartExploder PlaneContainer::exploder
+  0006 callvirt System.Void PartExploder::ResetParts()
+  000B ldarg.0 
+  000C ldarg.0 
+  000D call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0012 callvirt !!0 UnityEngine.GameObject::AddComponent<UnityEngine.Rigidbody>()
+  0017 stfld UnityEngine.Rigidbody PlaneContainer::rb
+  001C ldarg.0 
+  001D ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0022 ldc.i4.0 
+  0023 callvirt System.Void UnityEngine.Rigidbody::set_collisionDetectionMode(UnityEngine.CollisionDetectionMode)
+  0028 ldarg.0 
+  0029 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  002E ldc.r4 0
+  0033 callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+  0038 ldarg.0 
+  0039 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  003E call T Singleton`1<DragSimulator>::get_Instance()
+  0043 ldfld System.Single DragSimulator::dragFactor
+  0048 callvirt System.Void UnityEngine.Rigidbody::set_linearDamping(System.Single)
+  004D ldarg.0 
+  004E ldarg.0 
+  004F ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0054 callvirt System.Single UnityEngine.Rigidbody::get_linearDamping()
+  0059 stfld System.Single PlaneContainer::drag
+  005E ldarg.0 
+  005F ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0064 ldc.i4.0 
+  0065 callvirt System.Void UnityEngine.Rigidbody::set_useGravity(System.Boolean)
+  006A ldarg.0 
+  006B ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0070 ldc.r4 2
+  0075 callvirt System.Void UnityEngine.Rigidbody::set_angularDamping(System.Single)
+  007A ldarg.0 
+  007B ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0080 callvirt System.Void UnityEngine.Rigidbody::ResetCenterOfMass()
+  0085 ldarg.0 
+  0086 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  008B ldarg.0 
+  008C ldc.i4.0 
+  008D call UnityEngine.Vector3 PlaneContainer::CalculateCenterOfMass(System.Boolean)
+  0092 callvirt System.Void UnityEngine.Rigidbody::set_centerOfMass(UnityEngine.Vector3)
+  0097 ldarg.0 
+  0098 call System.Void PlaneContainer::CenterPlane()
+  009D call System.Void UnityEngine.Physics::SyncTransforms()
+  00A2 ldarg.0 
+  00A3 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  00A8 callvirt System.Void UnityEngine.Rigidbody::ResetCenterOfMass()
+  00AD ldarg.0 
+  00AE ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  00B3 ldarg.0 
+  00B4 ldc.i4.0 
+  00B5 call UnityEngine.Vector3 PlaneContainer::CalculateCenterOfMass(System.Boolean)
+  00BA callvirt System.Void UnityEngine.Rigidbody::set_centerOfMass(UnityEngine.Vector3)
+  00BF ldarg.0 
+  00C0 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  00C5 callvirt System.Void UnityEngine.Rigidbody::ResetInertiaTensor()
+  00CA ldarg.0 
+  00CB ldfld PlaneController PlaneContainer::controller
+  00D0 callvirt System.Void PlaneController::ResetController()
+  00D5 ldarg.0 
+  00D6 ldfld PlaneController PlaneContainer::controller
+  00DB ldc.i4.1 
+  00DC callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+  00E1 ldarg.0 
+  00E2 ldfld System.Collections.Generic.List`1<PlanePart> PlaneContainer::planeParts
+  00E7 callvirt System.Void System.Collections.Generic.List`1<PlanePart>::Clear()
+  00EC ldarg.0 
+  00ED ldc.r4 0
+  00F2 call System.Void PlaneContainer::set_cargoVolume(System.Single)
+  00F7 ldarg.0 
+  00F8 ldc.r4 1
+  00FD stfld System.Single PlaneContainer::fuelCapacity
+  0102 ldarg.0 
+  0103 ldc.r4 0.05
+  0108 stfld System.Single PlaneContainer::electricityStorageCapacity
+  010D ldarg.0 
+  010E ldc.i4.0 
+  010F call System.Void PlaneContainer::set_hasBalloons(System.Boolean)
+  0114 ldarg.0 
+  0115 ldc.i4.1 
+  0116 call !!0[] UnityEngine.Component::GetComponentsInChildren<PlanePart>(System.Boolean)
+  011B stloc.0 
+  011C ldc.i4.0 
+  011D stloc.1 
+  011E br IL_0342: ldloc.1
+  0123 ldloc.0 
+  0124 ldloc.1 
+  0125 ldelem.ref 
+  0126 ldarg.0 
+  0127 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  012C stfld UnityEngine.Rigidbody PlanePart::rb
+  0131 ldloc.0 
+  0132 ldloc.1 
+  0133 ldelem.ref 
+  0134 ldc.i4.1 
+  0135 callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+  013A ldloc.0 
+  013B ldloc.1 
+  013C ldelem.ref 
+  013D callvirt System.Void PlanePart::Activate()
+  0142 ldloc.0 
+  0143 ldloc.1 
+  0144 ldelem.ref 
+  0145 callvirt System.Type System.Object::GetType()
+  014A ldtoken Engine
+  014F call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  0154 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  0159 brtrue IL_0210: ldarg.0
+  015E ldloc.0 
+  015F ldloc.1 
+  0160 ldelem.ref 
+  0161 callvirt System.Type System.Object::GetType()
+  0166 ldtoken Wing
+  016B call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  0170 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  0175 brtrue IL_0210: ldarg.0
+  017A ldloc.0 
+  017B ldloc.1 
+  017C ldelem.ref 
+  017D callvirt System.Type System.Object::GetType()
+  0182 ldtoken Rotator
+  0187 call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  018C call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  0191 brtrue.s IL_0210: ldarg.0
+  0193 ldloc.0 
+  0194 ldloc.1 
+  0195 ldelem.ref 
+  0196 callvirt System.Type System.Object::GetType()
+  019B ldtoken Decoupler
+  01A0 call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  01A5 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  01AA brtrue.s IL_0210: ldarg.0
+  01AC ldloc.0 
+  01AD ldloc.1 
+  01AE ldelem.ref 
+  01AF callvirt System.Type System.Object::GetType()
+  01B4 ldtoken AirTurbine
+  01B9 call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  01BE call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  01C3 brtrue.s IL_0210: ldarg.0
+  01C5 ldloc.0 
+  01C6 ldloc.1 
+  01C7 ldelem.ref 
+  01C8 callvirt System.Type System.Object::GetType()
+  01CD ldtoken Balloon
+  01D2 call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  01D7 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  01DC brtrue.s IL_0210: ldarg.0
+  01DE ldloc.0 
+  01DF ldloc.1 
+  01E0 ldelem.ref 
+  01E1 callvirt System.Type System.Object::GetType()
+  01E6 ldtoken Parachute
+  01EB call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  01F0 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  01F5 brtrue.s IL_0210: ldarg.0
+  01F7 ldloc.0 
+  01F8 ldloc.1 
+  01F9 ldelem.ref 
+  01FA callvirt System.Type System.Object::GetType()
+  01FF ldtoken Airbreak
+  0204 call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  0209 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  020E brfalse.s IL_021e: ldloc.0
+  0210 ldarg.0 
+  0211 ldfld System.Collections.Generic.List`1<PlanePart> PlaneContainer::planeParts
+  0216 ldloc.0 
+  0217 ldloc.1 
+  0218 ldelem.ref 
+  0219 callvirt System.Void System.Collections.Generic.List`1<PlanePart>::Add(!0)
+  021E ldloc.0 
+  021F ldloc.1 
+  0220 ldelem.ref 
+  0221 callvirt System.Type System.Object::GetType()
+  0226 ldtoken Balloon
+  022B call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  0230 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  0235 brfalse.s IL_023e: ldloc.0
+  0237 ldarg.0 
+  0238 ldc.i4.1 
+  0239 call System.Void PlaneContainer::set_hasBalloons(System.Boolean)
+  023E ldloc.0 
+  023F ldloc.1 
+  0240 ldelem.ref 
+  0241 callvirt System.Type System.Object::GetType()
+  0246 ldtoken FuelTank
+  024B call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  0250 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  0255 brfalse.s IL_0276: ldloc.0
+  0257 ldarg.0 
+  0258 ldarg.0 
+  0259 ldfld System.Single PlaneContainer::fuelCapacity
+  025E ldloc.0 
+  025F ldloc.1 
+  0260 ldelem.ref 
+  0261 castclass FuelTank
+  0266 ldfld System.Single FuelTank::volume
+  026B call System.Single UnityEngine.Mathf::Abs(System.Single)
+  0270 add 
+  0271 stfld System.Single PlaneContainer::fuelCapacity
+  0276 ldloc.0 
+  0277 ldloc.1 
+  0278 ldelem.ref 
+  0279 callvirt System.Type System.Object::GetType()
+  027E ldtoken Wing
+  0283 call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  0288 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  028D brfalse.s IL_02ae: ldloc.0
+  028F ldarg.0 
+  0290 ldarg.0 
+  0291 ldfld System.Single PlaneContainer::fuelCapacity
+  0296 ldloc.0 
+  0297 ldloc.1 
+  0298 ldelem.ref 
+  0299 castclass Wing
+  029E ldfld System.Single Wing::fuel
+  02A3 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  02A8 add 
+  02A9 stfld System.Single PlaneContainer::fuelCapacity
+  02AE ldloc.0 
+  02AF ldloc.1 
+  02B0 ldelem.ref 
+  02B1 callvirt System.Type System.Object::GetType()
+  02B6 ldtoken Battery
+  02BB call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  02C0 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  02C5 brfalse.s IL_02e6: ldloc.0
+  02C7 ldarg.0 
+  02C8 ldarg.0 
+  02C9 ldfld System.Single PlaneContainer::electricityStorageCapacity
+  02CE ldloc.0 
+  02CF ldloc.1 
+  02D0 ldelem.ref 
+  02D1 castclass Battery
+  02D6 ldfld System.Single Battery::capacity
+  02DB call System.Single UnityEngine.Mathf::Abs(System.Single)
+  02E0 add 
+  02E1 stfld System.Single PlaneContainer::electricityStorageCapacity
+  02E6 ldloc.0 
+  02E7 ldloc.1 
+  02E8 ldelem.ref 
+  02E9 callvirt System.Type System.Object::GetType()
+  02EE ldtoken Fuselage
+  02F3 call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  02F8 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  02FD brfalse.s IL_031e: ldarg.0
+  02FF ldarg.0 
+  0300 ldarg.0 
+  0301 call System.Single PlaneContainer::get_cargoVolume()
+  0306 ldloc.0 
+  0307 ldloc.1 
+  0308 ldelem.ref 
+  0309 castclass Fuselage
+  030E ldfld System.Single Fuselage::cargoVolume
+  0313 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  0318 add 
+  0319 call System.Void PlaneContainer::set_cargoVolume(System.Single)
+  031E ldarg.0 
+  031F ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0324 dup 
+  0325 callvirt System.Single UnityEngine.Rigidbody::get_mass()
+  032A ldloc.0 
+  032B ldloc.1 
+  032C ldelem.ref 
+  032D ldfld System.Single PlanePart::weight
+  0332 ldc.r4 15
+  0337 div 
+  0338 add 
+  0339 callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+  033E ldloc.1 
+  033F ldc.i4.1 
+  0340 add 
+  0341 stloc.1 
+  0342 ldloc.1 
+  0343 ldloc.0 
+  0344 ldlen 
+  0345 conv.i4 
+  0346 blt IL_0123: ldloc.0
+  034B ldarg.0 
+  034C ldarg.0 
+  034D ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0352 callvirt System.Single UnityEngine.Rigidbody::get_mass()
+  0357 stfld System.Single PlaneContainer::mass
+  035C ldarg.0 
+  035D ldarg.0 
+  035E ldfld System.Single PlaneContainer::fuelCapacity
+  0363 stfld System.Single PlaneContainer::refrenceFuelCapacity
+  0368 ldarg.0 
+  0369 ldarg.0 
+  036A ldfld System.Single PlaneContainer::electricityStorageCapacity
+  036F stfld System.Single PlaneContainer::refrenceElectricityStorageCapacity
+  0374 call T Singleton`1<CargoInventory>::get_Instance()
+  0379 callvirt System.Void CargoInventory::ApplyCargo()
+  037E ldarg.0 
+  037F ldarg.0 
+  0380 call !!0 UnityEngine.Component::GetComponentInChildren<RetractableLandingGear>()
+  0385 ldnull 
+  0386 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  038B call System.Void PlaneContainer::set_hasRetractableGear(System.Boolean)
+  0390 ldarg.0 
+  0391 ldarg.0 
+  0392 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0397 ldarg.0 
+  0398 call UnityEngine.Vector3 PlaneContainer::UpdateForwardDirection()
+  039D callvirt UnityEngine.Vector3 UnityEngine.Transform::InverseTransformDirection(UnityEngine.Vector3)
+  03A2 stfld UnityEngine.Vector3 PlaneContainer::cachedLocalForward
+  03A7 ldarg.0 
+  03A8 ldc.i4.1 
+  03A9 call System.Void PlaneContainer::set_FlightModeInitialized(System.Boolean)
+  03AE ldarg.0 
+  03AF ldfld PlaneController PlaneContainer::controller
+  03B4 ldarg.0 
+  03B5 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  03BA callvirt System.Void PlaneController::UpdateControllSurfaces(UnityEngine.Rigidbody)
+  03BF call T Singleton`1<QuestGenerator>::get_Instance()
+  03C4 callvirt System.Void QuestGenerator::CacheCurrentDesign()
+  03C9 ret 
+
+==== PlaneContainer::ReInitializePlane ====
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0006 ldc.r4 0
+  000B callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+  0010 ldarg.0 
+  0011 call !!0[] UnityEngine.Component::GetComponentsInChildren<PlanePart>()
+  0016 stloc.0 
+  0017 ldc.i4.0 
+  0018 stloc.1 
+  0019 br.s IL_004e: ldloc.1
+  001B ldloc.0 
+  001C ldloc.1 
+  001D ldelem.ref 
+  001E callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0023 callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  0028 brfalse.s IL_004a: ldloc.1
+  002A ldarg.0 
+  002B ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0030 dup 
+  0031 callvirt System.Single UnityEngine.Rigidbody::get_mass()
+  0036 ldloc.0 
+  0037 ldloc.1 
+  0038 ldelem.ref 
+  0039 ldfld System.Single PlanePart::weight
+  003E ldc.r4 15
+  0043 div 
+  0044 add 
+  0045 callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+  004A ldloc.1 
+  004B ldc.i4.1 
+  004C add 
+  004D stloc.1 
+  004E ldloc.1 
+  004F ldloc.0 
+  0050 ldlen 
+  0051 conv.i4 
+  0052 blt.s IL_001b: ldloc.0
+  0054 ldarg.0 
+  0055 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  005A dup 
+  005B callvirt System.Single UnityEngine.Rigidbody::get_mass()
+  0060 call T Singleton`1<CargoInventory>::get_Instance()
+  0065 callvirt System.Single CargoInventory::GetCargoMass()
+  006A ldc.r4 15
+  006F div 
+  0070 add 
+  0071 callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+  0076 ldarg.0 
+  0077 ldarg.0 
+  0078 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  007D callvirt System.Single UnityEngine.Rigidbody::get_mass()
+  0082 stfld System.Single PlaneContainer::mass
+  0087 ldarg.0 
+  0088 ldarg.0 
+  0089 call System.Single PlaneContainer::GetCargoVolume()
+  008E call System.Void PlaneContainer::set_cargoVolume(System.Single)
+  0093 call T Singleton`1<CargoInventory>::get_Instance()
+  0098 callvirt System.Void CargoInventory::RecalculateCargo()
+  009D ldarg.0 
+  009E ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  00A3 ldarg.0 
+  00A4 ldc.i4.0 
+  00A5 call UnityEngine.Vector3 PlaneContainer::CalculateCenterOfMass(System.Boolean)
+  00AA callvirt System.Void UnityEngine.Rigidbody::set_centerOfMass(UnityEngine.Vector3)
+  00AF ret 
+
+==== CALLERS ====
+  GameManager/<LoadFlyMode>d__36::MoveNext  -> System.Void PlaneContainer::ActivateFlyMode()
+  PartExploder::ExplodePart  -> System.Void PlaneContainer::ReInitializePlane()
+  PlaneContainer::ActivateFlyMode  -> System.Void CargoInventory::ApplyCargo()
+  PlaneContainer::ReInitializePlane  -> System.Void CargoInventory::RecalculateCargo()

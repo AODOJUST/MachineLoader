@@ -1,0 +1,20 @@
+csc  = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+dll  = D:\豆包的下载\Machine_Dev\bin\mods\DropTank.dll exists=True (22528 bytes)
+-- sim built OK
+---- sim output ----
+ok   A no-tank idle  cap=100.00 fuel=100.00 ref=100.00 applied=0.00 paid=0
+ok   B +1 tank  cap=110.00 fuel=110.00 ref=110.00 applied=10.00 paid=1
+ok   C +3 tanks  cap=130.00 fuel=130.00 ref=130.00 applied=30.00 paid=3
+ok   D burnt fuel idle  cap=130.00 fuel=20.00 ref=130.00 applied=30.00 paid=3
+ok   E -2 tanks  cap=110.00 fuel=20.00 ref=110.00 applied=10.00 paid=1
+ok   F host reset re-applies  cap=110.00 fuel=20.00 ref=110.00 applied=10.00 paid=1
+ok   G all tanks off  cap=100.00 fuel=20.00 ref=100.00 applied=0.00 paid=0
+ok   H empty +1 tank  cap=110.00 fuel=10.00 ref=110.00 applied=10.00 paid=1
+ok   I grant=false  cap=120.00 fuel=50.00 ref=120.00 applied=20.00 paid=2
+ok   J 2->4 tanks  cap=140.00 fuel=140.00 ref=140.00 applied=40.00 paid=4
+ok   K clip after jettison  cap=100.00 fuel=100.00 ref=100.00 applied=0.00 paid=0
+ok   L idempotent  cap=120.00 fuel=120.00 ref=120.00 applied=20.00 paid=2
+ok   M per=0  cap=100.00 fuel=100.00 ref=100.00 applied=0.00 paid=3
+
+verdict=PASS pass=13 fail=0
+exit=0

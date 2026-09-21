@@ -1,0 +1,43 @@
+now = 22:18:38 deadline=170s tag=e2e1
+pre-existing instance cleared
+log start offset = 15594215
+started pid = 35296
+t=33s newLog=44105 done=False
+t=63s newLog=54266 done=False
+t=83s newLog=61765 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\aam_run_log_e2e1.txt length=61765
+newshot aam_test_1.png 22:19:00 1520086 bytes
+newshot aam_test_1_chase.png 22:19:00 222828 bytes
+newshot aam_test_1_trail.png 22:19:00 203432 bytes
+newshot aam_test_10.png 22:19:13 1511742 bytes
+newshot aam_test_11.png 22:19:18 1514701 bytes
+newshot aam_test_12.png 22:19:22 1513490 bytes
+newshot aam_test_13.png 22:19:26 1513310 bytes
+newshot aam_test_14.png 22:19:30 1513088 bytes
+newshot aam_test_2.png 22:19:01 1521472 bytes
+newshot aam_test_2_chase.png 22:19:00 205072 bytes
+newshot aam_test_2_trail.png 22:19:00 207948 bytes
+newshot aam_test_3.png 22:19:01 1521401 bytes
+newshot aam_test_3_chase.png 22:19:01 218662 bytes
+newshot aam_test_3_trail.png 22:19:01 223620 bytes
+newshot aam_test_4.png 22:19:02 1522633 bytes
+newshot aam_test_4_chase.png 22:19:02 255899 bytes
+newshot aam_test_4_trail.png 22:19:02 253691 bytes
+newshot aam_test_5.png 22:19:03 1516371 bytes
+newshot aam_test_5_chase.png 22:19:02 236326 bytes
+newshot aam_test_5_trail.png 22:19:03 238765 bytes
+newshot aam_test_6.png 22:19:03 1511734 bytes
+newshot aam_test_6_chase.png 22:19:03 223350 bytes
+newshot aam_test_6_trail.png 22:19:03 226324 bytes
+newshot aam_test_7.png 22:19:04 1518737 bytes
+newshot aam_test_7_chase.png 22:19:04 222271 bytes
+newshot aam_test_7_trail.png 22:19:04 223104 bytes
+newshot aam_test_8.png 22:19:05 1512756 bytes
+newshot aam_test_8_chase.png 22:19:05 215206 bytes
+newshot aam_test_8_trail.png 22:19:05 215572 bytes
+newshot aam_test_9.png 22:19:09 1511621 bytes
+newshot aam_test_9_chase.png 22:19:09 188737 bytes
+newshot aam_test_9_trail.png 22:19:09 197918 bytes
+game alive before stop = True
+game stopped

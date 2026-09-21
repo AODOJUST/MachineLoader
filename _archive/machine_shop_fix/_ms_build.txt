@@ -1,0 +1,13 @@
+== build scripts ==
+build-aam.ps1
+build-core.ps1
+build-droptank.ps1
+build-installer.ps1
+build-mods.ps1
+build-opti.ps1
+build-radar.ps1
+build-shop.ps1
+build-voice.ps1
+build.ps1
+== game ==
+RUNNING 36016

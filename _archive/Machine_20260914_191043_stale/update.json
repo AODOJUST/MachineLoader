@@ -1,0 +1,7 @@
+{
+  "repo": "AODOJUST/MachineLoader",
+  "branch": "main",
+  "channel": "stable",
+  "enabled": true,
+  "requireSignature": true
+}

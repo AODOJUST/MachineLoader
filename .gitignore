@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虚拟环境
+.venv/
+env/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 测试和覆盖率
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# 类型检查
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# 构建产物
+*.dll
+*.exe
+*.pdb
+bin/
+obj/
+*.user
+*.suo
+
+# 发布包
+*.zip
+*.tar.gz
+MachineLoader-*/
+
+# 日志
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.bak
+*.backup
+temp/
+tmp/
+
+# 敏感文件（私钥）
+keys/*.pem
+!keys/README.md
+
+# 游戏相关
+Aviassembly_DEV/
+Aviassembly/
+*.dll.machinebak
+
+# OS
+.DS_Store
+Thumbs.db

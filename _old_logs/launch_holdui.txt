@@ -1,0 +1,6 @@
+log start offset = 2464880
+started pid = 37684
+layout line seen
+layoutSeen=True
+log slice written, length=23655
+game stopped

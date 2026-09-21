@@ -1,0 +1,11 @@
+now = 22:00:55 deadline=460s tag=points1 save=AutoSave 0
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\_points_test.flag
+log start offset = 686421
+started pid = 33584
+t=30s newLog=36898 done=False
+t=35s newLog=38506 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\faction_run_log_points1.txt length=38506
+game alive before stop = True
+game stopped

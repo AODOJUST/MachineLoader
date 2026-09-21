@@ -1,0 +1,19 @@
+﻿===== TYPE CargoOfferingUI =====
+  FIELD TMPro.TMP_Text cargoTypeHeader pub
+  FIELD UnityEngine.UI.RawImage icon pub
+  FIELD UnityEngine.UI.RawImage cargoSpaceIcon pub
+  FIELD TMPro.TMP_Text weight pub
+  FIELD UnityEngine.GameObject fragile pub
+  FIELD TMPro.TMP_Text stopwatch pub
+  FIELD TMPro.TMP_Text cargoSpace pub
+  FIELD System.Single takeButtonhighlighterFlickerSpeed pub
+  FIELD UnityEngine.GameObject takeButtonHighlighter pub
+  FIELD UnityEngine.Color normal pub
+  FIELD UnityEngine.Color red pub
+  FIELD TooltipTrigger takeButtonTooltip pub
+  FIELD CargoType currentCargoType
+  METHOD SetCargoType(CargoType cargoType) : Void pub
+  METHOD LateUpdate() : Void
+  METHOD TakeCargo() : Void pub
+  METHOD TakeAllCargo() : Void pub
+  METHOD .ctor() : Void pub

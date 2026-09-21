@@ -1,0 +1,3 @@
+[bandit]
+exclude: /test,/tests,/.git,/dist,/build
+skips: B101,B404,B603,B607

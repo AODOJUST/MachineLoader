@@ -1,0 +1,9 @@
+﻿TypeDump.exe : 
+所在位置 行:1 字符: 234
++ ... m.cs" 2>&1; & "D:\豆包的下载\Machine_Dev\tools\TypeDump.exe" "D:\豆包的下载\Avi ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+   由于 Exception.ToString() 失败，因此无法打印异常字符串。

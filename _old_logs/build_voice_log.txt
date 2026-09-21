@@ -1,0 +1,5 @@
+csc = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+core dll exists=True
+-- VoiceAlerts OK 24576 bytes
+deployed -> D:\豆包的下载\Aviassembly_DEV\mods\VoiceAlerts\code\VoiceAlerts.dll (24576 bytes)
+deployed -> D:\豆包的下载\Aviassembly_DEV\mods\VoiceAlerts\VoiceAlerts.dll (24576 bytes)

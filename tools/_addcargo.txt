@@ -1,0 +1,95 @@
+FIELD AudioDef glassBreaking
+FIELD AudioDef addItem
+FIELD System.Single <MaxVolume>k__BackingField
+FIELD System.Single <CurrentVolume>k__BackingField
+FIELD System.Single breakageCooldown
+FIELD System.Collections.Generic.Dictionary`2<CargoType,System.Int32> currentCargo
+FIELD PlaneContainer planeContainer
+FIELD System.Single expirationTimer
+FIELD System.Single currentExpirationDuration
+FIELD UnityEngine.Vector3 prevVelocity
+FIELD System.Single lastBreakTime
+FIELD System.Single minFragileBreakTreshhold
+FIELD System.Single maxFragileBreakTreshhold
+FIELD System.Action`1<CargoType> ExpirableCargoCleared
+FIELD System.Action`2<CargoType,System.Int32> FragileCargoCleared
+PROP System.Single MaxVolume
+PROP System.Single CurrentVolume
+== METHOD System.Void CargoInventory::AddCargo(CargoType)
+  0000 call T Singleton`1<AirportManager>::get_Instance()
+  0005 ldarg.0 
+  0006 ldfld PlaneContainer CargoInventory::planeContainer
+  000B callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0010 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  0015 callvirt Airport AirportManager::GetClosestAirport(UnityEngine.Vector3)
+  001A callvirt System.Boolean Airport::CargoUnlocked()
+  001F brtrue.s IL_0022: ldarg.0
+  0021 ret 
+  0022 ldarg.0 
+  0023 call System.Single CargoInventory::get_CurrentVolume()
+  0028 ldarg.1 
+  0029 ldfld System.Int32 CargoType::cargoSpace
+  002E conv.r4 
+  002F add 
+  0030 ldarg.0 
+  0031 call System.Single CargoInventory::get_MaxVolume()
+  0036 call System.Int32 UnityEngine.Mathf::RoundToInt(System.Single)
+  003B conv.r4 
+  003C ble.un.s IL_003f: ldarg.0
+  003E ret 
+  003F ldarg.0 
+  0040 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  0045 ldarg.1 
+  0046 callvirt System.Boolean System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::ContainsKey(!0)
+  004B brtrue.s IL_005a: ldarg.0
+  004D ldarg.0 
+  004E ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  0053 ldarg.1 
+  0054 ldc.i4.0 
+  0055 callvirt System.Void System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::Add(!0,!1)
+  005A ldarg.0 
+  005B ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  0060 ldarg.1 
+  0061 stloc.0 
+  0062 dup 
+  0063 ldloc.0 
+  0064 callvirt !1 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Item(!0)
+  0069 stloc.1 
+  006A ldloc.0 
+  006B ldloc.1 
+  006C ldc.i4.1 
+  006D add 
+  006E callvirt System.Void System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::set_Item(!0,!1)
+  0073 ldarg.0 
+  0074 ldarg.0 
+  0075 call System.Single CargoInventory::get_CurrentVolume()
+  007A ldarg.1 
+  007B ldfld System.Int32 CargoType::cargoSpace
+  0080 conv.r4 
+  0081 add 
+  0082 call System.Void CargoInventory::set_CurrentVolume(System.Single)
+  0087 ldarg.0 
+  0088 ldfld PlaneContainer CargoInventory::planeContainer
+  008D ldarg.1 
+  008E ldfld System.Single CargoType::weight
+  0093 callvirt System.Void PlaneContainer::ChangeMass(System.Single)
+  0098 ldarg.1 
+  0099 ldfld System.Boolean CargoType::expires
+  009E brfalse.s IL_00c9: call T Singleton`1<AudioManager>::get_Instance()
+  00A0 call T Singleton`1<GameManager>::get_Instance()
+  00A5 ldfld GameModeData GameManager::gameModeData
+  00AA ldfld Difficulty GameModeData::currentDifficulty
+  00AF brfalse.s IL_00c9: call T Singleton`1<AudioManager>::get_Instance()
+  00B1 ldarg.0 
+  00B2 ldarg.1 
+  00B3 ldfld System.Single CargoType::expirationTime
+  00B8 stfld System.Single CargoInventory::expirationTimer
+  00BD ldarg.0 
+  00BE ldarg.1 
+  00BF ldfld System.Single CargoType::expirationTime
+  00C4 stfld System.Single CargoInventory::currentExpirationDuration
+  00C9 call T Singleton`1<AudioManager>::get_Instance()
+  00CE ldarg.0 
+  00CF ldfld AudioDef CargoInventory::addItem
+  00D4 callvirt System.Void AudioManager::PlaySound(AudioDef)
+  00D9 ret 

@@ -1,0 +1,16 @@
+root    = D:\豆包的下载\Machine_Dev
+modsDir = D:\豆包的下载\Aviassembly_DEV\mods
+deployed FlightTrails.dll -> D:\豆包的下载\Aviassembly_DEV\mods\FlightTrails\code\FlightTrails.dll (20480 bytes)
+deployed VoiceAlerts.dll -> D:\豆包的下载\Aviassembly_DEV\mods\VoiceAlerts\code\VoiceAlerts.dll (24576 bytes)
+deployed BattleCore.dll -> D:\豆包的下载\Aviassembly_DEV\mods\BattleCore\code\BattleCore.dll (15360 bytes)
+deployed BattleHold.dll -> D:\豆包的下载\Aviassembly_DEV\mods\BattleHold\code\BattleHold.dll (69120 bytes)
+deployed GMeter.dll -> D:\豆包的下载\Aviassembly_DEV\mods\GMeter\code\GMeter.dll (13824 bytes)
+deployed GVision.dll -> D:\豆包的下载\Aviassembly_DEV\mods\GVision\code\GVision.dll (18944 bytes)
+deployed MachineAAM.dll -> D:\豆包的下载\Aviassembly_DEV\mods\MachineAAM\code\MachineAAM.dll (187904 bytes)
+deployed Radar.dll -> D:\豆包的下载\Aviassembly_DEV\mods\Radar\code\Radar.dll (63488 bytes)
+deployed FactionSystem.dll -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\code\FactionSystem.dll (58880 bytes)
+deployed MachineShop.dll -> D:\豆包的下载\Aviassembly_DEV\mods\MachineShop\code\MachineShop.dll (45568 bytes)
+deployed KillFeed.dll -> D:\豆包的下载\Aviassembly_DEV\mods\KillFeed\code\KillFeed.dll (15872 bytes)
+deployed OptiMod.dll -> D:\豆包的下载\Aviassembly_DEV\mods\OptiMod\code\OptiMod.dll (45056 bytes)
+deployed ZoomMod.dll -> D:\豆包的下载\Aviassembly_DEV\mods\ZoomMod\code\ZoomMod.dll (6144 bytes)
+staging mirrored -> D:\豆包的下载\Machine_Dev\bin\mods_staging

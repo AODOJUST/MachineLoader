@@ -1,0 +1,182 @@
+FIELD CargoType[] allCargoTypes
+FIELD AirportSpawner airportSpawner
+FIELD UnityEngine.GameObject airportHighlighterPrefab
+FIELD System.Collections.Generic.List`1<Airport> airports
+FIELD System.Collections.Generic.List`1<Quest> hoveredQuests
+FIELD UnityEngine.Vector3 <CurrentBaseAirport>k__BackingField
+FIELD UnityEngine.Vector3 <LastAirport>k__BackingField
+FIELD System.Single <FuelAtLand>k__BackingField
+FIELD System.Single <ElecticityAtLand>k__BackingField
+FIELD System.Boolean airportHover
+FIELD ContinentManager continentManager
+PROP UnityEngine.Vector3 CurrentBaseAirport
+PROP UnityEngine.Vector3 LastAirport
+PROP System.Single FuelAtLand
+PROP System.Single ElecticityAtLand
+== METHOD System.Void AirportManager::Update()
+  0000 call T Singleton`1<GameManager>::get_Instance()
+  0005 callvirt System.Boolean GameManager::get_Loading()
+  000A brtrue IL_00bd: call T Singleton`1<ContinentManager>::get_Instance()
+  000F ldsfld GameMode GameManager::gameMode
+  0014 brtrue IL_00bd: call T Singleton`1<ContinentManager>::get_Instance()
+  0019 call T Singleton`1<PlaneContainer>::get_Instance()
+  001E stloc.1 
+  001F ldarg.0 
+  0020 ldloc.1 
+  0021 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0026 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  002B call Airport AirportManager::GetClosestAirport(UnityEngine.Vector3)
+  0030 stloc.2 
+  0031 ldloc.1 
+  0032 ldfld System.Single PlaneContainer::fuel
+  0037 ldc.r4 0.1
+  003C bgt.s IL_0059: ldc.i4.1
+  003E ldloc.2 
+  003F ldfld AirportData Airport::data
+  0044 ldnull 
+  0045 call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+  004A brtrue.s IL_0059: ldc.i4.1
+  004C ldloc.2 
+  004D ldfld AirportData Airport::data
+  0052 ldfld System.Boolean AirportData::refuelAvailable
+  0057 br.s IL_005a: stloc.3
+  0059 ldc.i4.1 
+  005A stloc.3 
+  005B ldloc.1 
+  005C callvirt System.Boolean PlaneContainer::IsAtAirport()
+  0061 ldloc.3 
+  0062 and 
+  0063 brfalse.s IL_00bd: call T Singleton`1<ContinentManager>::get_Instance()
+  0065 ldarg.0 
+  0066 call UnityEngine.Vector3 AirportManager::get_LastAirport()
+  006B ldloc.2 
+  006C callvirt UnityEngine.Vector3 Airport::get_position()
+  0071 call System.Single UnityEngine.Vector3::Distance(UnityEngine.Vector3,UnityEngine.Vector3)
+  0076 ldc.r4 1000
+  007B ble.un.s IL_00b1: ldarg.0
+  007D ldloc.1 
+  007E ldfld System.Single PlaneContainer::fuel
+  0083 ldarg.0 
+  0084 call System.Single AirportManager::get_FuelAtLand()
+  0089 ble.un.s IL_0097: ldloc.1
+  008B ldarg.0 
+  008C ldloc.1 
+  008D ldfld System.Single PlaneContainer::fuel
+  0092 call System.Void AirportManager::set_FuelAtLand(System.Single)
+  0097 ldloc.1 
+  0098 ldfld System.Single PlaneContainer::electricity
+  009D ldarg.0 
+  009E call System.Single AirportManager::get_ElecticityAtLand()
+  00A3 ble.un.s IL_00b1: ldarg.0
+  00A5 ldarg.0 
+  00A6 ldloc.1 
+  00A7 ldfld System.Single PlaneContainer::electricity
+  00AC call System.Void AirportManager::set_ElecticityAtLand(System.Single)
+  00B1 ldarg.0 
+  00B2 ldloc.2 
+  00B3 callvirt UnityEngine.Vector3 Airport::get_position()
+  00B8 call System.Void AirportManager::set_LastAirport(UnityEngine.Vector3)
+  00BD call T Singleton`1<ContinentManager>::get_Instance()
+  00C2 stloc.0 
+  00C3 call T Singleton`1<PlaneContainer>::get_Instance()
+  00C8 callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  00CD callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  00D2 brfalse IL_01cf: ldc.i4.0
+  00D7 ldsfld GameMode GameManager::gameMode
+  00DC brtrue IL_01cf: ldc.i4.0
+  00E1 call T Singleton`1<GameManager>::get_Instance()
+  00E6 callvirt System.Boolean GameManager::get_Loading()
+  00EB brtrue IL_01cf: ldc.i4.0
+  00F0 call T Singleton`1<GameManager>::get_Instance()
+  00F5 ldfld GameModeData GameManager::gameModeData
+  00FA ldfld System.Boolean GameModeData::disableAirports
+  00FF brtrue IL_01cf: ldc.i4.0
+  0104 ldc.r4 3.402823E+38
+  0109 stloc.s V_4
+  010B ldloc.0 
+  010C ldfld System.Collections.Generic.List`1<ContinentData> ContinentManager::continents
+  0111 ldc.i4.0 
+  0112 callvirt !0 System.Collections.Generic.List`1<ContinentData>::get_Item(System.Int32)
+  0117 stloc.s V_5
+  0119 ldc.i4.0 
+  011A stloc.s V_6
+  011C br IL_01ab: ldloc.s V_6
+  0121 ldloc.0 
+  0122 ldfld System.Collections.Generic.List`1<ContinentData> ContinentManager::continents
+  0127 ldloc.s V_6
+  0129 callvirt !0 System.Collections.Generic.List`1<ContinentData>::get_Item(System.Int32)
+  012E callvirt System.Boolean ContinentData::ContinentDiscovered()
+  0133 brfalse.s IL_01a5: ldloc.s V_6
+  0135 ldloc.s V_6
+  0137 ldc.i4.1 
+  0138 bne.un.s IL_0146: ldloc.0
+  013A call T Singleton`1<StoryState>::get_Instance()
+  013F ldfld System.Boolean StoryState::desertUnlocked
+  0144 brfalse.s IL_01a5: ldloc.s V_6
+  0146 ldloc.0 
+  0147 ldfld System.Collections.Generic.List`1<ContinentData> ContinentManager::continents
+  014C ldloc.s V_6
+  014E callvirt !0 System.Collections.Generic.List`1<ContinentData>::get_Item(System.Int32)
+  0153 ldfld Airport ContinentData::baseAirport
+  0158 ldfld AirportData Airport::data
+  015D ldfld System.Boolean AirportData::baseAirport
+  0162 brfalse.s IL_01a5: ldloc.s V_6
+  0164 ldloc.0 
+  0165 ldfld System.Collections.Generic.List`1<ContinentData> ContinentManager::continents
+  016A ldloc.s V_6
+  016C callvirt !0 System.Collections.Generic.List`1<ContinentData>::get_Item(System.Int32)
+  0171 ldfld UnityEngine.Vector3 ContinentData::origin
+  0176 call T Singleton`1<PlaneContainer>::get_Instance()
+  017B callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0180 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  0185 call System.Single UnityEngine.Vector3::Distance(UnityEngine.Vector3,UnityEngine.Vector3)
+  018A stloc.s V_7
+  018C ldloc.s V_7
+  018E ldloc.s V_4
+  0190 bge.un.s IL_01a5: ldloc.s V_6
+  0192 ldloc.s V_7
+  0194 stloc.s V_4
+  0196 ldloc.0 
+  0197 ldfld System.Collections.Generic.List`1<ContinentData> ContinentManager::continents
+  019C ldloc.s V_6
+  019E callvirt !0 System.Collections.Generic.List`1<ContinentData>::get_Item(System.Int32)
+  01A3 stloc.s V_5
+  01A5 ldloc.s V_6
+  01A7 ldc.i4.1 
+  01A8 add 
+  01A9 stloc.s V_6
+  01AB ldloc.s V_6
+  01AD ldloc.0 
+  01AE ldfld System.Collections.Generic.List`1<ContinentData> ContinentManager::continents
+  01B3 callvirt System.Int32 System.Collections.Generic.List`1<ContinentData>::get_Count()
+  01B8 blt IL_0121: ldloc.0
+  01BD ldarg.0 
+  01BE ldloc.s V_5
+  01C0 ldfld Airport ContinentData::baseAirport
+  01C5 callvirt UnityEngine.Vector3 Airport::get_position()
+  01CA call System.Void AirportManager::set_CurrentBaseAirport(UnityEngine.Vector3)
+  01CF ldc.i4.0 
+  01D0 stloc.s V_8
+  01D2 br.s IL_0205: ldloc.s V_8
+  01D4 call T Singleton`1<PlaneContainer>::get_Instance()
+  01D9 ldarg.0 
+  01DA ldfld System.Collections.Generic.List`1<Airport> AirportManager::airports
+  01DF ldloc.s V_8
+  01E1 callvirt !0 System.Collections.Generic.List`1<Airport>::get_Item(System.Int32)
+  01E6 callvirt System.Boolean PlaneContainer::IsAtAirport(Airport)
+  01EB brfalse.s IL_01ff: ldloc.s V_8
+  01ED ldarg.0 
+  01EE ldfld System.Collections.Generic.List`1<Airport> AirportManager::airports
+  01F3 ldloc.s V_8
+  01F5 callvirt !0 System.Collections.Generic.List`1<Airport>::get_Item(System.Int32)
+  01FA callvirt System.Void Airport::PlaneLandedAtAirport()
+  01FF ldloc.s V_8
+  0201 ldc.i4.1 
+  0202 add 
+  0203 stloc.s V_8
+  0205 ldloc.s V_8
+  0207 ldarg.0 
+  0208 ldfld System.Collections.Generic.List`1<Airport> AirportManager::airports
+  020D callvirt System.Int32 System.Collections.Generic.List`1<Airport>::get_Count()
+  0212 blt.s IL_01d4: call T Singleton`1<PlaneContainer>::get_Instance()
+  0214 ret 

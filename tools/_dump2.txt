@@ -1,0 +1,198 @@
+==== CargoInventory::GetCargoMass ====
+  0000 ldc.r4 0
+  0005 stloc.0 
+  0006 ldarg.0 
+  0007 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  000C callvirt System.Collections.Generic.Dictionary`2/Enumerator<!0,!1> System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::GetEnumerator()
+  0011 stloc.1 
+  0012 br.s IL_0034: ldloca.s V_1
+  0014 ldloca.s V_1
+  0016 call System.Collections.Generic.KeyValuePair`2<!0,!1> System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>::get_Current()
+  001B stloc.2 
+  001C ldloc.0 
+  001D ldloca.s V_2
+  001F call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+  0024 ldfld System.Single CargoType::weight
+  0029 ldloca.s V_2
+  002B call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+  0030 conv.r4 
+  0031 mul 
+  0032 add 
+  0033 stloc.0 
+  0034 ldloca.s V_1
+  0036 call System.Boolean System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>::MoveNext()
+  003B brtrue.s IL_0014: ldloca.s V_1
+  003D leave.s IL_004d: ldloc.0
+  003F ldloca.s V_1
+  0041 constrained. System.Collections.Generic.Dictionary`2/Enumerator<CargoType,System.Int32>
+  0047 callvirt System.Void System.IDisposable::Dispose()
+  004C endfinally 
+  004D ldloc.0 
+  004E ret 
+
+==== PlaneContainer::GetCargoVolume ====
+  0000 ldc.r4 0
+  0005 stloc.0 
+  0006 ldarg.0 
+  0007 ldc.i4.1 
+  0008 call !!0[] UnityEngine.Component::GetComponentsInChildren<PlanePart>(System.Boolean)
+  000D stloc.1 
+  000E ldc.i4.0 
+  000F stloc.2 
+  0010 br.s IL_0053: ldloc.2
+  0012 ldloc.1 
+  0013 ldloc.2 
+  0014 ldelem.ref 
+  0015 callvirt System.Type System.Object::GetType()
+  001A ldtoken Fuselage
+  001F call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  0024 call System.Boolean System.Type::op_Equality(System.Type,System.Type)
+  0029 brfalse.s IL_004f: ldloc.2
+  002B ldloc.1 
+  002C ldloc.2 
+  002D ldelem.ref 
+  002E callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0033 callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  0038 brfalse.s IL_004f: ldloc.2
+  003A ldloc.0 
+  003B ldloc.1 
+  003C ldloc.2 
+  003D ldelem.ref 
+  003E castclass Fuselage
+  0043 ldfld System.Single Fuselage::cargoVolume
+  0048 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  004D add 
+  004E stloc.0 
+  004F ldloc.2 
+  0050 ldc.i4.1 
+  0051 add 
+  0052 stloc.2 
+  0053 ldloc.2 
+  0054 ldloc.1 
+  0055 ldlen 
+  0056 conv.i4 
+  0057 blt.s IL_0012: ldloc.1
+  0059 ldloc.0 
+  005A call System.Int32 UnityEngine.Mathf::RoundToInt(System.Single)
+  005F conv.r4 
+  0060 ret 
+
+==== PlaneContainer::Refuel ====
+  0000 ldarg.0 
+  0001 ldarg.0 
+  0002 ldfld System.Single PlaneContainer::fuelCapacity
+  0007 stfld System.Single PlaneContainer::fuel
+  000C ldarg.0 
+  000D ldarg.0 
+  000E ldfld System.Single PlaneContainer::electricityStorageCapacity
+  0013 stfld System.Single PlaneContainer::electricity
+  0018 ret 
+
+==== PartExploder::ExplodePart ====
+  0000 ldarg.0 
+  0001 ldfld System.Collections.Generic.List`1<PlanePart> PartExploder::parts
+  0006 ldarg.1 
+  0007 callvirt System.Boolean System.Collections.Generic.List`1<PlanePart>::Contains(!0)
+  000C brtrue.s IL_000f: ldarg.0
+  000E ret 
+  000F ldarg.0 
+  0010 ldarg.1 
+  0011 call UnityEngine.GameObject PartExploder::GetRootObject(PlanePart)
+  0016 callvirt !!0 UnityEngine.GameObject::GetComponent<BuildingPart>()
+  001B stloc.0 
+  001C ldarg.3 
+  001D brtrue.s IL_0031: ldarg.0
+  001F ldarg.0 
+  0020 ldarg.1 
+  0021 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0026 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  002B ldarg.2 
+  002C call System.Void PartExploder::SpawnEffects(UnityEngine.Vector3,System.Boolean)
+  0031 ldarg.0 
+  0032 ldarg.1 
+  0033 call UnityEngine.GameObject PartExploder::GetRootObject(PlanePart)
+  0038 callvirt System.Boolean UnityEngine.GameObject::get_activeSelf()
+  003D brfalse.s IL_004a: ldloc.0
+  003F ldarg.0 
+  0040 ldarg.1 
+  0041 ldarg.3 
+  0042 ldc.i4.0 
+  0043 ceq 
+  0045 call System.Void PartExploder::CreateVisual(PlanePart,System.Boolean)
+  004A ldloc.0 
+  004B ldfld System.Boolean BuildingPart::isBasePart
+  0050 brfalse.s IL_006a: ldloc.0
+  0052 ldarg.0 
+  0053 ldfld PlaneContainer PartExploder::planeContainer
+  0058 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  005D callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0062 ldc.i4.0 
+  0063 callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+  0068 br.s IL_0085: ldc.i4.0
+  006A ldloc.0 
+  006B ldc.i4.0 
+  006C callvirt System.Void BuildingPart::SetActive(System.Boolean)
+  0071 ldarg.0 
+  0072 ldfld System.Collections.Generic.List`1<PlanePart> PartExploder::parts
+  0077 ldarg.1 
+  0078 callvirt System.Boolean System.Collections.Generic.List`1<PlanePart>::Remove(!0)
+  007D pop 
+  007E ldarg.0 
+  007F ldarg.1 
+  0080 call System.Void PartExploder::HandlePartRemoval(PlanePart)
+  0085 ldc.i4.0 
+  0086 stloc.1 
+  0087 br.s IL_00a6: ldloc.1
+  0089 ldarg.0 
+  008A ldloc.0 
+  008B ldfld System.Collections.Generic.List`1<BuildingPart> BuildingPart::children
+  0090 ldloc.1 
+  0091 callvirt !0 System.Collections.Generic.List`1<BuildingPart>::get_Item(System.Int32)
+  0096 callvirt !!0 UnityEngine.Component::GetComponentInChildren<PlanePart>()
+  009B ldc.i4.0 
+  009C ldarg.3 
+  009D call System.Void PartExploder::ExplodePart(PlanePart,System.Boolean,System.Boolean)
+  00A2 ldloc.1 
+  00A3 ldc.i4.1 
+  00A4 add 
+  00A5 stloc.1 
+  00A6 ldloc.1 
+  00A7 ldloc.0 
+  00A8 ldfld System.Collections.Generic.List`1<BuildingPart> BuildingPart::children
+  00AD callvirt System.Int32 System.Collections.Generic.List`1<BuildingPart>::get_Count()
+  00B2 blt.s IL_0089: ldarg.0
+  00B4 ldarg.2 
+  00B5 brfalse.s IL_00c2: ret
+  00B7 ldarg.0 
+  00B8 ldfld PlaneContainer PartExploder::planeContainer
+  00BD callvirt System.Void PlaneContainer::ReInitializePlane()
+  00C2 ret 
+
+==== CargoOfferingUI::TakeCargo ====
+  0000 call T Singleton`1<CargoInventory>::get_Instance()
+  0005 ldarg.0 
+  0006 ldfld CargoType CargoOfferingUI::currentCargoType
+  000B callvirt System.Void CargoInventory::AddCargo(CargoType)
+  0010 ret 
+
+==== CargoOfferingUI::TakeAllCargo ====
+  0000 ldc.i4.0 
+  0001 stloc.0 
+  0002 br.s IL_0018: ldloc.0
+  0004 call T Singleton`1<CargoInventory>::get_Instance()
+  0009 ldarg.0 
+  000A ldfld CargoType CargoOfferingUI::currentCargoType
+  000F callvirt System.Void CargoInventory::AddCargo(CargoType)
+  0014 ldloc.0 
+  0015 ldc.i4.1 
+  0016 add 
+  0017 stloc.0 
+  0018 ldloc.0 
+  0019 ldc.i4 1000
+  001E blt.s IL_0004: call T Singleton`1<CargoInventory>::get_Instance()
+  0020 ret 
+
+==== ALL ChangeMass / mass WRITERS IN MANAGED ====
+  Assembly-CSharp.dll  CargoInventory::ApplyCargo -> System.Void PlaneContainer::ChangeMass(System.Single)
+  Assembly-CSharp.dll  CargoInventory::AddCargo -> System.Void PlaneContainer::ChangeMass(System.Single)
+  Assembly-CSharp.dll  CargoInventory::RemoveCargo -> System.Void PlaneContainer::ChangeMass(System.Single)

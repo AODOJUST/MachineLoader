@@ -1,0 +1,55 @@
+FIELD UnityEngine.GameObject particle
+FIELD System.Single minSize
+FIELD System.Single maxSize
+== METHOD System.Void EngineParticle::Awake()
+  0000 ldarg.0 
+  0001 call System.Void EngineParticle::Deactivate()
+  0006 ret 
+== METHOD System.Void EngineParticle::Activate()
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.GameObject EngineParticle::particle
+  0006 callvirt UnityEngine.GameObject UnityEngine.GameObject::get_gameObject()
+  000B ldc.i4.1 
+  000C callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+  0011 ret 
+== METHOD System.Void EngineParticle::Deactivate()
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.GameObject EngineParticle::particle
+  0006 callvirt UnityEngine.GameObject UnityEngine.GameObject::get_gameObject()
+  000B ldc.i4.0 
+  000C callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+  0011 ret 
+== METHOD System.Void EngineParticle::SetThrottle(System.Single)
+  0000 ldarg.1 
+  0001 ldc.r4 0
+  0006 call System.Boolean UnityEngine.Mathf::Approximately(System.Single,System.Single)
+  000B brfalse.s IL_0015: ldarg.0
+  000D ldarg.0 
+  000E call System.Void EngineParticle::Deactivate()
+  0013 br.s IL_001b: ldarg.0
+  0015 ldarg.0 
+  0016 call System.Void EngineParticle::Activate()
+  001B ldarg.0 
+  001C ldfld UnityEngine.GameObject EngineParticle::particle
+  0021 callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  0026 ldc.r4 1
+  002B ldarg.0 
+  002C call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0031 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+  0036 ldfld System.Single UnityEngine.Vector3::y
+  003B call System.Single UnityEngine.Mathf::Sign(System.Single)
+  0040 ldc.r4 1
+  0045 newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+  004A ldarg.0 
+  004B ldfld System.Single EngineParticle::minSize
+  0050 ldarg.0 
+  0051 ldfld System.Single EngineParticle::maxSize
+  0056 ldarg.1 
+  0057 call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+  005C call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0061 callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+  0066 ret 
+== METHOD System.Void EngineParticle::.ctor()
+  0000 ldarg.0 
+  0001 call System.Void UnityEngine.MonoBehaviour::.ctor()
+  0006 ret 

@@ -1,0 +1,46 @@
+now = 22:07:56 deadline=300s tag=evade1
+pre-existing instance cleared
+log start offset = 15333789
+started pid = 28028
+t=30s newLog=48262 done=False
+t=60s newLog=60569 done=False
+t=90s newLog=75069 done=False
+t=115s newLog=89700 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\aam_run_log_evade1.txt length=89700
+newshot aam_test_1.png 22:08:17 1511488 bytes
+newshot aam_test_1_chase.png 22:08:17 114648 bytes
+newshot aam_test_1_trail.png 22:08:17 101374 bytes
+newshot aam_test_10.png 22:08:34 1513403 bytes
+newshot aam_test_10_chase.png 22:08:34 12251 bytes
+newshot aam_test_10_trail.png 22:08:34 12567 bytes
+newshot aam_test_11.png 22:08:41 1207896 bytes
+newshot aam_test_12.png 22:08:47 1216200 bytes
+newshot aam_test_13.png 22:08:54 1196344 bytes
+newshot aam_test_14.png 22:09:01 1188768 bytes
+newshot aam_test_2.png 22:08:17 1516409 bytes
+newshot aam_test_2_chase.png 22:08:17 239393 bytes
+newshot aam_test_2_trail.png 22:08:17 241040 bytes
+newshot aam_test_3.png 22:08:18 1509448 bytes
+newshot aam_test_3_chase.png 22:08:18 224150 bytes
+newshot aam_test_3_trail.png 22:08:18 230029 bytes
+newshot aam_test_4.png 22:08:19 1507499 bytes
+newshot aam_test_4_chase.png 22:08:19 222998 bytes
+newshot aam_test_4_trail.png 22:08:19 221910 bytes
+newshot aam_test_5.png 22:08:20 1509220 bytes
+newshot aam_test_5_chase.png 22:08:19 161363 bytes
+newshot aam_test_5_trail.png 22:08:19 160055 bytes
+newshot aam_test_6.png 22:08:20 1519052 bytes
+newshot aam_test_6_chase.png 22:08:20 134906 bytes
+newshot aam_test_6_trail.png 22:08:20 136386 bytes
+newshot aam_test_7.png 22:08:21 1517731 bytes
+newshot aam_test_7_chase.png 22:08:21 111042 bytes
+newshot aam_test_7_trail.png 22:08:21 112926 bytes
+newshot aam_test_8.png 22:08:22 1512418 bytes
+newshot aam_test_8_chase.png 22:08:22 82720 bytes
+newshot aam_test_8_trail.png 22:08:22 80110 bytes
+newshot aam_test_9.png 22:08:28 1514142 bytes
+newshot aam_test_9_chase.png 22:08:28 24886 bytes
+newshot aam_test_9_trail.png 22:08:28 20488 bytes
+game alive before stop = True
+game stopped

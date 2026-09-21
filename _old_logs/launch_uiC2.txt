@@ -1,0 +1,11 @@
+now = 22:46:40 deadline=480s tag=uiC save=AutoSave 0
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\_points_test.flag
+log start offset = 1500282
+started pid = 16784
+t=31s newLog=38340 done=False
+t=46s newLog=47605 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\faction_run_log_uiC.txt length=47605
+game alive before stop = True
+game stopped

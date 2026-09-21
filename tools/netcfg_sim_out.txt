@@ -1,0 +1,45 @@
+csc  = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+core = D:\豆包的下载\Machine_Dev\bin\Machine.Core.dll exists=True
+core built = 2026-09-14 15:47:25  236544 bytes
+-- sim built OK
+dotnet = C:\Program Files\dotnet\dotnet.exe
+---- sim output ----
+== Machine.Core net.json (ConfigGuard.ReadNet) sim ==
+core assembly = D:\豆包的下载\Machine_Dev\tools\netcfgsim\Machine.Core.dll
+PASS  missing net.json: server default  (got [] want [])
+PASS  missing net.json: port default  (got [26460] want [26460])
+PASS  missing net.json: playerName default  (got [Pilot] want [Pilot])
+PASS  missing net.json: remoteModel defaults to clone  (got [clone] want [clone])
+PASS  missing net.json: no warnings  (got [] want [])
+PASS  remoteModel=box honoured  (got [box] want [box])
+PASS  remoteModel=clone honoured  (got [clone] want [clone])
+PASS  remoteModel is case-insensitive  (got [box] want [box])
+PASS  remoteModel is trimmed  (got [box] want [box])
+PASS  unknown remoteModel falls back to clone  (got [clone] want [clone])
+PASS  unknown remoteModel records a warning
+PASS  non-string remoteModel falls back to clone  (got [clone] want [clone])
+PASS  non-string remoteModel -> remoteModel in {clone,box}
+PASS  null remoteModel falls back to clone  (got [clone] want [clone])
+PASS  server parsed  (got [192.168.1.9] want [192.168.1.9])
+PASS  port parsed  (got [27015] want [27015])
+PASS  playerName parsed  (got [AODo] want [AODo])
+PASS  remoteModel parsed alongside the others  (got [box] want [box])
+PASS  out-of-range port falls back to 26460  (got [26460] want [26460])
+PASS  out-of-range port records a warning
+PASS  illegal host rejected  (got [] want [])
+PASS  illegal host records a warning
+PASS  malformed json: remoteModel default survives  (got [clone] want [clone])
+PASS  malformed json: lenient parser, so no warning  (got [] want [])
+PASS  non-object json: port default survives  (got [26460] want [26460])
+PASS  non-object json says so
+PASS  empty file: remoteModel default survives  (got [clone] want [clone])
+PASS  empty file reports 'not a JSON object'
+PASS  missing file -> remoteModel in {clone,box}
+PASS  banana -> remoteModel in {clone,box}
+PASS  full config -> remoteModel in {clone,box}
+PASS  malformed json -> remoteModel in {clone,box}
+PASS  empty file -> remoteModel in {clone,box}
+PASS  shipped net.json (no key) -> clone by default  (got [clone] want [clone])
+PASS  shipped net.json -> no warnings  (got [] want [])
+---- 35 passed, 0 failed ----
+exit=0

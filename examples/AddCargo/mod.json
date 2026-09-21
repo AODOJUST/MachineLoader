@@ -1,0 +1,22 @@
+{
+  "id": "example.addcargo",
+  "name": "Add Cargo Example",
+  "version": "1.0.0",
+  "author": "Machine Team",
+  "description": "示例：注册自定义货物，会出现在机场装货界面。",
+  "type": "code",
+  "apiVersion": "1.0",
+  "loaderVersion": ">=2.0.0",
+  "dependencies": [],
+  "entry": "Example.AddCargo.AddCargoMod",
+  "code": {
+    "assemblies": ["code/AddCargo.dll"],
+    "mainClass": "Example.AddCargo.AddCargoMod"
+  },
+  "content": {
+    "cargo": [],
+    "parts": [],
+    "decals": [],
+    "textures": []
+  }
+}

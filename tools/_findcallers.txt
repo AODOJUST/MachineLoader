@@ -1,0 +1,3 @@
+  Assembly-CSharp.dll  PartExploder::ExplodePart  ->  System.Void PlaneContainer::ReInitializePlane()
+  Assembly-CSharp.dll  PlaneContainer::ActivateFlyMode  ->  System.Void CargoInventory::ApplyCargo()
+  Assembly-CSharp.dll  CargoInventoryUI::ClearInventory  ->  System.Void CargoInventory::ClearInventory()

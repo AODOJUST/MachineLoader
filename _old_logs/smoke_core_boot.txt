@@ -1,0 +1,21 @@
+now = 15:20:47
+root = D:\豆包的下载\Machine_Dev
+gameRoot = D:\豆包的下载\Aviassembly_DEV
+exe exists = True
+core = D:\豆包的下载\Aviassembly_DEV\Aviassembly_Data\Managed\Machine.Core.dll exists=True
+core built = 2026-09-14 15:17:22  231424 bytes
+no pre-existing instance
+log start offset = 18284510
+started pid = 7660
+t=5s newLog=23544 netReady=True modsCollected=True
+slice written, length=23544
+---- suspicious lines: 1 ----
+  2026-09-14 15:20:49.356 [INFO ] [mod] OptiMod: stack traces off for Log/Warning (Error/Exception kept)
+---- loader startup lines ----
+  === Machine Loader Log (rotated) ===
+  2026-09-14 15:20:49.109 [INFO ] Logger ready -> D:\豆包的下载\Aviassembly_DEV\Machine\logs\Machine.log (level: INFO)
+  2026-09-14 15:20:49.156 [INFO ] Machine.Net ready (player=Pilot)
+  2026-09-14 15:20:49.390 [INFO ] Client mods for online: machine.battlecore,machine.battlehold,machine.flighttrails,machine.gmeter,machine.gvision,machine.killfeed,machine.aam,machine.shop,machine.opti,machine.radar,machine.voicealerts,machine.zoom,machine.faction
+  2026-09-14 15:20:51.391 [INFO ] Machine loader version label + logo button shown (v2.4.1)
+game alive before stop = True
+game stopped

@@ -1,0 +1,5 @@
+csc = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+cecil = D:\豆包的下载\Machine_Dev\tools\Mono.Cecil.dll exists=True
+numerics = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\System.Numerics.dll exists=True
+exit=0
+== INSTALLER BUILD OK 58880 bytes ==

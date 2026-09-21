@@ -1,0 +1,21 @@
+now = 16:04:07
+pre-existing instance cleared
+log start offset = 441426
+started pid = 22692
+t=5s newLog=23149 aamSelftestDone=False
+t=10s newLog=25766 aamSelftestDone=False
+t=15s newLog=26139 aamSelftestDone=False
+t=20s newLog=35970 aamSelftestDone=False
+t=25s newLog=39307 aamSelftestDone=False
+t=30s newLog=40867 aamSelftestDone=False
+t=35s newLog=42820 aamSelftestDone=False
+t=40s newLog=43760 aamSelftestDone=False
+t=45s newLog=46668 aamSelftestDone=False
+t=50s newLog=47869 aamSelftestDone=False
+t=55s newLog=48788 aamSelftestDone=False
+t=60s newLog=50834 aamSelftestDone=False
+t=65s newLog=53082 aamSelftestDone=True
+aamSelftestDone=True
+log slice written, length=53082
+game alive before stop = True
+game stopped

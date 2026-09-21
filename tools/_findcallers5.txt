@@ -1,0 +1,3 @@
+  Assembly-CSharp.dll  CargoInventory::ApplyCargo  ->  System.Void PlaneContainer::ChangeMass(System.Single)
+  Assembly-CSharp.dll  CargoInventory::AddCargo  ->  System.Void PlaneContainer::ChangeMass(System.Single)
+  Assembly-CSharp.dll  CargoInventory::RemoveCargo  ->  System.Void PlaneContainer::ChangeMass(System.Single)

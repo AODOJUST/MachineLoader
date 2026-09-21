@@ -1,0 +1,88 @@
+FIELD PlaneContainer planeContainer
+FIELD System.Collections.Generic.List`1<PlanePart> parts
+FIELD AudioDef explosionSound
+FIELD UnityEngine.GameObject explosionParticlePrefab
+FIELD System.Collections.Generic.List`1<UnityEngine.GameObject> debris
+== METHOD System.Void PartExploder::CreateVisual(PlanePart,System.Boolean)
+  0000 ldarg.0 
+  0001 ldarg.1 
+  0002 call UnityEngine.GameObject PartExploder::GetRootObject(PlanePart)
+  0007 stloc.0 
+  0008 ldarg.1 
+  0009 callvirt System.Type System.Object::GetType()
+  000E ldtoken Fuselage
+  0013 call System.Type System.Type::GetTypeFromHandle(System.RuntimeTypeHandle)
+  0018 call System.Boolean System.Type::op_Inequality(System.Type,System.Type)
+  001D brtrue.s IL_002d: ldloc.0
+  001F ldarg.0 
+  0020 ldarg.1 
+  0021 callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0026 call UnityEngine.GameObject PartExploder::CopyFuselage(UnityEngine.GameObject)
+  002B br.s IL_0033: stloc.1
+  002D ldloc.0 
+  002E call !!0 UnityEngine.Object::Instantiate<UnityEngine.GameObject>(!!0)
+  0033 stloc.1 
+  0034 ldarg.0 
+  0035 ldfld System.Collections.Generic.List`1<UnityEngine.GameObject> PartExploder::debris
+  003A ldloc.1 
+  003B callvirt System.Void System.Collections.Generic.List`1<UnityEngine.GameObject>::Add(!0)
+  0040 ldarg.0 
+  0041 ldloc.1 
+  0042 ldarg.0 
+  0043 ldfld PlaneContainer PartExploder::planeContainer
+  0048 callvirt System.Single PlaneContainer::GetVelocityMagintude()
+  004D ldc.r4 50
+  0052 cgt 
+  0054 call System.Void PartExploder::RemoveBehaviour(UnityEngine.GameObject,System.Boolean)
+  0059 ldloc.0 
+  005A callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  005F callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  0064 ldarg.0 
+  0065 ldfld PlaneContainer PartExploder::planeContainer
+  006A callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  006F callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  0074 call UnityEngine.Vector3 UnityEngine.Vector3::op_Subtraction(UnityEngine.Vector3,UnityEngine.Vector3)
+  0079 stloc.s V_4
+  007B ldloca.s V_4
+  007D call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0082 stloc.2 
+  0083 ldloc.1 
+  0084 ldc.i4.1 
+  0085 callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+  008A ldloc.1 
+  008B callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  0090 ldloc.0 
+  0091 callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  0096 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  009B callvirt System.Void UnityEngine.Transform::set_position(UnityEngine.Vector3)
+  00A0 ldarg.2 
+  00A1 brfalse.s IL_00ba: ldloc.1
+  00A3 ldloc.1 
+  00A4 callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  00A9 dup 
+  00AA callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  00AF ldloc.2 
+  00B0 call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+  00B5 callvirt System.Void UnityEngine.Transform::set_position(UnityEngine.Vector3)
+  00BA ldloc.1 
+  00BB callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  00C0 ldloc.0 
+  00C1 callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  00C6 callvirt UnityEngine.Quaternion UnityEngine.Transform::get_rotation()
+  00CB callvirt System.Void UnityEngine.Transform::set_rotation(UnityEngine.Quaternion)
+  00D0 ldloc.1 
+  00D1 callvirt !!0 UnityEngine.GameObject::AddComponent<UnityEngine.Rigidbody>()
+  00D6 stloc.3 
+  00D7 ldloc.3 
+  00D8 ldarg.1 
+  00D9 ldfld System.Single PlanePart::weight
+  00DE ldc.r4 15
+  00E3 div 
+  00E4 callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+  00E9 ldarg.2 
+  00EA brfalse.s IL_00f4: ret
+  00EC ldloc.3 
+  00ED ldloc.2 
+  00EE ldc.i4.1 
+  00EF callvirt System.Void UnityEngine.Rigidbody::AddForce(UnityEngine.Vector3,UnityEngine.ForceMode)
+  00F4 ret 

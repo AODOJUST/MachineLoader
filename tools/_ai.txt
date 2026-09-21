@@ -1,0 +1,319 @@
+FIELD UnityEngine.Transform compass
+FIELD UnityEngine.GameObject cargobutton
+FIELD UnityEngine.GameObject editPlaneButton
+FIELD UnityEngine.GameObject ratingButton
+FIELD UnityEngine.UI.Button refuelButton
+FIELD AirportInspector/InspectorButtonData[] allButtons
+FIELD UnityEngine.UI.RawImage airportIconImage
+FIELD UnityEngine.Texture airportIcon
+FIELD UnityEngine.Texture baseIcon
+FIELD UnityEngine.CanvasGroup refuelButtonCanvasGroup
+FIELD TooltipTrigger refuelTooltip
+FIELD UnityEngine.GameObject newQuestAddedHighlighter
+FIELD UnityEngine.GameObject researchButton
+FIELD UnityEngine.GameObject buttonPrompt
+FIELD TMPro.TMP_Text title
+FIELD UnityEngine.RectTransform airportNameBackground
+FIELD UnityEngine.GameObject cargoHider
+FIELD UnityEngine.AnimationCurve animCurve
+FIELD UnityEngine.AnimationCurve fadeOutCurve
+FIELD System.Single animSpeed
+FIELD UnityEngine.Transform highlighter
+FIELD System.Boolean buttonsEnabled
+FIELD System.Boolean UILocked
+== METHOD System.Void AirportInspector::Update()
+  0000 ldc.i4.0 
+  0001 stloc.2 
+  0002 br.s IL_0038: ldloc.2
+  0004 ldarg.0 
+  0005 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  000A ldloc.2 
+  000B ldelema AirportInspector/InspectorButtonData
+  0010 ldfld ButtonHighlight AirportInspector/InspectorButtonData::highlight
+  0015 ldnull 
+  0016 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  001B brfalse.s IL_0034: ldloc.2
+  001D ldarg.0 
+  001E ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  0023 ldloc.2 
+  0024 ldelema AirportInspector/InspectorButtonData
+  0029 ldfld ButtonHighlight AirportInspector/InspectorButtonData::highlight
+  002E ldc.i4.0 
+  002F stfld System.Boolean ButtonHighlight::isHighlighted
+  0034 ldloc.2 
+  0035 ldc.i4.1 
+  0036 add 
+  0037 stloc.2 
+  0038 ldloc.2 
+  0039 ldarg.0 
+  003A ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  003F ldlen 
+  0040 conv.i4 
+  0041 blt.s IL_0004: ldarg.0
+  0043 call T Singleton`1<AirportManager>::get_Instance()
+  0048 call T Singleton`1<PlaneContainer>::get_Instance()
+  004D callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0052 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  0057 callvirt Airport AirportManager::GetClosestAirport(UnityEngine.Vector3)
+  005C stloc.0 
+  005D ldarg.0 
+  005E ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  0063 ldc.i4.0 
+  0064 ldelema AirportInspector/InspectorButtonData
+  0069 ldarg.0 
+  006A ldfld System.Boolean AirportInspector::buttonsEnabled
+  006F brtrue.s IL_007c: ldc.i4.0
+  0071 ldarg.0 
+  0072 ldfld System.Boolean AirportInspector::UILocked
+  0077 ldc.i4.0 
+  0078 ceq 
+  007A br.s IL_007d: stfld System.Boolean AirportInspector/InspectorButtonData::enabled
+  007C ldc.i4.0 
+  007D stfld System.Boolean AirportInspector/InspectorButtonData::enabled
+  0082 ldc.i4.0 
+  0083 stloc.3 
+  0084 br IL_0156: ldloc.3
+  0089 ldarg.0 
+  008A ldfld System.Boolean AirportInspector::buttonsEnabled
+  008F brtrue.s IL_009f: ldloc.3
+  0091 ldarg.0 
+  0092 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  0097 ldlen 
+  0098 conv.i4 
+  0099 ldloc.3 
+  009A sub 
+  009B ldc.i4.1 
+  009C sub 
+  009D br.s IL_00a0: stloc.s V_4
+  009F ldloc.3 
+  00A0 stloc.s V_4
+  00A2 ldarg.0 
+  00A3 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  00A8 ldloc.s V_4
+  00AA ldelema AirportInspector/InspectorButtonData
+  00AF ldfld System.Boolean AirportInspector/InspectorButtonData::enabled
+  00B4 brfalse.s IL_00c2: ldc.i4.m1
+  00B6 ldarg.0 
+  00B7 ldfld System.Boolean AirportInspector::buttonsEnabled
+  00BC brtrue.s IL_00c5: ldc.i4.1
+  00BE ldloc.s V_4
+  00C0 brfalse.s IL_00c5: ldc.i4.1
+  00C2 ldc.i4.m1 
+  00C3 br.s IL_00c6: conv.r4
+  00C5 ldc.i4.1 
+  00C6 conv.r4 
+  00C7 stloc.s V_5
+  00C9 ldloc.s V_5
+  00CB ldc.r4 0
+  00D0 bgt.s IL_00e0: ldarg.0
+  00D2 ldarg.0 
+  00D3 ldfld System.Single AirportInspector::animSpeed
+  00D8 ldc.r4 1.65
+  00DD mul 
+  00DE br.s IL_00e6: stloc.s V_6
+  00E0 ldarg.0 
+  00E1 ldfld System.Single AirportInspector::animSpeed
+  00E6 stloc.s V_6
+  00E8 ldarg.0 
+  00E9 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  00EE ldloc.s V_4
+  00F0 ldelema AirportInspector/InspectorButtonData
+  00F5 ldflda System.Single AirportInspector/InspectorButtonData::size
+  00FA dup 
+  00FB ldind.r4 
+  00FC call System.Single UnityEngine.Time::get_unscaledDeltaTime()
+  0101 ldloc.s V_5
+  0103 mul 
+  0104 ldloc.s V_6
+  0106 mul 
+  0107 add 
+  0108 stind.r4 
+  0109 ldarg.0 
+  010A ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  010F ldloc.s V_4
+  0111 ldelema AirportInspector/InspectorButtonData
+  0116 ldarg.0 
+  0117 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  011C ldloc.s V_4
+  011E ldelema AirportInspector/InspectorButtonData
+  0123 ldfld System.Single AirportInspector/InspectorButtonData::size
+  0128 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  012D stfld System.Single AirportInspector/InspectorButtonData::size
+  0132 ldarg.0 
+  0133 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  0138 ldloc.s V_4
+  013A ldelema AirportInspector/InspectorButtonData
+  013F ldfld System.Single AirportInspector/InspectorButtonData::size
+  0144 ldloc.s V_5
+  0146 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  014B call System.Boolean UnityEngine.Mathf::Approximately(System.Single,System.Single)
+  0150 brfalse.s IL_0164: ldc.i4.0
+  0152 ldloc.3 
+  0153 ldc.i4.1 
+  0154 add 
+  0155 stloc.3 
+  0156 ldloc.3 
+  0157 ldarg.0 
+  0158 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  015D ldlen 
+  015E conv.i4 
+  015F blt IL_0089: ldarg.0
+  0164 ldc.i4.0 
+  0165 stloc.s V_7
+  0167 br IL_0230: ldloc.s V_7
+  016C ldarg.0 
+  016D ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  0172 ldloc.s V_7
+  0174 ldelema AirportInspector/InspectorButtonData
+  0179 ldfld UnityEngine.Transform AirportInspector/InspectorButtonData::button
+  017E callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0183 ldarg.0 
+  0184 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  0189 ldloc.s V_7
+  018B ldelema AirportInspector/InspectorButtonData
+  0190 ldfld System.Single AirportInspector/InspectorButtonData::size
+  0195 ldc.r4 0.01
+  019A cgt 
+  019C callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+  01A1 ldarg.0 
+  01A2 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  01A7 ldloc.s V_7
+  01A9 ldelema AirportInspector/InspectorButtonData
+  01AE ldfld System.Boolean AirportInspector/InspectorButtonData::enabled
+  01B3 brfalse.s IL_01bd: ldc.i4.m1
+  01B5 ldarg.0 
+  01B6 ldfld System.Boolean AirportInspector::buttonsEnabled
+  01BB brtrue.s IL_01c0: ldc.i4.1
+  01BD ldc.i4.m1 
+  01BE br.s IL_01c1: conv.r4
+  01C0 ldc.i4.1 
+  01C1 conv.r4 
+  01C2 ldc.r4 0
+  01C7 bgt.s IL_01e8: ldarg.0
+  01C9 ldarg.0 
+  01CA ldfld UnityEngine.AnimationCurve AirportInspector::fadeOutCurve
+  01CF ldarg.0 
+  01D0 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  01D5 ldloc.s V_7
+  01D7 ldelema AirportInspector/InspectorButtonData
+  01DC ldfld System.Single AirportInspector/InspectorButtonData::size
+  01E1 callvirt System.Single UnityEngine.AnimationCurve::Evaluate(System.Single)
+  01E6 br.s IL_0205: stloc.s V_8
+  01E8 ldarg.0 
+  01E9 ldfld UnityEngine.AnimationCurve AirportInspector::animCurve
+  01EE ldarg.0 
+  01EF ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  01F4 ldloc.s V_7
+  01F6 ldelema AirportInspector/InspectorButtonData
+  01FB ldfld System.Single AirportInspector/InspectorButtonData::size
+  0200 callvirt System.Single UnityEngine.AnimationCurve::Evaluate(System.Single)
+  0205 stloc.s V_8
+  0207 ldarg.0 
+  0208 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  020D ldloc.s V_7
+  020F ldelema AirportInspector/InspectorButtonData
+  0214 ldfld UnityEngine.Transform AirportInspector/InspectorButtonData::button
+  0219 call UnityEngine.Vector3 UnityEngine.Vector3::get_one()
+  021E ldloc.s V_8
+  0220 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0225 callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+  022A ldloc.s V_7
+  022C ldc.i4.1 
+  022D add 
+  022E stloc.s V_7
+  0230 ldloc.s V_7
+  0232 ldarg.0 
+  0233 ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  0238 ldlen 
+  0239 conv.i4 
+  023A blt IL_016c: ldarg.0
+  023F call T Singleton`1<CargoInventory>::get_Instance()
+  0244 callvirt System.Single CargoInventory::get_CurrentVolume()
+  0249 ldc.r4 0
+  024E ceq 
+  0250 stloc.1 
+  0251 ldarg.0 
+  0252 ldfld UnityEngine.GameObject AirportInspector::cargobutton
+  0257 callvirt !!0 UnityEngine.GameObject::GetComponent<UnityEngine.UI.Button>()
+  025C ldloc.0 
+  025D callvirt System.Boolean Airport::CargoUnlocked()
+  0262 callvirt System.Void UnityEngine.UI.Selectable::set_interactable(System.Boolean)
+  0267 ldarg.0 
+  0268 ldfld UnityEngine.GameObject AirportInspector::cargoHider
+  026D ldloc.0 
+  026E callvirt System.Boolean Airport::CargoUnlocked()
+  0273 ldc.i4.0 
+  0274 ceq 
+  0276 callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+  027B ldarg.0 
+  027C ldfld UnityEngine.GameObject AirportInspector::newQuestAddedHighlighter
+  0281 callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  0286 brfalse.s IL_0289: call T Singleton`1<PlaneContainer>::get_Instance()
+  0288 ret 
+  0289 call T Singleton`1<PlaneContainer>::get_Instance()
+  028E ldfld System.Single PlaneContainer::fuel
+  0293 ldc.r4 0.8
+  0298 bge.un.s IL_02c4: ldloc.1
+  029A ldarg.0 
+  029B ldfld UnityEngine.UI.Button AirportInspector::refuelButton
+  02A0 callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  02A5 callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  02AA brfalse.s IL_02c4: ldloc.1
+  02AC ldarg.0 
+  02AD ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  02B2 ldc.i4.5 
+  02B3 ldelema AirportInspector/InspectorButtonData
+  02B8 ldfld ButtonHighlight AirportInspector/InspectorButtonData::highlight
+  02BD ldc.i4.1 
+  02BE stfld System.Boolean ButtonHighlight::isHighlighted
+  02C3 ret 
+  02C4 ldloc.1 
+  02C5 brfalse.s IL_02f4: ldarg.0
+  02C7 ldarg.0 
+  02C8 ldfld UnityEngine.GameObject AirportInspector::cargobutton
+  02CD callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  02D2 brfalse.s IL_02f4: ldarg.0
+  02D4 ldloc.0 
+  02D5 callvirt System.Boolean Airport::CargoUnlocked()
+  02DA brfalse.s IL_02f4: ldarg.0
+  02DC ldarg.0 
+  02DD ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  02E2 ldc.i4.3 
+  02E3 ldelema AirportInspector/InspectorButtonData
+  02E8 ldfld ButtonHighlight AirportInspector/InspectorButtonData::highlight
+  02ED ldc.i4.1 
+  02EE stfld System.Boolean ButtonHighlight::isHighlighted
+  02F3 ret 
+  02F4 ldarg.0 
+  02F5 ldfld UnityEngine.GameObject AirportInspector::editPlaneButton
+  02FA callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  02FF brfalse.s IL_0335: call T Singleton`1<ResearchManager>::get_Instance()
+  0301 call T Singleton`1<MoneyManager>::get_Instance()
+  0306 ldfld System.Single MoneyManager::money
+  030B ldc.r4 200
+  0310 ble.un.s IL_0335: call T Singleton`1<ResearchManager>::get_Instance()
+  0312 call T Singleton`1<CurrentGameData>::get_Instance()
+  0317 ldfld System.Boolean CurrentGameData::editPlanePressed
+  031C brtrue.s IL_0335: call T Singleton`1<ResearchManager>::get_Instance()
+  031E ldarg.0 
+  031F ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  0324 ldc.i4.2 
+  0325 ldelema AirportInspector/InspectorButtonData
+  032A ldfld ButtonHighlight AirportInspector/InspectorButtonData::highlight
+  032F ldc.i4.1 
+  0330 stfld System.Boolean ButtonHighlight::isHighlighted
+  0335 call T Singleton`1<ResearchManager>::get_Instance()
+  033A ldfld System.Int32 ResearchManager::researchPoints
+  033F ldc.i4.0 
+  0340 ble.s IL_0365: ret
+  0342 call T Singleton`1<ResearchManager>::get_Instance()
+  0347 callvirt System.Boolean ResearchManager::UsedResearch()
+  034C brtrue.s IL_0365: ret
+  034E ldarg.0 
+  034F ldfld AirportInspector/InspectorButtonData[] AirportInspector::allButtons
+  0354 ldc.i4.4 
+  0355 ldelema AirportInspector/InspectorButtonData
+  035A ldfld ButtonHighlight AirportInspector/InspectorButtonData::highlight
+  035F ldc.i4.1 
+  0360 stfld System.Boolean ButtonHighlight::isHighlighted
+  0365 ret 

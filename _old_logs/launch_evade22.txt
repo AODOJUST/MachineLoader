@@ -1,0 +1,7 @@
+now = 22:11:07 deadline=300s tag=evade2
+pre-existing instance cleared
+log start offset = 15423879
+started pid = 25188
+t=33s newLog=29604 done=False
+t=63s newLog=59248 done=False
+t=93s newLog=86236 done=False

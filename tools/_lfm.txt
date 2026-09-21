@@ -1,0 +1,221 @@
+FIELD System.Int32 <>1__state
+FIELD System.Object <>2__current
+FIELD GameManager <>4__this
+FIELD System.Boolean resetPlane
+FIELD UnityEngine.AsyncOperation <loadSceneOperation>5__2
+FIELD UnityEngine.AsyncOperation <unloadSceneOperation>5__3
+PROP System.Object System.Collections.Generic.IEnumerator<System.Object>.Current
+PROP System.Object System.Collections.IEnumerator.Current
+== METHOD System.Void GameManager/<LoadFlyMode>d__36::.ctor(System.Int32)
+  0000 ldarg.0 
+  0001 call System.Void System.Object::.ctor()
+  0006 ldarg.0 
+  0007 ldarg.1 
+  0008 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  000D ret 
+== METHOD System.Void GameManager/<LoadFlyMode>d__36::System.IDisposable.Dispose()
+  0000 ret 
+== METHOD System.Boolean GameManager/<LoadFlyMode>d__36::MoveNext()
+  0000 ldarg.0 
+  0001 ldfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  0006 stloc.0 
+  0007 ldarg.0 
+  0008 ldfld GameManager GameManager/<LoadFlyMode>d__36::<>4__this
+  000D stloc.1 
+  000E ldloc.0 
+  000F switch Mono.Cecil.Cil.Instruction[]
+  0034 ldc.i4.0 
+  0035 ret 
+  0036 ldarg.0 
+  0037 ldc.i4.m1 
+  0038 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  003D ldloc.1 
+  003E ldfld Fader GameManager::fader
+  0043 callvirt System.Void Fader::FadeIn()
+  0048 br.s IL_0061: ldloc.1
+  004A ldarg.0 
+  004B ldnull 
+  004C stfld System.Object GameManager/<LoadFlyMode>d__36::<>2__current
+  0051 ldarg.0 
+  0052 ldc.i4.1 
+  0053 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  0058 ldc.i4.1 
+  0059 ret 
+  005A ldarg.0 
+  005B ldc.i4.m1 
+  005C stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  0061 ldloc.1 
+  0062 ldfld Fader GameManager::fader
+  0067 callvirt System.Boolean Fader::FadeReady()
+  006C brfalse.s IL_004a: ldarg.0
+  006E call T Singleton`1<PlaneContainer>::get_Instance()
+  0073 callvirt System.Void PlaneContainer::ResetPlane()
+  0078 call T Singleton`1<PlaneContainer>::get_Instance()
+  007D callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0082 ldarg.0 
+  0083 ldfld System.Boolean GameManager/<LoadFlyMode>d__36::resetPlane
+  0088 brtrue.s IL_0092: call UnityEngine.Vector3 GameManager::GetPlaneSpawnPoint()
+  008A ldloc.1 
+  008B ldfld UnityEngine.Vector3 GameManager::planePosistion
+  0090 br.s IL_0097: callvirt System.Void UnityEngine.Transform::set_position(UnityEngine.Vector3)
+  0092 call UnityEngine.Vector3 GameManager::GetPlaneSpawnPoint()
+  0097 callvirt System.Void UnityEngine.Transform::set_position(UnityEngine.Vector3)
+  009C call T Singleton`1<PlaneContainer>::get_Instance()
+  00A1 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  00A6 ldarg.0 
+  00A7 ldfld System.Boolean GameManager/<LoadFlyMode>d__36::resetPlane
+  00AC brtrue.s IL_00b6: call UnityEngine.Quaternion GameManager::GetPlaneSpawnRotation()
+  00AE ldloc.1 
+  00AF ldfld UnityEngine.Quaternion GameManager::planeRotatation
+  00B4 br.s IL_00bb: callvirt System.Void UnityEngine.Transform::set_rotation(UnityEngine.Quaternion)
+  00B6 call UnityEngine.Quaternion GameManager::GetPlaneSpawnRotation()
+  00BB callvirt System.Void UnityEngine.Transform::set_rotation(UnityEngine.Quaternion)
+  00C0 ldarg.0 
+  00C1 ldnull 
+  00C2 stfld System.Object GameManager/<LoadFlyMode>d__36::<>2__current
+  00C7 ldarg.0 
+  00C8 ldc.i4.2 
+  00C9 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  00CE ldc.i4.1 
+  00CF ret 
+  00D0 ldarg.0 
+  00D1 ldc.i4.m1 
+  00D2 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  00D7 ldstr Flying
+  00DC call UnityEngine.SceneManagement.Scene UnityEngine.SceneManagement.SceneManager::GetSceneByName(System.String)
+  00E1 stloc.2 
+  00E2 ldloca.s V_2
+  00E4 call System.Boolean UnityEngine.SceneManagement.Scene::get_isLoaded()
+  00E9 brfalse.s IL_0128: ldstr "Building"
+  00EB ldarg.0 
+  00EC ldstr Flying
+  00F1 call UnityEngine.AsyncOperation UnityEngine.SceneManagement.SceneManager::UnloadSceneAsync(System.String)
+  00F6 stfld UnityEngine.AsyncOperation GameManager/<LoadFlyMode>d__36::<unloadSceneOperation>5__3
+  00FB br.s IL_0114: ldarg.0
+  00FD ldarg.0 
+  00FE ldnull 
+  00FF stfld System.Object GameManager/<LoadFlyMode>d__36::<>2__current
+  0104 ldarg.0 
+  0105 ldc.i4.3 
+  0106 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  010B ldc.i4.1 
+  010C ret 
+  010D ldarg.0 
+  010E ldc.i4.m1 
+  010F stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  0114 ldarg.0 
+  0115 ldfld UnityEngine.AsyncOperation GameManager/<LoadFlyMode>d__36::<unloadSceneOperation>5__3
+  011A callvirt System.Boolean UnityEngine.AsyncOperation::get_isDone()
+  011F brfalse.s IL_00fd: ldarg.0
+  0121 ldarg.0 
+  0122 ldnull 
+  0123 stfld UnityEngine.AsyncOperation GameManager/<LoadFlyMode>d__36::<unloadSceneOperation>5__3
+  0128 ldstr Building
+  012D call UnityEngine.SceneManagement.Scene UnityEngine.SceneManagement.SceneManager::GetSceneByName(System.String)
+  0132 stloc.2 
+  0133 ldloca.s V_2
+  0135 call System.Boolean UnityEngine.SceneManagement.Scene::get_isLoaded()
+  013A brfalse.s IL_0179: ldarg.0
+  013C ldarg.0 
+  013D ldstr Building
+  0142 call UnityEngine.AsyncOperation UnityEngine.SceneManagement.SceneManager::UnloadSceneAsync(System.String)
+  0147 stfld UnityEngine.AsyncOperation GameManager/<LoadFlyMode>d__36::<unloadSceneOperation>5__3
+  014C br.s IL_0165: ldarg.0
+  014E ldarg.0 
+  014F ldnull 
+  0150 stfld System.Object GameManager/<LoadFlyMode>d__36::<>2__current
+  0155 ldarg.0 
+  0156 ldc.i4.4 
+  0157 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  015C ldc.i4.1 
+  015D ret 
+  015E ldarg.0 
+  015F ldc.i4.m1 
+  0160 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  0165 ldarg.0 
+  0166 ldfld UnityEngine.AsyncOperation GameManager/<LoadFlyMode>d__36::<unloadSceneOperation>5__3
+  016B callvirt System.Boolean UnityEngine.AsyncOperation::get_isDone()
+  0170 brfalse.s IL_014e: ldarg.0
+  0172 ldarg.0 
+  0173 ldnull 
+  0174 stfld UnityEngine.AsyncOperation GameManager/<LoadFlyMode>d__36::<unloadSceneOperation>5__3
+  0179 ldarg.0 
+  017A ldstr Flying
+  017F ldc.i4.1 
+  0180 call UnityEngine.AsyncOperation UnityEngine.SceneManagement.SceneManager::LoadSceneAsync(System.String,UnityEngine.SceneManagement.LoadSceneMode)
+  0185 stfld UnityEngine.AsyncOperation GameManager/<LoadFlyMode>d__36::<loadSceneOperation>5__2
+  018A br.s IL_01a3: ldarg.0
+  018C ldarg.0 
+  018D ldnull 
+  018E stfld System.Object GameManager/<LoadFlyMode>d__36::<>2__current
+  0193 ldarg.0 
+  0194 ldc.i4.5 
+  0195 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  019A ldc.i4.1 
+  019B ret 
+  019C ldarg.0 
+  019D ldc.i4.m1 
+  019E stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  01A3 ldarg.0 
+  01A4 ldfld UnityEngine.AsyncOperation GameManager/<LoadFlyMode>d__36::<loadSceneOperation>5__2
+  01A9 callvirt System.Boolean UnityEngine.AsyncOperation::get_isDone()
+  01AE brfalse.s IL_018c: ldarg.0
+  01B0 call T Singleton`1<PlaneContainer>::get_Instance()
+  01B5 callvirt System.Void PlaneContainer::ActivateFlyMode()
+  01BA call T Singleton`1<AirportManager>::get_Instance()
+  01BF call T Singleton`1<AirportManager>::get_Instance()
+  01C4 callvirt UnityEngine.Vector3 AirportManager::get_LastAirport()
+  01C9 callvirt Airport AirportManager::GetClosestAirport(UnityEngine.Vector3)
+  01CE ldfld AirportData Airport::data
+  01D3 ldfld System.Boolean AirportData::refuelAvailable
+  01D8 brtrue.s IL_0204: call T Singleton`1<PlaneContainer>::get_Instance()
+  01DA call T Singleton`1<PlaneContainer>::get_Instance()
+  01DF call T Singleton`1<AirportManager>::get_Instance()
+  01E4 callvirt System.Single AirportManager::get_FuelAtLand()
+  01E9 stfld System.Single PlaneContainer::fuel
+  01EE call T Singleton`1<PlaneContainer>::get_Instance()
+  01F3 call T Singleton`1<AirportManager>::get_Instance()
+  01F8 callvirt System.Single AirportManager::get_ElecticityAtLand()
+  01FD stfld System.Single PlaneContainer::electricity
+  0202 br.s IL_020e: ldarg.0
+  0204 call T Singleton`1<PlaneContainer>::get_Instance()
+  0209 callvirt System.Void PlaneContainer::Refuel()
+  020E ldarg.0 
+  020F ldnull 
+  0210 stfld System.Object GameManager/<LoadFlyMode>d__36::<>2__current
+  0215 ldarg.0 
+  0216 ldc.i4.6 
+  0217 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  021C ldc.i4.1 
+  021D ret 
+  021E ldarg.0 
+  021F ldc.i4.m1 
+  0220 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  0225 ldarg.0 
+  0226 ldc.r4 0.25
+  022B newobj System.Void UnityEngine.WaitForSecondsRealtime::.ctor(System.Single)
+  0230 stfld System.Object GameManager/<LoadFlyMode>d__36::<>2__current
+  0235 ldarg.0 
+  0236 ldc.i4.7 
+  0237 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  023C ldc.i4.1 
+  023D ret 
+  023E ldarg.0 
+  023F ldc.i4.m1 
+  0240 stfld System.Int32 GameManager/<LoadFlyMode>d__36::<>1__state
+  0245 ldloc.1 
+  0246 ldfld Fader GameManager::fader
+  024B callvirt System.Void Fader::FadeOut()
+  0250 ldc.i4.0 
+  0251 ret 
+== METHOD System.Object GameManager/<LoadFlyMode>d__36::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+  0000 ldarg.0 
+  0001 ldfld System.Object GameManager/<LoadFlyMode>d__36::<>2__current
+  0006 ret 
+== METHOD System.Void GameManager/<LoadFlyMode>d__36::System.Collections.IEnumerator.Reset()
+  0000 newobj System.Void System.NotSupportedException::.ctor()
+  0005 throw 
+== METHOD System.Object GameManager/<LoadFlyMode>d__36::System.Collections.IEnumerator.get_Current()
+  0000 ldarg.0 
+  0001 ldfld System.Object GameManager/<LoadFlyMode>d__36::<>2__current
+  0006 ret 

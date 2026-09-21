@@ -1,0 +1,4 @@
+csc = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+error CS2001: 未能找到源文件“D:\豆包的下载\Machine_Dev\tools\src\Mods\MachineAAM.cs”
+warning CS2008: 未指定源文件
+!! COMPILE FAILED (exit 1)

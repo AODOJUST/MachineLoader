@@ -1,0 +1,46 @@
+﻿===== PartPrefabs :: Awake =====
+  0000: ldsfld PartPrefabs::instance
+  0005: ldnull
+  0006: call Object::op_Equality
+  000B: brfalse.s IL_0013: ldarg.0
+  000D: ldarg.0
+  000E: stsfld PartPrefabs::instance
+  0013: ldarg.0
+  0014: ldarg.0
+  0015: ldfld PartPrefabs::partPrefabs
+  001A: newobj List`1::.ctor
+  001F: stfld PartPrefabs::allPartPrefabs
+  0024: ldc.i4.0
+  0025: stloc.0
+  0026: br.s IL_0066: ldloc.0
+  0028: ldarg.0
+  0029: ldfld PartPrefabs::researchTree
+  002E: ldfld ResearchTree::items
+  0033: ldloc.0
+  0034: callvirt List`1::get_Item
+  0039: ldfld ResearchTreeItem::Prefab
+  003E: stloc.1
+  003F: ldloc.1
+  0040: ldnull
+  0041: call Object::op_Inequality
+  0046: brfalse.s IL_0062: ldloc.0
+  0048: ldarg.0
+  0049: ldfld PartPrefabs::allPartPrefabs
+  004E: ldloc.1
+  004F: callvirt List`1::Contains
+  0054: brtrue.s IL_0062: ldloc.0
+  0056: ldarg.0
+  0057: ldfld PartPrefabs::allPartPrefabs
+  005C: ldloc.1
+  005D: callvirt List`1::Add
+  0062: ldloc.0
+  0063: ldc.i4.1
+  0064: add
+  0065: stloc.0
+  0066: ldloc.0
+  0067: ldarg.0
+  0068: ldfld PartPrefabs::researchTree
+  006D: ldfld ResearchTree::items
+  0072: callvirt List`1::get_Count
+  0077: blt.s IL_0028: ldarg.0
+  0079: ret

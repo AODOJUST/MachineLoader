@@ -1,0 +1,11 @@
+now = 11:42:49 deadline=420s tag=terr3 save=AutoSave 0
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\_points_test.flag
+log start offset = 3312446
+started pid = 31624
+t=30s newLog=39493 done=False
+t=60s newLog=60010 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\faction_run_log_terr3.txt length=60010
+game alive before stop = True
+game stopped

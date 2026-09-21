@@ -1,0 +1,60 @@
+########## Engine ##########
+FIELD System.Single AfterburnerTreshhold
+FIELD System.Single thrust
+FIELD System.Boolean helicopterRotor
+FIELD UnityEngine.AnimationCurve maxSpeed
+FIELD System.Single electricityGeneration
+FIELD System.Boolean electricEngine
+FIELD System.Single throttleSpeed
+FIELD UnityEngine.InputSystem.InputAction throttleInputOverride
+FIELD PlaneController controller
+FIELD System.Single fuelConsumption
+FIELD PropellerVisual visual
+FIELD EngineSound sound
+FIELD System.Boolean useAfterburner
+FIELD System.Single afterburnerThrust
+FIELD System.Single afterburnerFuelConsumption
+FIELD System.Single <currentThrottle>k__BackingField
+FIELD System.Single autoHoverTargetThrottle
+FIELD System.Single maxPower
+FIELD System.Single thrustHandicap
+FIELD System.Boolean invertDirection
+FIELD System.Single currentPropellerSpeed
+FIELD System.Single propellerSpeedVelocity
+FIELD EngineParticle particle
+FIELD GameManager gameManager
+PROP System.Single currentThrottle
+########## PlanePart ##########
+FIELD UnityEngine.Rigidbody rb
+FIELD System.Single weight
+FIELD UnityEngine.GameObject settingsPrefab
+== METHOD System.Void PlanePart::Activate()
+== METHOD System.Void PlanePart::Deactivate()
+== METHOD System.Void PlanePart::Save(GameDataWriter)
+== METHOD System.Void PlanePart::Load(GameDataReader)
+== METHOD PartStat[] PlanePart::GetPartStats()
+== METHOD System.Void PlanePart::UpdatePart(PlaneContainer)
+== METHOD System.Void PlanePart::.ctor()
+########## Wing ##########
+FIELD UnityEngine.Transform orientation
+FIELD UnityEngine.Transform wingTip
+FIELD System.Single angleOfAttackOffset
+FIELD System.Single liftForce
+FIELD System.Single dragForce
+FIELD UnityEngine.Vector2 area
+FIELD System.Single maxSpeed
+FIELD System.Single fuel
+FIELD System.Single currentAngleOfAttack
+== METHOD System.Void Wing::UpdatePart(PlaneContainer)
+== METHOD PartStat[] Wing::GetPartStats()
+== METHOD System.Void Wing::ApplyLift(System.Single,UnityEngine.Vector3,UnityEngine.Vector3,PlaneContainer)
+== METHOD System.Void Wing::ApplyDrag(System.Single,UnityEngine.Vector3)
+== METHOD System.Single Wing::GetMaxLiftForce(System.Single,PlaneContainer)
+== METHOD System.Single Wing::GetLiftForce(System.Single,System.Single,PlaneContainer)
+== METHOD System.Single Wing::GetLiftForcePoep(System.Single,System.Single,PlaneContainer)
+== METHOD System.Single Wing::GetDragForce(System.Single,System.Single)
+== METHOD System.Single Wing::GetWingArea()
+== METHOD System.Single Wing::GetLiftForce()
+== METHOD UnityEngine.Vector3 Wing::GetLiftOrigin(UnityEngine.Rigidbody)
+== METHOD System.Void Wing::.ctor()
+########## ExplodeOnHit ##########

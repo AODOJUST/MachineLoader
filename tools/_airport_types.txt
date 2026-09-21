@@ -1,0 +1,60 @@
+===== TYPE AirportData =====
+  [attr] UnityEngine.CreateAssetMenuAttribute
+  FIELD UnityEngine.GameObject airportPrefab pub
+  FIELD System.String airportName pub
+  FIELD System.Boolean lockedCargo pub
+  FIELD System.Boolean refuelAvailable pub
+  FIELD CargoType[] cargoTypes pub
+  FIELD System.Boolean baseAirport pub
+  FIELD System.Boolean initialSpawnAirport pub
+  FIELD System.Boolean rotationOverride pub
+  FIELD System.Single rotation pub
+  FIELD UnityEngine.Vector2 footprint pub
+  FIELD UnityEngine.Vector2 treeSpawningFootprint pub
+  FIELD System.Single blendingDistance pub
+  FIELD System.Boolean offshoreAirport pub
+  FIELD UnityEngine.Rect editorWindow pub
+  FIELD System.Collections.Generic.List`1<QuestData> quests pub
+  FIELD System.Collections.Generic.List`1<QuestData> baseQuests pub
+  FIELD System.String landingMessage pub
+  METHOD GetAirportWorldPosition() : Vector3 pub
+  METHOD .ctor() : Void pub
+===== TYPE ContinentData =====
+  FIELD UnityEngine.Vector3 origin pub
+  FIELD ContinentType continentType pub
+  FIELD System.Collections.Generic.List`1<Airport> airports pub
+  FIELD Airport baseAirport pub
+  FIELD ConvexHull2D convexHull2D pub
+  FIELD UnityEngine.Color[] mapColors pub
+  METHOD .ctor(Vector3 origin,ContinentType continentType) : Void pub
+  METHOD SetMapColors() : Void
+  METHOD ContinentDiscovered() : Boolean pub
+  METHOD UpdateBaseAirport() : Void pub
+  METHOD UpdateTreasureAirport() : Void pub
+  METHOD UpdateConvexHull() : Void pub
+  METHOD GetDistanceFromContinent(Vector3 point) : Single pub
+===== TYPE ContinentManager =====
+  FIELD System.Single continentRadius pub
+  FIELD System.Single distanceBetweenContinents pub
+  FIELD UnityEngine.GameObject continentHighlighterPrefab pub
+  FIELD System.Collections.Generic.List`1<ContinentData> continents pub
+  FIELD WorldAsset worldAsset pub
+  FIELD ContinentType[] allContinentTypes pub
+  FIELD ContinentType defaultContinentType pub
+  FIELD System.Boolean debugMode pub
+  FIELD System.Boolean <Initialized>k__BackingField
+  PROP System.Boolean Initialized {get;}
+  METHOD get_Initialized() : Boolean pub [CompilerGeneratedAttribute]
+  METHOD set_Initialized(Boolean value) : Void [CompilerGeneratedAttribute]
+  METHOD SetWorldAsset(WorldAsset worldAsset) : Void pub
+  METHOD Update() : Void
+  METHOD InitHighlighters() : Void pub
+  METHOD UpdateBaseAirports() : Void pub
+  METHOD UpdateConvexHulls() : Void pub
+  METHOD Init() : Void pub
+  METHOD GetContinentFalloff(Vector3 worldPos) : Single pub
+  METHOD GetTerrainHeight(Vector3 worldPos,Single noiceValue) : Single pub
+  METHOD GetClosestContinent(Vector3 worldPos) : ContinentData pub
+  METHOD GetCurrentContinent(Vector3 worldPos) : ContinentData pub
+  METHOD IsOcean(Vector3 worldPos) : Boolean pub
+  METHOD .ctor() : Void pub

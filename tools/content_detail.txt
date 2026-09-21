@@ -1,0 +1,54 @@
+﻿===== TYPE CargoType =====
+  [attr] UnityEngine.CreateAssetMenuAttribute
+  FIELD System.String cargoName pub
+  FIELD UnityEngine.Texture2D icon pub
+  FIELD System.Single basePrice pub
+  FIELD System.Single weight pub
+  FIELD System.Int32 cargoSpace pub
+  FIELD System.Boolean fragile pub
+  FIELD System.Boolean expires pub
+  FIELD System.Single expirationTime pub
+  METHOD GetCargoName() : String pub
+  METHOD .ctor() : Void pub
+===== TYPE PartPrefabs =====
+  FIELD UnityEngine.GameObject[] partPrefabs pub
+  FIELD UnityEngine.Texture2D[] decals pub
+  FIELD UnityEngine.GameObject decalPrefab pub
+  FIELD ResearchTree researchTree pub
+  FIELD PartPrefabs instance static
+  FIELD System.Collections.Generic.List`1<UnityEngine.GameObject> allPartPrefabs
+  METHOD Awake() : Void
+  METHOD GetDecalTexture(String decalName) : Texture2D pub static
+  METHOD GetPartPrefab(String partName) : GameObject pub static
+  METHOD GetDecalPrefab() : GameObject pub static
+  METHOD GetAllDecalTextures() : Texture2D[] pub static
+  METHOD GetAllPrefabs() : List`1 pub static
+  METHOD .ctor() : Void pub
+===== TYPE PlanePart =====
+  FIELD UnityEngine.Rigidbody rb pub
+  FIELD System.Single weight pub
+  FIELD UnityEngine.GameObject settingsPrefab pub
+  METHOD Activate() : Void pub
+  METHOD Deactivate() : Void pub
+  METHOD Save(GameDataWriter writer) : Void pub
+  METHOD Load(GameDataReader reader) : Void pub
+  METHOD GetPartStats() : PartStat[] pub
+  METHOD UpdatePart(PlaneContainer container) : Void pub
+  METHOD .ctor() : Void
+===== TYPE PlaneParticle =====
+  FIELD UnityEngine.ParticleSystem[] systems pub
+  FIELD System.Single[] defaultRates
+  FIELD UnityEngine.Transform trackTransform pub
+  FIELD UnityEngine.Vector3 offset pub
+  FIELD UnityEngine.Quaternion particleRotation pub
+  METHOD Awake() : Void
+  METHOD SetValue(Single value) : Void pub
+  METHOD .ctor() : Void pub
+===== TYPE PlaneParticleTypes =====
+  FIELD System.Int32 value__ pub
+  FIELD PlaneParticleTypes Smoke pub static
+  FIELD PlaneParticleTypes DirtTrail pub static
+  FIELD PlaneParticleTypes Dirt pub static
+===== TYPE PartSettingsBase =====
+  METHOD SelectPart(PlanePart part) : Void pub
+  METHOD .ctor() : Void

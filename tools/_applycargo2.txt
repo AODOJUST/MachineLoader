@@ -1,0 +1,50 @@
+FIELD AudioDef glassBreaking
+FIELD AudioDef addItem
+FIELD System.Single <MaxVolume>k__BackingField
+FIELD System.Single <CurrentVolume>k__BackingField
+FIELD System.Single breakageCooldown
+FIELD System.Collections.Generic.Dictionary`2<CargoType,System.Int32> currentCargo
+FIELD PlaneContainer planeContainer
+FIELD System.Single expirationTimer
+FIELD System.Single currentExpirationDuration
+FIELD UnityEngine.Vector3 prevVelocity
+FIELD System.Single lastBreakTime
+FIELD System.Single minFragileBreakTreshhold
+FIELD System.Single maxFragileBreakTreshhold
+FIELD System.Action`1<CargoType> ExpirableCargoCleared
+FIELD System.Action`2<CargoType,System.Int32> FragileCargoCleared
+PROP System.Single MaxVolume
+PROP System.Single CurrentVolume
+== METHOD System.Void CargoInventory::ApplyCargo()
+  0000 ldc.i4.0 
+  0001 stloc.0 
+  0002 br.s IL_0039: ldloc.0
+  0004 ldarg.0 
+  0005 ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  000A ldloc.0 
+  000B call !!0 System.Linq.Enumerable::ElementAt<System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>>(System.Collections.Generic.IEnumerable`1<!!0>,System.Int32)
+  0010 stloc.1 
+  0011 ldloca.s V_1
+  0013 call !0 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Key()
+  0018 stloc.2 
+  0019 ldloca.s V_1
+  001B call !1 System.Collections.Generic.KeyValuePair`2<CargoType,System.Int32>::get_Value()
+  0020 stloc.3 
+  0021 ldarg.0 
+  0022 ldfld PlaneContainer CargoInventory::planeContainer
+  0027 ldloc.2 
+  0028 ldfld System.Single CargoType::weight
+  002D ldloc.3 
+  002E conv.r4 
+  002F mul 
+  0030 callvirt System.Void PlaneContainer::ChangeMass(System.Single)
+  0035 ldloc.0 
+  0036 ldc.i4.1 
+  0037 add 
+  0038 stloc.0 
+  0039 ldloc.0 
+  003A ldarg.0 
+  003B ldfld System.Collections.Generic.Dictionary`2<CargoType,System.Int32> CargoInventory::currentCargo
+  0040 callvirt System.Int32 System.Collections.Generic.Dictionary`2<CargoType,System.Int32>::get_Count()
+  0045 blt.s IL_0004: ldarg.0
+  0047 ret 

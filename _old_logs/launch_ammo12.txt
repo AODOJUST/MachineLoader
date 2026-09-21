@@ -1,0 +1,28 @@
+now = 22:04:19 deadline=240s tag=ammo1
+pre-existing instance cleared
+log start offset = 15292751
+started pid = 652
+t=30s newLog=40718 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\aam_run_log_ammo1.txt length=40718
+newshot aam_gun_burst.png 22:04:43 247985 bytes
+newshot aam_gun_close.png 22:04:43 221092 bytes
+newshot aam_model_AIM-424.png 22:04:33 223253 bytes
+newshot aam_model_AIM-9X_Sidewinder.png 22:04:32 222936 bytes
+newshot aam_model_Gun.png 22:04:33 214563 bytes
+newshot aam_model_MSDM.png 22:04:33 217160 bytes
+newshot aam_model_PL-10.png 22:04:32 186258 bytes
+newshot aam_model_PL-15.png 22:04:32 180487 bytes
+newshot aam_model_PL-17.png 22:04:32 217711 bytes
+newshot aam_model_R-37.png 22:04:33 224593 bytes
+newshot aam_model_R-77.png 22:04:32 218910 bytes
+newshot aam_msdm_1_chase.png 22:04:36 162693 bytes
+newshot aam_msdm_1_trail.png 22:04:36 276508 bytes
+newshot aam_msdm_2_chase.png 22:04:37 261228 bytes
+newshot aam_msdm_2_trail.png 22:04:37 269747 bytes
+newshot aam_msdm_3_chase.png 22:04:38 207672 bytes
+newshot aam_msdm_3_trail.png 22:04:38 214878 bytes
+newshot aam_msdm_4_chase.png 22:04:39 214458 bytes
+newshot aam_msdm_4_trail.png 22:04:39 219431 bytes
+game alive before stop = True
+game stopped

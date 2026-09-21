@@ -1,0 +1,5 @@
+csc = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+core dll exists=True
+Machine_Dev\src\Mods\DropTank.cs(630,35): warning CS0618: “UnityEngine.Object.FindObjectsOfType<T>(bool)”已过时:“Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.”
+-- DropTank OK 23552 bytes
+deployed -> D:\豆包的下载\Aviassembly_DEV\mods\DropTank\code\DropTank.dll (23552 bytes)

@@ -1,0 +1,13 @@
+csc = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+Machine_Dev\src\Mods\MachineAAM.cs(6892,27): warning CS0618: “UnityEngine.Object.FindObjectsOfType<T>()”已过时:“Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.”
+Machine_Dev\src\Mods\MachineAAM.cs(7170,33): warning CS0618: “UnityEngine.Object.FindObjectOfType<T>()”已过时:“Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType”
+Machine_Dev\src\Mods\MachineAAM.cs(7830,31): warning CS0219: 变量“lockedTr”已赋值，但其值从未使用过
+Machine_Dev\src\Mods\MachineAAM.cs(8547,34): warning CS0618: “UnityEngine.Object.FindObjectsOfType<T>(bool)”已过时:“Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.”
+Machine_Dev\src\Mods\MachineAAM.cs(8902,35): warning CS0618: “UnityEngine.Object.FindObjectsOfType<T>(bool)”已过时:“Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.”
+Machine_Dev\src\Mods\MachineAAM.cs(4180,22): warning CS0414: 字段“Machine.AAM.AiAircraft._everAirborne”已赋值，但是其值从未使用过
+Machine_Dev\src\Mods\MachineAAM.cs(5728,24): warning CS0414: 字段“Machine.AAM.AamSystem.cfgFireKey”已赋值，但是其值从未使用过
+Machine_Dev\src\Mods\MachineAAM.cs(5875,23): warning CS0169: 从不使用字段“Machine.AAM.AamSystem._aiTimer”
+Machine_Dev\src\Mods\MachineAAM.cs(5876,21): warning CS0169: 从不使用字段“Machine.AAM.AamSystem._aiSeq”
+Machine_Dev\src\Mods\MachineAAM.cs(5877,22): warning CS0169: 从不使用字段“Machine.AAM.AamSystem._aiSeeded”
+Machine_Dev\src\Mods\MachineAAM.cs(5904,23): warning CS0414: 字段“Machine.AAM.AamSystem._lastRmbDown”已赋值，但是其值从未使用过
+-- COMPILE OK 187904 bytes

@@ -1,0 +1,16 @@
+﻿===== TYPE MainMenu =====
+  FIELD UnityEngine.GameObject mainMenu pub
+  FIELD UnityEngine.GameObject playGameMenu pub
+  FIELD UnityEngine.GameObject loadPanel pub
+  FIELD UnityEngine.GameObject demoQuitPanel pub
+  METHOD Start() : Void
+  METHOD OpenObject(GameObject gameObject) : Void pub
+  METHOD OpenNewGameMenu() : Void pub
+  METHOD OpenMainMenu() : Void pub
+  METHOD StartNewGame() : Void pub
+  METHOD QuitGame() : Void pub
+  METHOD InitQuit() : Void pub
+  METHOD StartCreativeMode() : Void pub
+  METHOD StartRace() : Void pub
+  METHOD SetMapType(Int32 index) : Void pub
+  METHOD .ctor() : Void pub

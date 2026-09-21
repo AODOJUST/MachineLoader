@@ -1,0 +1,11 @@
+now = 11:14:38 deadline=330s tag=apfac4 save=AutoSave 0
+pre-existing instance cleared
+flag written -> D:\豆包的下载\Aviassembly_DEV\mods\FactionSystem\_points_test.flag
+log start offset = 2969113
+started pid = 16288
+t=30s newLog=48903 done=False
+t=40s newLog=54458 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\faction_run_log_apfac4.txt length=54458
+game alive before stop = True
+game stopped

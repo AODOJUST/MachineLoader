@@ -1,0 +1,84 @@
+FIELD PlaneContainer planeContainer
+FIELD System.Collections.Generic.List`1<PlanePart> parts
+FIELD AudioDef explosionSound
+FIELD UnityEngine.GameObject explosionParticlePrefab
+FIELD System.Collections.Generic.List`1<UnityEngine.GameObject> debris
+== METHOD System.Void PartExploder::ExplodePart(PlanePart,System.Boolean,System.Boolean)
+  0000 ldarg.0 
+  0001 ldfld System.Collections.Generic.List`1<PlanePart> PartExploder::parts
+  0006 ldarg.1 
+  0007 callvirt System.Boolean System.Collections.Generic.List`1<PlanePart>::Contains(!0)
+  000C brtrue.s IL_000f: ldarg.0
+  000E ret 
+  000F ldarg.0 
+  0010 ldarg.1 
+  0011 call UnityEngine.GameObject PartExploder::GetRootObject(PlanePart)
+  0016 callvirt !!0 UnityEngine.GameObject::GetComponent<BuildingPart>()
+  001B stloc.0 
+  001C ldarg.3 
+  001D brtrue.s IL_0031: ldarg.0
+  001F ldarg.0 
+  0020 ldarg.1 
+  0021 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0026 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  002B ldarg.2 
+  002C call System.Void PartExploder::SpawnEffects(UnityEngine.Vector3,System.Boolean)
+  0031 ldarg.0 
+  0032 ldarg.1 
+  0033 call UnityEngine.GameObject PartExploder::GetRootObject(PlanePart)
+  0038 callvirt System.Boolean UnityEngine.GameObject::get_activeSelf()
+  003D brfalse.s IL_004a: ldloc.0
+  003F ldarg.0 
+  0040 ldarg.1 
+  0041 ldarg.3 
+  0042 ldc.i4.0 
+  0043 ceq 
+  0045 call System.Void PartExploder::CreateVisual(PlanePart,System.Boolean)
+  004A ldloc.0 
+  004B ldfld System.Boolean BuildingPart::isBasePart
+  0050 brfalse.s IL_006a: ldloc.0
+  0052 ldarg.0 
+  0053 ldfld PlaneContainer PartExploder::planeContainer
+  0058 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  005D callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0062 ldc.i4.0 
+  0063 callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+  0068 br.s IL_0085: ldc.i4.0
+  006A ldloc.0 
+  006B ldc.i4.0 
+  006C callvirt System.Void BuildingPart::SetActive(System.Boolean)
+  0071 ldarg.0 
+  0072 ldfld System.Collections.Generic.List`1<PlanePart> PartExploder::parts
+  0077 ldarg.1 
+  0078 callvirt System.Boolean System.Collections.Generic.List`1<PlanePart>::Remove(!0)
+  007D pop 
+  007E ldarg.0 
+  007F ldarg.1 
+  0080 call System.Void PartExploder::HandlePartRemoval(PlanePart)
+  0085 ldc.i4.0 
+  0086 stloc.1 
+  0087 br.s IL_00a6: ldloc.1
+  0089 ldarg.0 
+  008A ldloc.0 
+  008B ldfld System.Collections.Generic.List`1<BuildingPart> BuildingPart::children
+  0090 ldloc.1 
+  0091 callvirt !0 System.Collections.Generic.List`1<BuildingPart>::get_Item(System.Int32)
+  0096 callvirt !!0 UnityEngine.Component::GetComponentInChildren<PlanePart>()
+  009B ldc.i4.0 
+  009C ldarg.3 
+  009D call System.Void PartExploder::ExplodePart(PlanePart,System.Boolean,System.Boolean)
+  00A2 ldloc.1 
+  00A3 ldc.i4.1 
+  00A4 add 
+  00A5 stloc.1 
+  00A6 ldloc.1 
+  00A7 ldloc.0 
+  00A8 ldfld System.Collections.Generic.List`1<BuildingPart> BuildingPart::children
+  00AD callvirt System.Int32 System.Collections.Generic.List`1<BuildingPart>::get_Count()
+  00B2 blt.s IL_0089: ldarg.0
+  00B4 ldarg.2 
+  00B5 brfalse.s IL_00c2: ret
+  00B7 ldarg.0 
+  00B8 ldfld PlaneContainer PartExploder::planeContainer
+  00BD callvirt System.Void PlaneContainer::ReInitializePlane()
+  00C2 ret 

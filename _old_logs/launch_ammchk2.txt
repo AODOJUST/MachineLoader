@@ -1,0 +1,28 @@
+now = 23:38:57 deadline=300s tag=ammchk
+pre-existing instance cleared
+log start offset = 2135717
+started pid = 44112
+t=30s newLog=44423 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\aam_run_log_ammchk.txt length=44423
+newshot aam_gun_burst.png 23:39:20 245386 bytes
+newshot aam_gun_close.png 23:39:20 204754 bytes
+newshot aam_model_AIM-424.png 23:39:10 223940 bytes
+newshot aam_model_AIM-9X_Sidewinder.png 23:39:10 225088 bytes
+newshot aam_model_Gun.png 23:39:10 216378 bytes
+newshot aam_model_MSDM.png 23:39:10 218692 bytes
+newshot aam_model_PL-10.png 23:39:09 211887 bytes
+newshot aam_model_PL-15.png 23:39:09 183180 bytes
+newshot aam_model_PL-17.png 23:39:09 219219 bytes
+newshot aam_model_R-37.png 23:39:10 227202 bytes
+newshot aam_model_R-77.png 23:39:09 220190 bytes
+newshot aam_msdm_1_chase.png 23:39:13 166442 bytes
+newshot aam_msdm_1_trail.png 23:39:13 282476 bytes
+newshot aam_msdm_2_chase.png 23:39:14 258041 bytes
+newshot aam_msdm_2_trail.png 23:39:14 262337 bytes
+newshot aam_msdm_3_chase.png 23:39:15 220995 bytes
+newshot aam_msdm_3_trail.png 23:39:15 224767 bytes
+newshot aam_msdm_4_chase.png 23:39:15 224844 bytes
+newshot aam_msdm_4_trail.png 23:39:15 226988 bytes
+game alive before stop = True
+game stopped

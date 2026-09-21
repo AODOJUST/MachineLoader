@@ -1,0 +1,1450 @@
+FIELD System.Single controlHandicap
+FIELD System.Single rollControlSurfaceLift
+FIELD System.Single pitchControlSurfaceLift
+FIELD AudioDef explosionSound
+FIELD UnityEngine.GameObject explosionParticlePrefab
+FIELD System.Single maxTriggerVelocity
+FIELD System.Single minTriggerVelocity
+FIELD System.Single airTraction
+FIELD System.Single stablisationForce
+FIELD System.Single helicopterStabilisationForce
+FIELD System.Single landingHelper
+FIELD System.Single rollTurnForce
+FIELD System.Single rollRestoreForce
+FIELD System.Boolean autoSteer
+FIELD System.Boolean newSteering
+FIELD System.Single rollForce
+FIELD System.Single pitchForce
+FIELD System.Single yawForce
+FIELD System.Single throttleSpeed
+FIELD System.Single <currentThrottle>k__BackingField
+FIELD System.Single <currentThrottleRaw>k__BackingField
+FIELD System.Boolean <Exploded>k__BackingField
+FIELD UnityEngine.Rigidbody rb
+FIELD WingVisual leftWingVisual
+FIELD WingVisual rightWingVisual
+FIELD System.Single prefVelocityMagnitude
+FIELD System.Single rudderInputSmooth
+FIELD System.Single rudderInputVelocity
+FIELD System.Single rudderSmoothTime
+FIELD System.Single rudderInput
+FIELD System.Single throttleVelocity
+FIELD PlaneContainer container
+FIELD InputManager inputManager
+FIELD System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>> tailWings
+FIELD System.Collections.Generic.List`1<Wing> mainWings
+FIELD System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual> wingVisuals
+FIELD System.Single prevVelocity
+PROP System.Single currentThrottle
+PROP System.Single currentThrottleRaw
+PROP System.Boolean Exploded
+== METHOD System.Single PlaneController::get_currentThrottle()
+  0000 ldarg.0 
+  0001 ldfld System.Single PlaneController::<currentThrottle>k__BackingField
+  0006 ret 
+== METHOD System.Void PlaneController::set_currentThrottle(System.Single)
+  0000 ldarg.0 
+  0001 ldarg.1 
+  0002 stfld System.Single PlaneController::<currentThrottle>k__BackingField
+  0007 ret 
+== METHOD System.Single PlaneController::get_currentThrottleRaw()
+  0000 ldarg.0 
+  0001 ldfld System.Single PlaneController::<currentThrottleRaw>k__BackingField
+  0006 ret 
+== METHOD System.Void PlaneController::set_currentThrottleRaw(System.Single)
+  0000 ldarg.0 
+  0001 ldarg.1 
+  0002 stfld System.Single PlaneController::<currentThrottleRaw>k__BackingField
+  0007 ret 
+== METHOD System.Boolean PlaneController::get_Exploded()
+  0000 ldarg.0 
+  0001 ldfld System.Boolean PlaneController::<Exploded>k__BackingField
+  0006 ret 
+== METHOD System.Void PlaneController::set_Exploded(System.Boolean)
+  0000 ldarg.0 
+  0001 ldarg.1 
+  0002 stfld System.Boolean PlaneController::<Exploded>k__BackingField
+  0007 ret 
+== METHOD System.Void PlaneController::Awake()
+  0000 ldarg.0 
+  0001 ldarg.0 
+  0002 call !!0 UnityEngine.Component::GetComponent<PlaneContainer>()
+  0007 stfld PlaneContainer PlaneController::container
+  000C ret 
+== METHOD System.Void PlaneController::Start()
+  0000 ldarg.0 
+  0001 call T Singleton`1<InputManager>::get_Instance()
+  0006 stfld InputManager PlaneController::inputManager
+  000B ret 
+== METHOD System.Void PlaneController::Update()
+  0000 ldarg.0 
+  0001 call System.Void PlaneController::UpdateThrottle()
+  0006 ret 
+== METHOD System.Void PlaneController::UpdateThrottle()
+  0000 ldarg.0 
+  0001 ldfld InputManager PlaneController::inputManager
+  0006 ldfld System.Single InputManager::throttleInput
+  000B conv.i4 
+  000C stloc.0 
+  000D ldarg.0 
+  000E ldarg.0 
+  000F call System.Single PlaneController::get_currentThrottle()
+  0014 ldloc.0 
+  0015 conv.r4 
+  0016 ldarg.0 
+  0017 ldflda System.Single PlaneController::throttleVelocity
+  001C ldarg.0 
+  001D ldfld System.Single PlaneController::throttleSpeed
+  0022 call System.Single UnityEngine.Mathf::SmoothDamp(System.Single,System.Single,System.Single&,System.Single)
+  0027 call System.Void PlaneController::set_currentThrottle(System.Single)
+  002C ldarg.0 
+  002D ldloc.0 
+  002E conv.r4 
+  002F call System.Void PlaneController::set_currentThrottleRaw(System.Single)
+  0034 ldarg.0 
+  0035 ldarg.0 
+  0036 ldfld InputManager PlaneController::inputManager
+  003B ldfld System.Single InputManager::yawInput
+  0040 stfld System.Single PlaneController::rudderInput
+  0045 ldarg.0 
+  0046 ldarg.0 
+  0047 ldfld System.Single PlaneController::rudderInputSmooth
+  004C ldarg.0 
+  004D ldfld System.Single PlaneController::rudderInput
+  0052 ldarg.0 
+  0053 ldflda System.Single PlaneController::rudderInputVelocity
+  0058 ldarg.0 
+  0059 ldfld System.Single PlaneController::rudderSmoothTime
+  005E call System.Single UnityEngine.Mathf::SmoothDamp(System.Single,System.Single,System.Single&,System.Single)
+  0063 stfld System.Single PlaneController::rudderInputSmooth
+  0068 ldarg.0 
+  0069 ldfld System.Single PlaneController::rudderInput
+  006E ldc.r4 0
+  0073 beq.s IL_0081: ret
+  0075 ldarg.0 
+  0076 ldarg.0 
+  0077 ldfld System.Single PlaneController::rudderInput
+  007C stfld System.Single PlaneController::rudderInputSmooth
+  0081 ret 
+== METHOD System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  0000 ldarg.0 
+  0001 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0006 ldarg.1 
+  0007 callvirt UnityEngine.Vector3 UnityEngine.Transform::InverseTransformDirection(UnityEngine.Vector3)
+  000C stloc.0 
+  000D ldarg.0 
+  000E ldfld PlaneContainer PlaneController::container
+  0013 callvirt UnityEngine.Matrix4x4 PlaneContainer::CalculateInertiaTensorMatrix()
+  0018 ldloc.0 
+  0019 call UnityEngine.Vector4 UnityEngine.Vector4::op_Implicit(UnityEngine.Vector3)
+  001E call UnityEngine.Vector4 UnityEngine.Matrix4x4::op_Multiply(UnityEngine.Matrix4x4,UnityEngine.Vector4)
+  0023 call UnityEngine.Vector3 UnityEngine.Vector4::op_Implicit(UnityEngine.Vector4)
+  0028 stloc.1 
+  0029 ldarg.0 
+  002A call UnityEngine.Transform UnityEngine.Component::get_transform()
+  002F ldloc.1 
+  0030 callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformDirection(UnityEngine.Vector3)
+  0035 stloc.2 
+  0036 ldarg.0 
+  0037 ldfld UnityEngine.Rigidbody PlaneController::rb
+  003C ldloc.2 
+  003D callvirt System.Void UnityEngine.Rigidbody::AddTorque(UnityEngine.Vector3)
+  0042 ret 
+== METHOD System.Void PlaneController::UpdateControlls()
+  0000 ldarg.0 
+  0001 call T Singleton`1<GameManager>::get_Instance()
+  0006 ldfld System.Boolean GameManager::autoSteer
+  000B stfld System.Boolean PlaneController::autoSteer
+  0010 ldc.r4 50
+  0015 ldc.r4 0
+  001A ldarg.0 
+  001B ldfld PlaneContainer PlaneController::container
+  0020 callvirt System.Single PlaneContainer::GetMass()
+  0025 ldc.r4 15
+  002A mul 
+  002B call System.Single UnityEngine.Mathf::InverseLerp(System.Single,System.Single,System.Single)
+  0030 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  0035 stloc.0 
+  0036 ldarg.0 
+  0037 ldc.r4 0.4
+  003C ldloc.0 
+  003D ldc.r4 0.6
+  0042 mul 
+  0043 add 
+  0044 stfld System.Single PlaneController::controlHandicap
+  0049 ldarg.0 
+  004A ldfld UnityEngine.Rigidbody PlaneController::rb
+  004F callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_linearVelocity()
+  0054 stloc.s V_13
+  0056 ldloca.s V_13
+  0058 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  005D ldarg.0 
+  005E ldfld PlaneContainer PlaneController::container
+  0063 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0068 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  006D stloc.1 
+  006E ldarg.0 
+  006F ldfld UnityEngine.Rigidbody PlaneController::rb
+  0074 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_linearVelocity()
+  0079 stloc.s V_13
+  007B ldloca.s V_13
+  007D call System.Single UnityEngine.Vector3::get_magnitude()
+  0082 ldc.r4 50
+  0087 div 
+  0088 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  008D stloc.2 
+  008E ldarg.0 
+  008F ldfld PlaneContainer PlaneController::container
+  0094 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0099 call UnityEngine.Vector3 UnityEngine.Vector3::op_UnaryNegation(UnityEngine.Vector3)
+  009E ldarg.0 
+  009F call UnityEngine.Transform UnityEngine.Component::get_transform()
+  00A4 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  00A9 call UnityEngine.Vector3 UnityEngine.Vector3::Cross(UnityEngine.Vector3,UnityEngine.Vector3)
+  00AE stloc.s V_13
+  00B0 ldloca.s V_13
+  00B2 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  00B7 stloc.3 
+  00B8 ldarg.0 
+  00B9 ldfld PlaneContainer PlaneController::container
+  00BE callvirt System.Single PlaneContainer::DistanceFromGround()
+  00C3 ldc.r4 30
+  00C8 div 
+  00C9 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  00CE stloc.s V_4
+  00D0 ldarg.0 
+  00D1 ldfld System.Single PlaneController::rollControlSurfaceLift
+  00D6 ldc.r4 150
+  00DB mul 
+  00DC ldarg.0 
+  00DD ldfld System.Single PlaneController::controlHandicap
+  00E2 mul 
+  00E3 ldarg.0 
+  00E4 ldfld PlaneContainer PlaneController::container
+  00E9 ldfld System.Single PlaneContainer::helicopter
+  00EE add 
+  00EF call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  00F4 stloc.s V_5
+  00F6 ldarg.0 
+  00F7 ldfld System.Single PlaneController::rollForce
+  00FC ldloc.2 
+  00FD ldc.r4 1
+  0102 ldarg.0 
+  0103 ldfld PlaneContainer PlaneController::container
+  0108 ldfld System.Single PlaneContainer::helicopter
+  010D call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+  0112 mul 
+  0113 stloc.s V_6
+  0115 ldarg.0 
+  0116 ldfld System.Boolean PlaneController::autoSteer
+  011B brfalse.s IL_0124: ldarg.0
+  011D ldloc.s V_6
+  011F ldloc.s V_4
+  0121 mul 
+  0122 stloc.s V_6
+  0124 ldarg.0 
+  0125 ldarg.0 
+  0126 ldfld PlaneContainer PlaneController::container
+  012B callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0130 call UnityEngine.Vector3 UnityEngine.Vector3::op_UnaryNegation(UnityEngine.Vector3)
+  0135 ldarg.0 
+  0136 ldfld InputManager PlaneController::inputManager
+  013B ldfld System.Single InputManager::rollInput
+  0140 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0145 ldloc.s V_6
+  0147 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  014C ldloc.s V_5
+  014E call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0153 call System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  0158 ldarg.0 
+  0159 ldfld System.Single PlaneController::controlHandicap
+  015E ldarg.0 
+  015F ldfld System.Single PlaneController::pitchControlSurfaceLift
+  0164 ldc.r4 40
+  0169 mul 
+  016A add 
+  016B call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  0170 stloc.s V_7
+  0172 ldloc.2 
+  0173 ldloc.1 
+  0174 mul 
+  0175 stloc.s V_8
+  0177 ldarg.0 
+  0178 ldfld System.Single PlaneController::pitchForce
+  017D ldloc.s V_8
+  017F ldc.r4 1
+  0184 ldarg.0 
+  0185 ldfld PlaneContainer PlaneController::container
+  018A ldfld System.Single PlaneContainer::helicopter
+  018F call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+  0194 mul 
+  0195 stloc.s V_9
+  0197 ldarg.0 
+  0198 ldloc.3 
+  0199 ldarg.0 
+  019A ldfld InputManager PlaneController::inputManager
+  019F ldfld System.Single InputManager::pitchInput
+  01A4 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  01A9 ldloc.s V_9
+  01AB call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  01B0 ldloc.s V_7
+  01B2 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  01B7 call System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  01BC ldarg.0 
+  01BD ldfld UnityEngine.Rigidbody PlaneController::rb
+  01C2 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_linearVelocity()
+  01C7 stloc.s V_13
+  01C9 ldloca.s V_13
+  01CB call System.Single UnityEngine.Vector3::get_magnitude()
+  01D0 ldc.r4 10
+  01D5 div 
+  01D6 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  01DB stloc.s V_10
+  01DD ldarg.0 
+  01DE ldfld System.Single PlaneController::yawForce
+  01E3 ldloc.s V_10
+  01E5 mul 
+  01E6 ldloc.1 
+  01E7 mul 
+  01E8 stloc.s V_11
+  01EA ldarg.0 
+  01EB ldfld PlaneContainer PlaneController::container
+  01F0 callvirt System.Boolean PlaneContainer::IsGrounded()
+  01F5 brtrue.s IL_01fe: ldc.r4 1.25
+  01F7 ldc.r4 1
+  01FC br.s IL_0203: stloc.s V_12
+  01FE ldc.r4 1.25
+  0203 stloc.s V_12
+  0205 ldarg.0 
+  0206 ldarg.0 
+  0207 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  020C callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  0211 ldarg.0 
+  0212 ldfld System.Single PlaneController::rudderInputSmooth
+  0217 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  021C ldloc.s V_11
+  021E call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0223 ldloc.s V_12
+  0225 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  022A call System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  022F ldarg.0 
+  0230 ldfld System.Boolean PlaneController::autoSteer
+  0235 brfalse IL_03ce: ldarg.0
+  023A call UnityEngine.Vector3 UnityEngine.Vector3::get_up()
+  023F ldarg.0 
+  0240 ldfld PlaneContainer PlaneController::container
+  0245 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  024A call UnityEngine.Vector3 UnityEngine.Vector3::Cross(UnityEngine.Vector3,UnityEngine.Vector3)
+  024F stloc.s V_13
+  0251 ldloca.s V_13
+  0253 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0258 stloc.s V_14
+  025A ldarg.0 
+  025B ldfld PlaneContainer PlaneController::container
+  0260 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0265 ldloc.s V_14
+  0267 call UnityEngine.Vector3 UnityEngine.Vector3::Cross(UnityEngine.Vector3,UnityEngine.Vector3)
+  026C stloc.s V_13
+  026E ldloca.s V_13
+  0270 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0275 stloc.s V_15
+  0277 ldarg.0 
+  0278 ldfld PlaneContainer PlaneController::container
+  027D ldc.r4 0
+  0282 stfld System.Single PlaneContainer::yawDrag
+  0287 ldarg.0 
+  0288 ldc.r4 5
+  028D stfld System.Single PlaneController::rollForce
+  0292 ldarg.0 
+  0293 ldc.r4 1.5
+  0298 stfld System.Single PlaneController::yawForce
+  029D ldarg.0 
+  029E call System.Single PlaneController::GetCurrentRoll()
+  02A3 stloc.s V_16
+  02A5 ldc.r4 0.95
+  02AA ldc.r4 0.99
+  02AF stloc.s V_17
+  02B1 ldloc.s V_17
+  02B3 ldloc.s V_16
+  02B5 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  02BA call System.Single UnityEngine.Mathf::InverseLerp(System.Single,System.Single,System.Single)
+  02BF call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  02C4 stloc.s V_18
+  02C6 ldloc.s V_16
+  02C8 ldc.r4 1
+  02CD ldc.r4 0
+  02D2 ldc.r4 1
+  02D7 ldloc.s V_18
+  02D9 call System.Single UnityEngine.Mathf::SmoothStep(System.Single,System.Single,System.Single)
+  02DE sub 
+  02DF mul 
+  02E0 stloc.s V_16
+  02E2 ldarg.0 
+  02E3 ldfld PlaneContainer PlaneController::container
+  02E8 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  02ED call UnityEngine.Vector3 UnityEngine.Vector3::get_up()
+  02F2 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  02F7 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  02FC ldc.r4 0.98
+  0301 ble.un.s IL_030a: ldloc.s V_16
+  0303 ldc.r4 0
+  0308 stloc.s V_16
+  030A ldloc.s V_16
+  030C call System.Single UnityEngine.Mathf::Abs(System.Single)
+  0311 ldc.r4 0.0125
+  0316 sub 
+  0317 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  031C ldloc.s V_16
+  031E call System.Single UnityEngine.Mathf::Sign(System.Single)
+  0323 mul 
+  0324 ldarg.0 
+  0325 ldfld System.Single PlaneController::rollTurnForce
+  032A mul 
+  032B stloc.s V_19
+  032D ldloc.s V_19
+  032F call System.Single UnityEngine.Mathf::Abs(System.Single)
+  0334 call System.Single UnityEngine.Mathf::Sqrt(System.Single)
+  0339 ldloc.s V_19
+  033B call System.Single UnityEngine.Mathf::Sign(System.Single)
+  0340 mul 
+  0341 stloc.s V_19
+  0343 ldarg.0 
+  0344 ldloc.s V_15
+  0346 ldloc.s V_19
+  0348 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  034D call System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  0352 ldloc.s V_16
+  0354 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  0359 call System.Single UnityEngine.Mathf::Sqrt(System.Single)
+  035E ldloc.s V_16
+  0360 call System.Single UnityEngine.Mathf::Sign(System.Single)
+  0365 mul 
+  0366 stloc.s V_20
+  0368 ldarg.0 
+  0369 ldarg.0 
+  036A ldfld PlaneContainer PlaneController::container
+  036F callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0374 ldloc.s V_20
+  0376 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  037B ldarg.0 
+  037C ldfld System.Single PlaneController::rollRestoreForce
+  0381 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0386 call System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  038B ldarg.0 
+  038C ldfld InputManager PlaneController::inputManager
+  0391 ldfld System.Single InputManager::rollInput
+  0396 stloc.s V_19
+  0398 ldarg.0 
+  0399 ldloc.s V_15
+  039B ldc.r4 1
+  03A0 ldloc.s V_4
+  03A2 sub 
+  03A3 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  03A8 ldarg.0 
+  03A9 ldfld System.Single PlaneController::yawForce
+  03AE call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  03B3 ldloc.s V_11
+  03B5 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  03BA ldloc.s V_19
+  03BC call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  03C1 ldloc.s V_12
+  03C3 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  03C8 call System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  03CD ret 
+  03CE ldarg.0 
+  03CF ldfld PlaneContainer PlaneController::container
+  03D4 ldc.r4 0.2
+  03D9 stfld System.Single PlaneContainer::yawDrag
+  03DE ldarg.0 
+  03DF ldc.r4 3.5
+  03E4 stfld System.Single PlaneController::rollForce
+  03E9 ldarg.0 
+  03EA ldc.r4 6
+  03EF stfld System.Single PlaneController::yawForce
+  03F4 ret 
+== METHOD System.Void PlaneController::FixedUpdate()
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.Rigidbody PlaneController::rb
+  0006 ldnull 
+  0007 call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+  000C brfalse.s IL_001b: ldarg.0
+  000E ldarg.0 
+  000F ldarg.0 
+  0010 call !!0 UnityEngine.Component::GetComponent<UnityEngine.Rigidbody>()
+  0015 stfld UnityEngine.Rigidbody PlaneController::rb
+  001A ret 
+  001B ldarg.0 
+  001C call System.Void PlaneController::UpdateWingVisuals()
+  0021 ldarg.0 
+  0022 call System.Void PlaneController::UpdateControlls()
+  0027 ldarg.0 
+  0028 ldc.r4 1
+  002D ldarg.0 
+  002E ldfld PlaneContainer PlaneController::container
+  0033 ldfld System.Single PlaneContainer::helicopter
+  0038 sub 
+  0039 call System.Void PlaneController::PlaneStabilisationForce(System.Single)
+  003E ldarg.0 
+  003F ldarg.0 
+  0040 ldfld PlaneContainer PlaneController::container
+  0045 ldfld System.Single PlaneContainer::helicopter
+  004A call System.Void PlaneController::HelicopterStabilisationForce(System.Single)
+  004F ldarg.0 
+  0050 call System.Void PlaneController::UpdateControllability()
+  0055 ldarg.0 
+  0056 ldfld PlaneContainer PlaneController::container
+  005B callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0060 ldarg.0 
+  0061 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0066 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  006B call UnityEngine.Vector3 UnityEngine.Vector3::Cross(UnityEngine.Vector3,UnityEngine.Vector3)
+  0070 stloc.s V_6
+  0072 ldloca.s V_6
+  0074 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0079 stloc.0 
+  007A ldloca.s V_0
+  007C call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0081 ldarg.0 
+  0082 ldfld UnityEngine.Rigidbody PlaneController::rb
+  0087 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_linearVelocity()
+  008C call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0091 ldarg.0 
+  0092 ldfld System.Single PlaneController::airTraction
+  0097 mul 
+  0098 ldarg.0 
+  0099 ldfld UnityEngine.Rigidbody PlaneController::rb
+  009E callvirt System.Single UnityEngine.Rigidbody::get_mass()
+  00A3 mul 
+  00A4 stloc.1 
+  00A5 ldarg.0 
+  00A6 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  00AB callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  00B0 call UnityEngine.Vector3 UnityEngine.Vector3::get_up()
+  00B5 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  00BA call System.Single UnityEngine.Mathf::Abs(System.Single)
+  00BF stloc.2 
+  00C0 ldarg.0 
+  00C1 ldfld UnityEngine.Rigidbody PlaneController::rb
+  00C6 ldloc.1 
+  00C7 ldloc.0 
+  00C8 call UnityEngine.Vector3 UnityEngine.Vector3::op_UnaryNegation(UnityEngine.Vector3)
+  00CD call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(System.Single,UnityEngine.Vector3)
+  00D2 ldloc.2 
+  00D3 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  00D8 ldarg.0 
+  00D9 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  00DE ldarg.0 
+  00DF ldfld UnityEngine.Rigidbody PlaneController::rb
+  00E4 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_centerOfMass()
+  00E9 callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformPoint(UnityEngine.Vector3)
+  00EE callvirt System.Void UnityEngine.Rigidbody::AddForceAtPosition(UnityEngine.Vector3,UnityEngine.Vector3)
+  00F3 ldarg.0 
+  00F4 ldfld UnityEngine.Rigidbody PlaneController::rb
+  00F9 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_linearVelocity()
+  00FE stloc.s V_6
+  0100 ldloca.s V_6
+  0102 call System.Single UnityEngine.Vector3::get_magnitude()
+  0107 stloc.3 
+  0108 call UnityEngine.Vector3 UnityEngine.Vector3::get_up()
+  010D ldarg.0 
+  010E call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0113 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  0118 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  011D ldc.r4 1
+  0122 add 
+  0123 ldc.r4 0.5
+  0128 mul 
+  0129 stloc.s V_4
+  012B ldarg.0 
+  012C ldfld System.Single PlaneController::minTriggerVelocity
+  0131 ldarg.0 
+  0132 ldfld System.Single PlaneController::maxTriggerVelocity
+  0137 ldloc.s V_4
+  0139 call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+  013E stloc.s V_5
+  0140 ldloc.3 
+  0141 ldarg.0 
+  0142 ldfld System.Single PlaneController::prefVelocityMagnitude
+  0147 sub 
+  0148 call System.Single UnityEngine.Mathf::Sign(System.Single)
+  014D ldc.r4 0
+  0152 bge.un.s IL_017a: ldarg.0
+  0154 ldarg.0 
+  0155 ldfld PlaneContainer PlaneController::container
+  015A callvirt System.Boolean PlaneContainer::IsGrounded()
+  015F brfalse.s IL_017a: ldarg.0
+  0161 ldarg.0 
+  0162 ldfld PlaneContainer PlaneController::container
+  0167 ldc.r4 1
+  016C ldarg.0 
+  016D ldfld System.Single PlaneController::landingHelper
+  0172 sub 
+  0173 stfld System.Single PlaneContainer::liftMultiplier
+  0178 br.s IL_018a: ldloc.3
+  017A ldarg.0 
+  017B ldfld PlaneContainer PlaneController::container
+  0180 ldc.r4 1
+  0185 stfld System.Single PlaneContainer::liftMultiplier
+  018A ldloc.3 
+  018B ldarg.0 
+  018C ldfld System.Single PlaneController::prefVelocityMagnitude
+  0191 sub 
+  0192 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  0197 ldloc.s V_5
+  0199 ble.un.s IL_01a1: ldarg.0
+  019B ldarg.0 
+  019C call System.Void PlaneController::ExplodePlane()
+  01A1 ldarg.0 
+  01A2 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  01A7 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  01AC ldfld System.Single UnityEngine.Vector3::y
+  01B1 ldc.r4 -12
+  01B6 bge.un.s IL_01be: ldarg.0
+  01B8 ldarg.0 
+  01B9 call System.Void PlaneController::ExplodePlane()
+  01BE ldarg.0 
+  01BF ldloc.3 
+  01C0 stfld System.Single PlaneController::prefVelocityMagnitude
+  01C5 ret 
+== METHOD System.Void PlaneController::ResetController()
+  0000 ldarg.0 
+  0001 ldc.r4 0
+  0006 stfld System.Single PlaneController::prefVelocityMagnitude
+  000B ldarg.0 
+  000C ldc.r4 0
+  0011 call System.Void PlaneController::set_currentThrottle(System.Single)
+  0016 ldarg.0 
+  0017 ldc.i4.0 
+  0018 call System.Void PlaneController::set_Exploded(System.Boolean)
+  001D ldarg.0 
+  001E ldfld System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual> PlaneController::wingVisuals
+  0023 callvirt System.Void System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual>::Clear()
+  0028 ldarg.0 
+  0029 call !!0[] UnityEngine.Component::GetComponentsInChildren<WingVisual>()
+  002E stloc.0 
+  002F ldc.i4.0 
+  0030 stloc.1 
+  0031 br.s IL_004d: ldloc.1
+  0033 ldarg.0 
+  0034 ldfld System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual> PlaneController::wingVisuals
+  0039 ldloc.0 
+  003A ldloc.1 
+  003B ldelem.ref 
+  003C callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0041 ldloc.0 
+  0042 ldloc.1 
+  0043 ldelem.ref 
+  0044 callvirt System.Void System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual>::Add(!0,!1)
+  0049 ldloc.1 
+  004A ldc.i4.1 
+  004B add 
+  004C stloc.1 
+  004D ldloc.1 
+  004E ldloc.0 
+  004F ldlen 
+  0050 conv.i4 
+  0051 blt.s IL_0033: ldarg.0
+  0053 ret 
+== METHOD System.Void PlaneController::UpdateStabilisationForce()
+  0000 ldarg.0 
+  0001 ldfld PlaneContainer PlaneController::container
+  0006 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  000B stloc.0 
+  000C ldarg.0 
+  000D ldfld PlaneContainer PlaneController::container
+  0012 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0017 ldarg.0 
+  0018 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  001D callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  0022 call UnityEngine.Vector3 UnityEngine.Vector3::Cross(UnityEngine.Vector3,UnityEngine.Vector3)
+  0027 stloc.s V_7
+  0029 ldloca.s V_7
+  002B call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0030 stloc.1 
+  0031 ldarg.0 
+  0032 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0037 ldloc.1 
+  0038 call UnityEngine.Vector3 UnityEngine.Vector3::op_UnaryNegation(UnityEngine.Vector3)
+  003D callvirt UnityEngine.Vector3 UnityEngine.Transform::InverseTransformDirection(UnityEngine.Vector3)
+  0042 ldarg.0 
+  0043 ldfld UnityEngine.Rigidbody PlaneController::rb
+  0048 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_linearVelocity()
+  004D ldloc.1 
+  004E call UnityEngine.Vector3 UnityEngine.Vector3::ProjectOnPlane(UnityEngine.Vector3,UnityEngine.Vector3)
+  0053 stloc.2 
+  0054 ldc.r4 1
+  0059 ldloc.0 
+  005A ldloca.s V_2
+  005C call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0061 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0066 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  006B sub 
+  006C ldloc.2 
+  006D ldloc.0 
+  006E ldloc.1 
+  006F call System.Single UnityEngine.Vector3::SignedAngle(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)
+  0074 call System.Single UnityEngine.Mathf::Sign(System.Single)
+  0079 mul 
+  007A stloc.3 
+  007B ldloc.3 
+  007C ldloca.s V_2
+  007E call System.Single UnityEngine.Vector3::get_magnitude()
+  0083 ldc.r4 50
+  0088 div 
+  0089 mul 
+  008A stloc.3 
+  008B ldloc.3 
+  008C ldarg.0 
+  008D ldfld System.Single PlaneController::stablisationForce
+  0092 mul 
+  0093 stloc.3 
+  0094 ldloc.3 
+  0095 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  009A stloc.s V_4
+  009C ldarg.0 
+  009D ldfld PlaneContainer PlaneController::container
+  00A2 callvirt UnityEngine.Matrix4x4 PlaneContainer::CalculateInertiaTensorMatrix()
+  00A7 ldloc.s V_4
+  00A9 call UnityEngine.Vector4 UnityEngine.Vector4::op_Implicit(UnityEngine.Vector3)
+  00AE call UnityEngine.Vector4 UnityEngine.Matrix4x4::op_Multiply(UnityEngine.Matrix4x4,UnityEngine.Vector4)
+  00B3 call UnityEngine.Vector3 UnityEngine.Vector4::op_Implicit(UnityEngine.Vector4)
+  00B8 stloc.s V_5
+  00BA ldarg.0 
+  00BB call UnityEngine.Transform UnityEngine.Component::get_transform()
+  00C0 ldloc.s V_5
+  00C2 callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformDirection(UnityEngine.Vector3)
+  00C7 stloc.s V_6
+  00C9 ldarg.0 
+  00CA ldfld UnityEngine.Rigidbody PlaneController::rb
+  00CF ldloc.s V_6
+  00D1 callvirt System.Void UnityEngine.Rigidbody::AddTorque(UnityEngine.Vector3)
+  00D6 ldarg.0 
+  00D7 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  00DC callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  00E1 ldloc.0 
+  00E2 ldc.r4 100
+  00E7 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  00EC call UnityEngine.Color UnityEngine.Color::get_blue()
+  00F1 call System.Void UnityEngine.Debug::DrawRay(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color)
+  00F6 ldarg.0 
+  00F7 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  00FC callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  0101 ldarg.0 
+  0102 ldfld UnityEngine.Rigidbody PlaneController::rb
+  0107 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_linearVelocity()
+  010C ldc.r4 100
+  0111 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0116 call UnityEngine.Color UnityEngine.Color::get_red()
+  011B call System.Void UnityEngine.Debug::DrawRay(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color)
+  0120 ret 
+== METHOD System.Void PlaneController::PlaneStabilisationForce(System.Single)
+  0000 ldarg.0 
+  0001 ldfld PlaneContainer PlaneController::container
+  0006 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  000B stloc.0 
+  000C ldarg.0 
+  000D ldfld UnityEngine.Rigidbody PlaneController::rb
+  0012 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_linearVelocity()
+  0017 stloc.1 
+  0018 ldloca.s V_1
+  001A call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  001F ldloc.0 
+  0020 call UnityEngine.Vector3 UnityEngine.Vector3::Cross(UnityEngine.Vector3,UnityEngine.Vector3)
+  0025 stloc.s V_4
+  0027 ldloca.s V_4
+  0029 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  002E stloc.2 
+  002F ldc.r4 1
+  0034 ldloc.0 
+  0035 ldloca.s V_1
+  0037 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  003C call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0041 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  0046 sub 
+  0047 ldloc.0 
+  0048 ldloca.s V_1
+  004A call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  004F ldloc.2 
+  0050 call System.Single UnityEngine.Vector3::SignedAngle(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)
+  0055 call System.Single UnityEngine.Mathf::Sign(System.Single)
+  005A mul 
+  005B stloc.3 
+  005C ldloc.3 
+  005D ldloca.s V_1
+  005F call System.Single UnityEngine.Vector3::get_magnitude()
+  0064 ldc.r4 50
+  0069 div 
+  006A mul 
+  006B stloc.3 
+  006C ldloc.3 
+  006D ldarg.0 
+  006E ldfld System.Single PlaneController::stablisationForce
+  0073 mul 
+  0074 stloc.3 
+  0075 ldarg.0 
+  0076 ldloc.2 
+  0077 ldloc.3 
+  0078 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  007D ldarg.1 
+  007E call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0083 call System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  0088 ret 
+== METHOD System.Void PlaneController::HelicopterStabilisationForce(System.Single)
+  0000 ldarg.0 
+  0001 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0006 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  000B call UnityEngine.Vector3 UnityEngine.Vector3::get_up()
+  0010 call UnityEngine.Vector3 UnityEngine.Vector3::Cross(UnityEngine.Vector3,UnityEngine.Vector3)
+  0015 stloc.2 
+  0016 ldloca.s V_2
+  0018 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  001D stloc.0 
+  001E ldc.r4 1
+  0023 call UnityEngine.Vector3 UnityEngine.Vector3::get_up()
+  0028 ldarg.0 
+  0029 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  002E callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  0033 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0038 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  003D sub 
+  003E ldarg.0 
+  003F call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0044 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  0049 call UnityEngine.Vector3 UnityEngine.Vector3::get_up()
+  004E ldloc.0 
+  004F call System.Single UnityEngine.Vector3::SignedAngle(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)
+  0054 call System.Single UnityEngine.Mathf::Sign(System.Single)
+  0059 mul 
+  005A stloc.1 
+  005B ldloc.1 
+  005C ldarg.0 
+  005D ldfld System.Single PlaneController::helicopterStabilisationForce
+  0062 mul 
+  0063 stloc.1 
+  0064 ldarg.0 
+  0065 ldloc.0 
+  0066 ldloc.1 
+  0067 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  006C ldarg.1 
+  006D call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0072 call System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  0077 ret 
+== METHOD System.Single PlaneController::GetCurrentRoll()
+  0000 call UnityEngine.Vector3 UnityEngine.Vector3::get_up()
+  0005 ldarg.0 
+  0006 ldfld PlaneContainer PlaneController::container
+  000B callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0010 call UnityEngine.Vector3 UnityEngine.Vector3::ProjectOnPlane(UnityEngine.Vector3,UnityEngine.Vector3)
+  0015 stloc.2 
+  0016 ldloca.s V_2
+  0018 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  001D stloc.0 
+  001E ldc.r4 1
+  0023 ldarg.0 
+  0024 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0029 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  002E ldloc.0 
+  002F call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0034 ldc.r4 1
+  0039 add 
+  003A ldc.r4 0.5
+  003F mul 
+  0040 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  0045 sub 
+  0046 ldarg.0 
+  0047 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  004C callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  0051 ldloc.0 
+  0052 ldarg.0 
+  0053 ldfld PlaneContainer PlaneController::container
+  0058 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  005D call System.Single UnityEngine.Vector3::SignedAngle(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)
+  0062 call System.Single UnityEngine.Mathf::Sign(System.Single)
+  0067 stloc.1 
+  0068 ldloc.1 
+  0069 mul 
+  006A ret 
+== METHOD WingVisual PlaneController::GetWingVisual(UnityEngine.GameObject)
+  0000 ldarg.0 
+  0001 ldfld System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual> PlaneController::wingVisuals
+  0006 ldarg.1 
+  0007 callvirt System.Boolean System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual>::ContainsKey(!0)
+  000C brfalse.s IL_001b: ldnull
+  000E ldarg.0 
+  000F ldfld System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual> PlaneController::wingVisuals
+  0014 ldarg.1 
+  0015 callvirt !1 System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual>::get_Item(!0)
+  001A ret 
+  001B ldnull 
+  001C ret 
+== METHOD System.Void PlaneController::ApplyMouseSteering(UnityEngine.Vector3,System.Single)
+  0000 ldarg.0 
+  0001 ldfld PlaneContainer PlaneController::container
+  0006 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  000B stloc.0 
+  000C ldarga.s targetDirection
+  000E call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0013 ldloc.0 
+  0014 call UnityEngine.Vector3 UnityEngine.Vector3::Cross(UnityEngine.Vector3,UnityEngine.Vector3)
+  0019 stloc.s V_4
+  001B ldloca.s V_4
+  001D call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0022 stloc.1 
+  0023 ldc.r4 1
+  0028 ldloc.0 
+  0029 ldarga.s targetDirection
+  002B call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0030 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0035 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  003A sub 
+  003B ldc.r4 0.05
+  0040 call System.Single UnityEngine.Mathf::Max(System.Single,System.Single)
+  0045 ldloc.0 
+  0046 ldarga.s targetDirection
+  0048 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  004D ldloc.1 
+  004E call System.Single UnityEngine.Vector3::SignedAngle(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)
+  0053 call System.Single UnityEngine.Mathf::Sign(System.Single)
+  0058 mul 
+  0059 stloc.2 
+  005A ldloc.2 
+  005B ldarg.0 
+  005C ldfld System.Single PlaneController::stablisationForce
+  0061 ldc.r4 2
+  0066 mul 
+  0067 ldarg.0 
+  0068 ldfld PlaneContainer PlaneController::container
+  006D callvirt System.Single PlaneContainer::GetVelocityMagintude()
+  0072 ldc.r4 60
+  0077 div 
+  0078 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  007D mul 
+  007E mul 
+  007F stloc.2 
+  0080 ldarg.0 
+  0081 ldloc.1 
+  0082 ldloc.2 
+  0083 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0088 call System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  008D ldc.r4 -0.5
+  0092 ldc.r4 0.5
+  0097 ldarg.2 
+  0098 ldc.r4 1
+  009D add 
+  009E ldc.r4 0.5
+  00A3 mul 
+  00A4 call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+  00A9 ldarg.0 
+  00AA call System.Single PlaneController::GetCurrentRoll()
+  00AF sub 
+  00B0 ldc.r4 5
+  00B5 mul 
+  00B6 stloc.3 
+  00B7 ldarg.0 
+  00B8 ldarg.0 
+  00B9 ldfld PlaneContainer PlaneController::container
+  00BE callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  00C3 ldloc.3 
+  00C4 neg 
+  00C5 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  00CA call System.Void PlaneController::ApplyInertiaTensorAjustedTorque(UnityEngine.Vector3)
+  00CF ret 
+== METHOD System.Void PlaneController::UpdateWingVisuals()
+  0000 ldc.r4 0
+  0005 stloc.0 
+  0006 ldc.r4 3.402823E+38
+  000B stloc.1 
+  000C ldarg.0 
+  000D ldfld PlaneContainer PlaneController::container
+  0012 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0017 ldarg.0 
+  0018 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  001D callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  0022 call UnityEngine.Vector3 UnityEngine.Vector3::Cross(UnityEngine.Vector3,UnityEngine.Vector3)
+  0027 stloc.2 
+  0028 ldc.i4.0 
+  0029 stloc.s V_6
+  002B br.s IL_00aa: ldloc.s V_6
+  002D ldarg.0 
+  002E call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0033 ldloc.s V_6
+  0035 callvirt UnityEngine.Transform UnityEngine.Transform::GetChild(System.Int32)
+  003A callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  003F stloc.s V_7
+  0041 ldloc.s V_7
+  0043 callvirt System.String UnityEngine.Object::get_name()
+  0048 ldstr Wing
+  004D callvirt System.Boolean System.String::Contains(System.String)
+  0052 brfalse.s IL_00a4: ldloc.s V_6
+  0054 ldloc.2 
+  0055 ldloc.s V_7
+  0057 callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  005C callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  0061 ldarg.0 
+  0062 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0067 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  006C call UnityEngine.Vector3 UnityEngine.Vector3::op_Subtraction(UnityEngine.Vector3,UnityEngine.Vector3)
+  0071 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0076 stloc.s V_8
+  0078 ldloc.s V_8
+  007A ldloc.0 
+  007B ble.un.s IL_008e: ldloc.s V_8
+  007D ldarg.0 
+  007E ldarg.0 
+  007F ldloc.s V_7
+  0081 call WingVisual PlaneController::GetWingVisual(UnityEngine.GameObject)
+  0086 stfld WingVisual PlaneController::rightWingVisual
+  008B ldloc.s V_8
+  008D stloc.0 
+  008E ldloc.s V_8
+  0090 ldloc.1 
+  0091 bge.un.s IL_00a4: ldloc.s V_6
+  0093 ldarg.0 
+  0094 ldarg.0 
+  0095 ldloc.s V_7
+  0097 call WingVisual PlaneController::GetWingVisual(UnityEngine.GameObject)
+  009C stfld WingVisual PlaneController::leftWingVisual
+  00A1 ldloc.s V_8
+  00A3 stloc.1 
+  00A4 ldloc.s V_6
+  00A6 ldc.i4.1 
+  00A7 add 
+  00A8 stloc.s V_6
+  00AA ldloc.s V_6
+  00AC ldarg.0 
+  00AD call UnityEngine.Transform UnityEngine.Component::get_transform()
+  00B2 callvirt System.Int32 UnityEngine.Transform::get_childCount()
+  00B7 blt IL_002d: ldarg.0
+  00BC ldarg.0 
+  00BD ldfld WingVisual PlaneController::leftWingVisual
+  00C2 ldnull 
+  00C3 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  00C8 brfalse.s IL_00f1: ldarg.0
+  00CA ldarg.0 
+  00CB ldfld WingVisual PlaneController::leftWingVisual
+  00D0 ldarg.0 
+  00D1 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  00D6 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  00DB call T Singleton`1<InputManager>::get_Instance()
+  00E0 ldfld System.Single InputManager::rollInput
+  00E5 conv.i4 
+  00E6 conv.r4 
+  00E7 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  00EC callvirt System.Void WingVisual::SetAileron(UnityEngine.Vector3)
+  00F1 ldarg.0 
+  00F2 ldfld WingVisual PlaneController::rightWingVisual
+  00F7 ldnull 
+  00F8 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  00FD brfalse.s IL_012b: ldc.r4 0
+  00FF ldarg.0 
+  0100 ldfld WingVisual PlaneController::rightWingVisual
+  0105 ldarg.0 
+  0106 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  010B callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  0110 call UnityEngine.Vector3 UnityEngine.Vector3::op_UnaryNegation(UnityEngine.Vector3)
+  0115 call T Singleton`1<InputManager>::get_Instance()
+  011A ldfld System.Single InputManager::rollInput
+  011F conv.i4 
+  0120 conv.r4 
+  0121 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0126 callvirt System.Void WingVisual::SetAileron(UnityEngine.Vector3)
+  012B ldc.r4 0
+  0130 stloc.3 
+  0131 ldc.r4 3.402823E+38
+  0136 stloc.s V_4
+  0138 ldc.i4.0 
+  0139 stloc.s V_9
+  013B br IL_01c4: ldloc.s V_9
+  0140 ldarg.0 
+  0141 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0146 ldloc.s V_9
+  0148 callvirt UnityEngine.Transform UnityEngine.Transform::GetChild(System.Int32)
+  014D stloc.s V_10
+  014F ldarg.0 
+  0150 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0155 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  015A ldloc.s V_10
+  015C callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0161 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  0166 call System.Single UnityEngine.Vector3::Distance(UnityEngine.Vector3,UnityEngine.Vector3)
+  016B ldarg.0 
+  016C ldfld PlaneContainer PlaneController::container
+  0171 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0176 stloc.s V_12
+  0178 ldloca.s V_12
+  017A call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  017F ldloc.s V_10
+  0181 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0186 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  018B ldarg.0 
+  018C call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0191 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  0196 call UnityEngine.Vector3 UnityEngine.Vector3::op_Subtraction(UnityEngine.Vector3,UnityEngine.Vector3)
+  019B stloc.s V_12
+  019D ldloca.s V_12
+  019F call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  01A4 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  01A9 mul 
+  01AA stloc.s V_11
+  01AC ldloc.s V_11
+  01AE ldloc.s V_4
+  01B0 bge.un.s IL_01be: ldloc.s V_9
+  01B2 ldloc.s V_11
+  01B4 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  01B9 stloc.3 
+  01BA ldloc.s V_11
+  01BC stloc.s V_4
+  01BE ldloc.s V_9
+  01C0 ldc.i4.1 
+  01C1 add 
+  01C2 stloc.s V_9
+  01C4 ldloc.s V_9
+  01C6 ldarg.0 
+  01C7 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  01CC callvirt System.Int32 UnityEngine.Transform::get_childCount()
+  01D1 blt IL_0140: ldarg.0
+  01D6 ldarg.0 
+  01D7 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  01DC callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  01E1 ldarg.0 
+  01E2 ldfld PlaneContainer PlaneController::container
+  01E7 callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  01EC ldloc.3 
+  01ED call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  01F2 call UnityEngine.Vector3 UnityEngine.Vector3::op_Subtraction(UnityEngine.Vector3,UnityEngine.Vector3)
+  01F7 stloc.s V_5
+  01F9 ldc.i4.0 
+  01FA stloc.s V_13
+  01FC br IL_02f8: ldloc.s V_13
+  0201 ldarg.0 
+  0202 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0207 ldloc.s V_13
+  0209 callvirt UnityEngine.Transform UnityEngine.Transform::GetChild(System.Int32)
+  020E callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0213 stloc.s V_14
+  0215 ldloc.s V_14
+  0217 callvirt System.String UnityEngine.Object::get_name()
+  021C stloc.s V_15
+  021E ldloc.s V_15
+  0220 ldstr Wing
+  0225 callvirt System.Boolean System.String::Contains(System.String)
+  022A brtrue.s IL_023d: ldarg.0
+  022C ldloc.s V_15
+  022E ldstr wing
+  0233 callvirt System.Boolean System.String::Contains(System.String)
+  0238 brfalse IL_02f2: ldloc.s V_13
+  023D ldarg.0 
+  023E call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0243 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  0248 ldloc.s V_14
+  024A callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  024F callvirt UnityEngine.Vector3 UnityEngine.Transform::get_forward()
+  0254 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0259 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  025E ldc.r4 0.6
+  0263 cgt 
+  0265 stloc.s V_16
+  0267 ldloc.s V_5
+  0269 ldloc.s V_14
+  026B callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  0270 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  0275 call System.Single UnityEngine.Vector3::Distance(UnityEngine.Vector3,UnityEngine.Vector3)
+  027A ldc.r4 1.5
+  027F clt 
+  0281 dup 
+  0282 ldloc.s V_16
+  0284 and 
+  0285 brfalse.s IL_02b8: brfalse.s IL_02f2
+  0287 ldarg.0 
+  0288 ldloc.s V_14
+  028A call WingVisual PlaneController::GetWingVisual(UnityEngine.GameObject)
+  028F stloc.s V_17
+  0291 ldloc.s V_17
+  0293 call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+  0298 brfalse.s IL_02b8: brfalse.s IL_02f2
+  029A ldloc.s V_17
+  029C ldarg.0 
+  029D call UnityEngine.Transform UnityEngine.Component::get_transform()
+  02A2 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_right()
+  02A7 ldarg.0 
+  02A8 ldfld System.Single PlaneController::rudderInput
+  02AD neg 
+  02AE call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  02B3 callvirt System.Void WingVisual::SetAileron(UnityEngine.Vector3)
+  02B8 brfalse.s IL_02f2: ldloc.s V_13
+  02BA ldloc.s V_16
+  02BC brtrue.s IL_02f2: ldloc.s V_13
+  02BE ldarg.0 
+  02BF ldloc.s V_14
+  02C1 call WingVisual PlaneController::GetWingVisual(UnityEngine.GameObject)
+  02C6 stloc.s V_18
+  02C8 ldloc.s V_18
+  02CA call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+  02CF brfalse.s IL_02f2: ldloc.s V_13
+  02D1 ldloc.s V_18
+  02D3 ldarg.0 
+  02D4 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  02D9 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  02DE call T Singleton`1<InputManager>::get_Instance()
+  02E3 ldfld System.Single InputManager::pitchInput
+  02E8 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  02ED callvirt System.Void WingVisual::SetAileron(UnityEngine.Vector3)
+  02F2 ldloc.s V_13
+  02F4 ldc.i4.1 
+  02F5 add 
+  02F6 stloc.s V_13
+  02F8 ldloc.s V_13
+  02FA ldarg.0 
+  02FB call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0300 callvirt System.Int32 UnityEngine.Transform::get_childCount()
+  0305 blt IL_0201: ldarg.0
+  030A ret 
+== METHOD System.Void PlaneController::UpdateControllSurfaces(UnityEngine.Rigidbody)
+  0000 ldarg.0 
+  0001 ldfld System.Collections.Generic.List`1<Wing> PlaneController::mainWings
+  0006 callvirt System.Void System.Collections.Generic.List`1<Wing>::Clear()
+  000B ldarg.0 
+  000C ldfld System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>> PlaneController::tailWings
+  0011 callvirt System.Void System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>>::Clear()
+  0016 ldarg.0 
+  0017 call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  001C callvirt !!0[] UnityEngine.GameObject::GetComponentsInChildren<Wing>()
+  0021 stloc.0 
+  0022 ldarg.0 
+  0023 ldfld PlaneContainer PlaneController::container
+  0028 callvirt System.Single PlaneContainer::GetPlaneLength()
+  002D stloc.1 
+  002E ldc.i4.0 
+  002F stloc.2 
+  0030 br IL_0105: ldloc.2
+  0035 ldarg.0 
+  0036 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  003B ldarg.1 
+  003C callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_centerOfMass()
+  0041 callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformPoint(UnityEngine.Vector3)
+  0046 ldarg.0 
+  0047 ldfld PlaneContainer PlaneController::container
+  004C callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0051 ldloc.0 
+  0052 ldloc.2 
+  0053 ldelem.ref 
+  0054 callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+  0059 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  005E call UnityEngine.Vector3 CustomMath::GetClosestPointOnLine(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)
+  0063 stloc.3 
+  0064 ldarg.0 
+  0065 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  006A ldarg.1 
+  006B callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_centerOfMass()
+  0070 callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformPoint(UnityEngine.Vector3)
+  0075 ldloc.3 
+  0076 call UnityEngine.Vector3 UnityEngine.Vector3::op_Subtraction(UnityEngine.Vector3,UnityEngine.Vector3)
+  007B stloc.s V_4
+  007D ldloca.s V_4
+  007F call System.Single UnityEngine.Vector3::get_magnitude()
+  0084 stloc.s V_5
+  0086 ldarg.0 
+  0087 ldfld PlaneContainer PlaneController::container
+  008C callvirt UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0091 ldloca.s V_4
+  0093 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0098 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  009D stloc.s V_6
+  009F ldloc.s V_5
+  00A1 ldloc.1 
+  00A2 ldc.r4 0.25
+  00A7 mul 
+  00A8 ble.un.s IL_00f3: ldarg.0
+  00AA ldloc.s V_6
+  00AC ldc.r4 0
+  00B1 ble.un.s IL_00f3: ldarg.0
+  00B3 ldloc.0 
+  00B4 ldloc.2 
+  00B5 ldelem.ref 
+  00B6 ldfld UnityEngine.Transform Wing::orientation
+  00BB callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  00C0 ldarg.0 
+  00C1 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  00C6 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  00CB call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  00D0 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  00D5 ldc.r4 0.75
+  00DA ble.un.s IL_00f3: ldarg.0
+  00DC ldarg.0 
+  00DD ldfld System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>> PlaneController::tailWings
+  00E2 ldloc.0 
+  00E3 ldloc.2 
+  00E4 ldelem.ref 
+  00E5 ldloc.s V_5
+  00E7 newobj System.Void System.Tuple`2<Wing,System.Single>::.ctor(!0,!1)
+  00EC callvirt System.Void System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>>::Add(!0)
+  00F1 br.s IL_0101: ldloc.2
+  00F3 ldarg.0 
+  00F4 ldfld System.Collections.Generic.List`1<Wing> PlaneController::mainWings
+  00F9 ldloc.0 
+  00FA ldloc.2 
+  00FB ldelem.ref 
+  00FC callvirt System.Void System.Collections.Generic.List`1<Wing>::Add(!0)
+  0101 ldloc.2 
+  0102 ldc.i4.1 
+  0103 add 
+  0104 stloc.2 
+  0105 ldloc.2 
+  0106 ldloc.0 
+  0107 ldlen 
+  0108 conv.i4 
+  0109 blt IL_0035: ldarg.0
+  010E ret 
+== METHOD System.Void PlaneController::UpdateControllability()
+  0000 ldarg.0 
+  0001 ldc.r4 0
+  0006 stfld System.Single PlaneController::rollControlSurfaceLift
+  000B ldarg.0 
+  000C ldc.r4 0
+  0011 stfld System.Single PlaneController::pitchControlSurfaceLift
+  0016 ldc.i4.0 
+  0017 stloc.0 
+  0018 br.s IL_0054: ldloc.0
+  001A ldarg.0 
+  001B ldfld System.Collections.Generic.List`1<Wing> PlaneController::mainWings
+  0020 ldloc.0 
+  0021 callvirt !0 System.Collections.Generic.List`1<Wing>::get_Item(System.Int32)
+  0026 callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  002B callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  0030 brfalse.s IL_0050: ldloc.0
+  0032 ldarg.0 
+  0033 ldarg.0 
+  0034 ldfld System.Single PlaneController::rollControlSurfaceLift
+  0039 ldarg.0 
+  003A ldfld System.Collections.Generic.List`1<Wing> PlaneController::mainWings
+  003F ldloc.0 
+  0040 callvirt !0 System.Collections.Generic.List`1<Wing>::get_Item(System.Int32)
+  0045 ldfld System.Single Wing::liftForce
+  004A add 
+  004B stfld System.Single PlaneController::rollControlSurfaceLift
+  0050 ldloc.0 
+  0051 ldc.i4.1 
+  0052 add 
+  0053 stloc.0 
+  0054 ldloc.0 
+  0055 ldarg.0 
+  0056 ldfld System.Collections.Generic.List`1<Wing> PlaneController::mainWings
+  005B callvirt System.Int32 System.Collections.Generic.List`1<Wing>::get_Count()
+  0060 blt.s IL_001a: ldarg.0
+  0062 ldc.i4.0 
+  0063 stloc.1 
+  0064 br.s IL_00bc: ldloc.1
+  0066 ldarg.0 
+  0067 ldfld System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>> PlaneController::tailWings
+  006C ldloc.1 
+  006D callvirt !0 System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>>::get_Item(System.Int32)
+  0072 callvirt !0 System.Tuple`2<Wing,System.Single>::get_Item1()
+  0077 callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  007C callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  0081 brfalse.s IL_00b8: ldloc.1
+  0083 ldarg.0 
+  0084 ldarg.0 
+  0085 ldfld System.Single PlaneController::pitchControlSurfaceLift
+  008A ldarg.0 
+  008B ldfld System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>> PlaneController::tailWings
+  0090 ldloc.1 
+  0091 callvirt !0 System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>>::get_Item(System.Int32)
+  0096 callvirt !0 System.Tuple`2<Wing,System.Single>::get_Item1()
+  009B ldfld System.Single Wing::liftForce
+  00A0 ldarg.0 
+  00A1 ldfld System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>> PlaneController::tailWings
+  00A6 ldloc.1 
+  00A7 callvirt !0 System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>>::get_Item(System.Int32)
+  00AC callvirt !1 System.Tuple`2<Wing,System.Single>::get_Item2()
+  00B1 mul 
+  00B2 add 
+  00B3 stfld System.Single PlaneController::pitchControlSurfaceLift
+  00B8 ldloc.1 
+  00B9 ldc.i4.1 
+  00BA add 
+  00BB stloc.1 
+  00BC ldloc.1 
+  00BD ldarg.0 
+  00BE ldfld System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>> PlaneController::tailWings
+  00C3 callvirt System.Int32 System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>>::get_Count()
+  00C8 blt.s IL_0066: ldarg.0
+  00CA ret 
+== METHOD System.Void PlaneController::ExplodePlane()
+  0000 call T Singleton`1<AudioManager>::get_Instance()
+  0005 ldarg.0 
+  0006 ldfld AudioDef PlaneController::explosionSound
+  000B callvirt System.Void AudioManager::PlaySound(AudioDef)
+  0010 ldarg.0 
+  0011 ldfld UnityEngine.GameObject PlaneController::explosionParticlePrefab
+  0016 call !!0 UnityEngine.Object::Instantiate<UnityEngine.GameObject>(!!0)
+  001B stloc.0 
+  001C ldloc.0 
+  001D callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  0022 ldarg.0 
+  0023 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0028 callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+  002D callvirt System.Void UnityEngine.Transform::set_position(UnityEngine.Vector3)
+  0032 ldloc.0 
+  0033 callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+  0038 call UnityEngine.Vector3 UnityEngine.Vector3::get_one()
+  003D ldarg.0 
+  003E ldfld PlaneContainer PlaneController::container
+  0043 callvirt System.Single PlaneContainer::GetPlaneLength()
+  0048 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  004D ldc.r4 0.2
+  0052 call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0057 callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+  005C ldloc.0 
+  005D ldloc.0 
+  005E callvirt !!0 UnityEngine.GameObject::GetComponent<UnityEngine.ParticleSystem>()
+  0063 callvirt UnityEngine.ParticleSystem/MainModule UnityEngine.ParticleSystem::get_main()
+  0068 stloc.1 
+  0069 ldloca.s V_1
+  006B call System.Single UnityEngine.ParticleSystem/MainModule::get_duration()
+  0070 ldc.r4 0.1
+  0075 sub 
+  0076 call System.Void UnityEngine.Object::Destroy(UnityEngine.Object,System.Single)
+  007B ldarg.0 
+  007C call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  0081 ldc.i4.0 
+  0082 callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+  0087 call T Singleton`1<ParticleSpawner>::get_Instance()
+  008C callvirt System.Void ParticleSpawner::DestoyAll()
+  0091 ldarg.0 
+  0092 ldc.i4.1 
+  0093 call System.Void PlaneController::set_Exploded(System.Boolean)
+  0098 ldarg.0 
+  0099 ldfld PlaneContainer PlaneController::container
+  009E callvirt !!0 UnityEngine.Component::GetComponent<PartExploder>()
+  00A3 callvirt System.Void PartExploder::ExplodePlane()
+  00A8 ret 
+== METHOD System.Void PlaneController::OnDrawGizmos()
+  0000 call UnityEngine.Color UnityEngine.Color::get_green()
+  0005 call System.Void UnityEngine.Gizmos::set_color(UnityEngine.Color)
+  000A ldarg.0 
+  000B ldfld UnityEngine.Rigidbody PlaneController::rb
+  0010 ldnull 
+  0011 call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+  0016 brfalse.s IL_0038: ret
+  0018 ldarg.0 
+  0019 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  001E ldarg.0 
+  001F ldfld UnityEngine.Rigidbody PlaneController::rb
+  0024 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_centerOfMass()
+  0029 callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformPoint(UnityEngine.Vector3)
+  002E ldc.r4 0.2
+  0033 call System.Void UnityEngine.Gizmos::DrawWireSphere(UnityEngine.Vector3,System.Single)
+  0038 ret 
+== METHOD System.Void PlaneController::.ctor()
+  0000 ldarg.0 
+  0001 newobj System.Void System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>>::.ctor()
+  0006 stfld System.Collections.Generic.List`1<System.Tuple`2<Wing,System.Single>> PlaneController::tailWings
+  000B ldarg.0 
+  000C newobj System.Void System.Collections.Generic.List`1<Wing>::.ctor()
+  0011 stfld System.Collections.Generic.List`1<Wing> PlaneController::mainWings
+  0016 ldarg.0 
+  0017 newobj System.Void System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual>::.ctor()
+  001C stfld System.Collections.Generic.Dictionary`2<UnityEngine.GameObject,WingVisual> PlaneController::wingVisuals
+  0021 ldarg.0 
+  0022 call System.Void UnityEngine.MonoBehaviour::.ctor()
+  0027 ret 

@@ -1,0 +1,302 @@
+FIELD System.Single helicopter
+FIELD System.Single yawDrag
+FIELD System.Single rollDrag
+FIELD System.Single pitchDrag
+FIELD System.Single verticalLiniarDrag
+FIELD System.Single angleDragMultiplier
+FIELD System.Single liftSymmetry
+FIELD System.Single thrustSymmetry
+FIELD System.Single gravityForce
+FIELD System.Single planeGravityMultiplier
+FIELD System.Single helicopterGravityMultiplier
+FIELD System.Single liftMultiplier
+FIELD UnityEngine.LayerMask groundedCheckLayerMask
+FIELD System.Single maxCGShift
+FIELD System.Single fuelWeight
+FIELD UnityEngine.Rigidbody rb
+FIELD PlaneController controller
+FIELD PartExploder exploder
+FIELD System.Single mass
+FIELD System.Single drag
+FIELD UnityEngine.Vector3 cachedLocalForward
+FIELD System.Collections.Generic.List`1<PlanePart> planeParts
+FIELD System.Single <cargoVolume>k__BackingField
+FIELD System.Single fuel
+FIELD System.Single fuelCapacity
+FIELD System.Single refrenceFuelCapacity
+FIELD System.Single electricity
+FIELD System.Single electricityStorageCapacity
+FIELD System.Single refrenceElectricityStorageCapacity
+FIELD UnityEngine.Vector3 spawnPoint
+FIELD System.Single airbreakDrag
+FIELD System.Boolean <FlightModeInitialized>k__BackingField
+FIELD System.Boolean <hasRetractableGear>k__BackingField
+FIELD System.Boolean <hasBalloons>k__BackingField
+FIELD System.Single previousVelocity
+FIELD System.Boolean <IsAccelerating>k__BackingField
+FIELD Engine[] engines
+FIELD System.Single currentLift
+PROP System.Single GravityMultiplier
+PROP System.Single RealGravity
+PROP UnityEngine.Vector3 Forward
+PROP System.Single cargoVolume
+PROP System.Boolean FlightModeInitialized
+PROP System.Boolean hasRetractableGear
+PROP System.Boolean hasBalloons
+PROP System.Boolean IsAccelerating
+== METHOD System.Void PlaneContainer::FixedUpdate()
+  0000 ldarg.0 
+  0001 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0006 ldnull 
+  0007 call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+  000C brfalse.s IL_000f: ldarg.0
+  000E ret 
+  000F ldarg.0 
+  0010 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0015 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_inertiaTensor()
+  001A stloc.s V_8
+  001C ldloca.s V_8
+  001E call System.Single UnityEngine.Vector3::get_magnitude()
+  0023 ldsfld System.Single UnityEngine.Mathf::Epsilon
+  0028 ble.un.s IL_0088: ldarg.0
+  002A ldarg.0 
+  002B ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0030 ldc.r4 1
+  0035 ldarg.0 
+  0036 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  003B callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_inertiaTensor()
+  0040 ldfld System.Single UnityEngine.Vector3::x
+  0045 call System.Single UnityEngine.Mathf::Max(System.Single,System.Single)
+  004A ldc.r4 1
+  004F ldarg.0 
+  0050 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0055 callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_inertiaTensor()
+  005A ldfld System.Single UnityEngine.Vector3::y
+  005F call System.Single UnityEngine.Mathf::Max(System.Single,System.Single)
+  0064 ldc.r4 1
+  0069 ldarg.0 
+  006A ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  006F callvirt UnityEngine.Vector3 UnityEngine.Rigidbody::get_inertiaTensor()
+  0074 ldfld System.Single UnityEngine.Vector3::z
+  0079 call System.Single UnityEngine.Mathf::Max(System.Single,System.Single)
+  007E newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+  0083 callvirt System.Void UnityEngine.Rigidbody::set_inertiaTensor(UnityEngine.Vector3)
+  0088 ldarg.0 
+  0089 ldc.r4 1
+  008E stfld System.Single PlaneContainer::airbreakDrag
+  0093 ldarg.0 
+  0094 ldc.r4 0
+  0099 stfld System.Single PlaneContainer::currentLift
+  009E ldc.i4.0 
+  009F stloc.s V_9
+  00A1 br.s IL_00d5: ldloc.s V_9
+  00A3 ldarg.0 
+  00A4 ldfld System.Collections.Generic.List`1<PlanePart> PlaneContainer::planeParts
+  00A9 ldloc.s V_9
+  00AB callvirt !0 System.Collections.Generic.List`1<PlanePart>::get_Item(System.Int32)
+  00B0 callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+  00B5 callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+  00BA brfalse.s IL_00cf: ldloc.s V_9
+  00BC ldarg.0 
+  00BD ldfld System.Collections.Generic.List`1<PlanePart> PlaneContainer::planeParts
+  00C2 ldloc.s V_9
+  00C4 callvirt !0 System.Collections.Generic.List`1<PlanePart>::get_Item(System.Int32)
+  00C9 ldarg.0 
+  00CA callvirt System.Void PlanePart::UpdatePart(PlaneContainer)
+  00CF ldloc.s V_9
+  00D1 ldc.i4.1 
+  00D2 add 
+  00D3 stloc.s V_9
+  00D5 ldloc.s V_9
+  00D7 ldarg.0 
+  00D8 ldfld System.Collections.Generic.List`1<PlanePart> PlaneContainer::planeParts
+  00DD callvirt System.Int32 System.Collections.Generic.List`1<PlanePart>::get_Count()
+  00E2 blt.s IL_00a3: ldarg.0
+  00E4 ldarg.0 
+  00E5 call System.Void PlaneContainer::ApplyAngularDrag()
+  00EA ldarg.0 
+  00EB ldarg.0 
+  00EC ldfld System.Single PlaneContainer::helicopter
+  00F1 ldarg.0 
+  00F2 ldfld System.Single PlaneContainer::verticalLiniarDrag
+  00F7 mul 
+  00F8 call System.Void PlaneContainer::ApplyLiniarDrag(System.Single)
+  00FD ldarg.0 
+  00FE ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0103 call UnityEngine.Vector3 UnityEngine.Vector3::get_down()
+  0108 ldarg.0 
+  0109 call System.Single PlaneContainer::get_RealGravity()
+  010E call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0113 ldarg.0 
+  0114 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0119 callvirt System.Single UnityEngine.Rigidbody::get_mass()
+  011E call UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)
+  0123 callvirt System.Void UnityEngine.Rigidbody::AddForce(UnityEngine.Vector3)
+  0128 ldc.r4 1
+  012D ldarg.0 
+  012E call UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0133 ldarg.0 
+  0134 call UnityEngine.Vector3 PlaneContainer::GetVelocity()
+  0139 stloc.s V_8
+  013B ldloca.s V_8
+  013D call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0142 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0147 call System.Single UnityEngine.Mathf::Abs(System.Single)
+  014C sub 
+  014D ldarg.0 
+  014E ldfld System.Single PlaneContainer::angleDragMultiplier
+  0153 mul 
+  0154 ldc.r4 1
+  0159 add 
+  015A stloc.0 
+  015B ldc.r4 1
+  0160 ldarg.0 
+  0161 call UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0166 call UnityEngine.Vector3 UnityEngine.Vector3::get_down()
+  016B call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0170 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  0175 sub 
+  0176 ldloc.0 
+  0177 ldarg.0 
+  0178 ldfld System.Single PlaneContainer::helicopter
+  017D call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+  0182 stloc.1 
+  0183 ldarg.0 
+  0184 ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  0189 ldarg.0 
+  018A ldfld System.Single PlaneContainer::drag
+  018F ldloc.1 
+  0190 mul 
+  0191 ldarg.0 
+  0192 ldfld System.Single PlaneContainer::airbreakDrag
+  0197 mul 
+  0198 callvirt System.Void UnityEngine.Rigidbody::set_linearDamping(System.Single)
+  019D ldarg.0 
+  019E ldfld UnityEngine.Rigidbody PlaneContainer::rb
+  01A3 ldarg.0 
+  01A4 ldfld System.Single PlaneContainer::mass
+  01A9 ldarg.0 
+  01AA ldfld System.Single PlaneContainer::fuel
+  01AF ldarg.0 
+  01B0 ldfld System.Single PlaneContainer::fuelWeight
+  01B5 mul 
+  01B6 ldc.r4 15
+  01BB div 
+  01BC add 
+  01BD callvirt System.Void UnityEngine.Rigidbody::set_mass(System.Single)
+  01C2 ldc.r4 10
+  01C7 ldc.r4 0
+  01CC ldarg.0 
+  01CD call System.Single PlaneContainer::DistanceFromGround()
+  01D2 ldc.r4 10
+  01D7 div 
+  01D8 call System.Single UnityEngine.Mathf::Clamp01(System.Single)
+  01DD call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+  01E2 stloc.2 
+  01E3 ldc.i4.s 32
+  01E5 call System.Boolean UnityEngine.Input::GetKey(UnityEngine.KeyCode)
+  01EA brtrue.s IL_01f2: ldarg.0
+  01EC ldc.r4 0
+  01F1 stloc.2 
+  01F2 ldarg.0 
+  01F3 call !!0[] UnityEngine.Component::GetComponentsInChildren<Wing>()
+  01F8 stloc.3 
+  01F9 ldc.i4.0 
+  01FA stloc.s V_10
+  01FC br.s IL_020e: ldloc.s V_10
+  01FE ldloc.3 
+  01FF ldloc.s V_10
+  0201 ldelem.ref 
+  0202 ldloc.2 
+  0203 stfld System.Single Wing::angleOfAttackOffset
+  0208 ldloc.s V_10
+  020A ldc.i4.1 
+  020B add 
+  020C stloc.s V_10
+  020E ldloc.s V_10
+  0210 ldloc.3 
+  0211 ldlen 
+  0212 conv.i4 
+  0213 blt.s IL_01fe: ldloc.3
+  0215 ldarg.0 
+  0216 call System.Single PlaneContainer::GetVelocityMagintude()
+  021B stloc.s V_4
+  021D ldarg.0 
+  021E call UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0223 ldarg.0 
+  0224 call UnityEngine.Vector3 PlaneContainer::GetVelocity()
+  0229 stloc.s V_8
+  022B ldloca.s V_8
+  022D call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  0232 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  0237 call System.Single UnityEngine.Mathf::Sign(System.Single)
+  023C stloc.s V_5
+  023E ldarg.0 
+  023F ldloc.s V_4
+  0241 ldarg.0 
+  0242 ldfld System.Single PlaneContainer::previousVelocity
+  0247 sub 
+  0248 ldc.r4 0.05
+  024D ble.un.s IL_025a: ldc.i4.0
+  024F ldloc.s V_5
+  0251 ldc.r4 0
+  0256 cgt 
+  0258 br.s IL_025b: call System.Void PlaneContainer::set_IsAccelerating(System.Boolean)
+  025A ldc.i4.0 
+  025B call System.Void PlaneContainer::set_IsAccelerating(System.Boolean)
+  0260 ldarg.0 
+  0261 ldloc.s V_4
+  0263 stfld System.Single PlaneContainer::previousVelocity
+  0268 call UnityEngine.Vector3 UnityEngine.Vector3::get_zero()
+  026D stloc.s V_6
+  026F ldc.i4.0 
+  0270 stloc.s V_11
+  0272 br.s IL_0291: ldloc.s V_11
+  0274 ldloc.s V_6
+  0276 ldarg.0 
+  0277 ldfld Engine[] PlaneContainer::engines
+  027C ldloc.s V_11
+  027E ldelem.ref 
+  027F callvirt UnityEngine.Vector3 Engine::GetDirection()
+  0284 call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+  0289 stloc.s V_6
+  028B ldloc.s V_11
+  028D ldc.i4.1 
+  028E add 
+  028F stloc.s V_11
+  0291 ldloc.s V_11
+  0293 ldarg.0 
+  0294 ldfld Engine[] PlaneContainer::engines
+  0299 ldlen 
+  029A conv.i4 
+  029B blt.s IL_0274: ldloc.s V_6
+  029D ldloc.s V_6
+  029F ldarg.0 
+  02A0 ldfld Engine[] PlaneContainer::engines
+  02A5 ldlen 
+  02A6 conv.i4 
+  02A7 conv.r4 
+  02A8 call UnityEngine.Vector3 UnityEngine.Vector3::op_Division(UnityEngine.Vector3,System.Single)
+  02AD stloc.s V_8
+  02AF ldloca.s V_8
+  02B1 call UnityEngine.Vector3 UnityEngine.Vector3::get_normalized()
+  02B6 stloc.s V_7
+  02B8 ldarg.0 
+  02B9 ldarg.0 
+  02BA call UnityEngine.Transform UnityEngine.Component::get_transform()
+  02BF callvirt UnityEngine.Vector3 UnityEngine.Transform::get_up()
+  02C4 ldloc.s V_7
+  02C6 call System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)
+  02CB call System.Single UnityEngine.Mathf::Abs(System.Single)
+  02D0 stfld System.Single PlaneContainer::helicopter
+  02D5 ldloc.3 
+  02D6 brfalse.s IL_02dc: ldarg.0
+  02D8 ldloc.3 
+  02D9 ldlen 
+  02DA brtrue.s IL_02e7: ldarg.0
+  02DC ldarg.0 
+  02DD ldc.r4 1
+  02E2 stfld System.Single PlaneContainer::helicopter
+  02E7 ldarg.0 
+  02E8 call System.Void PlaneContainer::UpdateAutoHover()
+  02ED ret 

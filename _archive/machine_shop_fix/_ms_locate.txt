@@ -1,0 +1,7 @@
+== build-shop.ps1 location ==
+D:\豆包的下载\Machine_Dev\build-shop.ps1 exists=True
+D:\豆包的下载\Machine_Dev\tools\build-shop.ps1 exists=False
+== game status ==
+NOT RUNNING
+== bin output ==
+D:\豆包的下载\Machine_Dev\bin\mods\MachineShop.dll exists=True

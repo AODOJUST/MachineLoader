@@ -1,0 +1,18 @@
+===== TYPE ContinentType =====
+  [attr] UnityEngine.CreateAssetMenuAttribute
+  FIELD System.String continentName pub
+  FIELD System.Single angleFromOrigin pub
+  FIELD System.Single distanceFromOrigin pub
+  FIELD System.Single radius pub
+  FIELD UnityEngine.Material terrainMaterial pub
+  FIELD System.Single minHeight pub
+  FIELD System.Single maxHeight pub
+  FIELD SurfaceDecoration[] surfaceDecorations pub
+  FIELD FogProfile fogProfile pub
+  FIELD UnityEngine.AudioClip backgroundMusic pub
+  FIELD UnityEngine.Color surfaceColor pub
+  FIELD System.Int32 temprature pub
+  FIELD System.Int32 scrapAmount pub
+  FIELD System.Single hintDistance pub
+  FIELD AirportData[] airports pub
+  METHOD .ctor() : Void pub

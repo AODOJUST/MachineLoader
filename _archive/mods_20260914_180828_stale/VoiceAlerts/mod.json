@@ -1,0 +1,14 @@
+{
+  "id": "machine.voicealerts",
+  "name": "Voice Alert System",
+  "version": "2.13.0",
+  "author": "Machine",
+  "description": "Voice warnings (real cockpit audio): STALL / OVERSPEED / SINK RATE / PULL UP / BINGO / FUEL LOW / PITCH / ANGLE / OVERG / ROLL / LOCK / FOX1 / MISSILE / RWR. Chinese (J-11) + English (F/A-18C) voice packs. Thresholds in voice_config.json",
+  "type": "code",
+  "code": {
+    "assemblies": [
+      "code/VoiceAlerts.dll"
+    ],
+    "mainClass": "VoiceAlertsMod.Main"
+  }
+}

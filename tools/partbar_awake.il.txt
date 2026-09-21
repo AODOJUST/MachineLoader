@@ -1,0 +1,10 @@
+﻿===== PartBar :: Awake =====
+  0000: ldarg.0
+  0001: ldarg.0
+  0002: ldfld PartBar::prefabs
+  0007: call PartBar::SpawnButtons
+  000C: ldarg.0
+  000D: ldarg.0
+  000E: ldfld PartBar::fullVersionPrefabs
+  0013: call PartBar::SpawnButtons
+  0018: ret

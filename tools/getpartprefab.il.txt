@@ -1,0 +1,35 @@
+﻿===== PartPrefabs :: GetPartPrefab =====
+  0000: ldarg.0
+  0001: ldstr "(Clone)"
+  0006: ldstr ""
+  000B: callvirt String::Replace
+  0010: starg.s partName
+  0012: ldc.i4.0
+  0013: stloc.0
+  0014: br.s IL_0048: ldloc.0
+  0016: ldsfld PartPrefabs::instance
+  001B: ldfld PartPrefabs::allPartPrefabs
+  0020: ldloc.0
+  0021: callvirt List`1::get_Item
+  0026: callvirt Object::get_name
+  002B: ldarg.0
+  002C: call String::op_Equality
+  0031: brfalse.s IL_0044: ldloc.0
+  0033: ldsfld PartPrefabs::instance
+  0038: ldfld PartPrefabs::allPartPrefabs
+  003D: ldloc.0
+  003E: callvirt List`1::get_Item
+  0043: ret
+  0044: ldloc.0
+  0045: ldc.i4.1
+  0046: add
+  0047: stloc.0
+  0048: ldloc.0
+  0049: ldsfld PartPrefabs::instance
+  004E: ldfld PartPrefabs::allPartPrefabs
+  0053: callvirt List`1::get_Count
+  0058: blt.s IL_0016: ldsfld PartPrefabs PartPrefabs::instance
+  005A: ldarg.0
+  005B: call Debug::LogError
+  0060: ldnull
+  0061: ret

@@ -1,0 +1,26 @@
+now = 14:55:49 deadline=300s tag=avoid1
+pre-existing instance cleared
+log start offset = 13574074
+started pid = 39628
+t=32s newLog=36222 done=False
+t=62s newLog=49405 done=False
+t=92s newLog=59923 done=False
+t=102s newLog=61980 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\aam_run_log_avoid1.txt length=61980
+newshot aam_test_1.png 14:56:21 1480024 bytes
+newshot aam_test_10.png 14:56:36 1472995 bytes
+newshot aam_test_11.png 14:56:41 1195186 bytes
+newshot aam_test_12.png 14:56:46 1194483 bytes
+newshot aam_test_13.png 14:56:51 1204706 bytes
+newshot aam_test_14.png 14:56:56 1469631 bytes
+newshot aam_test_2.png 14:56:22 1122598 bytes
+newshot aam_test_3.png 14:56:22 1071180 bytes
+newshot aam_test_4.png 14:56:23 1484416 bytes
+newshot aam_test_5.png 14:56:24 1477601 bytes
+newshot aam_test_6.png 14:56:25 1197361 bytes
+newshot aam_test_7.png 14:56:25 1196557 bytes
+newshot aam_test_8.png 14:56:26 1194356 bytes
+newshot aam_test_9.png 14:56:31 1076698 bytes
+game alive before stop = True
+game stopped

@@ -1,0 +1,10 @@
+now = 00:23:37 deadline=300s tag=cev
+pre-existing instance cleared
+log start offset = 2541821
+started pid = 15500
+t=31s newLog=45106 done=False
+t=47s newLog=54473 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\aam_run_log_cev.txt length=54473
+game alive before stop = True
+game stopped

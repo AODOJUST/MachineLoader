@@ -1,0 +1,14 @@
+python.exe : Traceback (most recent call last):
+???? ?:445 ??: 1
++ & "C:\Users\16857\.workbuddy\binaries\python\versions\3.13.12\python. ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last) 
+   ::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "D:\????????Machine_Dev\tools\gen_flare_sfx.py", line 49, in <module>
+    with open(r"D:\????????Machine_Dev\tmp_wav.txt", "w", encoding="ascii") as 
+f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'D:\\????????\Machine_Dev\\tmp_w
+av.txt'

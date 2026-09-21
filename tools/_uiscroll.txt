@@ -1,0 +1,100 @@
+cecil exists: True  ui exists: True
+cecil loaded: Mono.Cecil
+ui module: UnityEngine.UI.dll
+
+METHOD OnScroll
+  ldarg.0 
+  callvirt System.Boolean UnityEngine.EventSystems.UIBehaviour::IsActive()
+  brtrue.s IL_0009: ldarg.0
+  ret 
+  ldarg.0 
+  call System.Void UnityEngine.UI.ScrollRect::EnsureLayoutHasRebuilt()
+  ldarg.0 
+  call System.Void UnityEngine.UI.ScrollRect::UpdateBounds()
+  ldarg.1 
+  callvirt UnityEngine.Vector2 UnityEngine.EventSystems.PointerEventData::get_scrollDelta()
+  stloc.0 
+  ldloca.s V_0
+  ldflda System.Single UnityEngine.Vector2::y
+  dup 
+  ldind.r4 
+  ldc.r4 -1
+  mul 
+  stind.r4 
+  ldarg.0 
+  call System.Boolean UnityEngine.UI.ScrollRect::get_vertical()
+  brfalse.s IL_006d: ldarg.0
+  ldarg.0 
+  call System.Boolean UnityEngine.UI.ScrollRect::get_horizontal()
+  brtrue.s IL_006d: ldarg.0
+  ldloc.0 
+  ldfld System.Single UnityEngine.Vector2::x
+  call System.Single UnityEngine.Mathf::Abs(System.Single)
+  ldloc.0 
+  ldfld System.Single UnityEngine.Vector2::y
+  call System.Single UnityEngine.Mathf::Abs(System.Single)
+  ble.un.s IL_0061: ldloca.s V_0
+  ldloca.s V_0
+  ldloc.0 
+  ldfld System.Single UnityEngine.Vector2::x
+  stfld System.Single UnityEngine.Vector2::y
+  ldloca.s V_0
+  ldc.r4 0
+  stfld System.Single UnityEngine.Vector2::x
+  ldarg.0 
+  call System.Boolean UnityEngine.UI.ScrollRect::get_horizontal()
+  brfalse.s IL_00ae: ldarg.1
+  ldarg.0 
+  call System.Boolean UnityEngine.UI.ScrollRect::get_vertical()
+  brtrue.s IL_00ae: ldarg.1
+  ldloc.0 
+  ldfld System.Single UnityEngine.Vector2::y
+  call System.Single UnityEngine.Mathf::Abs(System.Single)
+  ldloc.0 
+  ldfld System.Single UnityEngine.Vector2::x
+  call System.Single UnityEngine.Mathf::Abs(System.Single)
+  ble.un.s IL_00a2: ldloca.s V_0
+  ldloca.s V_0
+  ldloc.0 
+  ldfld System.Single UnityEngine.Vector2::y
+  stfld System.Single UnityEngine.Vector2::x
+  ldloca.s V_0
+  ldc.r4 0
+  stfld System.Single UnityEngine.Vector2::y
+  ldarg.1 
+  callvirt System.Boolean UnityEngine.EventSystems.PointerEventData::IsScrolling()
+  brfalse.s IL_00bd: ldarg.0
+  ldarg.0 
+  ldc.i4.1 
+  stfld System.Boolean UnityEngine.UI.ScrollRect::m_Scrolling
+  ldarg.0 
+  ldfld UnityEngine.RectTransform UnityEngine.UI.ScrollRect::m_Content
+  callvirt UnityEngine.Vector2 UnityEngine.RectTransform::get_anchoredPosition()
+  stloc.1 
+  ldloc.1 
+  ldloc.0 
+  ldarg.0 
+  ldfld System.Single UnityEngine.UI.ScrollRect::m_ScrollSensitivity
+  call UnityEngine.Vector2 UnityEngine.Vector2::op_Multiply(UnityEngine.Vector2,System.Single)
+  call UnityEngine.Vector2 UnityEngine.Vector2::op_Addition(UnityEngine.Vector2,UnityEngine.Vector2)
+  stloc.1 
+  ldarg.0 
+  ldfld UnityEngine.UI.ScrollRect/MovementType UnityEngine.UI.ScrollRect::m_MovementType
+  ldc.i4.2 
+  bne.un.s IL_0103: ldarg.0
+  ldloc.1 
+  ldarg.0 
+  ldloc.1 
+  ldarg.0 
+  ldfld UnityEngine.RectTransform UnityEngine.UI.ScrollRect::m_Content
+  callvirt UnityEngine.Vector2 UnityEngine.RectTransform::get_anchoredPosition()
+  call UnityEngine.Vector2 UnityEngine.Vector2::op_Subtraction(UnityEngine.Vector2,UnityEngine.Vector2)
+  call UnityEngine.Vector2 UnityEngine.UI.ScrollRect::CalculateOffset(UnityEngine.Vector2)
+  call UnityEngine.Vector2 UnityEngine.Vector2::op_Addition(UnityEngine.Vector2,UnityEngine.Vector2)
+  stloc.1 
+  ldarg.0 
+  ldloc.1 
+  callvirt System.Void UnityEngine.UI.ScrollRect::SetContentAnchoredPosition(UnityEngine.Vector2)
+  ldarg.0 
+  call System.Void UnityEngine.UI.ScrollRect::UpdateBounds()
+  ret 

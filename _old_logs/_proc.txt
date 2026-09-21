@@ -1,0 +1,5 @@
+now 2026-09-15 00:09:11
+11920 | started 00:08:32 | D:\豆包的下载\Aviassembly_DEV\Aviassembly.exe
+=== sizes ===
+184320 00:08:14 D:\豆包的下载\Aviassembly_DEV\mods\MachineAAM\code\MachineAAM.dll
+184320 00:08:14 D:\豆包的下载\Machine_Dev\bin\mods\MachineAAM.dll

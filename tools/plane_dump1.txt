@@ -1,0 +1,162 @@
+########## PlaneStorage ##########
+FIELD PlaneContainer planeContainer
+FIELD DecalContainer decalContainer
+FIELD PartPlacer partPlacer
+FIELD System.Collections.Generic.List`1<HistoryEntry> history
+FIELD System.Action ResetPlaneEvent
+FIELD System.Action PlaneUpdated
+FIELD System.Boolean updateHistory
+FIELD System.Single moneyThisFrame
+== METHOD System.Void PlaneStorage::add_ResetPlaneEvent(System.Action)
+  0000 ldarg.0 
+  0001 ldfld System.Action PlaneStorage::ResetPlaneEvent
+  0006 stloc.0 
+  0007 ldloc.0 
+  0008 stloc.1 
+  0009 ldloc.1 
+  000A ldarg.1 
+  000B call System.Delegate System.Delegate::Combine(System.Delegate,System.Delegate)
+  0010 castclass System.Action
+  0015 stloc.2 
+  0016 ldarg.0 
+  0017 ldflda System.Action PlaneStorage::ResetPlaneEvent
+  001C ldloc.2 
+  001D ldloc.1 
+  001E call !!0 System.Threading.Interlocked::CompareExchange<System.Action>(!!0&,!!0,!!0)
+  0023 stloc.0 
+  0024 ldloc.0 
+  0025 ldloc.1 
+  0026 bne.un.s IL_0007: ldloc.0
+  0028 ret 
+== METHOD System.Void PlaneStorage::remove_ResetPlaneEvent(System.Action)
+  0000 ldarg.0 
+  0001 ldfld System.Action PlaneStorage::ResetPlaneEvent
+  0006 stloc.0 
+  0007 ldloc.0 
+  0008 stloc.1 
+  0009 ldloc.1 
+  000A ldarg.1 
+  000B call System.Delegate System.Delegate::Remove(System.Delegate,System.Delegate)
+  0010 castclass System.Action
+  0015 stloc.2 
+  0016 ldarg.0 
+  0017 ldflda System.Action PlaneStorage::ResetPlaneEvent
+  001C ldloc.2 
+  001D ldloc.1 
+  001E call !!0 System.Threading.Interlocked::CompareExchange<System.Action>(!!0&,!!0,!!0)
+  0023 stloc.0 
+  0024 ldloc.0 
+  0025 ldloc.1 
+  0026 bne.un.s IL_0007: ldloc.0
+  0028 ret 
+== METHOD System.Void PlaneStorage::add_PlaneUpdated(System.Action)
+  0000 ldarg.0 
+  0001 ldfld System.Action PlaneStorage::PlaneUpdated
+  0006 stloc.0 
+  0007 ldloc.0 
+  0008 stloc.1 
+  0009 ldloc.1 
+  000A ldarg.1 
+  000B call System.Delegate System.Delegate::Combine(System.Delegate,System.Delegate)
+  0010 castclass System.Action
+  0015 stloc.2 
+  0016 ldarg.0 
+  0017 ldflda System.Action PlaneStorage::PlaneUpdated
+  001C ldloc.2 
+  001D ldloc.1 
+  001E call !!0 System.Threading.Interlocked::CompareExchange<System.Action>(!!0&,!!0,!!0)
+  0023 stloc.0 
+  0024 ldloc.0 
+  0025 ldloc.1 
+  0026 bne.un.s IL_0007: ldloc.0
+  0028 ret 
+== METHOD System.Void PlaneStorage::remove_PlaneUpdated(System.Action)
+  0000 ldarg.0 
+  0001 ldfld System.Action PlaneStorage::PlaneUpdated
+  0006 stloc.0 
+  0007 ldloc.0 
+  0008 stloc.1 
+  0009 ldloc.1 
+  000A ldarg.1 
+  000B call System.Delegate System.Delegate::Remove(System.Delegate,System.Delegate)
+########## PlaneContainer ##########
+FIELD System.Single helicopter
+FIELD System.Single yawDrag
+FIELD System.Single rollDrag
+FIELD System.Single pitchDrag
+FIELD System.Single verticalLiniarDrag
+FIELD System.Single angleDragMultiplier
+FIELD System.Single liftSymmetry
+FIELD System.Single thrustSymmetry
+FIELD System.Single gravityForce
+FIELD System.Single planeGravityMultiplier
+FIELD System.Single helicopterGravityMultiplier
+FIELD System.Single liftMultiplier
+FIELD UnityEngine.LayerMask groundedCheckLayerMask
+FIELD System.Single maxCGShift
+FIELD System.Single fuelWeight
+FIELD UnityEngine.Rigidbody rb
+FIELD PlaneController controller
+FIELD PartExploder exploder
+FIELD System.Single mass
+FIELD System.Single drag
+FIELD UnityEngine.Vector3 cachedLocalForward
+FIELD System.Collections.Generic.List`1<PlanePart> planeParts
+FIELD System.Single <cargoVolume>k__BackingField
+FIELD System.Single fuel
+FIELD System.Single fuelCapacity
+FIELD System.Single refrenceFuelCapacity
+FIELD System.Single electricity
+FIELD System.Single electricityStorageCapacity
+FIELD System.Single refrenceElectricityStorageCapacity
+FIELD UnityEngine.Vector3 spawnPoint
+FIELD System.Single airbreakDrag
+FIELD System.Boolean <FlightModeInitialized>k__BackingField
+FIELD System.Boolean <hasRetractableGear>k__BackingField
+FIELD System.Boolean <hasBalloons>k__BackingField
+FIELD System.Single previousVelocity
+FIELD System.Boolean <IsAccelerating>k__BackingField
+FIELD Engine[] engines
+FIELD System.Single currentLift
+PROP System.Single GravityMultiplier
+PROP System.Single RealGravity
+PROP UnityEngine.Vector3 Forward
+PROP System.Single cargoVolume
+PROP System.Boolean FlightModeInitialized
+PROP System.Boolean hasRetractableGear
+PROP System.Boolean hasBalloons
+PROP System.Boolean IsAccelerating
+== METHOD System.Single PlaneContainer::get_GravityMultiplier()
+  0000 ldarg.0 
+  0001 ldfld System.Single PlaneContainer::planeGravityMultiplier
+  0006 ldarg.0 
+  0007 ldfld System.Single PlaneContainer::helicopterGravityMultiplier
+  000C ldarg.0 
+  000D ldfld System.Single PlaneContainer::helicopter
+  0012 call System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)
+  0017 ret 
+== METHOD System.Void PlaneContainer::set_GravityMultiplier(System.Single)
+  0000 ret 
+== METHOD System.Single PlaneContainer::get_RealGravity()
+  0000 ldarg.0 
+  0001 ldfld System.Single PlaneContainer::gravityForce
+  0006 ldarg.0 
+  0007 call System.Single PlaneContainer::get_GravityMultiplier()
+  000C mul 
+  000D ret 
+== METHOD System.Void PlaneContainer::set_RealGravity(System.Single)
+  0000 ret 
+== METHOD UnityEngine.Vector3 PlaneContainer::get_Forward()
+  0000 ldarg.0 
+  0001 call UnityEngine.Transform UnityEngine.Component::get_transform()
+  0006 ldarg.0 
+  0007 ldfld UnityEngine.Vector3 PlaneContainer::cachedLocalForward
+  000C callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformDirection(UnityEngine.Vector3)
+  0011 ret 
+== METHOD System.Void PlaneContainer::set_Forward(UnityEngine.Vector3)
+  0000 ret 
+== METHOD System.Single PlaneContainer::get_cargoVolume()
+  0000 ldarg.0 
+  0001 ldfld System.Single PlaneContainer::<cargoVolume>k__BackingField
+  0006 ret 
+== METHOD System.Void PlaneContainer::set_cargoVolume(System.Single)

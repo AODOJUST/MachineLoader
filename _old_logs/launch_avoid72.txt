@@ -1,0 +1,45 @@
+now = 22:13:52 deadline=170s tag=avoid7
+pre-existing instance cleared
+log start offset = 15528515
+started pid = 27372
+t=30s newLog=45242 done=False
+t=60s newLog=52392 done=False
+t=90s newLog=65314 done=True
+selftestDone=True
+log slice written -> D:\豆包的下载\Machine_Dev\aam_run_log_avoid7.txt length=65314
+newshot aam_test_1.png 22:14:17 1513300 bytes
+newshot aam_test_1_chase.png 22:14:16 164870 bytes
+newshot aam_test_1_trail.png 22:14:16 233159 bytes
+newshot aam_test_10.png 22:14:30 1505571 bytes
+newshot aam_test_10_chase.png 22:14:30 289980 bytes
+newshot aam_test_10_trail.png 22:14:30 288433 bytes
+newshot aam_test_11.png 22:14:34 1506746 bytes
+newshot aam_test_12.png 22:14:39 1473631 bytes
+newshot aam_test_13.png 22:14:43 1472445 bytes
+newshot aam_test_14.png 22:14:47 1473504 bytes
+newshot aam_test_2.png 22:14:17 1513837 bytes
+newshot aam_test_2_chase.png 22:14:17 259144 bytes
+newshot aam_test_2_trail.png 22:14:17 273476 bytes
+newshot aam_test_3.png 22:14:18 1511583 bytes
+newshot aam_test_3_chase.png 22:14:18 295551 bytes
+newshot aam_test_3_trail.png 22:14:18 283163 bytes
+newshot aam_test_4.png 22:14:19 1512670 bytes
+newshot aam_test_4_chase.png 22:14:19 227549 bytes
+newshot aam_test_4_trail.png 22:14:19 243061 bytes
+newshot aam_test_5.png 22:14:19 1510583 bytes
+newshot aam_test_5_chase.png 22:14:19 305427 bytes
+newshot aam_test_5_trail.png 22:14:19 307794 bytes
+newshot aam_test_6.png 22:14:20 1509237 bytes
+newshot aam_test_6_chase.png 22:14:20 293599 bytes
+newshot aam_test_6_trail.png 22:14:20 291133 bytes
+newshot aam_test_7.png 22:14:21 1508079 bytes
+newshot aam_test_7_chase.png 22:14:21 304044 bytes
+newshot aam_test_7_trail.png 22:14:21 293142 bytes
+newshot aam_test_8.png 22:14:21 1504536 bytes
+newshot aam_test_8_chase.png 22:14:21 304939 bytes
+newshot aam_test_8_trail.png 22:14:21 293685 bytes
+newshot aam_test_9.png 22:14:26 1445657 bytes
+newshot aam_test_9_chase.png 22:14:26 298146 bytes
+newshot aam_test_9_trail.png 22:14:26 297031 bytes
+game alive before stop = True
+game stopped

@@ -1,0 +1,25 @@
+{
+  "id": "machine.example",
+  "name": "Example Mod",
+  "version": "1.0.0",
+  "author": "Machine Team",
+  "description": "示例Mod：展示事件订阅、UI按钮、配置读取、命令注册的最小可运行模板。",
+  "type": "code",
+  "apiVersion": "1.0",
+  "loaderVersion": ">=1.0.0",
+  "dependencies": [],
+  "optionalDependencies": ["machine.battlecore"],
+  "loadAfter": [],
+  "loadBefore": [],
+  "entry": "Machine.Example.ExampleMod",
+  "code": {
+    "assemblies": ["code/ExampleMod.dll"],
+    "mainClass": "Machine.Example.ExampleMod"
+  },
+  "content": {
+    "cargo": [],
+    "parts": [],
+    "decals": [],
+    "textures": []
+  }
+}

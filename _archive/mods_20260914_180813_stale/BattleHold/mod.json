@@ -1,0 +1,14 @@
+{
+  "id": "machine.battlehold",
+  "name": "BattleHold",
+  "version": "2.3.0",
+  "author": "Machine",
+  "description": "Battle Hold (combat warehouse): a separate combat cargo hold that shares the plane's total cargo capacity with the stock hold. Clearing the cargo hold never wipes combat cargo. The HUD panel sits bottom-right, can be dragged with the left mouse button and toggled with a rebindable hotkey (default 1) that shows up in Settings > Keybinds. Foundation mod for combat content - other mods depend on its API.",
+  "type": "code",
+  "code": {
+    "assemblies": [
+      "code/BattleHold.dll"
+    ],
+    "mainClass": "Machine.BattleHold.Main"
+  }
+}

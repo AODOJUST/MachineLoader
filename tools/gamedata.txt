@@ -1,0 +1,38 @@
+﻿===== TYPE GameDataWriter =====
+  FIELD System.IO.BinaryWriter writer
+  METHOD .ctor(BinaryWriter writer) : Void pub
+  METHOD Write(Boolean value) : Void pub
+  METHOD Write(String value) : Void pub
+  METHOD Write(Single value) : Void pub
+  METHOD Write(Double value) : Void pub
+  METHOD Write(Int32 value) : Void pub
+  METHOD Write(Quaternion value) : Void pub
+  METHOD Write(Vector2 value) : Void pub
+  METHOD Write(Vector3 value) : Void pub
+  METHOD Write(Vector4 value) : Void pub
+  METHOD Write(Color value) : Void pub
+  METHOD Write(Type type) : Void pub
+  METHOD Write(Quest quest) : Void pub
+  METHOD Write(Mesh mesh) : Void pub
+  METHOD GetPosition() : Int64 pub
+  METHOD Write(Int64 value) : Void pub
+  METHOD Write(Stream stream) : Void pub
+===== TYPE GameDataReader =====
+  FIELD System.IO.BinaryReader reader
+  FIELD System.Int32 version pub
+  METHOD .ctor(BinaryReader reader) : Void pub
+  METHOD ReadString() : String pub
+  METHOD ReadBool() : Boolean pub
+  METHOD ReadFloat() : Single pub
+  METHOD ReadInt() : Int32 pub
+  METHOD ReadDouble() : Double pub
+  METHOD ReadQuaternion() : Quaternion pub
+  METHOD ReadVector2() : Vector2 pub
+  METHOD ReadVector3() : Vector3 pub
+  METHOD ReadVector4() : Vector4 pub
+  METHOD ReadColor() : Color pub
+  METHOD ReadType() : Type pub
+  METHOD ReadLong() : Int64 pub
+  METHOD GetStream() : Stream pub
+  METHOD GetStreamPosition() : Int64 pub
+  METHOD SetStreamPosition(Int64 position) : Void pub

@@ -1,0 +1,102 @@
+===== globalgamemanagers.assets =====
+  types: {"PreloadData": 1, "Material": 1, "Texture2D": 2, "Shader": 1, "MonoScript": 1658, "Sprite": 1}
+  total in file: 1664
+  distinct mono keysets: 0
+===== globalgamemanagers.assets.resS =====
+  types: {}
+  total in file: 0
+  distinct mono keysets: 0
+===== level0 =====
+  types: {"GameObject": 7, "Transform": 5, "Camera": 2, "RenderSettings": 1, "LightmapSettings": 1, "NavMeshSettings": 1, "CanvasRenderer": 1, "Canvas": 1, "RectTransform": 2, "CanvasGroup": 1, "MonoBehaviour": 7}
+  total in file: 29
+  distinct mono keysets: 2
+    x5  ERR:ValueError
+    x2  m_Enabled,m_GameObject,m_Name,m_Script
+===== level1 =====
+  types: {"GameObject": 331, "Transform": 25, "Camera": 2, "AudioListener": 1, "AudioSource": 5, "RenderSettings": 1, "LightmapSettings": 1, "NavMeshSettings": 1, "CanvasRenderer": 231, "Canvas": 1, "RectTransform": 306, "CanvasGroup": 1, "MonoBehaviour": 401}
+  total in file: 1307
+  distinct mono keysets: 2
+    x398  ERR:ValueError
+    x3  m_Enabled,m_GameObject,m_Name,m_Script
+===== level2 =====
+  types: {"GameObject": 369, "Transform": 79, "Camera": 5, "MeshRenderer": 48, "MeshFilter": 48, "MeshCollider": 31, "BoxCollider": 8, "RenderSettings": 1, "Light": 1, "LightmapSettings": 1, "NavMeshSettings": 1, "CanvasRenderer": 253, "Canvas": 7, "RectTransform": 290, "CanvasGroup": 13, "MonoBehaviour": 509}
+  total in file: 1664
+  distinct mono keysets: 2
+    x503  ERR:ValueError
+    x6  m_Enabled,m_GameObject,m_Name,m_Script
+===== level3 =====
+  types: {"GameObject": 562, "Transform": 26, "Camera": 1, "MeshRenderer": 2, "MeshFilter": 2, "BoxCollider": 1, "AudioSource": 6, "RenderSettings": 1, "Light": 1, "LightmapSettings": 1, "NavMeshSettings": 1, "ParticleSystem": 1, "ParticleSystemRenderer": 1, "CanvasRenderer": 465, "Canvas": 9, "RectTransform": 536, "CanvasGroup": 20, "MonoBehaviour": 700}
+  total in file: 2336
+  distinct mono keysets: 2
+    x685  ERR:ValueError
+    x15  m_Enabled,m_GameObject,m_Name,m_Script
+===== level4 =====
+  types: {"GameObject": 201, "Transform": 13, "Camera": 2, "MeshRenderer": 2, "MeshFilter": 2, "RenderSettings": 1, "Light": 1, "CapsuleCollider": 1, "LightmapSettings": 1, "NavMeshSettings": 1, "CanvasRenderer": 171, "Canvas": 3, "RectTransform": 188, "CanvasGroup": 4, "MonoBehaviour": 330}
+  total in file: 921
+  distinct mono keysets: 2
+    x322  ERR:ValueError
+    x8  m_Enabled,m_GameObject,m_Name,m_Script
+===== level5 =====
+  types: {"GameObject": 22, "Transform": 22, "Camera": 1, "RenderSettings": 1, "LightmapSettings": 1, "NavMeshSettings": 1, "MonoBehaviour": 26}
+  total in file: 74
+  distinct mono keysets: 2
+    x23  ERR:ValueError
+    x3  m_Enabled,m_GameObject,m_Name,m_Script
+===== resources.assets =====
+  types: {"Material": 6, "Texture2D": 4, "Shader": 2, "TextAsset": 2, "Font": 1, "MonoBehaviour": 5}
+  total in file: 20
+  distinct mono keysets: 1
+    x5  ERR:ValueError
+===== resources.assets.resS =====
+  types: {}
+  total in file: 0
+  distinct mono keysets: 0
+===== sharedassets0.assets =====
+  types: {"PreloadData": 1, "Material": 1, "Shader": 1, "Cubemap": 1}
+  total in file: 4
+  distinct mono keysets: 0
+===== sharedassets1.assets =====
+  types: {"PreloadData": 1, "Material": 51, "Texture2D": 133, "Mesh": 175, "Shader": 8, "AudioClip": 12, "RenderTexture": 2, "Font": 1, "PhysicMaterial": 1, "Sprite": 8, "GameObject": 555, "Transform": 495, "MeshRenderer": 193, "MeshFilter": 193, "MeshCollider": 69, "BoxCollider": 30, "AudioSource": 16, "TrailRenderer": 1, "CapsuleCollider": 9, "ParticleSystem": 4, "ParticleSystemRenderer": 4, "LODGroup": 1, "CanvasRenderer": 43, "RectTransform": 60, "MonoBehaviour": 523}
+  total in file: 2588
+  distinct mono keysets: 1
+    x523  ERR:ValueError
+===== sharedassets1.assets.resS =====
+  types: {}
+  total in file: 0
+  distinct mono keysets: 0
+===== sharedassets2.assets =====
+  types: {"PreloadData": 1, "Material": 8, "Texture2D": 116, "Mesh": 29, "Shader": 35, "ComputeShader": 12, "AudioClip": 3, "RenderTexture": 2, "Cubemap": 1, "Sprite": 1, "GameObject": 49, "CanvasRenderer": 44, "RectTransform": 49, "CanvasGroup": 1, "MonoBehaviour": 82}
+  total in file: 433
+  distinct mono keysets: 1
+    x82  ERR:ValueError
+===== sharedassets2.assets.resS =====
+  types: {}
+  total in file: 0
+  distinct mono keysets: 0
+===== sharedassets3.assets =====
+  types: {"PreloadData": 1, "Material": 16, "Texture2D": 52, "Mesh": 51, "Shader": 5, "ComputeShader": 2, "AnimationClip": 1, "AudioClip": 16, "Sprite": 4, "GameObject": 531, "Transform": 466, "MeshRenderer": 425, "MeshFilter": 425, "Rigidbody": 1, "MeshCollider": 36, "BoxCollider": 190, "Animation": 1, "SkinnedMeshRenderer": 1, "ParticleSystem": 3, "ParticleSystemRenderer": 3, "CanvasRenderer": 57, "RectTransform": 65, "MonoBehaviour": 153}
+  total in file: 2505
+  distinct mono keysets: 1
+    x153  ERR:ValueError
+===== sharedassets3.assets.resS =====
+  types: {}
+  total in file: 0
+  distinct mono keysets: 0
+===== sharedassets4.assets =====
+  types: {"PreloadData": 1, "Texture2D": 6, "Mesh": 1, "AudioClip": 1, "RenderTexture": 1, "GameObject": 7, "Transform": 2, "MeshRenderer": 2, "MeshFilter": 2, "MeshCollider": 1, "CanvasRenderer": 5, "RectTransform": 5, "MonoBehaviour": 10}
+  total in file: 44
+  distinct mono keysets: 1
+    x10  ERR:ValueError
+===== sharedassets4.assets.resS =====
+  types: {}
+  total in file: 0
+  distinct mono keysets: 0
+===== sharedassets5.assets =====
+  types: {"PreloadData": 1, "Material": 19, "Texture2D": 18, "Mesh": 116, "Shader": 4, "AudioClip": 6, "GameObject": 790, "Transform": 759, "MeshRenderer": 667, "MeshFilter": 667, "Rigidbody": 15, "MeshCollider": 95, "BoxCollider": 176, "TrailRenderer": 1, "ParticleSystem": 4, "ParticleSystemRenderer": 4, "CanvasRenderer": 31, "RectTransform": 31, "CanvasGroup": 5, "MonoBehaviour": 655}
+  total in file: 4064
+  distinct mono keysets: 1
+    x655  ERR:ValueError
+===== sharedassets5.assets.resS =====
+  types: {}
+  total in file: 0
+  distinct mono keysets: 0

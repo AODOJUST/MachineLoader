@@ -1,0 +1,8 @@
+== PlaneController ==
+public Boolean get_Exploded()
+private Void set_Exploded(Boolean value)
+public Void ExplodePlane()
+field Boolean <Exploded>k__BackingField
+== PartExploder ==
+public Void ExplodePlane()
+public Void ExplodePart(PlanePart part, Boolean rootExplosion, Boolean disableExplosion)

@@ -1,0 +1,14 @@
+csc = C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe exists=True
+core dll exists=True
+Machine_Dev\src\Mods\Radar.cs(192,30): warning CS0618: “UnityEngine.Object.FindObjectOfType<T>()”已过时:“Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType”
+Machine_Dev\src\Mods\Radar.cs(245,35): warning CS0618: “UnityEngine.Object.FindObjectsOfType<T>(bool)”已过时:“Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.”
+Machine_Dev\src\Mods\Radar.cs(566,31): warning CS0618: “UnityEngine.Object.FindObjectsOfType<T>(bool)”已过时:“Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.”
+Machine_Dev\src\Mods\Radar.cs(1444,27): warning CS0618: “UnityEngine.Object.FindObjectsOfType(System.Type, bool)”已过时:“Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.”
+Machine_Dev\src\Mods\Radar.cs(1571,27): warning CS0618: “UnityEngine.Object.FindObjectsOfType(System.Type, bool)”已过时:“Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.”
+Machine_Dev\src\Mods\Radar.cs(518,29): warning CS0649: 从未对字段“Machine.Radar.RadarSystem.ShopDiag”赋值，字段将一直保持其默认值 false
+Machine_Dev\src\Mods\Radar.cs(1282,23): warning CS0169: 从不使用字段“Machine.Radar.RadarSystem._rwrLastLow”
+Machine_Dev\src\Mods\Radar.cs(1282,36): warning CS0169: 从不使用字段“Machine.Radar.RadarSystem._rwrLastMid”
+Machine_Dev\src\Mods\Radar.cs(1282,49): warning CS0169: 从不使用字段“Machine.Radar.RadarSystem._rwrLastHigh”
+-- Radar OK 65024 bytes
+deployed -> D:\豆包的下载\Aviassembly_DEV\mods\Radar\code\Radar.dll (65024 bytes)
+deployed -> D:\豆包的下载\Aviassembly_DEV\mods\Radar\Radar.dll (65024 bytes)
